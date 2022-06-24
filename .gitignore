@@ -1,4 +1,16 @@
 
-data
+data/
+data*/
 .vscode
-features
+/features.py
+
+# Generated files
+/fairseq/temporal_convolution_tbc
+/fairseq/modules/*_layer/*_forward.cu
+/fairseq/modules/*_layer/*_backward.cu
+/fairseq/version.py
+
+# data
+data-bin/
+__pycache__/
+/temp.py

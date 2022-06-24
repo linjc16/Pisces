@@ -1,14 +1,12 @@
-# import pandas as pd
+import pandas as pd
+import pdb
 
-# drug_smiles = pd.read_csv('data/drug_smiles.csv')
+# df_all_data = pd.read_csv('data_feat/rnaseq_all_data_20220510.csv')
+# df_fpkm = pd.read_csv('data_feat/rnaseq_fpkm_20220510.csv')
+# df_read_count = pd.read_csv('data_feat/rnaseq_fpkm_20220510.csv')
+# df_tqm = pd.read_csv('data_feat/rnaseq_tpm_20220510.csv')
 
-# smiles = drug_smiles['smiles']
+df_cell = pd.read_csv('data/cell_feats.csv')
 
-# for smile in smiles:
-#     if len(smile) > 1:
-#         print(smile)
 
-import torch
-
-logits = torch.randn([16, 1, 1])
-# labels = torch.
+pdb.set_trace()

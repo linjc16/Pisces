@@ -55,9 +55,9 @@ class BinaryClassCriterion(FairseqCriterion):
         pos_logits = logits[labels == 1]
         neg_logits = logits[labels == 0]
 
-        pos_weights = (neg_logits.size(0)) / (pos_logits.size(0) + neg_logits.size(0) + 1e-8)
-        neg_weights = (pos_logits.size(0)) / (pos_logits.size(0) + neg_logits.size(0) + 1e-8)
-
+        # pos_weights = (neg_logits.size(0)) / (pos_logits.size(0) + neg_logits.size(0) + 1e-8)
+        # neg_weights = (pos_logits.size(0)) / (pos_logits.size(0) + neg_logits.size(0) + 1e-8)
+        pos_weights, neg_weights = 1, 1
         if len(pos_logits) == 0:
             loss = - F.logsigmoid(-neg_logits).mean()
         else:
@@ -71,6 +71,8 @@ class BinaryClassCriterion(FairseqCriterion):
             "ntokens": sample["ntokens"],
             "nsentences": sample_size,
             "sample_size": sample_size,
+            "n_pos": pos_logits.size(0),
+            "n_neg": neg_logits.size(0)
         }
         logging_out["ncorrect"] = (pos_preds >= 0.5).sum() + (neg_preds < 0.5).sum()
         logging_out["pos_acc"] = (pos_preds >= 0.5).sum() 
@@ -78,6 +80,36 @@ class BinaryClassCriterion(FairseqCriterion):
 
         return loss, sample_size, logging_out
 
+    def forward_inference(self, model, sample, reduce=True):
+        assert (hasattr(model, 'classification_heads')
+                and self.classification_head_name in model.classification_heads)
+        
+        input = self.build_input(sample, self.classification_head_name)
+        logits = model(**input)
+        
+        preds = []
+
+        labels = model.get_targets(sample['label'], None).view(-1)
+        
+        pos_logits = logits[labels == 1]
+        neg_logits = logits[labels == 0]
+        
+        pos_preds = torch.sigmoid(pos_logits.squeeze().float()).detach().cpu().numpy()
+        neg_preds = torch.sigmoid(neg_logits.squeeze().float()).detach().cpu().numpy()
+        preds.append(pos_preds)
+        preds.append(neg_preds)
+        
+        targets = []
+        pos_target = torch.ones(len(pos_preds))
+        neg_target = torch.zeros(len(neg_preds))
+        targets.append(pos_target)
+        targets.append(neg_target)
+
+        preds = np.concatenate(preds)
+        targets = np.concatenate(targets)
+
+        return preds, targets, sample['target'].detach().cpu().numpy()
+    
     @staticmethod
     def reduce_metrics(logging_outputs):
 
@@ -85,6 +117,8 @@ class BinaryClassCriterion(FairseqCriterion):
         ntokens = sum(log.get("ntokens", 0) for log in logging_outputs)
         nsentences = sum(log.get("nsentences", 0) for log in logging_outputs)
         sample_size = sum(log.get("sample_size", 0) for log in logging_outputs)
+        n_pos = sum(log.get("n_pos", 0) for log in logging_outputs)
+        n_neg = sum(log.get("n_neg", 0) for log in logging_outputs)
         
         metrics.log_scalar("loss", loss_sum / sample_size / math.log(2), sample_size, round=3)
 
@@ -93,9 +127,9 @@ class BinaryClassCriterion(FairseqCriterion):
             metrics.log_scalar("accuracy", 100.0 * ncorrect / nsentences, nsentences, round=1)
             
             pos_acc = sum(log.get("pos_acc", 0) for log in logging_outputs)
-            metrics.log_scalar("pos_acc", 100.0 * 2 * pos_acc / nsentences, nsentences, round=1)
+            metrics.log_scalar("pos_acc", 100.0 * pos_acc / n_pos, n_pos, round=1)
             neg_acc = sum(log.get("neg_acc", 0) for log in logging_outputs)
-            metrics.log_scalar("neg_acc", 100.0 * 2 * neg_acc / nsentences, nsentences, round=1)
+            metrics.log_scalar("neg_acc", 100.0 * neg_acc / n_neg, n_neg, round=1)
 
         if len(logging_outputs) > 0 and "inter_loss" in logging_outputs[0]:
             inter_loss_sum = sum(log.get("inter_loss", 0) for log in logging_outputs)
@@ -110,18 +144,18 @@ class BinaryClassCriterion(FairseqCriterion):
             metrics.log_scalar("t_accuracy", 100.0 * t_ncorrect / nsentences, nsentences, round=1)
             
             pos_acc = sum(log.get("t_pos_acc", 0) for log in logging_outputs)
-            metrics.log_scalar("t_pos_acc", 100.0 * 2 * pos_acc / nsentences, nsentences, round=1)
+            metrics.log_scalar("t_pos_acc", 100.0 * pos_acc / n_pos, n_pos, round=1)
             neg_acc = sum(log.get("t_neg_acc", 0) for log in logging_outputs)
-            metrics.log_scalar("t_neg_acc", 100.0 * 2 * neg_acc / nsentences, nsentences, round=1)
+            metrics.log_scalar("t_neg_acc", 100.0 * neg_acc / n_neg, n_neg, round=1)
 
         if len(logging_outputs) > 0 and "g_ncorrect" in logging_outputs[0]:
             g_ncorrect = sum(log.get("g_ncorrect", 0) for log in logging_outputs)
             metrics.log_scalar("g_accuracy", 100.0 * g_ncorrect / nsentences, nsentences, round=1)
             
             pos_acc = sum(log.get("g_pos_acc", 0) for log in logging_outputs)
-            metrics.log_scalar("g_pos_acc", 100.0 * 2 * pos_acc / nsentences, nsentences, round=1)
+            metrics.log_scalar("g_pos_acc", 100.0 * pos_acc / n_pos, n_pos, round=1)
             neg_acc = sum(log.get("g_neg_acc", 0) for log in logging_outputs)
-            metrics.log_scalar("g_neg_acc", 100.0 * 2 * neg_acc / nsentences, nsentences, round=1)
+            metrics.log_scalar("g_neg_acc", 100.0 * neg_acc / n_neg, n_neg, round=1)
 
 
     @staticmethod
