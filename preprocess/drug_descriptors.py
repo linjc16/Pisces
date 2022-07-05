@@ -2,6 +2,7 @@ import pandas as pd
 from rdkit import Chem
 from rdkit.ML.Descriptors.MoleculeDescriptors import MolecularDescriptorCalculator
 import pdb
+import numpy as np
 
 df_smiles = pd.read_csv('data/drug_smiles.csv')
 smiles_list = df_smiles['smiles'].tolist()
@@ -45,4 +46,6 @@ for idx, smiles in enumerate(smiles_list):
     desc_df.append(list_of_descriptor_vals)
 
 desc_df = pd.DataFrame(desc_df, index=drug_name_df.tolist(), columns=chosen_descriptors)
+desc_df.replace(np.nan, 0, inplace=True)
+# pdb.set_trace()
 desc_df.to_csv('data/drug_descriptor.csv')

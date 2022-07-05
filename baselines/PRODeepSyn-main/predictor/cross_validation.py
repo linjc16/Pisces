@@ -5,6 +5,7 @@ import torch
 import torch.nn as nn
 import pickle
 import logging
+from tqdm import tqdm
 
 from datetime import datetime
 
@@ -12,6 +13,10 @@ from model.datasets import FastSynergyDataset, FastTensorDataLoader
 from model.models import DNN
 from model.utils import save_args, arg_min, conf_inv, calc_stat, save_best_model, find_best_model, random_split_indices
 from const import SYNERGY_FILE, DRUG2ID_FILE, DRUG_FEAT_FILE, CELL_FEAT_FILE, CELL2ID_FILE, OUTPUT_DIR
+
+from sklearn.metrics import roc_curve, confusion_matrix
+from sklearn.metrics import cohen_kappa_score, accuracy_score, roc_auc_score, precision_score, recall_score, balanced_accuracy_score, f1_score
+from sklearn import metrics
 
 time_str = str(datetime.now().strftime('%y%m%d%H%M'))
 
@@ -31,6 +36,18 @@ def step_batch(model, batch, loss_func, gpu_id=None, train=True):
     return loss
 
 
+def step_batch_eval(model, batch, gpu_id=None):
+    drug1_feats, drug2_feats, cell_feats, y_true = batch
+    if gpu_id is not None:
+        drug1_feats, drug2_feats, cell_feats, y_true = drug1_feats.cuda(gpu_id), drug2_feats.cuda(gpu_id), \
+                                                       cell_feats.cuda(gpu_id), y_true.cuda(gpu_id)
+    yp1 = model(drug1_feats, drug2_feats, cell_feats)
+    yp2 = model(drug2_feats, drug1_feats, cell_feats)
+    y_pred = (yp1 + yp2) / 2
+    
+    return y_true, y_pred, y_pred > 0.5
+
+
 def train_epoch(model, loader, loss_func, optimizer, gpu_id=None):
     model.train()
     epoch_loss = 0
@@ -43,6 +60,20 @@ def train_epoch(model, loader, loss_func, optimizer, gpu_id=None):
     return epoch_loss
 
 
+def test_epoch(model, loader, gpu_id=None):
+    model.eval()
+    total_preds = torch.Tensor()
+    total_labels = torch.Tensor()
+    total_prelabels = torch.Tensor()
+    with torch.no_grad():
+        for batch in loader:
+            targets, pred_scores, pred_labels  = step_batch_eval(model, batch, gpu_id)
+            total_preds = torch.cat([total_preds, pred_scores.cpu()], dim=0)
+            total_prelabels = torch.cat([total_prelabels, pred_labels.cpu()], dim=0)
+            total_labels = torch.cat([total_labels, targets.cpu()], dim=0)
+
+    return total_labels.numpy().flatten(), total_preds.numpy().flatten(), total_prelabels.numpy().flatten()
+
 def eval_epoch(model, loader, loss_func, gpu_id=None):
     model.eval()
     with torch.no_grad():
@@ -52,16 +83,17 @@ def eval_epoch(model, loader, loss_func, gpu_id=None):
             epoch_loss += loss.item()
     return epoch_loss
 
-
 def train_model(model, optimizer, loss_func, train_loader, valid_loader, n_epoch, patience, gpu_id,
                 sl=False, mdl_dir=None):
     min_loss = float('inf')
     angry = 0
-    for epoch in range(1, n_epoch + 1):
+    for epoch in tqdm(range(1, n_epoch + 1)):
         trn_loss = train_epoch(model, train_loader, loss_func, optimizer, gpu_id)
         trn_loss /= train_loader.dataset_len
+        # logging.info(f'epoch {epoch} training loss: {trn_loss}')
         val_loss = eval_epoch(model, valid_loader, loss_func, gpu_id)
         val_loss /= valid_loader.dataset_len
+        # logging.info(f'epoch {epoch} validation loss: {val_loss}')
         if val_loss < min_loss:
             angry = 0
             min_loss = val_loss
@@ -84,9 +116,20 @@ def eval_model(model, optimizer, loss_func, train_data, test_data,
     test_loader = FastTensorDataLoader(*test_data.tensor_samples(), batch_size=len(test_data) // 4)
     train_model(model, optimizer, loss_func, train_loader, valid_loader, n_epoch, patience, gpu_id,
                 sl=True, mdl_dir=mdl_dir)
-    test_loss = eval_epoch(model, test_loader, loss_func, gpu_id)
-    test_loss /= len(test_data)
-    return test_loss
+    T, S, Y = test_epoch(model, test_loader, gpu_id)
+    AUC = roc_auc_score(T, S)
+    precision, recall, threshold = metrics.precision_recall_curve(T, S)
+    PR_AUC = metrics.auc(recall, precision)
+    BACC = balanced_accuracy_score(T, Y)
+    tn, fp, fn, tp = confusion_matrix(T, Y).ravel()
+    TPR = tp / (tp + fn)
+    PREC = precision_score(T, Y)
+    ACC = accuracy_score(T, Y)
+    KAPPA = cohen_kappa_score(T, Y)
+    recall = recall_score(T, Y)
+    F1 = f1_score(T, Y)
+    logging.info(f'ACC: {ACC}, BACC: {BACC}, AUC: {AUC}, PR_AUC: {PR_AUC}, \
+            PREC: {PREC}, RECALL: {recall}, F1: {F1}, TPR: {TPR}, KAPPA: {KAPPA}.')
 
 
 def create_model(data, hidden_size, gpu_id=None):
@@ -107,8 +150,7 @@ def cv(args, out_dir):
 
     n_folds = 5
     n_delimiter = 60
-    loss_func = nn.MSELoss(reduction='sum')
-    test_losses = []
+    loss_func = nn.BCEWithLogitsLoss()
     for test_fold in range(n_folds):
         outer_trn_folds = [x for x in range(n_folds) if x != test_fold]
         logging.info("Outer: train folds {}, test folds {}".format(outer_trn_folds, test_fold))
@@ -159,21 +201,10 @@ def cv(args, out_dir):
         test_mdl_dir = os.path.join(out_dir, str(test_fold))
         if not os.path.exists(test_mdl_dir):
             os.makedirs(test_mdl_dir)
-        test_loss = eval_model(model, optimizer, loss_func, train_data, test_data,
+        eval_model(model, optimizer, loss_func, train_data, test_data,
                                args.batch, args.epoch, args.patience, gpu_id, test_mdl_dir)
-        test_losses.append(test_loss)
-        logging.info("Test loss: {:.4f}".format(test_loss))
         logging.info("*" * n_delimiter + '\n')
     logging.info("CV completed")
-    with open(test_loss_file, 'wb') as f:
-        pickle.dump(test_losses, f)
-    mu, sigma = calc_stat(test_losses)
-    logging.info("MSE: {:.4f} ± {:.4f}".format(mu, sigma))
-    lo, hi = conf_inv(mu, sigma, len(test_losses))
-    logging.info("Confidence interval: [{:.4f}, {:.4f}]".format(lo, hi))
-    rmse_loss = [x ** 0.5 for x in test_losses]
-    mu, sigma = calc_stat(rmse_loss)
-    logging.info("RMSE: {:.4f} ± {:.4f}".format(mu, sigma))
 
 
 def main():

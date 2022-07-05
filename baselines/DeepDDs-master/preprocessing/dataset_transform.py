@@ -10,7 +10,7 @@ if __name__ == '__main__':
     os.makedirs(savedir, exist_ok=True)
 
     df_ddses = pd.read_csv('data/ddses.csv', index_col=0)
-    cell_feats = pd.read_csv('data/cell_feats.csv', index_col=0)
+    cell_feats = pd.read_csv('data/cell_read_count.csv', index_col=0)
     df_drug_smiles = pd.read_csv('data/drug_smiles.csv', index_col=0)
 
     # pdb.set_trace()
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     # cell_feats_values = cell_feats.iloc[:, 1:]
     # cell_feats.iloc[:, 1:] = (cell_feats_values - cell_feats_values.mean()) / (cell_feats_values.std() + 1e-8)
     # pdb.set_trace()
-    cell_feats.to_csv(os.path.join(savedir, 'cell_features_expression_new.csv'), index=False)
+    cell_feats.to_csv(os.path.join(savedir, 'cell_features_expression_read_count_new.csv'), index=False)
     
     # transform smiles
     df_drug_smiles_new = pd.DataFrame.from_dict({'drug_names': all_drug_dict.keys(), 'smile': all_drug_dict.values()})

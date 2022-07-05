@@ -4,7 +4,7 @@ import numpy as np
 import joblib
 
 from sklearn.preprocessing import StandardScaler
-
+import pdb
 from const import DATA_DIR, SCALER_FILE, CELL_FEAT_FILE
 
 parser = argparse.ArgumentParser()
@@ -21,7 +21,8 @@ for d in args.dirs:
 embedding = np.concatenate(embeddings, axis=1)
 scaler = StandardScaler().fit(embedding)
 embedding = scaler.transform(embedding)
-# joblib.dump(scaler, SCALER_FILE)
-# print("Saved", SCALER_FILE)
-np.save(CELL_FEAT_FILE, embeddings)
+joblib.dump(scaler, SCALER_FILE)  
+print("Saved", SCALER_FILE)
+np.save(CELL_FEAT_FILE, embedding)
+# pdb.set_trace()
 print("Saved", CELL_FEAT_FILE)

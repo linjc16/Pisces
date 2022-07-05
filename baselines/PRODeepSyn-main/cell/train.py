@@ -12,6 +12,8 @@ import torch
 import torch.nn.functional as F
 import torch.nn as nn
 import dgl
+import pdb
+from tqdm import tqdm
 
 from torch.utils.data import DataLoader
 
@@ -117,7 +119,7 @@ if __name__ == '__main__':
     graph = graph.to(device)
     node_features = node_features.to(device)
     c2v_dataset = C2VDataset(osp.join(DATA_DIR, args.target), osp.join(DATA_DIR, args.valid_nodes))
-    dataloader = DataLoader(c2v_dataset, shuffle=True, num_workers=2)
+    dataloader = DataLoader(c2v_dataset, shuffle=True, num_workers=32)
     node_indices = c2v_dataset.node_indices.to(device)
 
     encoder = GCNEncoder(node_features.shape[1], hidden_dim, activation, k=num_layers).to(device)
@@ -138,12 +140,13 @@ if __name__ == '__main__':
 
     start = t()
     prev = start
-    for epoch in range(1, num_epochs + 1):
+    for epoch in tqdm(range(1, num_epochs + 1)):
         epoch_loss = 0
         now = t()
         for step, batch in enumerate(dataloader):
             batch_x, batch_y = batch
             batch_x, batch_y = batch_x.to(device), batch_y.to(device)
+            # pdb.set_trace()
             loss = train_step(model, graph, node_features, node_indices, batch_x, batch_y)
             epoch_loss += loss * len(batch_x)
         epoch_loss /= len(c2v_dataset)

@@ -1,3 +1,4 @@
+from cProfile import label
 import numpy as np
 import torch
 
@@ -5,6 +6,7 @@ import random
 
 from torch.utils.data import Dataset
 from .utils import read_map
+import pdb
 
 
 class FastTensorDataLoader:
@@ -66,24 +68,24 @@ class EmbDataset(Dataset):
         with open(synergy_score_file, 'r') as f:
             f.readline()
             for line in f:
-                drug1, drug2, cellname, score, fold = line.rstrip().split('\t')
+                drug1, drug2, cellname, label, fold = line.rstrip().split('\t')
                 if drug1 in valid_drugs and drug2 in valid_drugs and cellname in valid_cells:
                     if int(fold) in use_folds:
-                        sample = [self.drug2id[drug1], self.drug2id[drug2], self.cell2id[cellname], float(score)]
+                        sample = [self.drug2id[drug1], self.drug2id[drug2], self.cell2id[cellname], int(label)]
                         self.samples.append(sample)
-                        sample = [self.drug2id[drug2], self.drug2id[drug1], self.cell2id[cellname], float(score)]
+                        sample = [self.drug2id[drug2], self.drug2id[drug1], self.cell2id[cellname], int(label)]
                         self.samples.append(sample)
 
     def __len__(self):
         return len(self.samples)
 
     def __getitem__(self, item):
-        drug1_id, drug2_id, cell_id, score = self.samples[item]
-        drug1_feat = torch.LongTensor([drug1_id])
-        drug2_feat = torch.LongTensor([drug2_id])
-        cell_feat = torch.LongTensor([cell_id])
-        score = torch.FloatTensor([score])
-        return drug1_feat, drug2_feat, cell_feat, score
+        drug1_id, drug2_id, cell_id, label = self.samples[item]
+        drug1_feat = torch.FloatTensor([drug1_id])
+        drug2_feat = torch.FloatTensor([drug2_id])
+        cell_feat = torch.FloatTensor([cell_id])
+        label = torch.FloatTensor([int(label)])
+        return drug1_feat, drug2_feat, cell_feat, label
 
 
 class PPIDataset(Dataset):
@@ -124,25 +126,25 @@ class SynergyDataset(Dataset):
         with open(synergy_score_file, 'r') as f:
             f.readline()
             for line in f:
-                drug1, drug2, cellname, score, fold = line.rstrip().split('\t')
+                drug1, drug2, cellname, label, fold = line.rstrip().split('\t')
                 if drug1 in valid_drugs and drug2 in valid_drugs and cellname in valid_cells:
                     if int(fold) in use_folds:
-                        sample = [self.drug2id[drug1], self.drug2id[drug2], self.cell2id[cellname], float(score)]
+                        sample = [self.drug2id[drug1], self.drug2id[drug2], self.cell2id[cellname], int(label)]
                         self.samples.append(sample)
                         if train:
-                            sample = [self.drug2id[drug2], self.drug2id[drug1], self.cell2id[cellname], float(score)]
+                            sample = [self.drug2id[drug2], self.drug2id[drug1], self.cell2id[cellname], int(label)]
                             self.samples.append(sample)
 
     def __len__(self):
         return len(self.samples)
 
     def __getitem__(self, item):
-        drug1_id, drug2_id, cell_id, score = self.samples[item]
+        drug1_id, drug2_id, cell_id, label = self.samples[item]
         drug1_feat = torch.from_numpy(self.drug_feat[drug1_id]).float()
         drug2_feat = torch.from_numpy(self.drug_feat[drug2_id]).float()
         cell_feat = torch.from_numpy(self.cell_feat[cell_id]).float()
-        score = torch.FloatTensor([score])
-        return drug1_feat, drug2_feat, cell_feat, score
+        label = torch.FloatTensor([int(label)])
+        return drug1_feat, drug2_feat, cell_feat, label
 
     def drug_feat_len(self):
         return self.drug_feat.shape[-1]
@@ -164,30 +166,32 @@ class FastSynergyDataset(Dataset):
         self.train = train
         valid_drugs = set(self.drug2id.keys())
         valid_cells = set(self.cell2id.keys())
+        # pdb.set_trace()
         with open(synergy_score_file, 'r') as f:
             f.readline()
             for line in f:
-                drug1, drug2, cellname, score, fold = line.rstrip().split('\t')
+                drug1, drug2, cellname, label, fold = line.rstrip().split('\t')
+                # pdb.set_trace()
                 if drug1 in valid_drugs and drug2 in valid_drugs and cellname in valid_cells:
                     if int(fold) in use_folds:
                         sample = [
                             torch.from_numpy(self.drug_feat[self.drug2id[drug1]]).float(),
                             torch.from_numpy(self.drug_feat[self.drug2id[drug2]]).float(),
                             torch.from_numpy(self.cell_feat[self.cell2id[cellname]]).float(),
-                            torch.FloatTensor([float(score)]),
+                            torch.FloatTensor([int(label)]),
                         ]
                         self.samples.append(sample)
-                        raw_sample = [self.drug2id[drug1], self.drug2id[drug2], self.cell2id[cellname], score]
+                        raw_sample = [self.drug2id[drug1], self.drug2id[drug2], self.cell2id[cellname], int(label)]
                         self.raw_samples.append(raw_sample)
                         if train:
                             sample = [
                                 torch.from_numpy(self.drug_feat[self.drug2id[drug2]]).float(),
                                 torch.from_numpy(self.drug_feat[self.drug2id[drug1]]).float(),
                                 torch.from_numpy(self.cell_feat[self.cell2id[cellname]]).float(),
-                                torch.FloatTensor([float(score)]),
+                                torch.FloatTensor([int(label)]),
                             ]
                             self.samples.append(sample)
-                            raw_sample = [self.drug2id[drug2], self.drug2id[drug1], self.cell2id[cellname], score]
+                            raw_sample = [self.drug2id[drug2], self.drug2id[drug1], self.cell2id[cellname], int(label)]
                             self.raw_samples.append(raw_sample)
 
     def __len__(self):

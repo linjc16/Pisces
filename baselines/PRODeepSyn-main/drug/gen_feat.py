@@ -5,6 +5,7 @@ import joblib
 from sklearn.preprocessing import StandardScaler
 
 from const import DRUG2ID_FILE, FP_FILE, DESC_FILE, DRUG_FEAT_FILE, SCALER_FILE
+import pdb
 
 # drug2id
 drug2id = dict()
@@ -50,4 +51,5 @@ feat = scaler.transform(feat)
 # joblib.dump(scaler, SCALER_FILE)
 # print("Saved", SCALER_FILE)
 np.save(DRUG_FEAT_FILE, feat)
+pdb.set_trace()
 print("Saved", DRUG_FEAT_FILE)

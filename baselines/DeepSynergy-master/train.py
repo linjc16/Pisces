@@ -71,9 +71,15 @@ def predicting(model, device, drug_loader_test):
 
 modeling = DeepSynergy
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--fold', type=int)
+parser.add_argument('--lr', type=float, default=1e-5)
+args = parser.parse_args()
+i = args.fold
+
 TRAIN_BATCH_SIZE = 64
 TEST_BATCH_SIZE = 64
-LR = 1e-5
+LR = args.lr
 LOG_INTERVAL = 20
 NUM_EPOCHS = 500
 
@@ -90,12 +96,9 @@ else:
     print('The code uses CPU!!!')
 
 
-data_dir = '/data/linjc/dds/baselines/DeepSynergy/data_pt_read_counts/'
+data_dir = '/data/linjc/dds/baselines/DeepSynergy/data_pt_new/'
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--fold', type=int)
-args = parser.parse_args()
-i = args.fold
+
 
 print(f'Run fold {i}.')
 datafile_train = f'train_fold{i}'
@@ -106,7 +109,9 @@ drug1_data_train = torch.load(os.path.join(data_dir, f'{datafile_train}_drug1.pt
 drug2_data_train = torch.load(os.path.join(data_dir, f'{datafile_train}_drug2.pt'))
 cell_data_train = torch.load(os.path.join(data_dir, f'{datafile_train}_cell.pt'))
 drug_label_train = torch.load(os.path.join(data_dir, f'{datafile_train}_label.pt')).view(-1, 1)
-
+# pdb.set_trace()
+drug1_data_train[:, 0:200] = F.normalize(drug1_data_train[:, 0:200], dim=0)
+drug2_data_train[:, 0:200] = F.normalize(drug2_data_train[:, 0:200], dim=0)
 # pdb.set_trace()
 
 feats_train = torch.cat([drug1_data_train, drug2_data_train, cell_data_train, drug_label_train], dim=1)
@@ -117,6 +122,9 @@ drug1_data_test = torch.load(os.path.join(data_dir, f'{datafile_test}_drug1.pt')
 drug2_data_test = torch.load(os.path.join(data_dir, f'{datafile_test}_drug2.pt'))
 cell_data_test = torch.load(os.path.join(data_dir, f'{datafile_test}_cell.pt'))
 drug_label_test = torch.load(os.path.join(data_dir, f'{datafile_test}_label.pt')).view(-1, 1)
+
+drug1_data_test[:, 0:200] = F.normalize(drug1_data_test[:, 0:200], dim=0)
+drug2_data_test[:, 0:200] = F.normalize(drug2_data_test[:, 0:200], dim=0)
 
 feats_test = torch.cat([drug1_data_test, drug2_data_test, cell_data_test, drug_label_test], dim=1)
 drug_data_test = feats_test

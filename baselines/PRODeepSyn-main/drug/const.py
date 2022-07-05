@@ -1,7 +1,7 @@
 import os
 
 SUB_PROJ_DIR = os.path.abspath(os.path.dirname(__file__))
-DATA_DIR = os.path.join(SUB_PROJ_DIR, 'data')
+DATA_DIR = os.path.join(SUB_PROJ_DIR, 'data_ours')
 
 DRUG2ID_FILE = os.path.join(DATA_DIR, 'drug2id.tsv')
 FP_FILE = os.path.join(DATA_DIR, 'fp256.tsv')

@@ -67,6 +67,7 @@ def smile_to_graph(smile):
 
 
 def creat_data(datafile, cellfile):
+    savedir = '/data/linjc/dds/baselines/DeepDDS/data_tpm'
     file2 = cellfile
     cell_features = []
     with open(file2) as csvfile:
@@ -89,7 +90,7 @@ def creat_data(datafile, cellfile):
 
     datasets = datafile
     # convert to PyTorch data format
-    processed_data_file_train = '/data/linjc/dds/baselines/DeepDDS/data/processed/' + datasets + '_train.pt'
+    processed_data_file_train = os.path.join(savedir, 'processed/' + datasets + '_train.pt')
 
     if ((not os.path.isfile(processed_data_file_train))):
         df = pd.read_csv('baselines/DeepDDs-master/data_ours/' + datasets + '.csv')
@@ -98,8 +99,8 @@ def creat_data(datafile, cellfile):
         # make data PyTorch Geometric ready
 
         print('开始创建数据')
-        TestbedDataset(root='/data/linjc/dds/baselines/DeepDDS/data', dataset=datafile + '_drug1', xd=drug1, xt=cell, xt_featrue=cell_features, y=label,smile_graph=smile_graph)
-        TestbedDataset(root='/data/linjc/dds/baselines/DeepDDS/data', dataset=datafile + '_drug2', xd=drug2, xt=cell, xt_featrue=cell_features, y=label,smile_graph=smile_graph)
+        TestbedDataset(root=savedir, dataset=datafile + '_drug1', xd=drug1, xt=cell, xt_featrue=cell_features, y=label,smile_graph=smile_graph)
+        TestbedDataset(root=savedir, dataset=datafile + '_drug2', xd=drug2, xt=cell, xt_featrue=cell_features, y=label,smile_graph=smile_graph)
         print('创建数据成功')
         print('preparing ', datasets + '_.pt in pytorch format!')
     #
@@ -113,8 +114,8 @@ if __name__ == "__main__":
     # cellfile = 'baselines/DeepDDs-master/data/new_cell_features_954.csv'
     # da = ['new_labels_0_10_leave']
     cellfile = 'baselines/DeepDDs-master/data_ours/cell_features_expression_new.csv'
-    # da = [f'train_fold{i}' for i in range(5)]
-    da = ['train_fold4']
+    da = [f'train_fold{i}' for i in range(5)]
+    # da = ['train_fold4']
     da.extend([f'test_fold{i}' for i in range(5)])
     for datafile in da:
         creat_data(datafile, cellfile)

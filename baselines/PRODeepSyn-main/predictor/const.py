@@ -2,10 +2,10 @@ import os
 
 PROJ_DIR = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
 SUB_PROJ_DIR = os.path.join(PROJ_DIR, 'predictor')
-DATA_DIR = os.path.join(SUB_PROJ_DIR, 'data')
-DRUG_DATA_DIR = os.path.join(PROJ_DIR, 'drug', 'data')
-CELL_DATA_DIR = os.path.join(PROJ_DIR, 'cell', 'data')
-OUTPUT_DIR = 'output'
+DATA_DIR = os.path.join(SUB_PROJ_DIR, 'data_ours')
+DRUG_DATA_DIR = os.path.join(PROJ_DIR, 'drug', 'data_ours')
+CELL_DATA_DIR = os.path.join(PROJ_DIR, 'cell', 'data_ours')
+OUTPUT_DIR = 'baselines/PRODeepSyn-main/predictor/data_ours/output2'
 if not os.path.exists(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR)
 
