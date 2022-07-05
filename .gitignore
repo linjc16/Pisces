@@ -1,6 +1,7 @@
 
 data/
-data*/
+data_ours/
+data_feat/
 .vscode
 /features.py
 
