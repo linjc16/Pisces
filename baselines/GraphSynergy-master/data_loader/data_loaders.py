@@ -12,15 +12,17 @@ from base import BaseDataLoader
 class DataLoader(BaseDataLoader):
     def __init__(self, 
                  data_dir, 
+                 aux_data_dir,
                  batch_size, 
                  score='synergy 0',
                  n_hop=2, 
                  n_memory=32, 
                  shuffle=True, 
-                 validation_split=0.1,
-                 test_split=0.2, 
+                 validation_split=0,
+                 test_split=0, 
                  num_workers=1):
         self.data_dir = data_dir
+        self.aux_data_dir = aux_data_dir
         self.score, self.threshold = score.split(' ')
         self.n_hop = n_hop
         self.n_memory = n_memory
@@ -68,9 +70,9 @@ class DataLoader(BaseDataLoader):
 
     def load_data(self):
         drug_combination_df = pd.read_csv(os.path.join(self.data_dir, 'drug_combinations.csv'))
-        ppi_df = pd.read_excel(os.path.join(self.data_dir, 'protein-protein_network.xlsx'))
-        cpi_df = pd.read_csv(os.path.join(self.data_dir, 'cell_protein.csv'))
-        dpi_df = pd.read_csv(os.path.join(self.data_dir, 'drug_protein.csv'))
+        ppi_df = pd.read_excel(os.path.join(self.aux_data_dir, 'protein-protein_network.xlsx'))
+        cpi_df = pd.read_csv(os.path.join(self.aux_data_dir, 'cell_protein.csv'))
+        dpi_df = pd.read_csv(os.path.join(self.aux_data_dir, 'drug_protein.csv'))
 
         return drug_combination_df, ppi_df, cpi_df, dpi_df
     

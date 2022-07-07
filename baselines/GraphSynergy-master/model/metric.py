@@ -43,6 +43,16 @@ def roc_auc(y_pred, y_true):
     """
     return metrics.roc_auc_score(y_score=y_pred, y_true=y_true)
 
+def bacc(y_pred, y_true):
+    return metrics.balanced_accuracy_score(y_true=y_true, y_pred=y_pred.round())
+
+def kappa(y_pred, y_true):
+    return metrics.cohen_kappa_score(y_true, y_pred.round())
+
+def tpr(y_pred, y_true):
+    tn, fp, fn, tp = metrics.confusion_matrix(y_true, y_pred.round()).ravel()
+    return tp / (tp + fn)
+     
 def pr_auc(y_pred, y_true):
     return metrics.average_precision_score(y_score=y_pred, y_true=y_true)
 

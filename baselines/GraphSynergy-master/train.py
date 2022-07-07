@@ -23,9 +23,12 @@ def main(config):
     logger = config.get_logger('train')
     # pdb.set_trace()
     # setup data_loader instances
-    data_loader = config.init_obj('data_loader', module_data)
-    valid_data_loader = data_loader.split_dataset(valid=True)
-    test_data_loader = data_loader.split_dataset(test=True)
+    data_loader = config.init_obj('data_loader_train', module_data)
+    valid_data_loader = config.init_obj('data_loader_test', module_data)
+    test_data_loader = config.init_obj('data_loader_test', module_data)
+    # valid_data_loader = data_loader.split_dataset(valid=True)
+    # test_data_loader = data_loader.split_dataset(test=True)
+    
     feature_index = data_loader.get_feature_index()
     cell_neighbor_set = data_loader.get_cell_neighbor_set()
     drug_neighbor_set = data_loader.get_drug_neighbor_set()
