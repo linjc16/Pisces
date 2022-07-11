@@ -179,144 +179,29 @@ def validate(
             preds, targets, cls_type = task.ddi_inference_step(sample, trainer.model, trainer.criterion)
             preds_list.append(preds)
             cls_list.append(cls_type)
-            pos_list.append(preds[:len(preds)//2])
-            pos_target.append(targets[:len(preds)//2])
-            neg_list.append(preds[len(preds)//2:])
-            neg_target.append(targets[len(preds)//2:])
             targets_list.append(targets)
 
-    cls_types = np.concatenate(cls_list).squeeze(1)
     predic = np.concatenate(preds_list)
     y_test = np.concatenate(targets_list)
     pred = (predic >= 0.5).astype(np.int64)
     
-    edges = np.arange(10 + 1) / 10
-    g_pos = np.abs(np.concatenate(pos_list) - 1.0)
-    g_neg = np.abs(np.concatenate(neg_list))
-    pos_number = []
-    neg_number = []
-    for i in range(10):
-        pos_inds = (g_pos >= edges[i]) & (g_pos < edges[i + 1])
-        neg_inds = (g_neg >= edges[i]) & (g_neg < edges[i + 1])
-        pos_num_in_bin = sum(pos_inds)
-        neg_num_in_bin = sum(neg_inds)
-        pos_number.append(pos_num_in_bin)
-        neg_number.append(neg_num_in_bin)
-    print(pos_number, sum(pos_number), [round(i, 2) for i in pos_number/sum(pos_number)])
-    print(neg_number, sum(neg_number), [round(i, 2) for i in neg_number/sum(neg_number)])
-    
-    # with open('tg_c.txt', 'w') as fw:
-    #     for p, y, f, c in zip(pred, y_test, predic, cls_types):
-    #         fw.writelines(str(p) + ' ' + str(y) + ' ' + str(f) + ' ' + str(c) + '\n')
-
-    posd = (np.concatenate(pos_list) >= 0.5).astype(np.int64)
-    negd = (np.concatenate(neg_list) >= 0.5).astype(np.int64)
-    post = np.concatenate(pos_target)
-    negt = np.concatenate(neg_target)
-    pos_acc = sk_metrics.accuracy_score(post, posd)
-    neg_acc = sk_metrics.accuracy_score(negt, negd)
-    print(f"pos_acc: {pos_acc}, neg_acc: {neg_acc}")
-
-    pos_error_cls_types = cls_types[posd != post]
-    neg_error_cls_types = cls_types[negd != negt]
-
-    from collections import Counter
-    pos_counter = Counter(pos_error_cls_types.tolist())
-    neg_counter = Counter(neg_error_cls_types.tolist())
-
-    print(f"pos_counter{pos_counter}")
-    print(f"neg_counter{neg_counter}")
-
-    dict_cls_types = dict(sorted(Counter(cls_types).items()))
-    dict_pos_err_cls_types = dict(sorted(Counter(pos_error_cls_types.tolist()).items()))
-    dict_neg_err_cls_types = dict(sorted(Counter(neg_error_cls_types.tolist()).items()))
-    
-    pos_err_abs = []
-    neg_err_abs = []
-    target_abs = []
-
-    pos_err_rate = []
-    neg_err_rate = []
-    all_rate = []
-
-    for i in range(86):
-        if i in dict_cls_types.keys():
-            target_abs.append(dict_cls_types[i])
-        else:
-            target_abs.append(0)
-        
-        if i in dict_pos_err_cls_types.keys():
-            pos_err_abs.append(dict_pos_err_cls_types[i])
-        else:
-            pos_err_abs.append(0)
-        
-        if i in dict_neg_err_cls_types.keys():
-            neg_err_abs.append(dict_neg_err_cls_types[i])
-        else:
-            neg_err_abs.append(0)
-        
-        pos_err_rate.append(pos_err_abs[-1] / (target_abs[-1] + 1e-10))
-        neg_err_rate.append(neg_err_abs[-1] / (target_abs[-1] + 1e-10))
-        all_rate.append((pos_err_rate[-1] + neg_err_rate[-1]) / 2)
-
-    
-    # plot
-    save_dir = os.path.dirname(cfg.checkpoint.restore_file)
-    import matplotlib.pyplot as plt
-    plt.figure()
-    plt.bar(np.arange(86), pos_err_abs)
-    plt.xlabel('Relations')
-    plt.ylabel('Error predictions')
-    plt.title('pos_err_abs_test')
-    plt.savefig(os.path.join(save_dir, 'pos_err_abs_test.png'))
-
-    plt.figure()
-    plt.bar(np.arange(86), neg_err_abs)
-    plt.xlabel('Relations')
-    plt.ylabel('Error predictions')
-    plt.title('neg_err_abs_test')
-    plt.savefig(os.path.join(save_dir, 'neg_err_abs_test.png'))
-
-    plt.figure()
-    plt.bar(np.arange(86), target_abs)
-    plt.xlabel('Relations')
-    plt.ylabel('Numbers')
-    plt.title('target_abs_test')
-    plt.savefig(os.path.join(save_dir, 'target_abs_test.png'))
-    
-    plt.figure()
-    plt.bar(np.arange(86), pos_err_rate)
-    plt.xlabel('Relations')
-    plt.ylabel('Error predictions rate')
-    plt.title('pos_err_rate_test')
-    plt.savefig(os.path.join(save_dir, 'pos_err_rate_test.png'))
-
-    plt.figure()
-    plt.bar(np.arange(86), neg_err_rate)
-    plt.xlabel('Relations')
-    plt.ylabel('Error predictions rate')
-    plt.title('neg_err_rate_test')
-    plt.savefig(os.path.join(save_dir, 'neg_err_rate_test.png'))
-    
-    plt.figure()
-    plt.bar(np.arange(86), all_rate)
-    plt.xlabel('Relations')
-    plt.ylabel('Error predictions rate')
-    plt.title('all_rate_test')
-    plt.savefig(os.path.join(save_dir, 'all_rate_test.png'))
-
-    # save csv
-    import pandas as pd
-    df = pd.DataFrame({'target_abs': target_abs, 'pos_err_abs': pos_err_abs, 'neg_err_abs': neg_err_abs, 'pos_err_rate': pos_err_rate, 'neg_err_rate': neg_err_rate, 'all_rate': all_rate})
-    df.to_csv(os.path.join(save_dir, 'results_test.csv'))
-
     acc = sk_metrics.accuracy_score(y_test, pred)
     auc_roc = sk_metrics.roc_auc_score(y_test, predic)
     f1_score = sk_metrics.f1_score(y_test, pred)
+
     p, r, t = sk_metrics.precision_recall_curve(y_test, predic)
     auc_prc = sk_metrics.auc(r, p)
-    p = sk_metrics.average_precision_score(y_test, predic)
-    print(f"acc: {acc}, auc_roc: {auc_roc}, auc_prc: {auc_prc}, f1_score: {f1_score}, p: {p}")
+
+    bacc = sk_metrics.balanced_accuracy_score(y_test, pred)
+    kappa = sk_metrics.cohen_kappa_score(y_test, pred)
+    prec = sk_metrics.precision_score(y_test, pred)
+    recall = sk_metrics.recall_score(y_test, pred)
+
+    tn, fp, fn, tp = sk_metrics.confusion_matrix(y_test, pred).ravel()
+    TPR = tp / (tp + fn)
+
+    print(f"acc: {acc}, bacc: {bacc}, auc_roc: {auc_roc}, auc_prc: {auc_prc}, prec: {prec}, \
+        recall: {recall}, f1_score: {f1_score}, TPR: {TPR}, kappa: {kappa}")
 
     
 def cli_main(

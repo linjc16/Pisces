@@ -17,8 +17,8 @@ class BinaryClassConfig(FairseqDataclass):
     mt_alpha: float = field(default=1.0)
     p_consis_alpha: float = field(default=0.0)
 
-@register_criterion("binary_class_loss", dataclass=BinaryClassConfig)
-class BinaryClassCriterion(FairseqCriterion):
+@register_criterion("binary_class_loss_infoNCE", dataclass=BinaryClassConfig)
+class BinaryClassInfoNCECriterion(FairseqCriterion):
 
     def __init__(self, task, classification_head_name, consis_alpha, mt_alpha, p_consis_alpha):
         super().__init__(task)

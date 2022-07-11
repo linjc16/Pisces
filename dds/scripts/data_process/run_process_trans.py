@@ -1,4 +1,3 @@
-from cProfile import label
 import re
 from tqdm import tqdm
 from rdkit import Chem
@@ -6,6 +5,7 @@ import pandas as pd
 import os
 import pickle as pkl
 import numpy as np
+import argparse
 import pdb
 
 def smi_tokenizer(smi):
@@ -23,18 +23,24 @@ def clean_smiles(smiles):
     return t
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--output_dir', type=str)
+    parser.add_argument('--raw_data_dir', type=str, default='data')
+
+    args = parser.parse_args()
     print("processing start !")
     
-    raw_data_dir = 'data'
-
-    output_data_dir = 'data/transductive/fold1'
+    raw_data_dir = args.raw_data_dir
+    
+    output_data_dir = args.output_dir
     os.makedirs(output_data_dir, exist_ok=True)
     
     drug_smiles_dir = os.path.join(raw_data_dir, 'drug_smiles.csv')
     
-    cell_idxes_dir = os.path.join(raw_data_dir, 'cell_features.csv')
-    cell_feats = pd.read_csv(cell_idxes_dir, index_col=0)['cell_line_naems']
-    CELL_TO_INDEX_DICT = {cell_feats[idx]: idx for idx in range(len(cell_feats))}
+    cell_idxes_dir = os.path.join(raw_data_dir, 'cell_tpm.csv')
+    cell_names = pd.read_csv(cell_idxes_dir, index_col=0)['cell_line_names']
+    CELL_TO_INDEX_DICT = {cell_names[idx]: idx for idx in range(len(cell_names))}
+
 
     all_drug_dict = {}
     df_drug_smiles = pd.read_csv(drug_smiles_dir, index_col=0)

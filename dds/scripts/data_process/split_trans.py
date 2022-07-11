@@ -3,20 +3,41 @@ import pandas as pd
 import pdb
 import os
 import numpy as np
-df_ddses = pd.read_csv('data/ddses.csv', index_col=0)
 
-output_dir = 'data/transductive/fold1'
+RAW_DATA_DIR = 'baselines/DeepDDs-master/data_ours'
+OUTPUT_DIR = '/data/linjc/dds/data/transductive'
 
-os.makedirs(output_dir, exist_ok=True)
+for i in range(5):
 
-df_ddses = df_ddses.iloc[np.random.permutation(len(df_ddses))]
-# df_train_pos = df_ddses[df_ddses['labels'] == 1]
-# df_train_neg = df_ddses[df_ddses['labels'] == 0]
+    output_dir = os.path.join(OUTPUT_DIR, f'fold{i}')
+    os.makedirs(output_dir, exist_ok=True)
 
-# pdb.set_trace()
+    raw_data_train_dir = os.path.join(RAW_DATA_DIR, f'train_fold{i}.csv')
+    raw_data_test_dir = os.path.join(RAW_DATA_DIR, f'test_fold{i}.csv')
 
-df_ddses[0:90000].to_csv(os.path.join(output_dir, 'train.csv'))
-df_ddses[90000:105000].to_csv(os.path.join(output_dir, 'valid.csv'))
-df_ddses[105000:].to_csv(os.path.join(output_dir, 'test.csv'))
+    raw_data_train = pd.read_csv(raw_data_train_dir)
+    raw_data_test = pd.read_csv(raw_data_test_dir)
 
-pdb.set_trace()
+    data_train_df = pd.DataFrame.from_dict(
+        {
+            'cell_line_names': raw_data_train['cell'].tolist(),
+            'anchor_names': raw_data_train['drug1_name'].tolist(),
+            'library_names': raw_data_train['drug2_name'].tolist(),
+            'labels': raw_data_train['label'].tolist()
+        }
+    )
+    data_train_df.to_csv(os.path.join(output_dir, 'train.csv'), index=False)
+
+    data_test_df = pd.DataFrame.from_dict(
+        {
+            'cell_line_names': raw_data_test['cell'].tolist(),
+            'anchor_names': raw_data_test['drug1_name'].tolist(),
+            'library_names': raw_data_test['drug2_name'].tolist(),
+            'labels': raw_data_test['label'].tolist()
+        }
+    )
+    
+    data_test_df.to_csv(os.path.join(output_dir, 'valid.csv'), index=False)
+    data_test_df.to_csv(os.path.join(output_dir, 'test.csv'), index=False)
+    
+    # pdb.set_trace()

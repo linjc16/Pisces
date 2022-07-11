@@ -9,6 +9,7 @@ from fairseq import metrics
 from omegaconf import II
 import numpy as np
 import pdb
+from torch.nn import BCEWithLogitsLoss
 
 @dataclass
 class BinaryClassConfig(FairseqDataclass):
@@ -17,8 +18,8 @@ class BinaryClassConfig(FairseqDataclass):
     mt_alpha: float = field(default=1.0)
     p_consis_alpha: float = field(default=0.0)
 
-@register_criterion("binary_class_loss", dataclass=BinaryClassConfig)
-class BinaryClassCriterion(FairseqCriterion):
+@register_criterion("binary_class_loss_bce", dataclass=BinaryClassConfig)
+class BinaryClassBCECriterion(FairseqCriterion):
 
     def __init__(self, task, classification_head_name, consis_alpha, mt_alpha, p_consis_alpha):
         super().__init__(task)
@@ -57,13 +58,8 @@ class BinaryClassCriterion(FairseqCriterion):
         pos_logits = logits[labels == 1]
         neg_logits = logits[labels == 0]
 
-        # pos_weights = (neg_logits.size(0)) / (pos_logits.size(0) + neg_logits.size(0) + 1e-8)
-        # neg_weights = (pos_logits.size(0)) / (pos_logits.size(0) + neg_logits.size(0) + 1e-8)
-        pos_weights, neg_weights = 1, 1
-        if len(pos_logits) == 0:
-            loss = - F.logsigmoid(-neg_logits).mean()
-        else:
-            loss = (- pos_weights * F.logsigmoid(pos_logits).mean() - neg_weights * F.logsigmoid(-neg_logits).mean()) / 2.  
+        loss_fn = BCEWithLogitsLoss()
+        loss = loss_fn(logits.squeeze(), labels.type_as(logits))
         # print(loss)
         pos_preds = torch.sigmoid(pos_logits).detach()
         neg_preds = torch.sigmoid(neg_logits).detach()
@@ -92,28 +88,12 @@ class BinaryClassCriterion(FairseqCriterion):
         input = self.build_input(sample, self.classification_head_name)
         logits = model(**input)
         
-        preds = []
-
-        labels = model.get_targets(sample['label'], None).view(-1)
         
-        pos_logits = logits[labels == 1]
-        neg_logits = logits[labels == 0]
-        
-        pos_preds = torch.sigmoid(pos_logits.squeeze().float()).detach().cpu().numpy()
-        neg_preds = torch.sigmoid(neg_logits.squeeze().float()).detach().cpu().numpy()
-        preds.append(pos_preds)
-        preds.append(neg_preds)
-        
-        targets = []
-        pos_target = torch.ones(len(pos_preds))
-        neg_target = torch.zeros(len(neg_preds))
-        targets.append(pos_target)
-        targets.append(neg_target)
+        preds = torch.sigmoid(logits.squeeze().float()).detach().cpu().numpy()
+        targets = model.get_targets(sample['label'], None).view(-1).cpu().numpy()
 
-        preds = np.concatenate(preds)
-        targets = np.concatenate(targets)
 
-        return preds, targets, sample['target'].detach().cpu().numpy()
+        return preds, targets, sample['label'].detach().cpu().numpy()
     
     @staticmethod
     def reduce_metrics(logging_outputs):

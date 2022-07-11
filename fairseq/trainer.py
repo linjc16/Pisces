@@ -942,6 +942,9 @@ class Trainer(object):
                         return self.valid_step(sample, raise_oom=True)
                 raise e
 
+            logits = logging_output['logits']
+            labels = logging_output['labels']
+
             logging_outputs = [logging_output]
             if is_dummy_batch:
                 if torch.is_tensor(sample_size):
@@ -962,7 +965,7 @@ class Trainer(object):
             logging_outputs = self._xla_markstep_and_send_to_cpu(logging_outputs)
         logging_output = self._reduce_and_log_stats(logging_outputs, sample_size)
 
-        return logging_output
+        return logging_output, logits, labels
 
     def zero_grad(self):
         self.optimizer.zero_grad()

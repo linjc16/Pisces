@@ -39,7 +39,7 @@ class GCNNet(torch.nn.Module):
         )
 
         # combined layers
-        self.fc1 = nn.Linear(3*output_dim, 512)
+        self.fc1 = nn.Linear(3 * output_dim, 512)
         self.fc2 = nn.Linear(512, 128)
         self.out = nn.Linear(128, self.n_output)
 

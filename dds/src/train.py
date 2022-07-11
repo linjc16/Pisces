@@ -36,6 +36,8 @@ from fairseq.logging import meters, metrics, progress_bar
 from fairseq.model_parallel.megatron_trainer import MegatronTrainer
 from fairseq.trainer import Trainer
 from omegaconf import DictConfig, OmegaConf
+from sklearn.metrics import roc_auc_score, balanced_accuracy_score
+import pdb
 
 
 logging.basicConfig(
@@ -296,7 +298,7 @@ def train(
         valid_losses, should_stop = validate_and_save(
             cfg, trainer, task, epoch_itr, valid_subsets, end_of_epoch
         )
-
+        
         if should_stop:
             break
 
@@ -444,16 +446,34 @@ def validate(
             ),
         )
 
+
+        logits_val = []
+        labels_val = []
+
         # create a new root metrics aggregator so validation metrics
         # don't pollute other aggregators (e.g., train meters)
         with metrics.aggregate(new_root=True) as agg:
             for i, sample in enumerate(progress):
                 if cfg.dataset.max_valid_steps is not None and i > cfg.dataset.max_valid_steps:
                     break
-                trainer.valid_step(sample)
+                # pdb.set_trace()
+                logging_output, logits, labels = trainer.valid_step(sample)
+                logits_val.append(logits)
+                labels_val.append(labels)
 
+        with torch.no_grad():
+            logits_val = torch.sigmoid(torch.cat(logits_val)).cpu().numpy()
+            labels_val = torch.cat(labels_val).cpu().numpy()
+        
+        # pdb.set_trace()
+        roc_auc = roc_auc_score(y_score=logits_val, y_true=labels_val)
+        bacc = balanced_accuracy_score(y_true=labels_val, y_pred=logits_val.round())
+
+        stats = agg.get_smoothed_values()
+        stats['roc_auc'] = roc_auc
+        stats['bacc'] = bacc
         # log validation stats
-        stats = get_valid_stats(cfg, trainer, agg.get_smoothed_values())
+        stats = get_valid_stats(cfg, trainer, stats)
         progress.print(stats, tag=subset, step=trainer.get_num_updates())
 
         valid_losses.append(stats[cfg.checkpoint.best_checkpoint_metric])

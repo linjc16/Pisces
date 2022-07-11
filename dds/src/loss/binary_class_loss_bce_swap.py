@@ -9,23 +9,23 @@ from fairseq import metrics
 from omegaconf import II
 import numpy as np
 import pdb
+from torch.nn import BCEWithLogitsLoss, MSELoss
 
 @dataclass
 class BinaryClassConfig(FairseqDataclass):
     classification_head_name: str = II("model.classification_head_name")
-    consis_alpha: float = field(default=0.0)
-    mt_alpha: float = field(default=1.0)
-    p_consis_alpha: float = field(default=0.0)
+    reg_alpha: float = field(default=0.0)
 
-@register_criterion("binary_class_loss", dataclass=BinaryClassConfig)
-class BinaryClassCriterion(FairseqCriterion):
 
-    def __init__(self, task, classification_head_name, consis_alpha, mt_alpha, p_consis_alpha):
+@register_criterion("binary_class_loss_bce_swap", dataclass=BinaryClassConfig)
+class BinaryClassBCESwapCriterion(FairseqCriterion):
+
+    def __init__(self, task, classification_head_name, reg_alpha):
         super().__init__(task)
         self.classification_head_name = classification_head_name
-        self.consis_alpha = consis_alpha
-        self.mt_alpha = mt_alpha
-        self.p_consis_alpha = p_consis_alpha
+        self.reg_alpha = reg_alpha
+
+        print(f'reg alpha: {reg_alpha}')
         acc_sum = torch.zeros(30)
         self.register_buffer('acc_sum', acc_sum)
 
@@ -48,7 +48,7 @@ class BinaryClassCriterion(FairseqCriterion):
                 and self.classification_head_name in model.classification_heads)
         
         input = self.build_input(sample, self.classification_head_name)
-        logits = model(**input)
+        logits, logits_swap = model.forward_swap(**input)
 
         labels = model.get_targets(sample['label'], None).view(-1)
         sample_size = labels.size(0)
@@ -57,14 +57,13 @@ class BinaryClassCriterion(FairseqCriterion):
         pos_logits = logits[labels == 1]
         neg_logits = logits[labels == 0]
 
-        # pos_weights = (neg_logits.size(0)) / (pos_logits.size(0) + neg_logits.size(0) + 1e-8)
-        # neg_weights = (pos_logits.size(0)) / (pos_logits.size(0) + neg_logits.size(0) + 1e-8)
-        pos_weights, neg_weights = 1, 1
-        if len(pos_logits) == 0:
-            loss = - F.logsigmoid(-neg_logits).mean()
-        else:
-            loss = (- pos_weights * F.logsigmoid(pos_logits).mean() - neg_weights * F.logsigmoid(-neg_logits).mean()) / 2.  
-        # print(loss)
+        loss_fn = BCEWithLogitsLoss()
+        loss = (loss_fn(logits.squeeze(), labels.type_as(logits)) + loss_fn(logits_swap.squeeze(), labels.type_as(logits_swap))) / 2.
+        reg_loss_fn = MSELoss()
+        reg_loss = reg_loss_fn(logits, logits_swap)
+
+        loss += self.reg_alpha * reg_loss
+        
         pos_preds = torch.sigmoid(pos_logits).detach()
         neg_preds = torch.sigmoid(neg_logits).detach()
 

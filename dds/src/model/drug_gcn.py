@@ -9,7 +9,7 @@ import torch.nn.functional as F
 from omegaconf import II
 from fairseq.models.gnn import DeeperGCN
 
-from .heads import BinaryClassMLPHead
+from .heads import BinaryClassMLPHead, BinaryClassMLPv2Head, BinaryClassMLPEmbHead
 
 logger = logging.getLogger(__name__)
 
@@ -103,6 +103,30 @@ class GCNModel(BaseFairseqModel):
 
         return enc_a, enc_b
 
+    def forward_swap(self,
+                drug_a_seq,
+                drug_b_seq,
+                drug_a_graph,
+                drug_b_graph,
+                cell_line,
+                features_only=False,
+                classification_head_name=None,
+                **kwargs):
+        
+        if classification_head_name is not None:
+            features_only = True
+        
+        enc_a, _ = self.encoder(**drug_a_graph, features_only=features_only, **kwargs)
+        enc_b, _ = self.encoder(**drug_b_graph, features_only=features_only, **kwargs)
+        
+        enc_a = self.get_cls(enc_a)
+        enc_b = self.get_cls(enc_b)
+
+        x = self.classification_heads[classification_head_name](enc_a, enc_b, cell_line)
+        x_swap = self.classification_heads[classification_head_name](enc_a, enc_b, cell_line)
+
+        return x, x_swap
+
     def get_cls(self, x):
         if x is None:
             return 0
@@ -136,8 +160,22 @@ class GCNModel(BaseFairseqModel):
                 actionvation_fn=self.args.pooler_activation_fn,
                 pooler_dropout=self.args.pooler_dropout,
             )
-
-
+        elif name == 'bclsmlpv2':
+            self.classification_heads[name] = BinaryClassMLPv2Head(
+                input_dim=getattr(self.encoder, "output_features", self.args.gnn_embed_dim),
+                inner_dim=inner_dim or self.args.gnn_embed_dim,
+                num_classes=num_classes,
+                actionvation_fn=self.args.pooler_activation_fn,
+                pooler_dropout=self.args.pooler_dropout,
+            )
+        elif name == 'bclsmlpemb':
+            self.classification_heads[name] = BinaryClassMLPEmbHead(
+                input_dim=getattr(self.encoder, "output_features", self.args.gnn_embed_dim),
+                inner_dim=inner_dim or self.args.gnn_embed_dim,
+                num_classes=num_classes,
+                actionvation_fn=self.args.pooler_activation_fn,
+                pooler_dropout=self.args.pooler_dropout,
+            )
         else:
             raise NotImplementedError('No Implemented by DDI')
 
@@ -156,6 +194,10 @@ def base_architecture(args):
     args.gnn_number_layer = getattr(args, "gnn_number_layer", 6)
     args.gnn_embed_dim = getattr(args, "gnn_embed_dim", 384)
 
+@register_model_architecture("drug_gcn", "drug_gcn_base_128")
+def base_architecture(args):
+    args.gnn_number_layer = getattr(args, "gnn_number_layer", 6)
+    args.gnn_embed_dim = getattr(args, "gnn_embed_dim", 128)
 
 @register_model_architecture("drug_gcn", "drug_gcn_large")
 def large_architecture(args):

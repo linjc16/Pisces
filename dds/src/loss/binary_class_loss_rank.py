@@ -17,8 +17,8 @@ class BinaryClassConfig(FairseqDataclass):
     mt_alpha: float = field(default=1.0)
     p_consis_alpha: float = field(default=0.0)
 
-@register_criterion("binary_class_loss", dataclass=BinaryClassConfig)
-class BinaryClassCriterion(FairseqCriterion):
+@register_criterion("binary_class_loss_rank", dataclass=BinaryClassConfig)
+class BinaryClassRankCriterion(FairseqCriterion):
 
     def __init__(self, task, classification_head_name, consis_alpha, mt_alpha, p_consis_alpha):
         super().__init__(task)
@@ -59,11 +59,12 @@ class BinaryClassCriterion(FairseqCriterion):
 
         # pos_weights = (neg_logits.size(0)) / (pos_logits.size(0) + neg_logits.size(0) + 1e-8)
         # neg_weights = (pos_logits.size(0)) / (pos_logits.size(0) + neg_logits.size(0) + 1e-8)
-        pos_weights, neg_weights = 1, 1
+        # pos_weights, neg_weights = 1, 1
+        margin = 1
         if len(pos_logits) == 0:
-            loss = - F.logsigmoid(-neg_logits).mean()
+            loss = -1 * neg_logits.mean() + margin
         else:
-            loss = (- pos_weights * F.logsigmoid(pos_logits).mean() - neg_weights * F.logsigmoid(-neg_logits).mean()) / 2.  
+            loss = -1 * (pos_logits.mean() - neg_logits.mean()) + margin
         # print(loss)
         pos_preds = torch.sigmoid(pos_logits).detach()
         neg_preds = torch.sigmoid(neg_logits).detach()
