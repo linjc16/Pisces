@@ -1,20 +1,19 @@
 
 TASK=binary_class_task
 ARCH=drug_gcn_tiny
-CLSHEAD=bclsmlpv2
-CRITERION=binary_class_loss_bce_swap
+CLSHEAD=bclsmlpv3
+CRITERION=binary_class_loss_bce
 DATAFOLD=$1
 LR=$2
-ALPHA=$3
-DROP=0.1
+DROP=$3
 
 DATADIR=/data/linjc/dds/data/transductive/$DATAFOLD/data-bin
-SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP-alpha$ALPHA-new
+SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP-new
 
 # rm -r $SAVEDIR
 mkdir -p $SAVEDIR
 
-CUDA_VISIBLE_DEVICES=0 python dds/src/train.py $DATADIR \
+CUDA_VISIBLE_DEVICES=7 python dds/src/train.py $DATADIR \
     --user-dir dds/src/ \
     -s 'a' -t 'b' \
     --tensorboard-logdir $SAVEDIR \
@@ -27,7 +26,6 @@ CUDA_VISIBLE_DEVICES=0 python dds/src/train.py $DATADIR \
     --classification-head-name $CLSHEAD \
     --num-classes 125 \
     --pooler-dropout $DROP \
-    --reg-alpha $ALPHA \
     --gnn-norm layer \
     --weight-decay 1e-5 --optimizer adam --adam-betas "(0.9, 0.98)" --adam-eps 1e-06 \
     --clip-norm 0.0 \

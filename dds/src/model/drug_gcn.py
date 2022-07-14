@@ -9,8 +9,8 @@ import torch.nn.functional as F
 from omegaconf import II
 from fairseq.models.gnn import DeeperGCN
 
-from .heads import BinaryClassMLPHead, BinaryClassMLPv2Head, BinaryClassMLPEmbHead
-
+from .heads import BinaryClassMLPHead, BinaryClassMLPv2Head, BinaryClassMLPEmbHead, BinaryClassMLPSimCLRHead, BinaryClassMLPv3Head
+from .heads_ppi import BinaryClassMLPPPIHead
 logger = logging.getLogger(__name__)
 
 
@@ -123,10 +123,57 @@ class GCNModel(BaseFairseqModel):
         enc_b = self.get_cls(enc_b)
 
         x = self.classification_heads[classification_head_name](enc_a, enc_b, cell_line)
-        x_swap = self.classification_heads[classification_head_name](enc_a, enc_b, cell_line)
+        x_swap = self.classification_heads[classification_head_name](enc_b, enc_a, cell_line)
 
         return x, x_swap
 
+    def forward_simclr_train(self,
+                drug_a_seq,
+                drug_b_seq,
+                drug_a_graph,
+                drug_b_graph,
+                cell_line,
+                features_only=False,
+                classification_head_name=None,
+                **kwargs):
+        
+        if classification_head_name is not None:
+            features_only = True
+        
+        enc_a, _ = self.encoder(**drug_a_graph, features_only=features_only, **kwargs)
+        enc_b, _ = self.encoder(**drug_b_graph, features_only=features_only, **kwargs)
+        
+        enc_a = self.get_cls(enc_a)
+        enc_b = self.get_cls(enc_b)
+
+        x, z, h = self.classification_heads[classification_head_name](enc_a, enc_b, cell_line)
+        x_swap, z_swap, h_swap = self.classification_heads[classification_head_name](enc_b, enc_a, cell_line)
+
+        return x, x_swap, z, z_swap, h, h_swap
+    
+    def forward_simclr_inference(self,
+                drug_a_seq,
+                drug_b_seq,
+                drug_a_graph,
+                drug_b_graph,
+                cell_line,
+                features_only=False,
+                classification_head_name=None,
+                **kwargs):
+        
+        if classification_head_name is not None:
+            features_only = True
+        
+        enc_a, _ = self.encoder(**drug_a_graph, features_only=features_only, **kwargs)
+        enc_b, _ = self.encoder(**drug_b_graph, features_only=features_only, **kwargs)
+        
+        enc_a = self.get_cls(enc_a)
+        enc_b = self.get_cls(enc_b)
+
+        x, _ = self.classification_heads[classification_head_name](enc_a, enc_b, cell_line)
+
+        return x
+    
     def get_cls(self, x):
         if x is None:
             return 0
@@ -176,6 +223,30 @@ class GCNModel(BaseFairseqModel):
                 actionvation_fn=self.args.pooler_activation_fn,
                 pooler_dropout=self.args.pooler_dropout,
             )
+        elif name == 'bclsmlpsimclr':
+            self.classification_heads[name] = BinaryClassMLPSimCLRHead(
+                input_dim=getattr(self.encoder, "output_features", self.args.gnn_embed_dim),
+                inner_dim=inner_dim or self.args.gnn_embed_dim,
+                num_classes=num_classes,
+                actionvation_fn=self.args.pooler_activation_fn,
+                pooler_dropout=self.args.pooler_dropout,
+            )
+        elif name == 'bclsmlpv3':
+            self.classification_heads[name] = BinaryClassMLPv3Head(
+                input_dim=getattr(self.encoder, "output_features", self.args.gnn_embed_dim),
+                inner_dim=inner_dim or self.args.gnn_embed_dim,
+                num_classes=num_classes,
+                actionvation_fn=self.args.pooler_activation_fn,
+                pooler_dropout=self.args.pooler_dropout,
+            )
+        elif name == 'bclsmlpppi':
+            self.classification_heads[name] = BinaryClassMLPPPIHead(
+                input_dim=getattr(self.encoder, "output_features", self.args.gnn_embed_dim),
+                inner_dim=inner_dim or self.args.gnn_embed_dim,
+                num_classes=num_classes,
+                actionvation_fn=self.args.pooler_activation_fn,
+                pooler_dropout=self.args.pooler_dropout,
+            )
         else:
             raise NotImplementedError('No Implemented by DDI')
 
@@ -187,6 +258,13 @@ def tiny_architecture(args):
     args.gnn_number_layer = getattr(args, "gnn_number_layer", 2)
     args.gnn_embed_dim = getattr(args, "gnn_embed_dim", 384)
     return base_architecture(args)
+
+@register_model_architecture("drug_gcn", "drug_gcn_tiny_128")
+def tiny_architecture(args):
+    args.gnn_number_layer = getattr(args, "gnn_number_layer", 3)
+    args.gnn_embed_dim = getattr(args, "gnn_embed_dim", 128)
+    return base_architecture(args)
+
 
 
 @register_model_architecture("drug_gcn", "drug_gcn_base")

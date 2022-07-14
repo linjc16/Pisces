@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from base import BaseModel
+import pdb
 
 class GraphSynergy(BaseModel):
     def __init__(self, 
@@ -40,6 +41,7 @@ class GraphSynergy(BaseModel):
                 drug1_neighbors: list,
                 drug2_neighbors: list):
         cell_embeddings = self.cell_embedding(cells)
+        # pdb.set_trace()
         drug1_embeddings = self.drug_embedding(drug1)
         drug2_embeddings = self.drug_embedding(drug2)
 

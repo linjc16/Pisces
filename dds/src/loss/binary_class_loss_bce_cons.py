@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
-import imp
+
+from traitlets import default
 from fairseq.dataclass import FairseqDataclass
 from fairseq.criterions import FairseqCriterion, register_criterion
 import torch
@@ -9,23 +10,25 @@ from fairseq import metrics
 from omegaconf import II
 import numpy as np
 import pdb
+from torch.nn import BCEWithLogitsLoss, MSELoss, CrossEntropyLoss
 
 @dataclass
 class BinaryClassConfig(FairseqDataclass):
     classification_head_name: str = II("model.classification_head_name")
-    consis_alpha: float = field(default=0.0)
-    mt_alpha: float = field(default=1.0)
-    p_consis_alpha: float = field(default=0.0)
+    reg_alpha: float = field(default=0.0)
+    temperature: float = field(default=1.0) 
 
-@register_criterion("binary_class_loss", dataclass=BinaryClassConfig)
-class BinaryClassCriterion(FairseqCriterion):
 
-    def __init__(self, task, classification_head_name, consis_alpha, mt_alpha, p_consis_alpha):
+@register_criterion("binary_class_loss_bce_cons", dataclass=BinaryClassConfig)
+class BinaryClassBCEConsCriterion(FairseqCriterion):
+
+    def __init__(self, task, classification_head_name, reg_alpha, temperature):
         super().__init__(task)
         self.classification_head_name = classification_head_name
-        self.consis_alpha = consis_alpha
-        self.mt_alpha = mt_alpha
-        self.p_consis_alpha = p_consis_alpha
+        self.reg_alpha = reg_alpha
+        self.temperature = temperature
+
+        print(f'reg alpha: {reg_alpha}')
         acc_sum = torch.zeros(30)
         self.register_buffer('acc_sum', acc_sum)
 
@@ -43,12 +46,12 @@ class BinaryClassCriterion(FairseqCriterion):
             }
 
     def forward(self, model, sample, reduce=True):
-
+        
         assert (hasattr(model, 'classification_heads')
                 and self.classification_head_name in model.classification_heads)
         
         input = self.build_input(sample, self.classification_head_name)
-        logits = model(**input)
+        logits, logits_swap, _, _, z, z_swap = model.forward_simclr_train(**input)
 
         labels = model.get_targets(sample['label'], None).view(-1)
         sample_size = labels.size(0)
@@ -57,16 +60,29 @@ class BinaryClassCriterion(FairseqCriterion):
         pos_logits = logits[labels == 1]
         neg_logits = logits[labels == 0]
 
-        pos_weights = (neg_logits.size(0)) / (pos_logits.size(0) + neg_logits.size(0) + 1e-8)
-        neg_weights = (pos_logits.size(0)) / (pos_logits.size(0) + neg_logits.size(0) + 1e-8)
-        # pos_weights, neg_weights = 0.8, 0.2
+        loss_fn = BCEWithLogitsLoss()
+        loss = loss_fn(logits.squeeze(), labels.type_as(logits))
+        # loss = (loss_fn(logits.squeeze(), labels.type_as(logits)) + loss_fn(logits_swap.squeeze(), labels.type_as(logits_swap))) / 2.
 
-        if len(pos_logits) == 0:
-            loss = - F.logsigmoid(-neg_logits).mean()
-        else:
-            loss = (- pos_weights * F.logsigmoid(pos_logits).sum() - neg_weights * F.logsigmoid(-neg_logits).sum()) / sample_size
-        # print(loss)
+        # LARGE_NUM = 1e9
+        # masks = torch.eye(sample_size).to(logits.device)
+        # labels_cons = torch.arange(0, sample_size).long().to(logits.device)
+        # # pdb.set_trace()
+        # logits_aa = torch.matmul(z, z.t()) / self.temperature
+        # logits_aa -= masks * LARGE_NUM
+        # logits_bb = torch.matmul(z_swap, z_swap.t()) / self.temperature
+        # logits_bb -= masks * LARGE_NUM
+        # logits_ab = torch.matmul(z, z_swap.t()) / self.temperature
+        # logits_ba = torch.matmul(z_swap, z.t()) / self.temperature
 
+        # # pdb.set_trace()
+        # reg_loss_fn = CrossEntropyLoss()
+        # reg_loss_a = reg_loss_fn(torch.cat([logits_ab, logits_aa], dim=1), labels_cons)
+        # reg_loss_b = reg_loss_fn(torch.cat([logits_ba, logits_bb], dim=1), labels_cons)
+        # reg_loss = reg_loss_a + reg_loss_b
+
+        # loss += self.reg_alpha * reg_loss
+        
         pos_preds = torch.sigmoid(pos_logits).detach()
         neg_preds = torch.sigmoid(neg_logits).detach()
 

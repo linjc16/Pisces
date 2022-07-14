@@ -1,6 +1,6 @@
 
 TASK=binary_class_task
-ARCH=drug_gcn_large
+ARCH=drug_gcn_tiny
 CLSHEAD=bclsmlpv2
 CRITERION=binary_class_loss_bce
 DATAFOLD=$1
@@ -8,12 +8,12 @@ LR=$2
 DROP=$3
 
 DATADIR=/data/linjc/dds/data/transductive/$DATAFOLD/data-bin
-SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP
+SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP-new
 
 # rm -r $SAVEDIR
 mkdir -p $SAVEDIR
 
-CUDA_VISIBLE_DEVICES=1 python dds/src/train.py $DATADIR \
+CUDA_VISIBLE_DEVICES=7 python dds/src/train.py $DATADIR \
     --user-dir dds/src/ \
     -s 'a' -t 'b' \
     --tensorboard-logdir $SAVEDIR \
