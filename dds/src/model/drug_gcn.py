@@ -87,7 +87,7 @@ class GCNModel(BaseFairseqModel):
                 drug_b_seq,
                 drug_a_graph,
                 drug_b_graph,
-                net_rel,
+                cell_line,
                 features_only=False,
                 classification_head_name=None,
                 **kwargs):
