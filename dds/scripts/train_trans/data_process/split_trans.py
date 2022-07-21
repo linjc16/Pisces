@@ -1,13 +1,13 @@
-from pickle import TRUE
 import pandas as pd
 import pdb
 import os
 import numpy as np
 
-RAW_DATA_DIR = 'baselines/DeepDDs-master/data_ours'
-OUTPUT_DIR = '/data/linjc/dds/data/transductive'
+fold_num = 3
+RAW_DATA_DIR = 'baselines/DeepDDs-master/data_ours_3fold'
+OUTPUT_DIR = '/data/linjc/dds/data/transductive_3fold'
 
-for i in range(5):
+for i in range(fold_num):
 
     output_dir = os.path.join(OUTPUT_DIR, f'fold{i}')
     os.makedirs(output_dir, exist_ok=True)

@@ -124,7 +124,7 @@ class BinaryClassTask(FairseqTask):
         logger.info("Loaded {} with #samples: {}.".format(split, len(dataset)))
         self.datasets[split] = dataset
         return self.datasets[split]
-
+    
     def get_path(self, key, split):
         return os.path.join(self.cfg.data, key, split)
     
@@ -255,6 +255,12 @@ class BinaryClassTask(FairseqTask):
             optimizer.backward(loss)
         return loss, sample_size, logging_output
 
+    # def valid_step(self, sample, model, criterion):
+    #     model.eval()
+    #     with torch.no_grad():
+    #         loss, sample_size, logging_output = criterion.forward_eval(model, sample)
+    #     return loss, sample_size, logging_output
+    
     def ddi_inference_step(self, sample, model, criterion):
         model.eval()
         with torch.no_grad():

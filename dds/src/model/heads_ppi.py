@@ -118,6 +118,53 @@ class DataPPI():
 
         return neighbor_set
 
+class BasePPIHead(nn.Module):
+
+    def __init__(self):
+        super().__init__()
+        self.n_hop = 2
+        ppi_loader = DataPPI(
+            aux_data_dir='baselines/GraphSynergy-master/data_ours',
+            n_hop=self.n_hop)
+
+        self.cell_neighbor_set = ppi_loader.get_cell_neighbor_set()
+        node_num_dict = ppi_loader.get_node_num_dict()
+        self.protein_num = node_num_dict['protein']
+
+    def _get_neighbor_emb(self, neighbors):
+        neighbors_emb_list = []
+        for hop in range(self.n_hop):
+            neighbors_emb_list.append(self.protein_embedding(neighbors[hop]))
+        return neighbors_emb_list
+
+    def _interaction_aggregation(self, item_embeddings, neighbors_emb_list):
+        interact_list = []
+        for hop in range(self.n_hop):
+            # [batch_size, n_memory, dim]
+            neighbor_emb = neighbors_emb_list[hop]
+            # [batch_size, dim, 1]
+            item_embeddings_expanded = torch.unsqueeze(item_embeddings, dim=2)
+            # [batch_size, n_memory]
+            contributions = torch.squeeze(torch.matmul(neighbor_emb,
+                                                       item_embeddings_expanded))
+            # [batch_size, n_memory]
+            contributions_normalized = F.softmax(contributions, dim=1)
+            # [batch_size, n_memory, 1]
+            contributions_expaned = torch.unsqueeze(contributions_normalized, dim=2)
+            # [batch_size, dim]
+            i = (neighbor_emb * contributions_expaned).sum(dim=1)
+            # update item_embeddings
+            item_embeddings = i
+            interact_list.append(i)
+        return interact_list
+
+    def _aggregation(self, item_i_list):
+        # [batch_size, n_hop+1, emb_dim]
+        item_i_concat = torch.cat(item_i_list, 1)
+        # [batch_size, emb_dim]
+        item_embeddings = self.aggregation_function(item_i_concat)
+        return item_embeddings
+
 class BinaryClassMLPPPIHead(nn.Module):
     
     def __init__(self,
@@ -304,6 +351,210 @@ class BinaryClassMLPPPIv2Head(nn.Module):
         return item_embeddings
 
 
+class BinaryClassMLPPPIInnerMixHead(nn.Module):
+    
+    def __init__(self,
+                 input_dim,
+                 inner_dim,
+                 num_classes,
+                 actionvation_fn,
+                 pooler_dropout):
+
+        super().__init__()
+        
+        self.cell_num = num_classes
+        self.emb_dim = inner_dim
+        self.n_hop = 2
+        
+        ppi_loader = DataPPI(
+            aux_data_dir='baselines/GraphSynergy-master/data_ours',
+            n_hop=self.n_hop)
+
+        self.cell_neighbor_set = ppi_loader.get_cell_neighbor_set()
+        node_num_dict = ppi_loader.get_node_num_dict()
+        self.protein_num = node_num_dict['protein']
+
+        self.protein_embedding = nn.Embedding(self.protein_num, self.emb_dim)
+        self.cell_embedding = nn.Embedding(self.cell_num, self.emb_dim)
+        self.aggregation_function = nn.Linear(self.emb_dim * self.n_hop, self.emb_dim)
+
+
+        self.dropout = nn.Dropout(p=pooler_dropout)
+
+        # combined layers
+        self.fc1 = nn.Linear(2 * input_dim + inner_dim, input_dim)
+        self.fc2 = nn.Linear(input_dim, inner_dim)
+        self.out = nn.Linear(inner_dim, 1)
+        
+    def forward(self, heads, tails, cells):
+
+        cell_embeddings = self.cell_embedding(cells).squeeze(1)
+
+        cells_neighbors = []
+        for hop in range(self.n_hop):
+            cells_neighbors.append(torch.LongTensor([self.cell_neighbor_set[c][hop] \
+                                                       for c in cells.squeeze(1).cpu().numpy().tolist()]).to(heads.device))
+        
+        cell_neighbors_emb_list = self._get_neighbor_emb(cells_neighbors)
+        cell_i_list = self._interaction_aggregation(cell_embeddings, cell_neighbors_emb_list)
+        cell_embeddings = self._aggregation(cell_i_list)
+        
+        # inner mix
+        lamb_heads = torch.FloatTensor(np.random.beta(0.2, 0.2, heads.size(0))).to(heads.device).type_as(heads).unsqueeze(1)
+        lamb_tails = torch.FloatTensor(np.random.beta(0.2, 0.2, heads.size(0))).to(heads.device).type_as(heads).unsqueeze(1)
+        if np.random.random() >= 0.75:
+            heads_new = heads * lamb_heads + tails * (1 - lamb_heads)
+            tails_new = tails * lamb_tails + heads * (1 - lamb_tails)
+        else:
+            heads_new = heads
+            tails_new = tails
+        # concat
+        xc = torch.cat((heads_new, tails_new, cell_embeddings), dim=1)
+        # add some dense layers
+        xc = self.fc1(xc)
+        xc = torch.relu(xc)
+        xc = self.dropout(xc)
+        xc = self.fc2(xc)
+        xc = torch.relu(xc)
+        xc = self.dropout(xc)
+        out = self.out(xc)
+
+        return out
+
+    def _get_neighbor_emb(self, neighbors):
+        neighbors_emb_list = []
+        for hop in range(self.n_hop):
+            neighbors_emb_list.append(self.protein_embedding(neighbors[hop]))
+        return neighbors_emb_list
+
+    def _interaction_aggregation(self, item_embeddings, neighbors_emb_list):
+        interact_list = []
+        for hop in range(self.n_hop):
+            # [batch_size, n_memory, dim]
+            neighbor_emb = neighbors_emb_list[hop]
+            # [batch_size, dim, 1]
+            item_embeddings_expanded = torch.unsqueeze(item_embeddings, dim=2)
+            # [batch_size, n_memory]
+            contributions = torch.squeeze(torch.matmul(neighbor_emb,
+                                                       item_embeddings_expanded))
+            # [batch_size, n_memory]
+            contributions_normalized = F.softmax(contributions, dim=1)
+            # [batch_size, n_memory, 1]
+            contributions_expaned = torch.unsqueeze(contributions_normalized, dim=2)
+            # [batch_size, dim]
+            i = (neighbor_emb * contributions_expaned).sum(dim=1)
+            # update item_embeddings
+            item_embeddings = i
+            interact_list.append(i)
+        return interact_list
+
+    def _aggregation(self, item_i_list):
+        # [batch_size, n_hop+1, emb_dim]
+        item_i_concat = torch.cat(item_i_list, 1)
+        # [batch_size, emb_dim]
+        item_embeddings = self.aggregation_function(item_i_concat)
+        return item_embeddings
+
+class BinaryClassMLPPPIInterMixHead(BasePPIHead):
+    
+    def __init__(self,
+                 input_dim,
+                 inner_dim,
+                 num_classes,
+                 actionvation_fn,
+                 pooler_dropout):
+
+        super().__init__()
+        
+        self.cell_num = num_classes
+        self.emb_dim = inner_dim
+        self.n_hop = 2
+        
+        ppi_loader = DataPPI(
+            aux_data_dir='baselines/GraphSynergy-master/data_ours',
+            n_hop=self.n_hop)
+
+        self.cell_neighbor_set = ppi_loader.get_cell_neighbor_set()
+        node_num_dict = ppi_loader.get_node_num_dict()
+        self.protein_num = node_num_dict['protein']
+
+        self.protein_embedding = nn.Embedding(self.protein_num, self.emb_dim)
+        self.cell_embedding = nn.Embedding(self.cell_num, self.emb_dim)
+        self.aggregation_function = nn.Linear(self.emb_dim * self.n_hop, self.emb_dim)
+
+
+        self.dropout = nn.Dropout(p=pooler_dropout)
+
+        # combined layers
+        self.fc1 = nn.Linear(2 * input_dim + inner_dim, input_dim)
+        self.fc2 = nn.Linear(input_dim, inner_dim)
+        self.out = nn.Linear(inner_dim, 1)
+        
+    def forward(self, heads, tails, cells, targets):
+
+        cell_embeddings = self.cell_embedding(cells).squeeze(1)
+
+        cells_neighbors = []
+        for hop in range(self.n_hop):
+            cells_neighbors.append(torch.LongTensor([self.cell_neighbor_set[c][hop] \
+                                                       for c in cells.squeeze(1).cpu().numpy().tolist()]).to(heads.device))
+        
+        cell_neighbors_emb_list = self._get_neighbor_emb(cells_neighbors)
+        cell_i_list = self._interaction_aggregation(cell_embeddings, cell_neighbors_emb_list)
+        cell_embeddings = self._aggregation(cell_i_list)
+
+        # inter mix
+        lambs = torch.FloatTensor(np.random.beta(0.2, 0.2, heads.size(0) // 2)).to(heads.device).type_as(heads).unsqueeze(1)
+        
+        # concat
+        xc = torch.cat((heads, tails, cell_embeddings), dim=1)
+
+        # add some dense layers
+        # pdb.set_trace()
+
+        num_pairs = xc.size(0) // 2
+        xc_1 = xc[0:num_pairs, :]
+        xc_2 = xc[num_pairs:num_pairs * 2, :]
+        xc = lambs * xc_1 + (1 - lambs) * xc_2
+
+        targets = F.one_hot(targets.long().view(-1), num_classes=2).to(heads.device).type_as(heads)
+        targets = lambs * targets[0:num_pairs, :] + (1 - lambs) * targets[num_pairs:num_pairs * 2, :].detach()
+        
+        
+        xc = self.fc1(xc)
+        xc = torch.relu(xc)
+        xc = self.dropout(xc)
+        xc = self.fc2(xc)
+        xc = torch.relu(xc)
+        xc = self.dropout(xc)
+        out = self.out(xc)
+
+        return out, targets
+
+    def forward_eval(self, heads, tails, cells):
+
+        cell_embeddings = self.cell_embedding(cells).squeeze(1)
+
+        cells_neighbors = []
+        for hop in range(self.n_hop):
+            cells_neighbors.append(torch.LongTensor([self.cell_neighbor_set[c][hop] \
+                                                       for c in cells.squeeze(1).cpu().numpy().tolist()]).to(heads.device))
+        
+        cell_neighbors_emb_list = self._get_neighbor_emb(cells_neighbors)
+        cell_i_list = self._interaction_aggregation(cell_embeddings, cell_neighbors_emb_list)
+        cell_embeddings = self._aggregation(cell_i_list)
+
+        # concat
+        xc = torch.cat((heads, tails, cell_embeddings), dim=1)
+        xc = self.fc1(xc)
+        xc = torch.relu(xc)
+        xc = self.dropout(xc)
+        xc = self.fc2(xc)
+        xc = torch.relu(xc)
+        xc = self.dropout(xc)
+        out = self.out(xc)
+
+        return out
 if __name__ == '__main__':
     loader = DataPPI(aux_data_dir='baselines/GraphSynergy-master/data_ours')
     pdb.set_trace()

@@ -11,7 +11,7 @@ from trainer.trainer import Trainer
 import pdb
 
 # fix random seeds for reproducibility
-SEED = 42
+SEED = 12645
 torch.manual_seed(SEED)
 torch.cuda.manual_seed(SEED)
 torch.backends.cudnn.deterministic = True

@@ -3,11 +3,17 @@ import numpy as np
 import pdb
 import os
 
-for i in range(5):
-    savedir = f'baselines/GraphSynergy-master/data_ours/fold{i}'
+fold_num = 3
 
-    dataset_train = f'baselines/DeepDDs-master/data_ours/train_fold{i}.csv'
-    dataset_test = f'baselines/DeepDDs-master/data_ours/test_fold{i}.csv'
+DATANAME=f'data_ours_{fold_num}fold'
+
+data_ori_dir = f'baselines/DeepDDs-master/{DATANAME}/'
+
+for i in range(fold_num):
+    savedir = f'baselines/GraphSynergy-master/{DATANAME}/fold{i}'
+
+    dataset_train = os.path.join(data_ori_dir, f'train_fold{i}.csv')
+    dataset_test = os.path.join(data_ori_dir, f'test_fold{i}.csv')
 
     dds_train_df = pd.read_csv(dataset_train)
     dds_test_df = pd.read_csv(dataset_test)

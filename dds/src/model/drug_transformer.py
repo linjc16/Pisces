@@ -9,8 +9,9 @@ import torch.nn.functional as F
 from torch import nn
 from fairseq.models.roberta import RobertaEncoder
 from omegaconf import II
-from .heads import BinaryClassMLPHead
-from .heads_ppi import BinaryClassMLPPPIHead, BinaryClassMLPPPIv2Head
+from .heads import BinaryClassMLPHead, BinaryClassMLPv2Head
+from .heads_ppi import BinaryClassMLPPPIHead, BinaryClassMLPPPIv2Head, BinaryClassMLPPPIInnerMixHead, \
+        BinaryClassMLPPPIInterMixHead
 
 logger = logging.getLogger(__name__)
 
@@ -132,7 +133,53 @@ class DrugTransfomerModel(BaseFairseqModel):
 
         return enc_a, enc_b
     
+    def forward_inter_mix(self,
+                drug_a_seq,
+                drug_b_seq,
+                drug_a_graph,
+                drug_b_graph,
+                cell_line,
+                targets,
+                features_only=False,
+                classification_head_name=None,
+                **kwargs):
+        
+        if classification_head_name is not None:
+            features_only = True
+        
+        enc_a, _ = self.encoder(**drug_a_seq, features_only=features_only, **kwargs)
+        enc_b, _ = self.encoder(**drug_b_seq, features_only=features_only, **kwargs)
+        
+        enc_a = self.get_cls(enc_a)
+        enc_b = self.get_cls(enc_b)
+
+        x, labels = self.classification_heads[classification_head_name](enc_a, enc_b, cell_line, targets)
     
+        return x, labels
+
+    def forward_inter_mix_eval(self,
+                drug_a_seq,
+                drug_b_seq,
+                drug_a_graph,
+                drug_b_graph,
+                cell_line,
+                targets,
+                features_only=False,
+                classification_head_name=None,
+                **kwargs):
+        
+        if classification_head_name is not None:
+            features_only = True
+        
+        enc_a, _ = self.encoder(**drug_a_seq, features_only=features_only, **kwargs)
+        enc_b, _ = self.encoder(**drug_b_seq, features_only=features_only, **kwargs)
+        
+        enc_a = self.get_cls(enc_a)
+        enc_b = self.get_cls(enc_b)
+
+        x = self.classification_heads[classification_head_name].forward_eval(enc_a, enc_b, cell_line)
+    
+        return x
     def get_cls(self, x):
         if x is None:
             return 0
@@ -175,9 +222,32 @@ class DrugTransfomerModel(BaseFairseqModel):
                 actionvation_fn=self.args.pooler_activation_fn,
                 pooler_dropout=self.args.pooler_dropout,
             )
-        
+        elif name == 'bclsmlpv2':
+            self.classification_heads[name] = BinaryClassMLPv2Head(
+                input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
+                inner_dim=inner_dim or self.args.encoder_embed_dim,
+                num_classes=num_classes,
+                actionvation_fn=self.args.pooler_activation_fn,
+                pooler_dropout=self.args.pooler_dropout,
+            )
         elif name == 'bclsmlpppiv2':
             self.classification_heads[name] = BinaryClassMLPPPIv2Head(
+                input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
+                inner_dim=inner_dim or self.args.encoder_embed_dim,
+                num_classes=num_classes,
+                actionvation_fn=self.args.pooler_activation_fn,
+                pooler_dropout=self.args.pooler_dropout,
+            )
+        elif name == 'bclsmlpppiInnermix':
+            self.classification_heads[name] = BinaryClassMLPPPIInnerMixHead(
+                input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
+                inner_dim=inner_dim or self.args.encoder_embed_dim,
+                num_classes=num_classes,
+                actionvation_fn=self.args.pooler_activation_fn,
+                pooler_dropout=self.args.pooler_dropout,
+            )
+        elif name == 'bclsmlpppiIntermix':
+            self.classification_heads[name] = BinaryClassMLPPPIInterMixHead(
                 input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
                 inner_dim=inner_dim or self.args.encoder_embed_dim,
                 num_classes=num_classes,

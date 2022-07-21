@@ -34,7 +34,7 @@ CUDA_VISIBLE_DEVICES=1 python dds/src/train.py $DATADIR \
     --warmup-updates 4000 --total-num-update 100000  --max-update 100000 \
     --log-format 'simple' --log-interval 100 \
     --fp16 \
-    --best-checkpoint-metric roc_auc --maximize-best-checkpoint-metric \
+    --best-checkpoint-metric auc_prc --maximize-best-checkpoint-metric \
     --shorten-method "truncate" \
     --find-unused-parameters \
     --save-dir $SAVEDIR | tee -a $SAVEDIR/train.log \

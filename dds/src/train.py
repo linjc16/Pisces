@@ -36,7 +36,7 @@ from fairseq.logging import meters, metrics, progress_bar
 from fairseq.model_parallel.megatron_trainer import MegatronTrainer
 from fairseq.trainer import Trainer
 from omegaconf import DictConfig, OmegaConf
-from sklearn.metrics import roc_auc_score, balanced_accuracy_score
+from sklearn.metrics import roc_auc_score, balanced_accuracy_score, precision_recall_curve, auc
 import pdb
 
 
@@ -467,11 +467,15 @@ def validate(
         
         # pdb.set_trace()
         roc_auc = roc_auc_score(y_score=logits_val, y_true=labels_val)
-        bacc = balanced_accuracy_score(y_true=labels_val, y_pred=logits_val.round())
+        p, r, t = precision_recall_curve(labels_val, logits_val)
+        auc_prc = auc(r, p)
 
+        bacc = balanced_accuracy_score(y_true=labels_val, y_pred=logits_val.round())
+        
         stats = agg.get_smoothed_values()
         stats['roc_auc'] = roc_auc
         stats['bacc'] = bacc
+        stats['auc_prc'] = auc_prc
         # log validation stats
         stats = get_valid_stats(cfg, trainer, stats)
         progress.print(stats, tag=subset, step=trainer.get_num_updates())

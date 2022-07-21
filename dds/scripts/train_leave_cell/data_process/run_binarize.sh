@@ -1,7 +1,7 @@
 
 # binarize dataset
-
-DATADIR=/data/linjc/dds/data/transductive/fold4/
+DATAFOLD=$1
+DATADIR=/data/linjc/dds/data/leave_cells/$DATAFOLD/
 
 python fairseq_cli/preprocess.py \
     -s 'a' -t 'b' \

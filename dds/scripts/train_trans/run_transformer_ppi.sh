@@ -1,19 +1,21 @@
 
 TASK=binary_class_task
-ARCH=drug_transfomer_large
+ARCH=drug_transfomer_base
 CLSHEAD=bclsmlpppi
 CRITERION=binary_class_loss_bce
 DATAFOLD=$1
 LR=$2
 DROP=$3
 
-DATADIR=/data/linjc/dds/data/transductive/$DATAFOLD/data-bin
-SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP-noscheduler
+# DATADIR=/data/linjc/dds/data/transductive/$DATAFOLD/data-bin
+DATADIR=/data/linjc/dds/data/transductive_3fold/$DATAFOLD/data-bin
+SAVEDIR=/data/linjc/dds/ckpt_3fold/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP
+# SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP
 
 # rm -rf $SAVEDIR
 mkdir -p $SAVEDIR
 
-CUDA_VISIBLE_DEVICES=5 python dds/src/train.py $DATADIR \
+CUDA_VISIBLE_DEVICES=7 python dds/src/train.py $DATADIR \
     --user-dir dds/src/ \
     --tensorboard-logdir $SAVEDIR \
     --ddp-backend=legacy_ddp \
@@ -34,7 +36,7 @@ CUDA_VISIBLE_DEVICES=5 python dds/src/train.py $DATADIR \
     --warmup-updates 4000 --total-num-update 100000  --max-update 100000 \
     --log-format 'simple' --log-interval 100 \
     --fp16 \
-    --best-checkpoint-metric roc_auc --maximize-best-checkpoint-metric \
+    --best-checkpoint-metric auc_prc --maximize-best-checkpoint-metric \
     --shorten-method "truncate" \
     --find-unused-parameters \
     --save-dir $SAVEDIR | tee -a $SAVEDIR/train.log \
