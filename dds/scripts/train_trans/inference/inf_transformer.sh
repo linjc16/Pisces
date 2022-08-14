@@ -1,14 +1,14 @@
 
 TASK=binary_class_task
 ARCH=drug_transfomer_base
-CLSHEAD=bclsmlp
+CLSHEAD=bclsmlpv2
 CRITERION=binary_class_loss_bce
 DATAFOLD=$1
 LR=$2
 DROP=$3
 
 DATADIR=/data/linjc/dds/data/transductive/$DATAFOLD/data-bin
-SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP-noscheduler
+SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP
 
 
 CUDA_VISIBLE_DEVICES=0 python dds/src/binary_class_inf.py $DATADIR \

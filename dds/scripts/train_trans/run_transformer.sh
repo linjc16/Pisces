@@ -13,7 +13,7 @@ SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_
 # rm -rf $SAVEDIR
 mkdir -p $SAVEDIR
 
-CUDA_VISIBLE_DEVICES=4 python dds/src/train.py $DATADIR \
+CUDA_VISIBLE_DEVICES=7 python dds/src/train.py $DATADIR \
     --user-dir dds/src/ \
     --tensorboard-logdir $SAVEDIR \
     --ddp-backend=legacy_ddp \

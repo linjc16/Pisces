@@ -9,9 +9,12 @@ import torch.nn.functional as F
 from torch import nn
 from fairseq.models.roberta import RobertaEncoder
 from omegaconf import II
-from .heads import BinaryClassMLPHead, BinaryClassMLPv2Head
+from .heads import BinaryClassMLPHead, BinaryClassMLPv2Head, BinaryClassMLPv2NonormHead
 from .heads_ppi import BinaryClassMLPPPIHead, BinaryClassMLPPPIv2Head, BinaryClassMLPPPIInnerMixHead, \
-        BinaryClassMLPPPIInterMixHead
+        BinaryClassMLPPPIInterMixHead, BinaryClassMLPAttnPPIHead
+from .heads_prot_seq import BinaryClassProtSeqFrozenMLPHead
+
+import pdb
 
 logger = logging.getLogger(__name__)
 
@@ -27,6 +30,7 @@ class DrugTransformerConfig(FairseqDataclass):
     encoder_embed_dim: int = field(default=768)
     encoder_ffn_embed_dim: int = field(default=3072)
     encoder_layers: int = field(default=12)
+    cross_encoder_layers: int = field(default=6)
     encoder_attention_heads: int = field(default=12)
     encoder_normalize_before: bool = field(default=False)
     encoder_learned_pos: bool = field(default=True)
@@ -36,6 +40,7 @@ class DrugTransformerConfig(FairseqDataclass):
 
     classification_head_name: str = field(default='')
     load_checkpoint_heads: bool = field(default=False)
+
 
     # config for Training with Quantization Noise for Extreme Model Compression ({Fan*, Stock*} et al., 2020)
     quant_noise_pq: float = field(
@@ -66,6 +71,7 @@ class DrugTransformerConfig(FairseqDataclass):
     pooler_dropout: float = field(default=0.0)
     untie_weights_roberta: bool = field(default=False)
     adaptive_input: bool = field(default=False)
+    n_memory: int = field(default=32)
     
     skip_update_state_dict: bool = field(default=False,
         metadata={"help": "Don't update state dict when load pretrained model weight"},
@@ -86,7 +92,7 @@ class DrugTransfomerModel(BaseFairseqModel):
         
         base_architecture(args)
         encoder = TrEncoder(args, task.source_dictionary)
-
+        
         return cls(args, encoder)
 
     def forward(self,
@@ -230,6 +236,22 @@ class DrugTransfomerModel(BaseFairseqModel):
                 actionvation_fn=self.args.pooler_activation_fn,
                 pooler_dropout=self.args.pooler_dropout,
             )
+        elif name == 'bclsProtSeqFrozenmlp':
+            self.classification_heads[name] = BinaryClassProtSeqFrozenMLPHead(
+                input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
+                inner_dim=inner_dim or self.args.encoder_embed_dim,
+                num_classes=num_classes,
+                actionvation_fn=self.args.pooler_activation_fn,
+                pooler_dropout=self.args.pooler_dropout,
+            )
+        elif name == 'bclsmlpv2nonorm':
+            self.classification_heads[name] = BinaryClassMLPv2NonormHead(
+                input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
+                inner_dim=inner_dim or self.args.encoder_embed_dim,
+                num_classes=num_classes,
+                actionvation_fn=self.args.pooler_activation_fn,
+                pooler_dropout=self.args.pooler_dropout,
+            )
         elif name == 'bclsmlpppiv2':
             self.classification_heads[name] = BinaryClassMLPPPIv2Head(
                 input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
@@ -237,6 +259,16 @@ class DrugTransfomerModel(BaseFairseqModel):
                 num_classes=num_classes,
                 actionvation_fn=self.args.pooler_activation_fn,
                 pooler_dropout=self.args.pooler_dropout,
+                n_memory=self.args.n_memory,
+            )
+        elif name == 'bclsmlpattnppi':
+            self.classification_heads[name] = BinaryClassMLPAttnPPIHead(
+                input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
+                inner_dim=inner_dim or self.args.encoder_embed_dim,
+                num_classes=num_classes,
+                actionvation_fn=self.args.pooler_activation_fn,
+                pooler_dropout=self.args.pooler_dropout,
+                n_memory=self.args.n_memory,
             )
         elif name == 'bclsmlpppiInnermix':
             self.classification_heads[name] = BinaryClassMLPPPIInnerMixHead(
@@ -278,6 +310,7 @@ class TrEncoder(RobertaEncoder):
             x = self.output_layer(features, masked_tokens=masked_tokens)
         else:
             x = None
+        
         return features, x
 
 

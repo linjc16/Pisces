@@ -7,13 +7,13 @@ DATAFOLD=$1
 LR=$2
 DROP=$3
 
-DATADIR=/data/linjc/dds/data/leave_cells//$DATAFOLD/data-bin
+DATADIR=/data/linjc/dds/data/leave_cells/$DATAFOLD/data-bin
 SAVEDIR=/data/linjc/dds/ckpt_leave_cells/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP
 
 # rm -rf $SAVEDIR
 mkdir -p $SAVEDIR
 
-CUDA_VISIBLE_DEVICES=2 python dds/src/train.py $DATADIR \
+CUDA_VISIBLE_DEVICES=3 python dds/src/train.py $DATADIR \
     --user-dir dds/src/ \
     --tensorboard-logdir $SAVEDIR \
     --ddp-backend=legacy_ddp \

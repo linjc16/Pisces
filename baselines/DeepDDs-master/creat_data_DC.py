@@ -66,8 +66,8 @@ def smile_to_graph(smile):
 
 
 
-def creat_data(datafile, cellfile):
-    savedir = '/data/linjc/dds/baselines/DeepDDS/data_tpm'
+def creat_data(datafile, cellfile, savedir, root):
+
     file2 = cellfile
     cell_features = []
     with open(file2) as csvfile:
@@ -93,7 +93,7 @@ def creat_data(datafile, cellfile):
     processed_data_file_train = os.path.join(savedir, 'processed/' + datasets + '_train.pt')
 
     if ((not os.path.isfile(processed_data_file_train))):
-        df = pd.read_csv('baselines/DeepDDs-master/data_ours/' + datasets + '.csv')
+        df = pd.read_csv(root + datasets + '.csv')
         drug1, drug2, cell, label = list(df['drug1']), list(df['drug2']), list(df['cell']), list(df['label'])
         drug1, drug2, cell, label = np.asarray(drug1), np.asarray(drug2), np.asarray(cell), np.asarray(label)
         # make data PyTorch Geometric ready
@@ -114,8 +114,15 @@ if __name__ == "__main__":
     # cellfile = 'baselines/DeepDDs-master/data/new_cell_features_954.csv'
     # da = ['new_labels_0_10_leave']
     cellfile = 'baselines/DeepDDs-master/data_ours/cell_features_expression_new.csv'
-    da = [f'train_fold{i}' for i in range(5)]
-    # da = ['train_fold4']
-    da.extend([f'test_fold{i}' for i in range(5)])
+    da = []
+    for i in range(5):
+        da.append(f'train_fold{i}')
+        da.append(f'test_fold{i}')
+    
+    # savedir = '/data/linjc/dds/baselines/DeepDDS/data_leave_cell'
+    savedir = '/data/linjc/dds/baselines/DeepDDS/data_leave_comb'
+    # root = 'baselines/DeepDDs-master/data_ours/'
+    # root = 'baselines/DeepDDs-master/data_ours_leave_cell/'
+    root = 'baselines/DeepDDs-master/data_ours_leave_comb/'
     for datafile in da:
-        creat_data(datafile, cellfile)
+        creat_data(datafile, cellfile, savedir, root)

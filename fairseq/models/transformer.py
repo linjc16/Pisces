@@ -531,7 +531,7 @@ class TransformerEncoder(FairseqEncoder):
             if return_all_hiddens:
                 assert encoder_states is not None
                 encoder_states.append(x)
-
+        
         if self.layer_norm is not None:
             x = self.layer_norm(x)
 

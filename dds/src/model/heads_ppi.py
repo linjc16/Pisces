@@ -124,7 +124,7 @@ class BasePPIHead(nn.Module):
         super().__init__()
         self.n_hop = 2
         ppi_loader = DataPPI(
-            aux_data_dir='baselines/GraphSynergy-master/data_ours',
+            aux_data_dir='baselines/GraphSynergy-master/data_ours_3fold',
             n_hop=self.n_hop)
 
         self.cell_neighbor_set = ppi_loader.get_cell_neighbor_set()
@@ -165,6 +165,8 @@ class BasePPIHead(nn.Module):
         item_embeddings = self.aggregation_function(item_i_concat)
         return item_embeddings
 
+
+
 class BinaryClassMLPPPIHead(nn.Module):
     
     def __init__(self,
@@ -181,7 +183,7 @@ class BinaryClassMLPPPIHead(nn.Module):
         self.n_hop = 2
         
         ppi_loader = DataPPI(
-            aux_data_dir='baselines/GraphSynergy-master/data_ours',
+            aux_data_dir='baselines/GraphSynergy-master/data_ours_3fold',
             n_hop=self.n_hop)
 
         self.cell_neighbor_set = ppi_loader.get_cell_neighbor_set()
@@ -267,34 +269,38 @@ class BinaryClassMLPPPIv2Head(nn.Module):
                  inner_dim,
                  num_classes,
                  actionvation_fn,
-                 pooler_dropout):
+                 pooler_dropout,
+                 n_memory):
 
         super().__init__()
         
         self.cell_num = num_classes
         self.emb_dim = inner_dim
         self.n_hop = 2
+        self.n_memory = n_memory
         
         ppi_loader = DataPPI(
-            aux_data_dir='baselines/GraphSynergy-master/data_ours',
-            n_hop=self.n_hop)
+            aux_data_dir='baselines/GraphSynergy-master/data_ours_3fold',
+            n_hop=self.n_hop,
+            n_memory=self.n_memory)
 
         self.cell_neighbor_set = ppi_loader.get_cell_neighbor_set()
         node_num_dict = ppi_loader.get_node_num_dict()
         self.protein_num = node_num_dict['protein']
 
         self.protein_embedding = nn.Embedding(self.protein_num, self.emb_dim)
-        self.cell_embedding = nn.Embedding(self.cell_num, self.emb_dim)
-        self.aggregation_function = nn.Linear(self.emb_dim * self.n_hop, self.emb_dim)
+        self.aggregation_function = nn.Linear(self.emb_dim * 2 * self.n_hop, self.emb_dim)
 
-
-        self.dense = nn.Linear(input_dim, inner_dim)
-        self.activation_fn = utils.get_activation_fn(actionvation_fn)
+        
         self.dropout = nn.Dropout(p=pooler_dropout)
+
+        # combined layers
+        self.fc1 = nn.Linear(2 * input_dim + inner_dim, input_dim)
+        self.fc2 = nn.Linear(input_dim, inner_dim)
+        self.out = nn.Linear(inner_dim, 1)
+
         
     def forward(self, heads, tails, cells):
-
-        cell_embeddings = self.cell_embedding(cells).squeeze(1)
 
         cells_neighbors = []
         for hop in range(self.n_hop):
@@ -302,19 +308,22 @@ class BinaryClassMLPPPIv2Head(nn.Module):
                                                        for c in cells.squeeze(1).cpu().numpy().tolist()]).to(heads.device))
         
         cell_neighbors_emb_list = self._get_neighbor_emb(cells_neighbors)
-        cell_i_list = self._interaction_aggregation(cell_embeddings, cell_neighbors_emb_list)
+        cell_i_list = self._interaction_aggregation(cell_neighbors_emb_list)
+        # pdb.set_trace()
         cell_embeddings = self._aggregation(cell_i_list)
         
-        x = heads + tails
-        x = self.dropout(x)
-        x = self.dense(x)
-        x = self.activation_fn(x)
-        x = self.dropout(x)
-        
-        scores = torch.matmul(cell_embeddings.unsqueeze(1), x.unsqueeze(-1))
+        # concat
+        xc = torch.cat((heads, tails, cell_embeddings), dim=1)
+        # add some dense layers
+        xc = self.fc1(xc)
+        xc = torch.relu(xc)
+        xc = self.dropout(xc)
+        xc = self.fc2(xc)
+        xc = torch.relu(xc)
+        xc = self.dropout(xc)
+        out = self.out(xc)
 
-        return scores
-
+        return out
 
     def _get_neighbor_emb(self, neighbors):
         neighbors_emb_list = []
@@ -322,25 +331,15 @@ class BinaryClassMLPPPIv2Head(nn.Module):
             neighbors_emb_list.append(self.protein_embedding(neighbors[hop]))
         return neighbors_emb_list
 
-    def _interaction_aggregation(self, item_embeddings, neighbors_emb_list):
+    def _interaction_aggregation(self, neighbors_emb_list):
         interact_list = []
         for hop in range(self.n_hop):
             # [batch_size, n_memory, dim]
             neighbor_emb = neighbors_emb_list[hop]
-            # [batch_size, dim, 1]
-            item_embeddings_expanded = torch.unsqueeze(item_embeddings, dim=2)
-            # [batch_size, n_memory]
-            contributions = torch.squeeze(torch.matmul(neighbor_emb,
-                                                       item_embeddings_expanded))
-            # [batch_size, n_memory]
-            contributions_normalized = F.softmax(contributions, dim=1)
-            # [batch_size, n_memory, 1]
-            contributions_expaned = torch.unsqueeze(contributions_normalized, dim=2)
-            # [batch_size, dim]
-            i = (neighbor_emb * contributions_expaned).sum(dim=1)
-            # update item_embeddings
-            item_embeddings = i
-            interact_list.append(i)
+            aggr_mean = torch.mean(neighbor_emb, dim=1)
+            aggr_max = torch.max(neighbor_emb, dim=1).values
+            interact_list.append(torch.cat([aggr_mean, aggr_max], dim=-1))
+        
         return interact_list
 
     def _aggregation(self, item_i_list):
@@ -350,6 +349,300 @@ class BinaryClassMLPPPIv2Head(nn.Module):
         item_embeddings = self.aggregation_function(item_i_concat)
         return item_embeddings
 
+
+
+class BinaryClassMLPOutInterPPIHead(nn.Module):
+    
+    def __init__(self,
+                 input_dim,
+                 inner_dim,
+                 num_classes,
+                 actionvation_fn,
+                 pooler_dropout,
+                 n_memory):
+
+        super().__init__()
+        
+        self.cell_num = num_classes
+        self.emb_dim = inner_dim
+        self.n_hop = 2
+        self.n_memory = n_memory
+        
+        ppi_loader = DataPPI(
+            aux_data_dir='baselines/GraphSynergy-master/data_ours_3fold',
+            n_hop=self.n_hop,
+            n_memory=self.n_memory)
+
+        self.cell_neighbor_set = ppi_loader.get_cell_neighbor_set()
+        node_num_dict = ppi_loader.get_node_num_dict()
+        self.protein_num = node_num_dict['protein']
+
+        self.protein_embedding = nn.Embedding(self.protein_num, self.emb_dim)
+        self.aggregation_function = nn.Linear(self.emb_dim * 2 * self.n_hop, self.emb_dim)
+
+        
+        self.dropout = nn.Dropout(p=pooler_dropout)
+
+        # combined layers
+        self.fc1 = nn.Linear(2 * input_dim + inner_dim, input_dim)
+        self.fc2 = nn.Linear(input_dim, inner_dim)
+        self.out = nn.Linear(inner_dim, 1)
+        
+    def forward(self, heads, tails, cells):
+
+        cells_neighbors = []
+        for hop in range(self.n_hop):
+            cells_neighbors.append(torch.LongTensor([self.cell_neighbor_set[c][hop] \
+                                                       for c in cells.squeeze(1).cpu().numpy().tolist()]).to(heads.device))
+        
+        cell_neighbors_emb_list = self._get_neighbor_emb(cells_neighbors)
+        cell_i_list = self._interaction_aggregation(cell_neighbors_emb_list)
+        # pdb.set_trace()
+        cell_embeddings = self._aggregation(cell_i_list)
+        
+        # concat
+        xc = torch.cat((heads, tails, cell_embeddings), dim=1)
+        # add some dense layers
+        xc = self.fc1(xc)
+        xc = torch.relu(xc)
+        xc = self.dropout(xc)
+        xc = self.fc2(xc)
+        xc = torch.relu(xc)
+        xc = self.dropout(xc)
+        out = self.out(xc)
+
+        return out
+
+    def _get_neighbor_emb(self, neighbors):
+        neighbors_emb_list = []
+        for hop in range(self.n_hop):
+            neighbors_emb_list.append(self.protein_embedding(neighbors[hop]))
+        return neighbors_emb_list
+
+    def _interaction_aggregation(self, neighbors_emb_list):
+        interact_list = []
+        for hop in range(self.n_hop):
+            # [batch_size, n_memory, dim]
+            neighbor_emb = neighbors_emb_list[hop]
+            aggr_mean = torch.mean(neighbor_emb, dim=1)
+            aggr_max = torch.max(neighbor_emb, dim=1).values
+            interact_list.append(torch.cat([aggr_mean, aggr_max], dim=-1))
+        
+        return interact_list
+
+    def _aggregation(self, item_i_list):
+        # [batch_size, n_hop+1, emb_dim]
+        item_i_concat = torch.cat(item_i_list, 1)
+        # [batch_size, emb_dim]
+        item_embeddings = self.aggregation_function(item_i_concat)
+        return item_embeddings
+
+class BinaryClassDVPPIMLPHead(nn.Module):
+    
+    def __init__(self,
+                 input_dim,
+                 dv_input_dim,
+                 inner_dim,
+                 num_classes,
+                 actionvation_fn,
+                 pooler_dropout,
+                 n_memory):
+
+        super().__init__()
+        
+        self.cell_num = num_classes
+        self.emb_dim = inner_dim
+        self.n_hop = 2
+        self.n_memory = n_memory
+        
+        ppi_loader = DataPPI(
+            aux_data_dir='baselines/GraphSynergy-master/data_ours_3fold',
+            n_hop=self.n_hop,
+            n_memory=self.n_memory)
+
+        self.cell_neighbor_set = ppi_loader.get_cell_neighbor_set()
+        node_num_dict = ppi_loader.get_node_num_dict()
+        self.protein_num = node_num_dict['protein']
+
+        self.protein_embedding = nn.Embedding(self.protein_num, self.emb_dim)
+        self.aggregation_function = nn.Linear(self.emb_dim * 2 * self.n_hop, self.emb_dim)
+
+
+        self.dropout = nn.Dropout(p=pooler_dropout)
+
+        # combined layers
+        self.fc1 = nn.Linear(2 * input_dim + inner_dim, input_dim)
+        self.fc2 = nn.Linear(input_dim, inner_dim)
+        self.out = nn.Linear(inner_dim, 1)
+
+        self.mix_linear = nn.Linear(dv_input_dim + input_dim, input_dim)
+    
+    
+    def forward(self, drug_a, dv_drug_a, drug_b, dv_drug_b, cells):
+
+        cells_neighbors = []
+        for hop in range(self.n_hop):
+            cells_neighbors.append(torch.LongTensor([self.cell_neighbor_set[c][hop] \
+                                                       for c in cells.squeeze(1).cpu().numpy().tolist()]).to(drug_a.device))
+        
+        cell_neighbors_emb_list = self._get_neighbor_emb(cells_neighbors)
+        cell_i_list = self._interaction_aggregation(cell_neighbors_emb_list)
+        # pdb.set_trace()
+        cell_embeddings = self._aggregation(cell_i_list)
+        
+        heads = self.mix_linear(torch.cat([drug_a, dv_drug_a], dim=1))
+        tails = self.mix_linear(torch.cat([drug_b, dv_drug_b], dim=1))
+    
+        # concat
+        xc = torch.cat((heads, tails, cell_embeddings), dim=1)
+        # add some dense layers
+        xc = self.fc1(xc)
+        xc = torch.relu(xc)
+        xc = self.dropout(xc)
+        xc = self.fc2(xc)
+        xc = torch.relu(xc)
+        xc = self.dropout(xc)
+        out = self.out(xc)
+        
+        return out
+
+    def _get_neighbor_emb(self, neighbors):
+        neighbors_emb_list = []
+        for hop in range(self.n_hop):
+            neighbors_emb_list.append(self.protein_embedding(neighbors[hop]))
+        return neighbors_emb_list
+
+    def _interaction_aggregation(self, neighbors_emb_list):
+        interact_list = []
+        for hop in range(self.n_hop):
+            # [batch_size, n_memory, dim]
+            neighbor_emb = neighbors_emb_list[hop]
+            aggr_mean = torch.mean(neighbor_emb, dim=1)
+            aggr_max = torch.max(neighbor_emb, dim=1).values
+            interact_list.append(torch.cat([aggr_mean, aggr_max], dim=-1))
+        
+        return interact_list
+
+    def _aggregation(self, item_i_list):
+        # [batch_size, n_hop+1, emb_dim]
+        item_i_concat = torch.cat(item_i_list, 1)
+        # [batch_size, emb_dim]
+        item_embeddings = self.aggregation_function(item_i_concat)
+        return item_embeddings
+
+class BinaryClassMLPAttnPPIHead(nn.Module):
+    
+    def __init__(self,
+                 input_dim,
+                 inner_dim,
+                 num_classes,
+                 actionvation_fn,
+                 pooler_dropout,
+                 n_memory):
+
+        super().__init__()
+        
+        self.cell_num = num_classes
+        self.emb_dim = inner_dim
+        self.n_hop = 2
+        self.n_memory = n_memory
+        
+        ppi_loader = DataPPI(
+            aux_data_dir='baselines/GraphSynergy-master/data_ours_3fold',
+            n_hop=self.n_hop,
+            n_memory=self.n_memory)
+
+        self.cell_neighbor_set = ppi_loader.get_cell_neighbor_set()
+        node_num_dict = ppi_loader.get_node_num_dict()
+        self.protein_num = node_num_dict['protein']
+
+        self.protein_embedding = nn.Embedding(self.protein_num, self.emb_dim)
+        self.aggregation_function = nn.Linear(self.emb_dim * 2 * self.n_hop, self.emb_dim)
+
+        
+
+        self.linear_drug = nn.Linear(input_dim, inner_dim)
+        self.linear_cell = nn.Linear(inner_dim, inner_dim)
+
+        self.static_transform = nn.Sequential(
+            nn.Linear(inner_dim, inner_dim),
+            nn.Tanh()
+        )
+
+        self.k_matrix = nn.Linear(inner_dim, inner_dim)
+        self.q_matrix = nn.Linear(inner_dim, inner_dim)
+        self.v_matrix = nn.Linear(inner_dim, inner_dim)
+
+
+        self.fc = nn.Linear(inner_dim, 1)
+
+        
+    def forward(self, heads, tails, cells):
+
+        cells_neighbors = []
+        for hop in range(self.n_hop):
+            cells_neighbors.append(torch.LongTensor([self.cell_neighbor_set[c][hop] \
+                                                       for c in cells.squeeze(1).cpu().numpy().tolist()]).to(heads.device))
+        
+        cell_neighbors_emb_list = self._get_neighbor_emb(cells_neighbors)
+        cell_i_list = self._interaction_aggregation(cell_neighbors_emb_list)
+        # pdb.set_trace()
+        cell_embs = self._aggregation(cell_i_list)
+        
+
+        heads = self.linear_drug(heads)
+        tails = self.linear_drug(tails)
+        cell_embs = self.linear_cell(cell_embs)
+
+        feat_seq = torch.cat([heads.unsqueeze(1), tails.unsqueeze(1), cell_embs.unsqueeze(1)], dim=1) # [N, 3, dim]
+
+        # static
+        feat_seq_static = self.static_transform(feat_seq)
+
+        # dynamic
+        k_feat_seq = self.k_matrix(feat_seq) # [N, 3, dim]
+        q_feat_seq = self.q_matrix(feat_seq) # [N, 3, dim]
+        v_feat_seq = self.v_matrix(feat_seq) # [N, 3, dim]
+
+        dot_prdt = torch.bmm(q_feat_seq, k_feat_seq.transpose(1, 2)) # [N, 3, 3]
+        dot_prdt.masked_fill_(
+            torch.eye(3, 3, dtype=bool).repeat(dot_prdt.size(0), 1, 1).to(heads.device),
+            float('-inf')
+        )
+
+        alpha = torch.softmax(dot_prdt, dim=2) # [N, 3, 3]
+
+        feat_seq_dynamic = torch.tanh(torch.bmm(alpha, v_feat_seq)) # [N, 3, dim]
+        
+
+        out = self.fc((feat_seq_dynamic - feat_seq_static) ** 2) # [N, 3, 1]
+        # out = torch.sigmoid(out).mean(dim=1)
+        # pdb.set_trace()
+        return out
+
+    def _get_neighbor_emb(self, neighbors):
+        neighbors_emb_list = []
+        for hop in range(self.n_hop):
+            neighbors_emb_list.append(self.protein_embedding(neighbors[hop]))
+        return neighbors_emb_list
+
+    def _interaction_aggregation(self, neighbors_emb_list):
+        interact_list = []
+        for hop in range(self.n_hop):
+            # [batch_size, n_memory, dim]
+            neighbor_emb = neighbors_emb_list[hop]
+            aggr_mean = torch.mean(neighbor_emb, dim=1)
+            aggr_max = torch.max(neighbor_emb, dim=1).values
+            interact_list.append(torch.cat([aggr_mean, aggr_max], dim=-1))
+        
+        return interact_list
+
+    def _aggregation(self, item_i_list):
+        # [batch_size, n_hop+1, emb_dim]
+        item_i_concat = torch.cat(item_i_list, 1)
+        # [batch_size, emb_dim]
+        item_embeddings = self.aggregation_function(item_i_concat)
+        return item_embeddings
 
 class BinaryClassMLPPPIInnerMixHead(nn.Module):
     

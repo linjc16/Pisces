@@ -14,7 +14,7 @@ import pandas as pd
 import pdb
 import argparse
 
-os.environ["CUDA_VISIBLE_DEVICES"]="3"
+os.environ["CUDA_VISIBLE_DEVICES"]="7"
 
 # training function at each epoch
 def train(model, device, data_loader_train, optimizer, epoch):
@@ -96,7 +96,8 @@ else:
     print('The code uses CPU!!!')
 
 
-data_dir = '/data/linjc/dds/baselines/DeepSynergy/data_pt_new/'
+# data_dir = '/data/linjc/dds/baselines/DeepSynergy/data_leave_cell/'
+data_dir = '/data/linjc/dds/baselines/DeepSynergy/data_leave_comb/'
 
 
 
@@ -129,8 +130,8 @@ drug2_data_test[:, 0:200] = F.normalize(drug2_data_test[:, 0:200], dim=0)
 feats_test = torch.cat([drug1_data_test, drug2_data_test, cell_data_test, drug_label_test], dim=1)
 drug_data_test = feats_test
 
-drug_loader_train = DataLoader(drug_data_train, batch_size=TRAIN_BATCH_SIZE, shuffle=None)
-drug_loader_test = DataLoader(drug_data_test, batch_size=TRAIN_BATCH_SIZE, shuffle=None)
+drug_loader_train = DataLoader(drug_data_train, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
+drug_loader_test = DataLoader(drug_data_test, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
 
 
 model = modeling().to(device)
@@ -147,6 +148,9 @@ file_AUCs_best = os.path.join(savedir, 'DeepSynergy(DrugA_DrugB)' + str(i) + '--
 
 AUCs = ('Epoch\tACC\tBACC\tAUC_dev\tPR_AUC\tPREC\tRECALL\tF1\tTPR\tKAPPA')
 with open(file_AUCs, 'w') as f:
+    f.write(AUCs + '\n')
+
+with open(file_AUCs_best, 'w') as f:
     f.write(AUCs + '\n')
 
 best_auc = 0

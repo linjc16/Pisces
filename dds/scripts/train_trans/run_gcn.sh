@@ -6,7 +6,7 @@ CRITERION=binary_class_loss
 DATAFOLD=$1
 
 DATADIR=/data/linjc/dds/data/transductive/$DATAFOLD/data-bin
-SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc
+SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_2
 
 # rm -r $SAVEDIR
 mkdir -p $SAVEDIR

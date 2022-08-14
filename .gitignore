@@ -4,6 +4,7 @@ data_ours*/
 data_feat/
 .vscode
 /features.py
+checkpoints/
 
 # Generated files
 /fairseq/temporal_convolution_tbc
@@ -14,4 +15,4 @@ data_feat/
 # data
 data-bin/
 __pycache__/
-/temp.py
+temp.py

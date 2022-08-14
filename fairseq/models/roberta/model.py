@@ -449,7 +449,7 @@ class RobertaEncoder(FairseqEncoder):
 
     def build_embedding(self, vocab_size, embedding_dim, padding_idx):
         return nn.Embedding(vocab_size, embedding_dim, padding_idx)
-
+    
     def build_encoder(self, args, dictionary, embed_tokens):
         encoder = TransformerEncoder(args, dictionary, embed_tokens)
         encoder.apply(init_bert_params)

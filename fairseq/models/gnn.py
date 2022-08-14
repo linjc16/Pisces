@@ -1,4 +1,3 @@
-import imp
 from typing import Optional, Callable
 import torch
 import torch.nn.functional as F
@@ -10,8 +9,8 @@ from molecule.features import get_atom_feature_dims, get_bond_feature_dims
 from fairseq import utils
 from torch_geometric.nn import global_max_pool, global_mean_pool, global_sort_pool
 
-# from torch_geometric.nn.conv import GATv2Conv
-# from .gatv2_conv import GATv2Conv
+import pdb
+
 
 class CustomMessagePassing(MessagePassing):
     def __init__(self, aggr: Optional[str] = "maxminmean", embed_dim: Optional[int] = None):
@@ -179,14 +178,15 @@ class DeeperGCN(nn.Module):
         edge_index = graph.edge_index
         edge_attr = graph.edge_attr
         batch = graph.batch
-
+        
         h = self.atom_encoder(x)
-
+    
         if self.conv_encode_edge:
             edge_emb = edge_attr
         else:
             edge_emb = self.bond_encoder(edge_attr)
-
+        
+        # pdb.set_trace()
         h = self.gcns[0](h, edge_index, edge_emb)
         if perturbed:
             random_noise = torch.rand_like(h).to(h.device)

@@ -106,12 +106,15 @@ else:
 # print('lenth', lenth)
 # print('pot', pot)
 
-datadir = '/data/linjc/dds/baselines/DeepDDS/data_tpm'
+# datadir = '/data/linjc/dds/baselines/DeepDDS/data_tpm'
+fold_num = 3
+# datadir = '/data/linjc/dds/baselines/DeepDDS/data_leave_cell'
+datadir = '/data/linjc/dds/baselines/DeepDDS/data_leave_comb'
 results_dir = os.path.join(datadir, 'results')
 os.makedirs(results_dir, exist_ok=True)
 
 # random_num = random.sample(range(0, lenth), lenth)
-for i in range(3, 5):
+for i in range(fold_num):
     print(f'Run fold {i}.')
     datafile_train = f'train_fold{i}'
     datafile_test = f'test_fold{i}'
@@ -121,14 +124,14 @@ for i in range(3, 5):
     # print('type(drug1_data_train)', type(drug1_data_train))
     # print('drug1_data_train[0]', drug1_data_train[0])
     # print('len(drug1_data_train)', len(drug1_data_train))
-    drug1_loader_train = DataLoader(drug1_data_train, batch_size=TRAIN_BATCH_SIZE, shuffle=None)
-    drug1_loader_test = DataLoader(drug1_data_test, batch_size=TRAIN_BATCH_SIZE, shuffle=None)
+    drug1_loader_train = DataLoader(drug1_data_train, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
+    drug1_loader_test = DataLoader(drug1_data_test, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
 
 
     drug2_data_train = TestbedDataset(root=datadir, dataset=datafile_train + '_drug2')
     drug2_data_test = TestbedDataset(root=datadir, dataset=datafile_test + '_drug2')
-    drug2_loader_train = DataLoader(drug2_data_train, batch_size=TRAIN_BATCH_SIZE, shuffle=None)
-    drug2_loader_test = DataLoader(drug2_data_test, batch_size=TRAIN_BATCH_SIZE, shuffle=None)
+    drug2_loader_train = DataLoader(drug2_data_train, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
+    drug2_loader_test = DataLoader(drug2_data_test, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
     
     # pdb.set_trace()
     model = modeling().to(device)
@@ -171,6 +174,7 @@ for i in range(3, 5):
         # save data
         AUCs = [epoch, ACC, BACC, AUC, PR_AUC, PREC, recall, F1, TPR, KAPPA]
         save_AUCs(AUCs, file_AUCs)
+        
         print(f'AUC: {AUC}, PR_AUC: {PR_AUC}, ACC: {ACC}, BACC: {BACC}, \
              PREC: {PREC}, TPR: {TPR}, KAPPA: {KAPPA}, RECALL: {recall}.')
         # ret = [rmse(T, S), mse(T, S), pearson(T, S), spearman(T, S), ci(T, S)]

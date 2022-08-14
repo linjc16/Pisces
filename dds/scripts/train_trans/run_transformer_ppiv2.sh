@@ -6,9 +6,10 @@ CRITERION=binary_class_loss_bce
 DATAFOLD=$1
 LR=$2
 DROP=$3
+MEMORY=$4
 
 DATADIR=/data/linjc/dds/data/transductive/$DATAFOLD/data-bin
-SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP-noscheduler
+SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP-memory$MEMORY
 
 # rm -rf $SAVEDIR
 mkdir -p $SAVEDIR
@@ -27,6 +28,7 @@ CUDA_VISIBLE_DEVICES=1 python dds/src/train.py $DATADIR \
     --required-batch-size-multiple 1 \
     --classification-head-name $CLSHEAD \
     --num-classes 125 \
+    --n-memory $MEMORY \
     --dropout $DROP --attention-dropout $DROP --pooler-dropout 0.1 \
     --weight-decay 0.01 --optimizer adam --adam-betas "(0.9, 0.98)" --adam-eps 1e-06 \
     --clip-norm 0.0 \
