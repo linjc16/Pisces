@@ -7,10 +7,11 @@ import os
 import json, pickle
 from collections import OrderedDict
 from rdkit import Chem
-# from rdkit.Chem import MolFromSmiles
+from rdkit.Chem import MolFromSmiles
 import networkx as nx
 from utils_test import *
 import pdb
+import argparse
 
 
 
@@ -113,16 +114,23 @@ if __name__ == "__main__":
     # datafile = 'prostate'
     # cellfile = 'baselines/DeepDDs-master/data/new_cell_features_954.csv'
     # da = ['new_labels_0_10_leave']
-    cellfile = 'baselines/DeepDDs-master/data_ours/cell_features_expression_new.csv'
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--cellfile', type=str)
+    parser.add_argument('--savedir', type=str)
+    parser.add_argument('--root', type=str)
+
+    args = parser.parse_args()
+    # cellfile = 'baselines/DeepDDs-master/data_ours/cell_features_expression_new.csv'
     da = []
     for i in range(5):
         da.append(f'train_fold{i}')
         da.append(f'test_fold{i}')
     
     # savedir = '/data/linjc/dds/baselines/DeepDDS/data_leave_cell'
-    savedir = '/data/linjc/dds/baselines/DeepDDS/data_leave_comb'
+    # savedir = '/data/linjc/dds/baselines/DeepDDS/data_leave_comb'
     # root = 'baselines/DeepDDs-master/data_ours/'
     # root = 'baselines/DeepDDs-master/data_ours_leave_cell/'
-    root = 'baselines/DeepDDs-master/data_ours_leave_comb/'
+    # root = 'baselines/DeepDDs-master/data_ours_leave_comb/'
     for datafile in da:
-        creat_data(datafile, cellfile, savedir, root)
+        creat_data(datafile, args.cellfile, args.savedir, args.root)

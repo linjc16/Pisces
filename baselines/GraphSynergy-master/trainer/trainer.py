@@ -2,6 +2,7 @@ import numpy as np
 import torch
 from base import BaseTrainer
 from utils import inf_loop, MetricTracker
+import pdb
 
 class Trainer(BaseTrainer):
     def __init__(self, 
@@ -68,8 +69,8 @@ class Trainer(BaseTrainer):
                 y_pred = torch.sigmoid(output)
                 y_pred = y_pred.cpu().detach().numpy()
                 y_true = target.cpu().detach().numpy()
-                for met in self.metric_fns:
-                    self.train_metrics.update(met.__name__, met(y_pred, y_true))
+                # for met in self.metric_fns:
+                #     self.train_metrics.update(met.__name__, met(y_pred, y_true))
             
             if batch_idx % self.log_step == 0:
                 self.logger.debug('Train Epoch: {} {} Loss: {:.6f}'.format(
@@ -94,6 +95,7 @@ class Trainer(BaseTrainer):
     def _valid_epoch(self, epoch):
         self.model.eval()
         self.valid_metrics.reset()
+
         with torch.no_grad():
             for batch_idx, (data, target) in enumerate(self.valid_data_loader):
                 target = target.to(self.device)
@@ -117,8 +119,17 @@ class Trainer(BaseTrainer):
         self.model.eval()
         total_loss = 0.0
         total_metrics = torch.zeros(len(self.metric_fns))
+
+        self.data_all = []####
+        self.y_pred_all = []
         with torch.no_grad():
             for batch_idx, (data, target) in enumerate(self.test_data_loader):
+                self.data_all.append(data)
+                # self.labels.append(target)##
+                # torch.save(torch.cat(self.labels, dim=0), 'labels_GS.pt')##
+
+                # pdb.set_trace()
+
                 target = target.to(self.device)
                 output, emb_loss = self.model(*self._get_feed_dict(data))
                 loss = self.criterion(output, target.squeeze()) + emb_loss
@@ -127,11 +138,17 @@ class Trainer(BaseTrainer):
                 total_loss += loss.item() * batch_size
 
                 y_pred = torch.sigmoid(output)
+
+                self.y_pred_all.append(y_pred)
+
                 y_pred = y_pred.cpu().detach().numpy()
                 y_true = target.cpu().detach().numpy()
                 for i, metric in enumerate(self.metric_fns):
                     total_metrics[i] += metric(y_pred, y_true) * batch_size
-        
+            
+            torch.save(torch.cat(self.data_all, dim=0).cpu(), 'data_GS_all.pt')
+            torch.save(torch.cat(self.y_pred_all, dim=0).cpu(), 'y_pred_GS_all.pt')
+
         test_output = {'n_samples': len(self.test_data_loader.sampler), 
                        'total_loss': total_loss, 
                        'total_metrics': total_metrics}

@@ -68,6 +68,8 @@ def main():
 
     label_dict = {}
     cell_dict = {}
+    
+    cell_dict = {str(i): i for i in range(len(cell_names))}
 
     drug_unusal = set()
 
@@ -90,8 +92,8 @@ def main():
                 if str(y) not in label_dict:
                     label_dict[str(y)] = len(label_dict)
 
-                if str(CELL_TO_INDEX_DICT[cell]) not in cell_dict:
-                    cell_dict[str(CELL_TO_INDEX_DICT[cell])] = len(cell_dict)
+                # if str(CELL_TO_INDEX_DICT[cell]) not in cell_dict:
+                #     cell_dict[str(CELL_TO_INDEX_DICT[cell])] = len(cell_dict)
             
             if a not in all_drug_dict.keys():
                 drug_unusal.add(a) 
@@ -110,8 +112,8 @@ def main():
                 if str(y) not in label_dict:
                     label_dict[str(y)] = len(label_dict)
                 
-                if str(CELL_TO_INDEX_DICT[cell]) not in cell_dict:
-                    cell_dict[str(CELL_TO_INDEX_DICT[cell])] = len(cell_dict)
+                # if str(CELL_TO_INDEX_DICT[cell]) not in cell_dict:
+                #     cell_dict[str(CELL_TO_INDEX_DICT[cell])] = len(cell_dict)
 
             if a not in all_drug_dict.keys():
                 drug_unusal.add(a) 
@@ -130,8 +132,8 @@ def main():
                 if str(y) not in label_dict:
                     label_dict[str(y)] = len(label_dict)
 
-                if str(CELL_TO_INDEX_DICT[cell]) not in cell_dict:
-                    cell_dict[str(CELL_TO_INDEX_DICT[cell])] = len(cell_dict)
+                # if str(CELL_TO_INDEX_DICT[cell]) not in cell_dict:
+                #     cell_dict[str(CELL_TO_INDEX_DICT[cell])] = len(cell_dict)
 
             if a not in all_drug_dict.keys():
                 drug_unusal.add(a) 

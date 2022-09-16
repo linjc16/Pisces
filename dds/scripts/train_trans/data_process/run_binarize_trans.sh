@@ -1,8 +1,8 @@
 
 # binarize dataset
 DATAFOLD=$1
-# DATADIR=/data/linjc/dds/data/transductive/$DATAFOLD/
-DATADIR=/data/linjc/dds/data/transductive_3fold/$DATAFOLD/
+DATADIR=/data/linjc/dds/data_new/transductive/$DATAFOLD/
+# DATADIR=/data/linjc/dds/data/transductive_3fold/$DATAFOLD/
 
 python fairseq_cli/preprocess.py \
     -s 'a' -t 'b' \

@@ -13,7 +13,7 @@ from numpy.random import uniform
 from fairseq.models.gnn import DeeperGCN
 from .heads import BinaryClassMLPv2Head
 from .heads_ppi import BinaryClassMLPPPIv2Head, BinaryClassDVPPIMLPHead
-from .heads_dv import BinaryClassDVPPIConsMLPHead, BinaryClassDVPPIConsV2MLPHead
+from .heads_dv import BinaryClassDVPPIConsMLPHead, BinaryClassDVPPIConsMLPv4Head
 
 
 logger = logging.getLogger(__name__)
@@ -140,6 +140,7 @@ class DVModel(BaseFairseqModel):
                 cell_line,
                 features_only=False,
                 classification_head_name=None,
+                labels=None,
                 **kwargs):
         
         if classification_head_name is not None:
@@ -174,7 +175,7 @@ class DVModel(BaseFairseqModel):
                     graph_enc_b = GradMultiply.apply(graph_enc_b, 0.1)
 
             x = self.classification_heads[classification_head_name](seq_enc_a, graph_enc_a, \
-                            seq_enc_b, graph_enc_b, cell_line)
+                            seq_enc_b, graph_enc_b, cell_line, labels)
 
         else:
         
@@ -186,7 +187,7 @@ class DVModel(BaseFairseqModel):
             if isinstance(seq_enc_b, Tensor):
                seq_enc_b = GradMultiply.apply(seq_enc_b, 0.1)
 
-            x = self.classification_heads[classification_head_name](seq_enc_a, seq_enc_b, cell_line)
+            x = self.classification_heads[classification_head_name](seq_enc_a, seq_enc_b, cell_line, labels)
         
         return x
 
@@ -298,9 +299,9 @@ class DVModel(BaseFairseqModel):
                 pooler_dropout=self.args.pooler_dropout,
                 n_memory=self.args.n_memory,
             )
-
-        elif name == 'bclsmlpdvppiconsv2':
-            self.classification_heads[name] = BinaryClassDVPPIConsV2MLPHead(
+        
+        elif name == 'bclsmlpdvppiconsv4':
+            self.classification_heads[name] = BinaryClassDVPPIConsMLPv4Head(
                 input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
                 dv_input_dim=getattr(self.dual_view_encoder, "output_features", self.args.gnn_embed_dim),
                 inner_dim=inner_dim or self.args.encoder_embed_dim,
@@ -309,9 +310,10 @@ class DVModel(BaseFairseqModel):
                 pooler_dropout=self.args.pooler_dropout,
                 n_memory=self.args.n_memory,
             )
+
         else:
 
-            raise NotImplementedError('No Implemented by DDI')
+            raise NotImplementedError('No Implemented by DDS')
 
     def upgrade_state_dict_named(self, state_dict, name):
 

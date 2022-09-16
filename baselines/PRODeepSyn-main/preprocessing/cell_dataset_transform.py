@@ -39,4 +39,4 @@ print(f'Save nodes_ge.npy, {nodes_ge.shape}')
 target_ge = cell_feats_matrix[:, nodes_ge.tolist()]
 np.save(os.path.join(savedir, 'target_ge.npy'), target_ge)
 print(f'Save target_ge.npy, {target_ge.shape}')
-pdb.set_trace()
+# pdb.set_trace()

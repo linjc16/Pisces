@@ -1,6 +1,7 @@
 import imp
 import logging
 import os
+from random import shuffle
 import numpy as np
 import torch
 from fairseq.data import (
@@ -172,6 +173,7 @@ class BinaryClassTask(FairseqTask):
             self.target_dictionary.eos(),
         )
 
+
         src_dataset_graph = make_graph_dataset(drug_a_prefix, impl=dataset_impl)
         assert src_dataset_graph is not None
         src_dataset_graph = Tensor2Data(src_dataset_graph)
@@ -196,7 +198,7 @@ class BinaryClassTask(FairseqTask):
             "nsentences": NumSamplesDataset(),
             "ntokens": NumelDataset(drug_a_dataset, reduce=True),
         }
-
+        
         prefix_label = self.get_path("label", split)
         label_dataset = make_dataset(prefix_label, impl=dataset_impl)
         assert label_dataset is not None

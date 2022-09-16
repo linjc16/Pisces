@@ -6,7 +6,7 @@ CRITERION=binary_class_loss_bce
 DATAFOLD=$1
 LR=$2
 DROP=0.1
-MEMORY=128
+MEMORY=32
 
 DATADIR=/data/linjc/dds/data/transductive/$DATAFOLD/data-bin
 SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP-memory$MEMORY-v2

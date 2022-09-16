@@ -93,7 +93,7 @@ class BinaryClassBCECriterion(FairseqCriterion):
         targets = model.get_targets(sample['label'], None).view(-1).cpu().numpy()
 
 
-        return preds, targets, sample['label'].detach().cpu().numpy()
+        return preds, targets, sample['cell'].detach().cpu().numpy()
     
     @staticmethod
     def reduce_metrics(logging_outputs):

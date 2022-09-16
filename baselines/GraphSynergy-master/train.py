@@ -6,12 +6,13 @@ import data_loader.data_loaders as module_data
 import model.loss as module_loss
 import model.metric as module_metric
 from model.GraphSynergy import GraphSynergy as module_arch
+from model.GraphSynergy_temp import GraphSynergy as module_atch_eval
 from parse_config import ConfigParser
 from trainer.trainer import Trainer
 import pdb
 
 # fix random seeds for reproducibility
-SEED = 12645
+SEED = 12121
 torch.manual_seed(SEED)
 torch.cuda.manual_seed(SEED)
 torch.backends.cudnn.deterministic = True
@@ -66,6 +67,14 @@ def main(config):
 
     """Testing."""
     logger = config.get_logger('test')
+    model = module_atch_eval(protein_num=node_num_dict['protein'],
+                        cell_num=node_num_dict['cell'],
+                        drug_num=node_num_dict['drug'],
+                        emb_dim=config['arch']['args']['emb_dim'],
+                        n_hop=config['arch']['args']['n_hop'],
+                        l1_decay=config['arch']['args']['l1_decay'],
+                        therapy_method=config['arch']['args']['therapy_method'])
+
     logger.info(model)
     test_metrics = [getattr(module_metric, met) for met in config['metrics']]
     
@@ -76,6 +85,16 @@ def main(config):
     state_dict = checkpoint['state_dict']
     model.load_state_dict(state_dict)
 
+    trainer = Trainer(model, criterion, metrics, optimizer,
+                      config=config,
+                      data_loader=data_loader,
+                      feature_index=feature_index,
+                      cell_neighbor_set=cell_neighbor_set,
+                      drug_neighbor_set=drug_neighbor_set,
+                      valid_data_loader=valid_data_loader,
+                      test_data_loader=test_data_loader,
+                      lr_scheduler=lr_scheduler)
+    
     test_output = trainer.test()
     log = {'loss': test_output['total_loss'] / test_output['n_samples']}
     log.update({
