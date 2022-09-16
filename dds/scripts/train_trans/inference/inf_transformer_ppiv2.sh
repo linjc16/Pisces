@@ -5,10 +5,11 @@ CLSHEAD=bclsmlpppiv2
 CRITERION=binary_class_loss_bce
 DATAFOLD=$1
 LR=$2
-DROP=$3
+DROP=0.1
+MEMORY=32
 
-DATADIR=/data/linjc/dds/data/transductive/$DATAFOLD/data-bin
-SAVEDIR=/data/linjc/dds/ckpt/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP
+DATADIR=/data/linjc/dds/data_new/transductive/$DATAFOLD/data-bin
+SAVEDIR=/data/linjc/dds/ckpt_new/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP-memory$MEMORY
 
 
 CUDA_VISIBLE_DEVICES=0 python dds/src/binary_class_inf.py $DATADIR \

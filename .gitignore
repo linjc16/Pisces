@@ -11,8 +11,14 @@ checkpoints/
 /fairseq/modules/*_layer/*_forward.cu
 /fairseq/modules/*_layer/*_backward.cu
 /fairseq/version.py
+dds/scripts/train_leave_drug
 
 # data
 data-bin/
 __pycache__/
 temp.py
+trash/
+temp/
+binary_class_inf_temp.py
+output
+preprocess/extra_dataset

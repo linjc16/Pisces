@@ -33,13 +33,15 @@ class GraphSynergy(BaseModel):
         elif self.therapy_method == 'weighted_inner_product':
             self.combine_function = nn.Linear(in_features=2, out_features=1, bias=False)
 
+        self.drug_pair_list = []
+
     def forward(self,
                 cells: torch.LongTensor,
                 drug1: torch.LongTensor,
                 drug2: torch.LongTensor,
                 cell_neighbors: list,
                 drug1_neighbors: list,
-                drug2_neighbors: list):
+                drug2_neighbors: list,):
         cell_embeddings = self.cell_embedding(cells)
         # pdb.set_trace()
         drug1_embeddings = self.drug_embedding(drug1)
@@ -61,6 +63,10 @@ class GraphSynergy(BaseModel):
         cell_embeddings = self._aggregation(cell_i_list)
         drug1_embeddings = self._aggregation(drug1_i_list)
         drug2_embeddings = self._aggregation(drug2_i_list)
+
+        # self.drug_pair_list.append(torch.cat([drug1_embeddings, drug2_embeddings], dim=1))
+        # torch.save(torch.cat(self.drug_pair_list, dim=0).cpu(), 'drug_pairs_feat_GS.pt')
+
 
         score = self._therapy(drug1_embeddings, drug2_embeddings, cell_embeddings) - \
                 self._toxic(drug1_embeddings, drug2_embeddings)

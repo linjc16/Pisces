@@ -3,9 +3,9 @@ import pdb
 import os
 import numpy as np
 
-fold_num = 3
-RAW_DATA_DIR = 'baselines/DeepDDs-master/data_ours_3fold'
-OUTPUT_DIR = '/data/linjc/dds/data/transductive_3fold'
+fold_num = 5
+RAW_DATA_DIR = 'baselines/DeepDDs-master/data_ours'
+OUTPUT_DIR = '/data/linjc/dds/data_new/transductive'
 
 for i in range(fold_num):
 

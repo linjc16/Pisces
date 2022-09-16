@@ -43,7 +43,11 @@ class GCNNet(torch.nn.Module):
         self.fc2 = nn.Linear(512, 128)
         self.out = nn.Linear(128, self.n_output)
 
-    def forward(self, data1, data2):
+        # self.drug_list = []
+        # self.label_list = []
+        
+
+    def forward(self, data1, data2, labels=None):
         x1, edge_index1, batch1, cell = data1.x, data1.edge_index, data1.batch, data1.cell
         x2, edge_index2, batch2 = data2.x, data2.edge_index, data2.batch
 
@@ -94,6 +98,11 @@ class GCNNet(torch.nn.Module):
         # concat
         xc = torch.cat((x1, x2, cell_vector), 1)
         
+        # self.drug_list.append(xc)
+        # self.label_list.append(labels)
+
+        # torch.save(torch.cat(self.drug_list, dim=0).cpu(), 'drug_triplets_DeepDDS.pt')
+        # torch.save(torch.cat(self.label_list).cpu(), 'labels_DeepDDS.pt')
         # add some dense layers
         xc = self.fc1(xc)
         xc = self.relu(xc)

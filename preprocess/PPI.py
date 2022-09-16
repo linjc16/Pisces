@@ -17,9 +17,4 @@ ppi_df_new = pd.DataFrame.from_dict({'protein1': g1_list, 'protein2': g2_list})
 ppi_df_new.to_csv('data/ppi.csv', index=False)
 
 
-# drug-protein
-
-
-
-# cell-protein
-pdb.set_trace()
+# pdb.set_trace()

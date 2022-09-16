@@ -23,7 +23,4 @@ python preprocess/cell_read_count.py
 python preprocess/cell_tpm.py
 ```
 
-### Gene Mutation
-TODO
-
 ## Protein-protein Networks

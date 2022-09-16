@@ -23,4 +23,4 @@ for index, fold_file in enumerate(fold_files):
 df_synergy = pd.DataFrame.from_dict(df_synergy)
 df_synergy.to_csv('baselines/PRODeepSyn-main/predictor/data_ours/synergy.tsv', sep='\t', index=False, header=True)
 
-pdb.set_trace()
+# pdb.set_trace()

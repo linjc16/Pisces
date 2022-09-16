@@ -37,6 +37,7 @@ from fairseq.trainer import Trainer
 from omegaconf import DictConfig, OmegaConf
 from sklearn import metrics as sk_metrics
 from tqdm import tqdm
+import pdb
 
 logging.basicConfig(
     format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
@@ -163,12 +164,9 @@ def validate(
     preds_list = []
     targets_list = []
 
-    pos_list = []
-    neg_list = []
-    pos_target = []
-    neg_target = []
     cls_list = []
     
+    # pdb.set_trace()
     for i, sample in enumerate(tqdm(progress)):
         if cfg.dataset.max_valid_steps is not None and i > cfg.dataset.max_valid_steps:
             break
@@ -181,9 +179,23 @@ def validate(
             cls_list.append(cls_type)
             targets_list.append(targets)
 
+
     predic = np.concatenate(preds_list)
     y_test = np.concatenate(targets_list)
     pred = (predic >= 0.5).astype(np.int64)
+
+    # cls_types = np.concatenate(cls_list).squeeze(1)
+    # pdb.set_trace()
+    # from collections import Counter
+    # cell_counter = Counter(cls_types.tolist())
+    
+    # np.save('predic_leave_combs.npy', predic)
+    # np.save('y_test_leave_combs.npy', y_test)
+    # np.save('cell_types_leave_combs.npy', cls_types)
+    
+    # np.save('predic_leave_combs_extra.npy', predic)
+    # np.save('y_test_leave_combs_extra.npy', y_test)
+    # np.save('cell_types_leave_combs_extra.npy', cls_types)
     
     acc = sk_metrics.accuracy_score(y_test, pred)
     auc_roc = sk_metrics.roc_auc_score(y_test, predic)
@@ -202,8 +214,50 @@ def validate(
 
     print(f"acc: {acc}, bacc: {bacc}, auc_roc: {auc_roc}, auc_prc: {auc_prc}, prec: {prec}, \
         recall: {recall}, f1_score: {f1_score}, TPR: {TPR}, kappa: {kappa}")
-
     
+    # # save_dir = os.path.dirname(cfg.checkpoint.restore_file)
+    # save_dir = './'
+    # bacc_cell_level = []
+    # kappa_cell_level = []
+    # f1_cell_level = []
+    # auprc_cell_level = []
+    # num_pos = []
+    # num_neg = []
+    # for i in range(125):
+    #     predic_curr = predic[cls_types == i]
+    #     y_test_curr = y_test[cls_types == i]
+    #     pred_curr = (predic_curr >= 0.5).astype(np.int64)
+
+    #     bacc_curr = sk_metrics.balanced_accuracy_score(y_test_curr, pred_curr)
+    #     kappa_curr = sk_metrics.cohen_kappa_score(y_test_curr, pred_curr)
+    #     f1_score_curr = sk_metrics.f1_score(y_test_curr, pred_curr)
+    #     p, r, t = sk_metrics.precision_recall_curve(y_test_curr, predic_curr)
+    #     auc_prc_curr = sk_metrics.auc(r, p)
+
+    #     bacc_cell_level.append(bacc_curr)
+    #     kappa_cell_level.append(kappa_curr)
+    #     f1_cell_level.append(f1_score_curr)
+    #     auprc_cell_level.append(auc_prc_curr)
+    #     num_pos.append(y_test_curr.sum())
+    #     num_neg.append(len(y_test_curr) - num_pos[-1])
+    
+    # # pdb.set_trace()
+    # import pandas as pd
+    # metric_cell_level = pd.DataFrame.from_dict(
+    #     {
+    #         'cell_line_type': list(range(125)),
+    #         'bacc': bacc_cell_level,
+    #         'auprc': auprc_cell_level,
+    #         'f1': f1_cell_level,
+    #         'kappa': kappa_cell_level,
+    #         'num_pos': num_pos,
+    #         'num_neg': num_neg,
+    #     }
+    # )
+    # metric_cell_level.to_csv(os.path.join(save_dir, f'cell_level_{cfg.model._name}.csv'))
+    
+    # pdb.set_trace()
+
 def cli_main(
     modify_parser: Optional[Callable[[argparse.ArgumentParser], None]] = None
 ) -> None:

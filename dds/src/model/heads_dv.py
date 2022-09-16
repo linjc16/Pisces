@@ -10,7 +10,6 @@ from .heads_ppi import DataPPI
 
 
 
-
 class BinaryClassDVPPIConsMLPHead(nn.Module):
     
     def __init__(self,
@@ -126,8 +125,7 @@ class BinaryClassDVPPIConsMLPHead(nn.Module):
         return item_embeddings
 
 
-
-class BinaryClassDVPPIConsV2MLPHead(nn.Module):
+class BinaryClassDVPPIConsMLPv4Head(nn.Module):
     
     def __init__(self,
                  input_dim,
@@ -159,22 +157,16 @@ class BinaryClassDVPPIConsV2MLPHead(nn.Module):
 
         self.transformer_proj_head = nn.Linear(input_dim, inner_dim)
         self.graph_proj_head = nn.Linear(dv_input_dim, inner_dim)
+        self.mix_linear = nn.Linear(inner_dim * 2, inner_dim)
+        self.layernorm_cell = nn.LayerNorm(inner_dim)
 
-        self.dropout = nn.Dropout(p=pooler_dropout)
-
+        
         self.classifier_1 = nn.Sequential(
             nn.Linear(3 * inner_dim, inner_dim * 2),
             nn.ReLU(),
             nn.Dropout(p=pooler_dropout),
         )
         
-        self.classifier_1_aux = nn.Sequential(
-            nn.Linear(3 * inner_dim, inner_dim * 2),
-            nn.ReLU(),
-            nn.Dropout(p=pooler_dropout),
-        )
-        
-        # combined layers
         self.classifier_2 = nn.Sequential(
             nn.Linear(inner_dim * 2, inner_dim),
             nn.ReLU(),
@@ -182,14 +174,10 @@ class BinaryClassDVPPIConsV2MLPHead(nn.Module):
             nn.Linear(inner_dim, 1)
         )
 
-        self.mix_linear = nn.Linear(inner_dim * 2, inner_dim)
-
-        self.layernorm_cell = nn.LayerNorm(inner_dim)
-
         self.contrastive_loss = nn.CrossEntropyLoss(reduction='mean')
     
-    def forward(self, drug_a, dv_drug_a, drug_b, dv_drug_b, cells):
-        
+    def forward(self, drug_a, dv_drug_a, drug_b, dv_drug_b, cells, labels=None):
+
         cells_neighbors = []
         for hop in range(self.n_hop):
             cells_neighbors.append(torch.LongTensor([self.cell_neighbor_set[c][hop] \
@@ -197,9 +185,10 @@ class BinaryClassDVPPIConsV2MLPHead(nn.Module):
         
         cell_neighbors_emb_list = self._get_neighbor_emb(cells_neighbors)
         cell_i_list = self._interaction_aggregation(cell_neighbors_emb_list)
-        # pdb.set_trace()
+
         cell_embeddings = self._aggregation(cell_i_list)
         cell_embeddings = self.layernorm_cell(cell_embeddings)
+
 
         ta = self.transformer_proj_head(drug_a)
         tb = self.transformer_proj_head(drug_b)
@@ -210,22 +199,29 @@ class BinaryClassDVPPIConsV2MLPHead(nn.Module):
         heads = self.mix_linear(torch.cat([ta, ga], dim=1))
         tails = self.mix_linear(torch.cat([tb, gb], dim=1))
 
+
         # concat
-        xc = torch.cat((heads, tails, cell_embeddings), dim=1)
-        out = self.classifier_2(self.classifier_1(xc))
+        xc = torch.cat([heads, tails, cell_embeddings], dim=1)
+        xc = self.classifier_1(xc)
+        out = self.classifier_2(xc)
 
-        # aux out
-        xc_g = torch.cat((ga, gb, cell_embeddings), dim=1)
-        sub_out_g = self.classifier_2(self.classifier_1_aux(xc_g))
+        combo_list = [[ta, tb], [ta, gb], [ga, tb], [ga, gb]]
+        combo_idxes = np.random.choice(range(4), size=2, replace=False, p=[1/4] * 4)
+        assert combo_idxes[0] != combo_idxes[1]
 
-        xc_t = torch.cat((ta, tb, cell_embeddings), dim=1)
-        sub_out_t = self.classifier_2(self.classifier_1_aux(xc_t))
+        xc_1_raw = torch.cat(combo_list[combo_idxes[0]] + [cell_embeddings], dim=1)
+        xc_1 = self.classifier_1(xc_1_raw)
+        sub_out_1 = self.classifier_2(xc_1)
 
-        cosine_tga = self.get_cosine_loss(ta, ga)
-        cosine_tgb = self.get_cosine_loss(tb, gb)
+        xc_2_raw = torch.cat(combo_list[combo_idxes[1]] + [cell_embeddings], dim=1)
+        xc_2 = self.classifier_1(xc_2_raw)
+        sub_out_2 = self.classifier_2(xc_2)
 
-        return out, 0.5 * (cosine_tga + cosine_tgb), 0.5 * (sub_out_g + sub_out_t)
+        cosine_ttgg = self.get_cosine_loss(xc_1_raw, xc_2_raw)
+        consine = cosine_ttgg
 
+        return out, consine, 0.5 * (sub_out_1 + sub_out_2)
+    
     def get_cosine_loss(self, anchor, positive):
         anchor = anchor / torch.norm(anchor, dim=-1, keepdim=True)
         positive = positive / torch.norm(positive, dim=-1, keepdim=True)
@@ -258,3 +254,4 @@ class BinaryClassDVPPIConsV2MLPHead(nn.Module):
         # [batch_size, emb_dim]
         item_embeddings = self.aggregation_function(item_i_concat)
         return item_embeddings
+

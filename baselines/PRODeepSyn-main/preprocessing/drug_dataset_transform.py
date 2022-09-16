@@ -41,7 +41,7 @@ fps = []
 for i in range(len(df_fp)):
     fps.append("".join(str (x) for x in df_fp.iloc[i, 1:]))
 df_fp_new['fingerprint'] = fps
-pdb.set_trace()
+# pdb.set_trace()
 df_fp_new = pd.DataFrame.from_dict(df_fp_new)
 df_fp_new.to_csv(os.path.join(savedir, 'fp256.tsv'), sep='\t', index=False, header=True)
-pdb.set_trace()
+# pdb.set_trace()

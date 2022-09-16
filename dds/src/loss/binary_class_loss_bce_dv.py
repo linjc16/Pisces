@@ -61,7 +61,7 @@ class BinaryClassBCECriterion(FairseqCriterion):
         loss_fn = BCEWithLogitsLoss()
         loss = loss_fn(logits.squeeze(), labels.type_as(logits))
         loss += self.consis_alpha * cst_loss
-
+        
         # print(loss)
         pos_preds = torch.sigmoid(pos_logits).detach()
         neg_preds = torch.sigmoid(neg_logits).detach()
@@ -96,7 +96,7 @@ class BinaryClassBCECriterion(FairseqCriterion):
         targets = model.get_targets(sample['label'], None).view(-1).cpu().numpy()
 
 
-        return preds, targets, sample['label'].detach().cpu().numpy()
+        return preds, targets, sample['cell'].detach().cpu().numpy()
     
     @staticmethod
     def reduce_metrics(logging_outputs):

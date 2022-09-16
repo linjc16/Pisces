@@ -9,10 +9,9 @@ import torch.nn.functional as F
 from torch import nn
 from fairseq.models.roberta import RobertaEncoder
 from omegaconf import II
-from .heads import BinaryClassMLPHead, BinaryClassMLPv2Head, BinaryClassMLPv2NonormHead
-from .heads_ppi import BinaryClassMLPPPIHead, BinaryClassMLPPPIv2Head, BinaryClassMLPPPIInnerMixHead, \
-        BinaryClassMLPPPIInterMixHead, BinaryClassMLPAttnPPIHead
-from .heads_prot_seq import BinaryClassProtSeqFrozenMLPHead
+from .heads import BinaryClassMLPv2Head
+from .heads_ppi import BinaryClassMLPPPIv2Head
+from .trash.heads_prot_seq import BinaryClassProtSeqFrozenMLPHead
 
 import pdb
 
@@ -210,25 +209,7 @@ class DrugTransfomerModel(BaseFairseqModel):
                                                                     prev_num_classes, inner_dim,
                                                                     prev_inner_dim))
 
-        if name == 'bclsmlp':
-            
-            self.classification_heads[name] = BinaryClassMLPHead(
-                input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
-                inner_dim=inner_dim or self.args.encoder_embed_dim,
-                num_classes=num_classes,
-                actionvation_fn=self.args.pooler_activation_fn,
-                pooler_dropout=self.args.pooler_dropout,
-            )
-        
-        elif name == 'bclsmlpppi':
-            self.classification_heads[name] = BinaryClassMLPPPIHead(
-                input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
-                inner_dim=inner_dim or self.args.encoder_embed_dim,
-                num_classes=num_classes,
-                actionvation_fn=self.args.pooler_activation_fn,
-                pooler_dropout=self.args.pooler_dropout,
-            )
-        elif name == 'bclsmlpv2':
+        if name == 'bclsmlpv2':
             self.classification_heads[name] = BinaryClassMLPv2Head(
                 input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
                 inner_dim=inner_dim or self.args.encoder_embed_dim,
@@ -244,14 +225,7 @@ class DrugTransfomerModel(BaseFairseqModel):
                 actionvation_fn=self.args.pooler_activation_fn,
                 pooler_dropout=self.args.pooler_dropout,
             )
-        elif name == 'bclsmlpv2nonorm':
-            self.classification_heads[name] = BinaryClassMLPv2NonormHead(
-                input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
-                inner_dim=inner_dim or self.args.encoder_embed_dim,
-                num_classes=num_classes,
-                actionvation_fn=self.args.pooler_activation_fn,
-                pooler_dropout=self.args.pooler_dropout,
-            )
+        
         elif name == 'bclsmlpppiv2':
             self.classification_heads[name] = BinaryClassMLPPPIv2Head(
                 input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
@@ -261,34 +235,9 @@ class DrugTransfomerModel(BaseFairseqModel):
                 pooler_dropout=self.args.pooler_dropout,
                 n_memory=self.args.n_memory,
             )
-        elif name == 'bclsmlpattnppi':
-            self.classification_heads[name] = BinaryClassMLPAttnPPIHead(
-                input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
-                inner_dim=inner_dim or self.args.encoder_embed_dim,
-                num_classes=num_classes,
-                actionvation_fn=self.args.pooler_activation_fn,
-                pooler_dropout=self.args.pooler_dropout,
-                n_memory=self.args.n_memory,
-            )
-        elif name == 'bclsmlpppiInnermix':
-            self.classification_heads[name] = BinaryClassMLPPPIInnerMixHead(
-                input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
-                inner_dim=inner_dim or self.args.encoder_embed_dim,
-                num_classes=num_classes,
-                actionvation_fn=self.args.pooler_activation_fn,
-                pooler_dropout=self.args.pooler_dropout,
-            )
-        elif name == 'bclsmlpppiIntermix':
-            self.classification_heads[name] = BinaryClassMLPPPIInterMixHead(
-                input_dim=getattr(self.encoder, "output_features", self.args.encoder_embed_dim),
-                inner_dim=inner_dim or self.args.encoder_embed_dim,
-                num_classes=num_classes,
-                actionvation_fn=self.args.pooler_activation_fn,
-                pooler_dropout=self.args.pooler_dropout,
-            )
-        
+
         else:
-            raise NotImplementedError('No Implemented by DDI')
+            raise NotImplementedError('No Implemented by DDS')
 
     def max_positions(self):
         return self.args.max_positions

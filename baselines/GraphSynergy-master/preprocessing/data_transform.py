@@ -7,8 +7,11 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--fold', type=str)
 args = parser.parse_args()
 
-RAW_DATA_DIR = f'/data/linjc/dds/data/leave_cells/fold{args.fold}'
-OUTPUT_DIR = 'baselines/GraphSynergy-master/data_ours_leave_cell'
+# RAW_DATA_DIR = f'/data/linjc/dds/data/leave_cells/fold{args.fold}'
+# OUTPUT_DIR = 'baselines/GraphSynergy-master/data_ours_leave_cell'
+
+RAW_DATA_DIR = f'/data/linjc/dds/data/leave_combs/fold{args.fold}'
+OUTPUT_DIR = 'baselines/GraphSynergy-master/data_ours_leave_comb'
 
 output_dir = os.path.join(OUTPUT_DIR, f'fold{args.fold}')
 os.makedirs(output_dir, exist_ok=True)

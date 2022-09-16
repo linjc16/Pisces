@@ -18,7 +18,7 @@ class DataLoader(BaseDataLoader):
                  score='synergy 0',
                  n_hop=2, 
                  n_memory=32, 
-                 shuffle=True, 
+                 shuffle=False, 
                  validation_split=0,
                  test_split=0, 
                  num_workers=1):
@@ -27,6 +27,8 @@ class DataLoader(BaseDataLoader):
         self.score, self.threshold = score.split(' ')
         self.n_hop = n_hop
         self.n_memory = n_memory
+        self.shuffle = shuffle
+
         
         # load data
         self.drug_combination_df, self.ppi_df, self.cpi_df, self.dpi_df = self.load_data()
@@ -41,6 +43,8 @@ class DataLoader(BaseDataLoader):
         self.dataset = self.create_dataset()
         # create dataloader
         super().__init__(self.dataset, batch_size, shuffle, validation_split, test_split, num_workers)
+
+        
         
         # build the graph
         self.graph = self.build_graph()
@@ -148,7 +152,8 @@ class DataLoader(BaseDataLoader):
 
     def create_dataset(self):
         # shuffle data
-        self.drug_combination_df = self.drug_combination_df.sample(frac=1, random_state=1)
+        if self.shuffle:
+            self.drug_combination_df = self.drug_combination_df.sample(frac=1, random_state=1)
         # shape [n_data, 3]
         feature = torch.from_numpy(self.drug_combination_df.to_numpy())
         # shape [n_data, 1]
