@@ -46,7 +46,7 @@ for cell_line in cell_lines:
 
     colors = ['#33a02c', '#a6cee3']
 
-    point_size = 2
+    point_size = 30
     
     plot_utils.scatter_plot(
         ax, xs=tsne_features[-neg_num:, 0], ys=tsne_features[-neg_num:, 1], color=colors[0],
@@ -55,7 +55,7 @@ for cell_line in cell_lines:
 
     lp0 = plot_utils.scatter_plot(
         ax, xs=[], ys=[], color=colors[0],
-        xlabel='', ylabel='', size=50, label='0'
+        xlabel='', ylabel='', size=100, label='No synergy'
     ) 
 
     plot_utils.scatter_plot(
@@ -65,7 +65,7 @@ for cell_line in cell_lines:
 
     lp1 = plot_utils.scatter_plot(
         ax, xs=[], ys=[], color=colors[1],
-        xlabel='', ylabel='', size=50, label='1'
+        xlabel='', ylabel='', size=100, label='Synergy'
     )
 
     handles=[lp0, lp1]
@@ -74,4 +74,4 @@ for cell_line in cell_lines:
 
     plot_utils.format_ax(ax)
     plt.axis('off')
-    plt.savefig(os.path.join('output', f'vis_{cell_line}.png'))
+    plt.savefig(os.path.join('output', f'vis_{cell_line}.pdf'), dpi=300)
