@@ -10,7 +10,7 @@ You can build the [Dockerfile](Dockerfile) or use the docker image `teslazhu/pre
 
 To install the code from source
 ```
-git clone https://github.com/linjc16/FIN-DDI.git
+git clone https://github.com/linjc16/Pisces.git
 
 pip install fairseq
 pip uninstall -y fairseq 
