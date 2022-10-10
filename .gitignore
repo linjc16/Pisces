@@ -1,10 +1,12 @@
 
-data/
-data_ours*/
+raw/
+data_ori/
 data_feat/
 .vscode
 /features.py
 checkpoints/
+mdl_exp*
+saved/
 
 # Generated files
 /fairseq/temporal_convolution_tbc
@@ -20,5 +22,5 @@ temp.py
 trash/
 temp/
 binary_class_inf_temp.py
-output
+output*
 preprocess/extra_dataset
