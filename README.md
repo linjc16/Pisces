@@ -33,7 +33,7 @@ bash dds/scripts/train_trans/data_process/run_process_trans.sh fold0
 bash dds/scripts/train_trans/data_process/run_binarize_trans.sh
 ```
 
-Note that you need to change the file paths accordingly.
+Note that you need to change the file paths accordingly. More original data can be found [here](https://figshare.com/projects/Pisces/150657).
 
 ## Training and Test
 All training and test scripts can be seen in `dds/scripts`. For instance,
