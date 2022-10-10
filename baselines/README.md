@@ -44,6 +44,8 @@ python baselines/GraphSynergy-master/train.py --config baselines/GraphSynergy-ma
 ## PRODeepSyn
 ### Dataset
 Running file `baselines/PRODeepSyn-main/preprocessing/dds_dataset_trasform.py`, `baselines/PRODeepSyn-main/preprocessing/dds_dataset_transform_leave_comb.py` and `baselines/PRODeepSyn-main/preprocessing/dds_dataset_transform_leave_cell.py`.
+
+It should be note that you should download two files at https://figshare.com/projects/Pisces/150657, i.e. `node_features.npy` and `ppi.csv`, and then put them into the path `baselines/PRODeepSyn-main/cell/data_ours`.
 ### Training
 Just refer to `baselines/PRODeepSyn-main/README.md`.
 
