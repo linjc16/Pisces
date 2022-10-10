@@ -24,3 +24,7 @@ temp/
 binary_class_inf_temp.py
 output*
 preprocess/extra_dataset
+
+#PRODeepSyn
+baselines/PRODeepSyn-main/cell/data_ours/node_features.npy
+baselines/PRODeepSyn-main/cell/data_ours/ppi.csv
