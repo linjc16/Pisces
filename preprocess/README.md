@@ -24,3 +24,4 @@ python preprocess/cell_tpm.py
 ```
 
 ## Protein-protein Networks
+We use the same protein-protein networks as used in [GraphSynergy](https://github.com/JasonJYang/GraphSynergy).

@@ -1,0 +1,16 @@
+{
+  "target": "target_ge.npy",
+  "valid_nodes": "nodes_ge.npy",
+  "conv": 2,
+  "hidden_dim": 128,
+  "loss": "mse",
+  "emb_dim": 384,
+  "active": "relu",
+  "lr": 0.001,
+  "epoch": 1000,
+  "batch": 2,
+  "keep": 1,
+  "patience": 50,
+  "gpu": 0,
+  "suffix": "sample"
+}
