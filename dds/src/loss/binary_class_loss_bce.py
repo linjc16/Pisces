@@ -30,7 +30,13 @@ class BinaryClassBCECriterion(FairseqCriterion):
         acc_sum = torch.zeros(30)
         self.register_buffer('acc_sum', acc_sum)
 
+        self.ids = []
+
     def build_input(self, sample, classification_head_name):
+        self.ids.append(sample['id'])
+        # torch.save(torch.cat(self.ids).cpu(), 'ids_trans_smiles.pt')
+        # torch.save(torch.cat(self.ids).cpu(), 'ids_trans_graph.pt')
+
         return {
             'drug_a_seq': sample['drug_a_seq'] if 'drug_a_seq' in  sample else None,
             'drug_b_seq': sample['drug_b_seq'] if 'drug_b_seq' in  sample else None,

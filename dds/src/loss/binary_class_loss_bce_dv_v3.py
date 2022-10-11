@@ -32,9 +32,9 @@ class BinaryClassBCECriterion(FairseqCriterion):
         self.ids = []
 
     def build_input(self, sample, classification_head_name):
-        self.ids.append(sample['id'])
+        # self.ids.append(sample['id'])
         # torch.save(torch.cat(self.ids).cpu(), 'ids_leave_combs.pt')
-        torch.save(torch.cat(self.ids).cpu(), 'ids_leave_combs_extra.pt')
+        # torch.save(torch.cat(self.ids).cpu(), 'ids_leave_combs_extra.pt')
 
         return {
             'drug_a_seq': sample['drug_a_seq'] if 'drug_a_seq' in  sample else None,

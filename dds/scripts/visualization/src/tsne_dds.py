@@ -39,7 +39,7 @@ tsne_features = tsne.fit_transform(features)
 
 ax = plot_settings.get_double_square_axis()
 
-colors = ['#33a02c', '#a6cee3']
+colors = ['#d8b365', '#5ab4ac']
 
 point_size = 2
 
@@ -70,4 +70,4 @@ plot_utils.put_legend_outside_plot(ax)
 plot_utils.format_ax(ax)
 plt.axis('off')
 
-plt.savefig(os.path.join('output', 'vis_deepdds.png'), dpi=300)
+plt.savefig(os.path.join('output', 'vis_deepdds.pdf'), dpi=300)

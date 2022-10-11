@@ -184,7 +184,7 @@ def validate(
     y_test = np.concatenate(targets_list)
     pred = (predic >= 0.5).astype(np.int64)
 
-    # cls_types = np.concatenate(cls_list).squeeze(1)
+    cls_types = np.concatenate(cls_list).squeeze(1)
     # pdb.set_trace()
     # from collections import Counter
     # cell_counter = Counter(cls_types.tolist())
@@ -196,6 +196,14 @@ def validate(
     # np.save('predic_leave_combs_extra.npy', predic)
     # np.save('y_test_leave_combs_extra.npy', y_test)
     # np.save('cell_types_leave_combs_extra.npy', cls_types)
+
+    # np.save('predic_trans_graph.npy', predic)
+    # np.save('y_test_trans_graph.npy', y_test)
+    # np.save('cell_types_trans_graph.npy', cls_types)
+
+    # np.save('predic_trans_smiles.npy', predic)
+    # np.save('y_test_trans_smiles.npy', y_test)
+    # np.save('cell_types_trans_smiles.npy', cls_types)
     
     acc = sk_metrics.accuracy_score(y_test, pred)
     auc_roc = sk_metrics.roc_auc_score(y_test, predic)
