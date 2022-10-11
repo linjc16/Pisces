@@ -13,8 +13,10 @@ from collections import defaultdict
 import plot_settings
 import plot_utils
 
-g_results = pd.read_csv(f'comb_level_trans_results_graph.csv')
-t_results = pd.read_csv(f'comb_level_trans_results_smiles.csv')
+root_dir = 'dds/scripts/visualization/raw_output_scatter'
+
+g_results = pd.read_csv(os.path.join(root_dir, f'comb_level_trans_results_graph.csv'))
+t_results = pd.read_csv(os.path.join(root_dir, f'comb_level_trans_results_smiles.csv'))
 
 drug_names = pd.read_csv('data/drug_smiles.csv')['drug_names'].tolist()
 
