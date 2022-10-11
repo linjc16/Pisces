@@ -23,6 +23,8 @@ t_f1 = []
 g_kappa = []
 t_kappa = []
 
+
+
 for i in range(num_fold):
     g_results = pd.read_csv(f'cell_level_drug_gcn_base_fold{i}.csv')
     t_results = pd.read_csv(f'cell_level_drug_transfomer_base_fold{i}.csv')

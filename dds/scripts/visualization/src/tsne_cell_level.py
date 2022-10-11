@@ -44,7 +44,7 @@ for cell_line in cell_lines:
 
     ax = plot_settings.get_double_square_axis()
 
-    colors = ['#33a02c', '#a6cee3']
+    colors = ['#d8b365', '#5ab4ac']
 
     point_size = 30
     
