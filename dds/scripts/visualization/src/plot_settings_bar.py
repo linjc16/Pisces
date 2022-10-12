@@ -87,19 +87,29 @@ def get_model_colors_ablation(mod):
         'Molecular graph and SMILES (w/o cl)': '#bf812d',
         'Molecular graph and SMILES (w/ cl)': '#dfc27d',
         # '': '#003c30',
-        'Ours': '#01665e',
+        'Pisces': '#01665e',
     }[mod]
 
 
 def get_model_colors(mod):
     return {
-        'DeepSynergy': '#35978f',
-        'AuDNNsynergy':'#c7eae5',
-        'PRODeepSyn': '#bf812d',
-        'GraphSynergy': '#dfc27d',
-        'DeepDDS': '#003c30',
-        'Ours': '#01665e',
+        'DeepSynergy': '#dfc27d',
+        'AuDNNsynergy':'#bf812d',
+        'PRODeepSyn': '#8c510a',
+        'GraphSynergy': '#01665e',
+        'DeepDDS': '#35978f',
+        'Pisces': '#c7eae5',
     }[mod]
+
+# def get_model_colors(mod):
+#     return {
+#         'DeepSynergy': '#35978f',
+#         'AuDNNsynergy':'#c7eae5',
+#         'PRODeepSyn': '#bf812d',
+#         'GraphSynergy': '#dfc27d',
+#         'DeepDDS': '#003c30',
+#         'Ours': '#01665e',
+#     }[mod]
 
 # def get_model_colors(mod):
 #     return {

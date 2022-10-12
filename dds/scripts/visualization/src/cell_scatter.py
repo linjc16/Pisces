@@ -14,6 +14,8 @@ import plot_utils
 
 num_fold = 5
 
+root_dir = 'dds/scripts/visualization/raw_output'
+
 g_bacc = []
 t_bacc = []
 g_auprc = []
@@ -26,8 +28,8 @@ t_kappa = []
 
 
 for i in range(num_fold):
-    g_results = pd.read_csv(f'cell_level_drug_gcn_base_fold{i}.csv')
-    t_results = pd.read_csv(f'cell_level_drug_transfomer_base_fold{i}.csv')
+    g_results = pd.read_csv(os.path.join(root_dir, f'cell_level_drug_gcn_base_fold{i}.csv'))
+    t_results = pd.read_csv(os.path.join(root_dir, f'cell_level_drug_transfomer_base_fold{i}.csv'))
 
     g_bacc.append([g_results['bacc'].tolist()])
     t_bacc.append([t_results['bacc'].tolist()])

@@ -46,7 +46,7 @@ trans_ours = [
     [[0.7034, 0.4919, 0.4816, 0.4569]],
     [[0.6879, 0.4316, 0.4538, 0.4288]]]
 
-models_trans = ['DeepSynergy', 'AuDNNsynergy', 'PRODeepSyn', 'GraphSynergy', 'DeepDDS', 'Ours']
+models_trans = ['DeepSynergy', 'AuDNNsynergy', 'PRODeepSyn', 'GraphSynergy', 'DeepDDS', 'Pisces']
 trans = (trans_DeepSynergy, trans_AuDNNSyn, trans_PRODeepSyn, trans_GraphSyn, trans_DeepDDS, trans_ours)
 
 lc_DeepDDS = [
@@ -86,7 +86,7 @@ lc_GraphSyn = [
     [[0, 0, 0, 0]],
 ]
 
-models_lc = ['DeepSynergy', 'AuDNNsynergy', 'PRODeepSyn', 'GraphSynergy', 'DeepDDS', 'Ours']
+models_lc = ['DeepSynergy', 'AuDNNsynergy', 'PRODeepSyn', 'GraphSynergy', 'DeepDDS', 'Pisces']
 lc = (lc_DeepSynergy, lc_AuDnnSyn, lc_PRODeepSyn, lc_GraphSyn, lc_DeepDDS, lc_Ours)
 
 ldc_DeepDDS = [
@@ -125,7 +125,7 @@ ldc_Ours = [
     [[0.6767, 0.3632, 0.4007, 0.3748]]
 ]
 
-models_ldc = ['DeepSynergy', 'AuDNNsynergy', 'PRODeepSyn', 'GraphSynergy', 'DeepDDS', 'Ours']
+models_ldc = ['DeepSynergy', 'AuDNNsynergy', 'PRODeepSyn', 'GraphSynergy', 'DeepDDS', 'Pisces']
 ldc = (ldc_DeepSynergy, ldc_AuDNNSyn, ldc_PRODeepSyn, ldc_GraphSyn, ldc_DeepDDS, ldc_Ours)
 
 
@@ -136,7 +136,7 @@ settings = ['5-fold CV', 'Stratified CV for\ndrug combinations', 'Stratified CV 
 def bar_plot(dataset, models, labels, name, metrics_id):
 
     
-    ax = plot_settings_bar.get_wider_axis(3, 6)
+    ax = plot_settings_bar.get_wider_axis(3, 4)
 
     colors = [plot_settings_bar.get_model_colors(mod) for mod in models]
     

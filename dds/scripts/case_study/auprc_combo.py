@@ -11,7 +11,7 @@ import seaborn as sns
 import pdb
 
 diff_path = 'dds/scripts/case_study/raw_output/diff.csv'
-drug_types_path = 'dds/scripts/case_study/raw_output/drug_types.csv'
+drug_types_path = 'dds/scripts/case_study/raw_output/drug_types_f1.csv'
 
 MEDIUM_SIZE = 8
 SMALLER_SIZE = 6
@@ -33,7 +33,7 @@ def main():
     drug_types_dict = dict(zip(drug_types['drug_names'].tolist(), drug_types['drug_types'].tolist()))
 
     top_combos = 75
-    improvs = diff['AUPRC_diff'].to_numpy()[top_combos:]
+    improvs = diff['AUPRC_diff'].to_numpy()[:top_combos]
     # pdb.set_trace()
     
     combo_types = []
@@ -44,7 +44,7 @@ def main():
         else:
             combo_types.append(0)
     
-    combo_types = np.array(combo_types)[top_combos:]
+    combo_types = np.array(combo_types)[:top_combos]
 
     improv_homo = improvs[combo_types == 1]
     improv_hetero = improvs[combo_types == 0]
@@ -77,7 +77,8 @@ def main():
     ax.spines['top'].set_visible(False)
     plt.tight_layout()
     plt.rcParams['savefig.dpi'] = 800
-    plt.savefig('suitable.png')
+    # plt.savefig('suitable.png')
+    plt.savefig('suitable.pdf')
 
 if __name__ == '__main__':
     main()
