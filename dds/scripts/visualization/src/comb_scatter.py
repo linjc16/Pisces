@@ -20,14 +20,6 @@ t_results = pd.read_csv(os.path.join(root_dir, f'comb_level_trans_results_smiles
 
 drug_names = pd.read_csv('data/drug_smiles.csv')['drug_names'].tolist()
 
-# g_bacc = np.array(g_results['BACC'].tolist())
-# t_bacc = np.array(t_results['BACC'].tolist())
-# g_auprc = np.array(g_results['AUPRC'].tolist())
-# t_auprc = np.array(t_results['AUPRC'].tolist())
-# g_f1 = np.array(g_results['F1'].tolist())
-# t_f1 = np.array(t_results['F1'].tolist())
-# g_kappa = np.array(g_results['KAPPA'].tolist())
-# t_kappa = np.array(t_results['KAPPA'].tolist())
 
 g_bacc_dict = defaultdict(list)
 t_bacc_dict = defaultdict(list)
