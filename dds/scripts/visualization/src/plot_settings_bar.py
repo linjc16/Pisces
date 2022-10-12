@@ -90,13 +90,26 @@ def get_model_colors_ablation(mod):
         'Ours': '#01665e',
     }[mod]
 
+
 def get_model_colors(mod):
     return {
-        'PRODeepSyn': '#b2df8a',
-        'GraphSynergy': '#33a02c',
-        'DeepDDS': '#1f78b4',
-        'Ours': '#a6cee3',
+        'DeepSynergy': '#35978f',
+        'AuDNNsynergy':'#c7eae5',
+        'PRODeepSyn': '#bf812d',
+        'GraphSynergy': '#dfc27d',
+        'DeepDDS': '#003c30',
+        'Ours': '#01665e',
     }[mod]
+
+# def get_model_colors(mod):
+#     return {
+#         'DeepSynergy': 
+#         'AuDNNsynergy': ,
+#         'PRODeepSyn': '#b2df8a',
+#         'GraphSynergy': '#33a02c',
+#         'DeepDDS': '#1f78b4',
+#         'Ours': '#a6cee3',
+#     }[mod]
 
 # light green: #b2df8a, dark green: #33a02c, light blue: #a6cee3, dark blue: #1f78b4
 

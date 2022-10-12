@@ -231,7 +231,7 @@ def grouped_barplot_graphsyn(ax, nested_data, data_labels, xlabel, ylabel, xscal
                align='edge', ecolor='w',
                yerr=None if nested_errs is None else [errs[i] for i in range(it, len(errs) - model_num, model_num)])
         
-        if it > 1:
+        if it > 3:
             ax.bar(x=[xs[(setting_num - 1) * model_num + it - 1]],
                 height=[heights[(setting_num - 1) * model_num + it]],
                 bottom=[bottoms[(setting_num - 1) * model_num + it]],

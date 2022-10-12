@@ -45,7 +45,7 @@ def step_batch_eval(model, batch, gpu_id=None):
     yp2 = model(drug2_feats, drug1_feats, cell_feats)
     y_pred = (yp1 + yp2) / 2
     
-    return y_true, y_pred, y_pred > 0.5
+    return y_true, y_pred, torch.sigmoid(y_pred) > 0.7
 
 
 def train_epoch(model, loader, loss_func, optimizer, gpu_id=None):

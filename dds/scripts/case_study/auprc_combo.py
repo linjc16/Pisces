@@ -32,8 +32,8 @@ def main():
     drug_types = pd.read_csv(drug_types_path)
     drug_types_dict = dict(zip(drug_types['drug_names'].tolist(), drug_types['drug_types'].tolist()))
 
-    top_combos = 500
-    improvs = diff['AUPRC_diff'].to_numpy()[:top_combos]
+    top_combos = 75
+    improvs = diff['AUPRC_diff'].to_numpy()[top_combos:]
     # pdb.set_trace()
     
     combo_types = []
@@ -44,7 +44,7 @@ def main():
         else:
             combo_types.append(0)
     
-    combo_types = np.array(combo_types)[:top_combos]
+    combo_types = np.array(combo_types)[top_combos:]
 
     improv_homo = improvs[combo_types == 1]
     improv_hetero = improvs[combo_types == 0]
@@ -68,7 +68,7 @@ def main():
     order = ['Suitable', 'Not suitable']
     sns.set_palette(palette=palette1)
     fig, ax = plt.subplots(figsize=(1*FIG_WIDTH, FIG_HEIGHT))
-    ax = sns.boxenplot(x=group, y=improvs, order=order)
+    ax = sns.violinplot(x=group, y=improvs, order=order)
     #plt.scatter(x_jitter, diameters, c='k', s=1.2, alpha=0.5)
     ax.set_xlabel('Suitable modaility combos')
     ax.set_ylabel('AUPRC Improvements')

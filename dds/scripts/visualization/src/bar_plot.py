@@ -25,6 +25,20 @@ trans_PRODeepSyn = [
     [[0.6164, 0.3644, 0.3282, 0.3036]],
     [[0.6236, 0.3236, 0.3191, 0.2885]],
     [[0.6214, 0.3090, 0.3121, 0.2815]]]
+trans_DeepSynergy = [
+    [[0.5022, 0.2000, 0.0092, 0.0081]],
+    [[0.5121, 0.2289, 0.0485, 0.0442]],
+    [[0.5352, 0.2458, 0.1290, 0.1151]],
+    [[0.5, 0.1872, 0, 0]],
+    [[0.5285, 0.2351, 0.1077, 0.0973]]
+]
+trans_AuDNNSyn = [
+    [[0.6071, 0.2426, 0.2787, 0.2451]],
+    [[0.6674, 0.2833, 0.3465, 0.3075]],
+    [[0.6207, 0.2536, 0.2941, 0.2580]],
+    [[0.6284, 0.2515, 0.3024, 0.2653]],
+    [[0.6221, 0.2436, 0.2899, 0.2530]]
+]
 trans_ours = [
     [[0.7168, 0.4874, 0.4865, 0.4599]],
     [[0.6961, 0.4718, 0.4692, 0.4445]],
@@ -32,8 +46,8 @@ trans_ours = [
     [[0.7034, 0.4919, 0.4816, 0.4569]],
     [[0.6879, 0.4316, 0.4538, 0.4288]]]
 
-models_trans = ['PRODeepSyn', 'GraphSynergy', 'DeepDDS', 'Ours']
-trans = (trans_PRODeepSyn, trans_GraphSyn, trans_DeepDDS, trans_ours)
+models_trans = ['DeepSynergy', 'AuDNNsynergy', 'PRODeepSyn', 'GraphSynergy', 'DeepDDS', 'Ours']
+trans = (trans_DeepSynergy, trans_AuDNNSyn, trans_PRODeepSyn, trans_GraphSyn, trans_DeepDDS, trans_ours)
 
 lc_DeepDDS = [
     [[0.5882, 0.2093, 0.2447, 0.2154]],
@@ -45,6 +59,19 @@ lc_PRODeepSyn = [
     [[0.5571, 0.2060, 0.1894, 0.1705]],
     [[0.5793, 0.1991, 0.2232, 0.1973]],
     [[0.5688, 0.2236, 0.2152, 0.1917]]
+]
+
+
+lc_DeepSynergy = [
+    [[0.5, 0.0809, 0, 0]],
+    [[0.5, 0.0794, 0, 0]],
+    [[0.5, 0.1233, 0, 0]]
+]
+
+lc_AuDnnSyn = [
+    [[0.5533, 0.2339, 0.1866, 0.1737]],
+    [[0.5543, 0.1636, 0.1735, 0.1469]],
+    [[0.5521, 0.2737, 0.1793, 0.1627]]
 ]
 
 lc_Ours = [
@@ -59,8 +86,8 @@ lc_GraphSyn = [
     [[0, 0, 0, 0]],
 ]
 
-models_lc = ['PRODeepSyn', 'GraphSynergy', 'DeepDDS', 'Ours']
-lc = (lc_PRODeepSyn, lc_GraphSyn, lc_DeepDDS, lc_Ours)
+models_lc = ['DeepSynergy', 'AuDNNsynergy', 'PRODeepSyn', 'GraphSynergy', 'DeepDDS', 'Ours']
+lc = (lc_DeepSynergy, lc_AuDnnSyn, lc_PRODeepSyn, lc_GraphSyn, lc_DeepDDS, lc_Ours)
 
 ldc_DeepDDS = [
     [[0.6305, 0.3144, 0.3459, 0.3204]],
@@ -74,10 +101,22 @@ ldc_PRODeepSyn = [
     [[0.6035, 0.2239, 0.2636, 0.2345]]
 ]
 
+ldc_AuDNNSyn = [
+    [[0.5753, 0.2545, 0.2283, 0.2074]],
+    [[0.5474, 0.2691, 0.1653, 0.1524]],
+    [[0.5466, 0.1500, 0.1478, 0.1214]]
+]
+
 ldc_GraphSyn = [
     [[0.6116, 0.2977, 0.2913, 0.2626]],
     [[0.6409, 0.3167, 0.3299, 0.2950]],
     [[0.6019, 0.2901, 0.2728, 0.2492]]
+]
+
+ldc_DeepSynergy = [
+    [[0.5, 0.1602, 0, 0]],
+    [[0.5, 0.1942, 0, 0]],
+    [[0.5, 0.1301, 0, 0]]
 ]
 
 ldc_Ours = [
@@ -86,8 +125,8 @@ ldc_Ours = [
     [[0.6767, 0.3632, 0.4007, 0.3748]]
 ]
 
-models_ldc = ['PRODeepSyn', 'GraphSynergy', 'DeepDDS', 'Ours']
-ldc = (ldc_PRODeepSyn, ldc_GraphSyn, ldc_DeepDDS, ldc_Ours)
+models_ldc = ['DeepSynergy', 'AuDNNsynergy', 'PRODeepSyn', 'GraphSynergy', 'DeepDDS', 'Ours']
+ldc = (ldc_DeepSynergy, ldc_AuDNNSyn, ldc_PRODeepSyn, ldc_GraphSyn, ldc_DeepDDS, ldc_Ours)
 
 
 settings = ['5-fold CV', 'Stratified CV for\ndrug combinations', 'Stratified CV for\ncell lines']
@@ -112,7 +151,7 @@ def bar_plot(dataset, models, labels, name, metrics_id):
         means.append([v[0] for v in task_vals])
         stderrs.append([v[1] for v in task_vals])
 
-    min_val = [0.55, 0.2, 0.2, 0.15]
+    min_val = [0.45, 0.0, 0, 0]
 
     plot_utils.grouped_barplot_graphsyn(
         ax, means, 
