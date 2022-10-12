@@ -8,6 +8,7 @@ from sklearn import metrics as sk_metrics
 
 
 num_fold = 5
+model_type = 'graph' # smiles
 
 
 def generate_combs_ids():
@@ -33,7 +34,7 @@ def generate_combs_ids():
 root_dir = 'dds/scripts/visualization/raw_output_scatter'
 
 fold = 0
-model_type = 'smiles'
+
 
 cell_types = []
 predic = []
@@ -41,7 +42,7 @@ y_test = []
 ids = []
 test_data = []
 
-for fold in range(5):
+for fold in range(num_fold):
     cell_types_path = os.path.join(root_dir, f'cell_types_trans_{model_type}_fold{fold}.npy')
     ids_path = os.path.join(root_dir, f'ids_trans_{model_type}_fold{fold}.pt')
     predic_path = os.path.join(root_dir, f'predic_trans_{model_type}_fold{fold}.npy')

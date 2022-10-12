@@ -103,7 +103,8 @@ t_kappa = np.array(t_kappa)
 # pdb.set_trace()
 
 # split the drugs
-drug_types = (g_auprc > t_auprc).astype(np.int64)
+drug_types = (g_f1 > t_f1).astype(np.int64)
+
 
 drug_types_df = pd.DataFrame.from_dict(
     {
@@ -114,7 +115,7 @@ drug_types_df = pd.DataFrame.from_dict(
 
 drug_types_df.to_csv('drug_types.csv', index=False)
 
-# pdb.set_trace()
+pdb.set_trace()
 
 def linear_regression(x, y, name, x_aixs_name, y_axis_name, x_lim=(0, 1), y_lim=(0, 1), text_xy=(0.5, 0.5)):
 
