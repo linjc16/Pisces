@@ -129,11 +129,11 @@ models_ldc = ['DeepSynergy', 'AuDNNsynergy', 'PRODeepSyn', 'GraphSynergy', 'Deep
 ldc = (ldc_DeepSynergy, ldc_AuDNNSyn, ldc_PRODeepSyn, ldc_GraphSyn, ldc_DeepDDS, ldc_Ours)
 
 
-settings = ['5-fold CV', 'Stratified CV for\ndrug combinations', 'Stratified CV for\ncell lines']
+settings = ['Vanilla CV', 'Stratified CV for\ndrug combinations', 'Stratified CV for\ncell lines']
 
 
 
-def bar_plot(dataset, models, labels, name, metrics_id):
+def bar_plot(dataset, models, labels, name, metrics_id, y_lim=None):
 
     
     ax = plot_settings_bar.get_wider_axis(3, 4)
@@ -153,21 +153,26 @@ def bar_plot(dataset, models, labels, name, metrics_id):
 
     min_val = [0.45, 0.0, 0, 0]
 
+
     plot_utils.grouped_barplot_graphsyn(
         ax, means, 
         settings,
         xlabel='', ylabel=name, color_legend=labels,
-        nested_color=colors, nested_errs=stderrs, tickloc_top=False, rotangle=35, anchorpoint='right',
-        min_val=min_val[metrics_id])
+        nested_color=colors, nested_errs=stderrs, tickloc_top=False, rotangle=45, anchorpoint='right',
+        min_val=min_val[metrics_id], y_lim=y_lim)
     
     plot_utils.format_ax(ax)
 
+    
     plot_utils.format_legend(ax, *ax.get_legend_handles_labels(), loc='upper right', 
                             ncols=1)
     
     plot_utils.put_legend_outside_plot(ax, anchorage=(1.8, 1.01))
 
+    plt.xticks(fontsize=18)
+    plt.yticks(fontsize=18)
     
+
     # plt.savefig(f'bar_{name}.png', dpi=300, bbox_inches='tight')
     plt.savefig(f'bar_{name}.pdf', dpi=300, bbox_inches='tight')
 
@@ -175,5 +180,5 @@ dataset = (trans, ldc, lc)
 
 bar_plot(dataset, models_trans, models_trans, 'BACC', 0)
 bar_plot(dataset, models_trans, models_trans, 'AUPRC', 1)
-bar_plot(dataset, models_trans, models_trans, 'F1', 2)
-bar_plot(dataset, models_trans, models_trans, 'KAPPA', 3)
+bar_plot(dataset, models_trans, models_trans, r'$F_1$', 2)
+bar_plot(dataset, models_trans, models_trans, 'KAPPA', 3, (0, 0.52))

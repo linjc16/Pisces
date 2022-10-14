@@ -18,11 +18,13 @@ SMALLER_SIZE = 6
 plt.rc('font', size=MEDIUM_SIZE)
 plt.rc('axes', labelsize=MEDIUM_SIZE)
 plt.rc('axes', titlesize=MEDIUM_SIZE)	 # fontsize of the axes title
-plt.rc('xtick', labelsize=SMALLER_SIZE)	 # fontsize of the tick labels
+plt.rc('xtick', labelsize=MEDIUM_SIZE)	 # fontsize of the tick labels
 plt.rc('ytick', labelsize=SMALLER_SIZE)	 # fontsize of the tick labels
 plt.rc('figure', titlesize=MEDIUM_SIZE)
 plt.rc('legend', fontsize=MEDIUM_SIZE)
 plt.rc('font', family='Helvetica')
+
+
  #, xtick.color='w', axes.labelcolor='w', axes.edge_color='w'
 FIG_HEIGHT = 4
 FIG_WIDTH = 4
@@ -82,12 +84,12 @@ def get_metric_name(name, setting):
 
 def get_model_colors_ablation(mod):
     return {
-        'Molecular-graph-based (w/o cl)': '#35978f',
-        'SMILES-based (w/o cl)': '#c7eae5',
-        'Molecular graph and SMILES (w/o cl)': '#bf812d',
-        'Molecular graph and SMILES (w/ cl)': '#dfc27d',
+        'Molecular-graph-based (w/o cl)': '#dfc27d',
+        'SMILES-based (w/o cl)': '#bf812d',
+        'Molecular graph and SMILES (w/o cl)': '#8c510a',
+        'Molecular graph and SMILES (w/ cl)': '#35978f',
         # '': '#003c30',
-        'Pisces': '#01665e',
+        'Pisces': '#c7eae5',
     }[mod]
 
 
