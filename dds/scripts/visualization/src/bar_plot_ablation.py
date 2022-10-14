@@ -47,7 +47,7 @@ trans_ours = [
     [[0.7034, 0.4919, 0.4816, 0.4569]],
     [[0.6879, 0.4316, 0.4538, 0.4288]]]
 
-models_trans = ['Molecular-graph-based (w/o cl)', 'SMILES-based (w/o cl)', 'Molecular graph and SMILES (w/o cl)', 'Molecular graph and SMILES (w/ cl)', 'Ours']
+models_trans = ['Molecular-graph-based (w/o cl)', 'SMILES-based (w/o cl)', 'Molecular graph and SMILES (w/o cl)', 'Molecular graph and SMILES (w/ cl)', 'Pisces']
 trans = (trans_deepergcn, trans_transformer, trans_dv, trans_dv_cl, trans_ours)
 
 
@@ -120,14 +120,14 @@ models_ldc = models_trans
 ldc = (ldc_deepergcn, ldc_transformer, ldc_dv, ldc_dv_cl, ldc_Ours)
 
 
-settings = ['5-fold CV', 'Stratified CV for\ndrug combinations', 'Stratified CV for\ncell lines']
+settings = ['Vanilla CV', 'Stratified CV for\ndrug combinations', 'Stratified CV for\ncell lines']
 
 
 
-def bar_plot(dataset, models, labels, name, metrics_id):
+def bar_plot(dataset, models, labels, name, metrics_id, y_lim=None):
 
     
-    ax = plot_settings_bar.get_wider_axis(3, 6)
+    ax = plot_settings_bar.get_wider_axis(3, 4)
 
     colors = [plot_settings_bar.get_model_colors_ablation(mod) for mod in models]
     
@@ -148,8 +148,8 @@ def bar_plot(dataset, models, labels, name, metrics_id):
         ax, means, 
         settings,
         xlabel='', ylabel=name, color_legend=labels,
-        nested_color=colors, nested_errs=stderrs, tickloc_top=False, rotangle=35, anchorpoint='right',
-        min_val=min_val[metrics_id])
+        nested_color=colors, nested_errs=stderrs, tickloc_top=False, rotangle=45, anchorpoint='right',
+        min_val=min_val[metrics_id], y_lim=y_lim)
     
     plot_utils.format_ax(ax)
 
@@ -158,6 +158,8 @@ def bar_plot(dataset, models, labels, name, metrics_id):
                             ncols=1)
     plot_utils.put_legend_outside_plot(ax, anchorage=(1.01, 1.01))
 
+    plt.xticks(fontsize=18)
+    plt.yticks(fontsize=18)
     
     
     # plt.savefig(f'bar_{name}_ablation.png', dpi=300, bbox_inches='tight')
@@ -165,7 +167,7 @@ def bar_plot(dataset, models, labels, name, metrics_id):
 
 dataset = (trans, ldc, lc)
 
-bar_plot(dataset, models_trans, models_trans, 'BACC', 0)
-# bar_plot(dataset, models_trans, models_trans, 'AUPRC', 1)
-bar_plot(dataset, models_trans, models_trans, 'F1', 2)
-bar_plot(dataset, models_trans, models_trans, 'KAPPA', 3)
+bar_plot(dataset, models_trans, models_trans, 'BACC', 0, (0.5, 0.75))
+bar_plot(dataset, models_trans, models_trans, 'AUPRC', 1, (0.2, 0.52))
+bar_plot(dataset, models_trans, models_trans, r'$F_1$', 2, (0.15, 0.52))
+bar_plot(dataset, models_trans, models_trans, 'KAPPA', 3, (0.1, 0.47))

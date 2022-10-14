@@ -147,7 +147,7 @@ def horizontal_bar_plot(ax, data, data_labels, xlabel, ylabel, xscale='linear', 
 
 def grouped_barplot(ax, nested_data, data_labels, xlabel, ylabel, xscale='linear', yscale='linear',
                     min_val=0, invert_axes=False, nested_color='tab:blue', color_legend=None, nested_errs=None,
-                    tickloc_top=True, rotangle=45, legend_loc='upper right', anchorpoint='right'):
+                    tickloc_top=True, rotangle=45, legend_loc='upper right', anchorpoint='right', y_lim=None):
     
     # xs = [i + j * 0.9 / len(nested_data[0]) - 0.5 for i in range(len(nested_data)) for j in range(len(nested_data[0]))]
 
@@ -185,6 +185,9 @@ def grouped_barplot(ax, nested_data, data_labels, xlabel, ylabel, xscale='linear
     ax.set_xticklabels(data_labels)
     ax.tick_params(top=tickloc_top, bottom=not tickloc_top,
                    labeltop=tickloc_top, labelbottom=not tickloc_top)
+
+    if y_lim:
+        ax.set_ylim((y_lim))
     # Rotate the tick labels and set their alignment.
     plt.setp(ax.get_xticklabels(), rotation=rotangle, ha=anchorpoint,
              rotation_mode="anchor")
@@ -194,7 +197,7 @@ def grouped_barplot(ax, nested_data, data_labels, xlabel, ylabel, xscale='linear
 
 def grouped_barplot_graphsyn(ax, nested_data, data_labels, xlabel, ylabel, xscale='linear', yscale='linear',
                     min_val=0, invert_axes=False, nested_color='tab:blue', color_legend=None, nested_errs=None,
-                    tickloc_top=True, rotangle=45, legend_loc='upper right', anchorpoint='right'):
+                    tickloc_top=True, rotangle=45, legend_loc='upper right', anchorpoint='right', y_lim=None):
     
     # xs = [i + j * 0.9 / len(nested_data[0]) - 0.5 for i in range(len(nested_data)) for j in range(len(nested_data[0]))]
 
@@ -256,7 +259,9 @@ def grouped_barplot_graphsyn(ax, nested_data, data_labels, xlabel, ylabel, xscal
     ax.set_yscale(yscale)
     ax.set_xticks([0, 1, 1.9])
     ax.set_xticklabels(data_labels)
-    # pdb.set_trace()
+    if y_lim:
+        ax.set_ylim((y_lim))
+    
     ax.tick_params(top=tickloc_top, bottom=not tickloc_top,
                    labeltop=tickloc_top, labelbottom=not tickloc_top)
     # Rotate the tick labels and set their alignment.

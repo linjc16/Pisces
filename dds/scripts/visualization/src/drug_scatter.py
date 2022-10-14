@@ -126,13 +126,15 @@ def linear_regression(x, y, name, x_aixs_name, y_axis_name, x_lim=(0, 1), y_lim=
         )
 
     plt.tight_layout()
+    plt.xticks(fontsize=14)
+    plt.yticks(fontsize=14)
     plot_utils.format_ax(ax)
     plt.savefig(os.path.join('./', f'vis_drug_{name}.pdf'), dpi=300)
 
 
 linear_regression(g_bacc, t_bacc, 'BACC', 'BACC (Molecular-graph-based)', 'BACC (SMILES-based)', (0.5, 0.8), (0.5, 0.8), (0.7, 0.5))
 linear_regression(g_auprc, t_auprc, 'AUPRC', 'AUPRC (Molecular-graph-based)', 'AUPRC (SMILES-based)', (0, 0.7), (0, 0.7), (0.5, 0.15))
-linear_regression(g_f1, t_f1, 'F1 scores', 'F1 scores (Molecular-graph-based)', 'F1 scores (SMILES-based)', (0, 0.7), (0, 0.7), (0.4, 0.15))
+linear_regression(g_f1, t_f1, 'F1 scores', 'F1 score (Molecular-graph-based)', 'F1 score (SMILES-based)', (0, 0.7), (0, 0.7), (0.4, 0.15))
 linear_regression(g_kappa, t_kappa, 'KAPPA', 'KAPPA (Molecular-graph-based)', 'KAPPA (SMILES-based)', (0, 0.7), (0, 0.7), (0.4, 0.15))
 
 # for drug_name in drug_names:

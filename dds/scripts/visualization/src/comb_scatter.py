@@ -103,7 +103,7 @@ t_kappa = np.array(t_kappa)
 # pdb.set_trace()
 
 # split the drugs
-drug_types = (g_f1 > t_f1).astype(np.int64)
+drug_types = (g_kappa > t_kappa).astype(np.int64)
 
 
 drug_types_df = pd.DataFrame.from_dict(

@@ -11,7 +11,7 @@ import seaborn as sns
 import pdb
 
 diff_path = 'dds/scripts/case_study/raw_output/diff.csv'
-drug_types_path = 'dds/scripts/case_study/raw_output/drug_types_f1.csv'
+drug_types_path = 'dds/scripts/case_study/raw_output/drug_types_auprc_c.csv'
 
 MEDIUM_SIZE = 8
 SMALLER_SIZE = 6
@@ -32,7 +32,7 @@ def main():
     drug_types = pd.read_csv(drug_types_path)
     drug_types_dict = dict(zip(drug_types['drug_names'].tolist(), drug_types['drug_types'].tolist()))
 
-    top_combos = 75
+    top_combos = 70
     improvs = diff['AUPRC_diff'].to_numpy()[:top_combos]
     # pdb.set_trace()
     
@@ -49,7 +49,7 @@ def main():
     improv_homo = improvs[combo_types == 1]
     improv_hetero = improvs[combo_types == 0]
     
-    pval1 = stats.ttest_ind(improv_homo, improv_hetero, alternative='greater')
+    pval1 = stats.ttest_ind(improv_homo, improv_hetero, alternative='less')
     print('Hypothethis suitable modaliry is greater p value: {}'.format(pval1))
 
     plt.clf()
@@ -60,17 +60,18 @@ def main():
     for i in range(len(combo_types)):
         if combo_types[i] == 1:
             g1.append(improvs[i])
-            group.append('Suitable')
+            group.append('Same')
         else:
             g2.append(improvs[i])
-            group.append('Not suitable')
+            group.append('Different')
     
-    order = ['Suitable', 'Not suitable']
+    order = ['Same', 'Different']
     sns.set_palette(palette=palette1)
     fig, ax = plt.subplots(figsize=(1*FIG_WIDTH, FIG_HEIGHT))
-    ax = sns.violinplot(x=group, y=improvs, order=order)
+    # ax = sns.violinplot(x=group, y=improvs, order=order)
+    ax = sns.boxplot(x=group, y=improvs, order=order, width=0.4, showfliers=False)
     #plt.scatter(x_jitter, diameters, c='k', s=1.2, alpha=0.5)
-    ax.set_xlabel('Suitable modaility combos')
+    ax.set_xlabel('Modaility combos')
     ax.set_ylabel('AUPRC Improvements')
     #ax.set_yticklabels(labels=['Top 50 Drug Combo \n With Improvements', 'Others'], fontsize=MEDIUM_SIZE)
     ax.spines['right'].set_visible(False)
