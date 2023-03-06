@@ -7,12 +7,13 @@ from collections import defaultdict
 
 
 
-num_fold = 3
+num_fold = 5
 
 for i in range(num_fold):
     df_synergy = defaultdict(list)
     data_train = pd.read_csv(f'baselines/DeepDDs-master/data_ours_leave_cell/train_fold{i}.csv')
     data_test = pd.read_csv(f'baselines/DeepDDs-master/data_ours_leave_cell/test_fold{i}.csv')
+    data_valid = pd.read_csv(f'baselines/DeepDDs-master/data_ours_leave_cell/valid_fold{i}.csv')
 
     df_synergy['drug_a'].extend(data_test['drug1_name'].tolist())
     df_synergy['drug_b'].extend(data_test['drug2_name'].tolist())
@@ -25,6 +26,12 @@ for i in range(num_fold):
     df_synergy['cell_line'].extend(data_train['cell'].tolist())
     df_synergy['label'].extend(data_train['label'].tolist())
     df_synergy['fold'].extend([1] * len(data_train))
+
+    df_synergy['drug_a'].extend(data_valid['drug1_name'].tolist())
+    df_synergy['drug_b'].extend(data_valid['drug2_name'].tolist())
+    df_synergy['cell_line'].extend(data_valid['cell'].tolist())
+    df_synergy['label'].extend(data_valid['label'].tolist())
+    df_synergy['fold'].extend([2] * len(data_valid))
 
     df_synergy = pd.DataFrame.from_dict(df_synergy)
 

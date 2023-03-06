@@ -14,8 +14,8 @@
     "data_loader_train": {
         "type": "DataLoader",
         "args":{
-            "data_dir": "baselines/GraphSynergy-master/data_ours_leave_comb/fold0/train",
-            "aux_data_dir": "baselines/GraphSynergy-master/data_ours_leave_comb",
+            "data_dir": "baselines/GraphSynergy-master/data_ours_leave_comb_new/fold0/train",
+            "aux_data_dir": "baselines/GraphSynergy-master/data_ours_leave_comb_new",
             "batch_size": 512,
             "score": "synergy 0",
             "n_hop": 2,
@@ -29,9 +29,24 @@
     "data_loader_test": {
         "type": "DataLoader",
         "args":{
-            "data_dir": "baselines/GraphSynergy-master/data_ours_leave_comb/fold0/test",
-            "aux_data_dir": "baselines/GraphSynergy-master/data_ours_leave_comb",
-            "batch_size": 512,
+            "data_dir": "baselines/GraphSynergy-master/data_ours_leave_comb_new/fold0/test",
+            "aux_data_dir": "baselines/GraphSynergy-master/data_ours_leave_comb_new",
+            "batch_size": 1024,
+            "score": "synergy 0",
+            "n_hop": 2,
+            "n_memory": 128,
+            "shuffle": false,
+            "validation_split": 0,
+            "test_split": 0,
+            "num_workers": 2
+        }
+    },
+    "data_loader_valid": {
+        "type": "DataLoader",
+        "args":{
+            "data_dir": "baselines/GraphSynergy-master/data_ours_leave_comb_new/fold0/valid",
+            "aux_data_dir": "baselines/GraphSynergy-master/data_ours_leave_comb_new",
+            "batch_size": 1024,
             "score": "synergy 0",
             "n_hop": 2,
             "n_memory": 128,
@@ -62,10 +77,10 @@
     },
     "trainer": {
         "epochs": 50,
-        "save_dir": "baselines/GraphSynergy-master/data_ours_leave_comb/fold0/saved/",
+        "save_dir": "baselines/GraphSynergy-master/data_ours_leave_comb_new/fold0/saved/",
         "save_period": 100,
         "verbosity": 2, 
-        "monitor": "max roc_auc",
+        "monitor": "max bacc",
         "early_stop": 10,
         "tensorboard": false
     }

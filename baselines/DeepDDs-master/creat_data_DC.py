@@ -126,7 +126,9 @@ if __name__ == "__main__":
     for i in range(5):
         da.append(f'train_fold{i}')
         da.append(f'test_fold{i}')
+        da.append(f'valid_fold{i}')
     
+    os.makedirs(args.savedir, exist_ok=True)
     # savedir = '/data/linjc/dds/baselines/DeepDDS/data_leave_cell'
     # savedir = '/data/linjc/dds/baselines/DeepDDS/data_leave_comb'
     # root = 'baselines/DeepDDs-master/data_ours/'

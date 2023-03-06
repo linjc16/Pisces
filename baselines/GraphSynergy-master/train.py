@@ -6,13 +6,13 @@ import data_loader.data_loaders as module_data
 import model.loss as module_loss
 import model.metric as module_metric
 from model.GraphSynergy import GraphSynergy as module_arch
-from model.GraphSynergy_temp import GraphSynergy as module_atch_eval
 from parse_config import ConfigParser
 from trainer.trainer import Trainer
 import pdb
 
 # fix random seeds for reproducibility
-SEED = 12121
+# SEED = 424234
+SEED = 722
 torch.manual_seed(SEED)
 torch.cuda.manual_seed(SEED)
 torch.backends.cudnn.deterministic = True
@@ -25,7 +25,7 @@ def main(config):
     # pdb.set_trace()
     # setup data_loader instances
     data_loader = config.init_obj('data_loader_train', module_data)
-    valid_data_loader = config.init_obj('data_loader_test', module_data)
+    valid_data_loader = config.init_obj('data_loader_valid', module_data)
     test_data_loader = config.init_obj('data_loader_test', module_data)
     # valid_data_loader = data_loader.split_dataset(valid=True)
     # test_data_loader = data_loader.split_dataset(test=True)
@@ -64,10 +64,10 @@ def main(config):
                       test_data_loader=test_data_loader,
                       lr_scheduler=lr_scheduler)
     trainer.train()
-
+    
     """Testing."""
     logger = config.get_logger('test')
-    model = module_atch_eval(protein_num=node_num_dict['protein'],
+    model = module_arch(protein_num=node_num_dict['protein'],
                         cell_num=node_num_dict['cell'],
                         drug_num=node_num_dict['drug'],
                         emb_dim=config['arch']['args']['emb_dim'],

@@ -9,7 +9,7 @@ OUTPUT_DIR = 'baselines/PRODeepSyn-main/predictor/data_ours_leave_comb/output'
 if not os.path.exists(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR)
 
-fold_id = 2
+fold_id = 4
 SYNERGY_FILE = os.path.join(DATA_DIR, f'synergy_fold{fold_id}.tsv')
 
 DRUG_FEAT_FILE = os.path.join(DRUG_DATA_DIR, 'drug_feat.npy')

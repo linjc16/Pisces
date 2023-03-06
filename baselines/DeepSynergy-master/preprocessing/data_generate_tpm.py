@@ -6,16 +6,27 @@ import pdb
 import numpy as np
 import os
 import torch
+import argparse
 
-fold_num = 3
-# savedir = '/data/linjc/dds/baselines/DeepSynergy/data_pt2'
-# savedir = '/data/linjc/dds/baselines/DeepSynergy/data_leave_cell'
-savedir = '/data/linjc/dds/baselines/DeepSynergy/data_leave_comb'
+parser = argparse.ArgumentParser()
+parser.add_argument('--savedir', type=str)
+parser.add_argument('--raw_data_dir', type=str)
+
+args = parser.parse_args()
+
+fold_num = 5
+
+savedir = args.savedir
+
+# savedir = '/data/linjc/dds/baselines/DeepSynergy/data_pt2_new'
+# savedir = '/data/linjc/dds/baselines/DeepSynergy/data_leave_cell_new'
+# savedir = '/data/linjc/dds/baselines/DeepSynergy/data_leave_comb_new'
 os.makedirs(savedir, exist_ok=True)
 
+RAW_DATA_DIR = args.raw_data_dir
 # RAW_DATA_DIR = 'baselines/DeepDDs-master/data_ours'
 # RAW_DATA_DIR = 'baselines/DeepDDs-master/data_ours_leave_cell'
-RAW_DATA_DIR = 'baselines/DeepDDs-master/data_ours_leave_comb'
+# RAW_DATA_DIR = 'baselines/DeepDDs-master/data_ours_leave_comb'
 
 df_drug_targets = pd.read_csv('data/drug_target.csv', index_col=0)
 df_drug_fpts = pd.read_csv('data/drug_fingerprints.csv', index_col=0)
@@ -26,7 +37,7 @@ df_cell_feats = pd.read_csv('data/cell_tpm.csv', index_col=0)
 for i in range(fold_num):
     print(f'Generate data for fold{i}.')
 
-    data_name_list = [f'train_fold{i}', f'test_fold{i}']
+    data_name_list = [f'train_fold{i}', f'test_fold{i}', f'valid_fold{i}']
     
     for data_name in data_name_list:
 

@@ -6,6 +6,7 @@ import torch.nn as nn
 import pickle
 import logging
 from tqdm import tqdm
+import pdb
 
 from datetime import datetime
 
@@ -45,7 +46,7 @@ def step_batch_eval(model, batch, gpu_id=None):
     yp2 = model(drug2_feats, drug1_feats, cell_feats)
     y_pred = (yp1 + yp2) / 2
     
-    return y_true, y_pred, torch.sigmoid(y_pred > 0.5)
+    return y_true, y_pred, torch.sigmoid(y_pred) > 0.5
 
 
 def train_epoch(model, loader, loss_func, optimizer, gpu_id=None):
@@ -85,18 +86,31 @@ def eval_epoch(model, loader, loss_func, gpu_id=None):
 
 def train_model(model, optimizer, loss_func, train_loader, valid_loader, n_epoch, patience, gpu_id,
                 sl=False, mdl_dir=None):
-    min_loss = float('inf')
+    best_bacc = 0
     angry = 0
     for epoch in tqdm(range(1, n_epoch + 1)):
         trn_loss = train_epoch(model, train_loader, loss_func, optimizer, gpu_id)
         trn_loss /= train_loader.dataset_len
         # logging.info(f'epoch {epoch} training loss: {trn_loss}')
-        val_loss = eval_epoch(model, valid_loader, loss_func, gpu_id)
-        val_loss /= valid_loader.dataset_len
+        T, S, Y = test_epoch(model, valid_loader, gpu_id)
+        AUC = roc_auc_score(T, S)
+        precision, recall, threshold = metrics.precision_recall_curve(T, S)
+        PR_AUC = metrics.auc(recall, precision)
+        BACC = balanced_accuracy_score(T, Y)
+        tn, fp, fn, tp = confusion_matrix(T, Y).ravel()
+        TPR = tp / (tp + fn)
+        PREC = precision_score(T, Y)
+        ACC = accuracy_score(T, Y)
+        KAPPA = cohen_kappa_score(T, Y)
+        recall = recall_score(T, Y)
+        F1 = f1_score(T, Y)
+        logging.info(f'ACC: {ACC}, BACC: {BACC}, AUC: {AUC}, PR_AUC: {PR_AUC}, \
+                PREC: {PREC}, RECALL: {recall}, F1: {F1}, TPR: {TPR}, KAPPA: {KAPPA}.')
+
         # logging.info(f'epoch {epoch} validation loss: {val_loss}')
-        if val_loss < min_loss:
+        if best_bacc < BACC:
             angry = 0
-            min_loss = val_loss
+            best_bacc = BACC
             if sl:
                 save_best_model(model.state_dict(), mdl_dir, epoch, keep=1)
         else:
@@ -105,7 +119,7 @@ def train_model(model, optimizer, loss_func, train_loader, valid_loader, n_epoch
                 break
     if sl:
         model.load_state_dict(torch.load(find_best_model(mdl_dir)))
-    return min_loss
+    return -1 * BACC
 
 
 def eval_model(model, optimizer, loss_func, train_data, test_data,
@@ -128,6 +142,7 @@ def eval_model(model, optimizer, loss_func, train_data, test_data,
     KAPPA = cohen_kappa_score(T, Y)
     recall = recall_score(T, Y)
     F1 = f1_score(T, Y)
+    logging.info('Test Phase')
     logging.info(f'ACC: {ACC}, BACC: {BACC}, AUC: {AUC}, PR_AUC: {PR_AUC}, \
             PREC: {PREC}, RECALL: {recall}, F1: {F1}, TPR: {TPR}, KAPPA: {KAPPA}.')
 
@@ -148,13 +163,14 @@ def cv(args, out_dir):
     else:
         gpu_id = None
 
-    n_folds = 2
+    n_folds = 3
     n_delimiter = 60
     loss_func = nn.BCEWithLogitsLoss()
 
     test_fold = 0
+    valid_fold = 2
     
-    outer_trn_folds = [x for x in range(n_folds) if x != test_fold]
+    outer_trn_folds = [x for x in range(n_folds) if x != test_fold and x != valid_fold]
     logging.info("Outer: train folds {}, test folds {}".format(outer_trn_folds, test_fold))
     logging.info("-" * n_delimiter)
     param = []
@@ -166,7 +182,7 @@ def cv(args, out_dir):
             ret_vals = []
 
             inner_trn_folds = outer_trn_folds
-            valid_folds = [test_fold]
+            valid_folds = [valid_fold]
             train_data = FastSynergyDataset(DRUG2ID_FILE, CELL2ID_FILE, DRUG_FEAT_FILE, CELL_FEAT_FILE,
                                             SYNERGY_FILE, use_folds=inner_trn_folds)
             valid_data = FastSynergyDataset(DRUG2ID_FILE, CELL2ID_FILE, DRUG_FEAT_FILE, CELL_FEAT_FILE,
@@ -198,7 +214,7 @@ def cv(args, out_dir):
                                     SYNERGY_FILE, use_folds=[test_fold], train=False)
     model = create_model(train_data, best_hs, gpu_id)
     optimizer = torch.optim.Adam(model.parameters(), lr=best_lr)
-
+    
     logging.info("Best hidden size: {} | Best learning rate: {}".format(best_hs, best_lr))
     logging.info("Start test on fold {}.".format([test_fold]))
     test_mdl_dir = os.path.join(out_dir, str(test_fold))

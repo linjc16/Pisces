@@ -11,6 +11,7 @@ from sklearn.metrics import cohen_kappa_score, accuracy_score, roc_auc_score, pr
 from sklearn import metrics
 import pandas as pd
 import pdb
+import os
 import argparse
 
 
@@ -95,78 +96,122 @@ else:
     device = torch.device('cpu')
     print('The code uses CPU!!!')
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--fold', type=int)
+parser.add_argument('--datadir', type=str)
 
+args = parser.parse_args()
 # datadir = '/data/linjc/dds/baselines/DeepDDS/data_tpm'
-fold_num = 1
 # datadir = '/data/linjc/dds/baselines/DeepDDS/data_leave_cell'
-datadir = '/data/linjc/dds/baselines/DeepDDS/data_leave_comb'
-results_dir = os.path.join(datadir, 'results_')
+# datadir = '/data/linjc/dds/baselines/DeepDDS/data_leave_comb'
+
+datadir = args.datadir
+results_dir = os.path.join(datadir, 'results')
 os.makedirs(results_dir, exist_ok=True)
 
-for i in range(fold_num):
-    print(f'Run fold {i}.')
-    datafile_train = f'train_fold{i}'
-    datafile_test = f'test_fold{i}'
+i = args.fold
 
-    drug1_data_train = TestbedDataset(root=datadir, dataset=datafile_train + '_drug1')
-    drug1_data_test = TestbedDataset(root=datadir, dataset=datafile_test + '_drug1')
+print(f'Run fold {i}.')
+datafile_train = f'train_fold{i}'
+datafile_test = f'test_fold{i}'
+datafile_valid = f'valid_fold{i}'
 
-    drug1_loader_train = DataLoader(drug1_data_train, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
-    drug1_loader_test = DataLoader(drug1_data_test, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
+drug1_data_train = TestbedDataset(root=datadir, dataset=datafile_train + '_drug1')
+drug1_data_test = TestbedDataset(root=datadir, dataset=datafile_test + '_drug1')
+drug1_data_valid = TestbedDataset(root=datadir, dataset=datafile_valid + '_drug1')
 
-    drug2_data_train = TestbedDataset(root=datadir, dataset=datafile_train + '_drug2')
-    drug2_data_test = TestbedDataset(root=datadir, dataset=datafile_test + '_drug2')
-    drug2_loader_train = DataLoader(drug2_data_train, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
-    drug2_loader_test = DataLoader(drug2_data_test, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
+drug1_loader_train = DataLoader(drug1_data_train, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
+drug1_loader_test = DataLoader(drug1_data_test, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
+drug1_loader_valid = DataLoader(drug1_data_valid, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
+
+drug2_data_train = TestbedDataset(root=datadir, dataset=datafile_train + '_drug2')
+drug2_data_test = TestbedDataset(root=datadir, dataset=datafile_test + '_drug2')
+drug2_data_valid = TestbedDataset(root=datadir, dataset=datafile_valid + '_drug2')
+
+drug2_loader_train = DataLoader(drug2_data_train, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
+drug2_loader_test = DataLoader(drug2_data_test, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
+drug2_loader_valid = DataLoader(drug2_data_valid, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
+
+# pdb.set_trace()
+model = modeling().to(device)
+loss_fn = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=LR)
+
+os.makedirs(os.path.join(datadir, 'results'), exist_ok=True)
+
+model_file_name = os.path.join(datadir, 'results/GCNNet(DrugA_DrugB)' + str(i) + '--model_' + datafile_train +  '.model')
+result_file_name = os.path.join(datadir, 'results/GCNNet(DrugA_DrugB)' + str(i) + '--result_' + datafile_train +  '.csv')
+file_AUCs = os.path.join(datadir, 'results/GCNNet(DrugA_DrugB)' + str(i) + '--AUCs--' + datafile_train + '.txt')
+file_AUCs_best = os.path.join(datadir, 'results/GCNNet(DrugA_DrugB)' + str(i) + '--AUCs_best--' + datafile_train + '.txt')
+file_AUCs_test = os.path.join(datadir, 'results/GCNNet(DrugA_DrugB)' + str(i) + '--AUCs_test--' + datafile_train + '.txt')
+
+
+
+AUCs = ('Epoch\tACC\tBACC\tAUC_dev\tPR_AUC\tPREC\tRECALL\tF1\tTPR\tKAPPA')
+with open(file_AUCs, 'w') as f:
+    f.write(AUCs + '\n')
+
+with open(file_AUCs_best, 'w') as f:
+    f.write(AUCs + '\n')
+
+with open(file_AUCs_test, 'w') as f:
+    f.write(AUCs + '\n')
+
+best_bacc = 0
+for epoch in range(NUM_EPOCHS):
+    train(model, device, drug1_loader_train, drug2_loader_train, optimizer, epoch + 1)
+    T, S, Y = predicting(model, device, drug1_loader_valid, drug2_loader_valid)
+    # T is correct label
+    # S is predict score
+    # Y is predict label
+
+    # compute preformence
+    AUC = roc_auc_score(T, S)
+    precision, recall, threshold = metrics.precision_recall_curve(T, S)
+    PR_AUC = metrics.auc(recall, precision)
+    BACC = balanced_accuracy_score(T, Y)
+    tn, fp, fn, tp = confusion_matrix(T, Y).ravel()
+    TPR = tp / (tp + fn)
+    PREC = precision_score(T, Y)
+    ACC = accuracy_score(T, Y)
+    KAPPA = cohen_kappa_score(T, Y)
+    recall = recall_score(T, Y)
+    F1 = f1_score(T, Y)
+
+    # save data
+    AUCs = [epoch, ACC, BACC, AUC, PR_AUC, PREC, recall, F1, TPR, KAPPA]
+    save_AUCs(AUCs, file_AUCs)
     
-    # pdb.set_trace()
-    model = modeling().to(device)
-    loss_fn = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=LR)
+    print(f'AUC: {AUC}, PR_AUC: {PR_AUC}, ACC: {ACC}, BACC: {BACC}, \
+            PREC: {PREC}, TPR: {TPR}, KAPPA: {KAPPA}, RECALL: {recall}.')
 
-    
-    model_file_name = os.path.join(datadir, 'results/GCNNet(DrugA_DrugB)' + str(i) + '--model_' + datafile_train +  '.model')
-    result_file_name = os.path.join(datadir, 'results/GCNNet(DrugA_DrugB)' + str(i) + '--result_' + datafile_train +  '.csv')
-    file_AUCs = os.path.join(datadir, 'results/GCNNet(DrugA_DrugB)' + str(i) + '--AUCs--' + datafile_train + '.txt')
-    file_AUCs_best = os.path.join(datadir, 'results/GCNNet(DrugA_DrugB)' + str(i) + '--AUCs_best--' + datafile_train + '.txt')
-    AUCs = ('Epoch\tACC\tBACC\tAUC_dev\tPR_AUC\tPREC\tRECALL\tF1\tTPR\tKAPPA')
-    with open(file_AUCs, 'w') as f:
-        f.write(AUCs + '\n')
-    
-    with open(file_AUCs_best, 'w') as f:
-        f.write(AUCs + '\n')
+    if best_bacc < BACC:
+        best_bacc = BACC
+        print(best_bacc)
+        save_AUCs(AUCs, file_AUCs_best)
+        torch.save(model.state_dict(), model_file_name)
 
-    best_auc = 0
-    for epoch in range(NUM_EPOCHS):
-        train(model, device, drug1_loader_train, drug2_loader_train, optimizer, epoch + 1)
-        T, S, Y = predicting(model, device, drug1_loader_test, drug2_loader_test)
-        # T is correct label
-        # S is predict score
-        # Y is predict label
 
-        # compute preformence
-        AUC = roc_auc_score(T, S)
-        precision, recall, threshold = metrics.precision_recall_curve(T, S)
-        PR_AUC = metrics.auc(recall, precision)
-        BACC = balanced_accuracy_score(T, Y)
-        tn, fp, fn, tp = confusion_matrix(T, Y).ravel()
-        TPR = tp / (tp + fn)
-        PREC = precision_score(T, Y)
-        ACC = accuracy_score(T, Y)
-        KAPPA = cohen_kappa_score(T, Y)
-        recall = recall_score(T, Y)
-        F1 = f1_score(T, Y)
+model = modeling().to(device)
+checkpoint = torch.load(model_file_name)
+model.load_state_dict(checkpoint)
 
-        # save data
-        AUCs = [epoch, ACC, BACC, AUC, PR_AUC, PREC, recall, F1, TPR, KAPPA]
-        save_AUCs(AUCs, file_AUCs)
-        
-        print(f'AUC: {AUC}, PR_AUC: {PR_AUC}, ACC: {ACC}, BACC: {BACC}, \
-             PREC: {PREC}, TPR: {TPR}, KAPPA: {KAPPA}, RECALL: {recall}.')
+T, S, Y = predicting(model, device, drug1_loader_test, drug2_loader_test)
+AUC = roc_auc_score(T, S)
+precision, recall, threshold = metrics.precision_recall_curve(T, S)
+PR_AUC = metrics.auc(recall, precision)
+BACC = balanced_accuracy_score(T, Y)
+tn, fp, fn, tp = confusion_matrix(T, Y).ravel()
+TPR = tp / (tp + fn)
+PREC = precision_score(T, Y)
+ACC = accuracy_score(T, Y)
+KAPPA = cohen_kappa_score(T, Y)
+recall = recall_score(T, Y)
+F1 = f1_score(T, Y)
 
-        if best_auc < AUC:
-            best_auc = AUC
-            print(best_auc)
-            save_AUCs(AUCs, file_AUCs_best)
-            torch.save(model.state_dict(), model_file_name)
+AUCs = [epoch, ACC, BACC, AUC, PR_AUC, PREC, recall, F1, TPR, KAPPA]
 
+print(f'AUC: {AUC}, PR_AUC: {PR_AUC}, ACC: {ACC}, BACC: {BACC}, \
+        PREC: {PREC}, TPR: {TPR}, KAPPA: {KAPPA}, RECALL: {recall}.')
+
+save_AUCs(AUCs, file_AUCs_test)
