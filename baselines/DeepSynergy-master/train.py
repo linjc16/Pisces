@@ -74,6 +74,7 @@ modeling = DeepSynergy
 parser = argparse.ArgumentParser()
 parser.add_argument('--fold', type=int)
 parser.add_argument('--lr', type=float, default=1e-5)
+parser.add_argument('--datadir', type=str)
 args = parser.parse_args()
 i = args.fold
 
@@ -97,13 +98,14 @@ else:
 
 
 # data_dir = '/data/linjc/dds/baselines/DeepSynergy/data_leave_cell/'
-data_dir = '/data/linjc/dds/baselines/DeepSynergy/data_leave_comb/'
-
+# data_dir = '/data/linjc/dds/baselines/DeepSynergy/data_leave_comb/'
+data_dir = args.datadir
 
 
 print(f'Run fold {i}.')
 datafile_train = f'train_fold{i}'
 datafile_test = f'test_fold{i}'
+datafile_valid = f'valid_fold{i}'
 
 print(f'Loading training data from {data_dir}')
 drug1_data_train = torch.load(os.path.join(data_dir, f'{datafile_train}_drug1.pt'))
@@ -130,8 +132,22 @@ drug2_data_test[:, 0:200] = F.normalize(drug2_data_test[:, 0:200], dim=0)
 feats_test = torch.cat([drug1_data_test, drug2_data_test, cell_data_test, drug_label_test], dim=1)
 drug_data_test = feats_test
 
+print(f'Loading valid data from {data_dir}')
+drug1_data_valid = torch.load(os.path.join(data_dir, f'{datafile_valid}_drug1.pt'))
+drug2_data_valid = torch.load(os.path.join(data_dir, f'{datafile_valid}_drug2.pt'))
+cell_data_valid = torch.load(os.path.join(data_dir, f'{datafile_valid}_cell.pt'))
+drug_label_valid = torch.load(os.path.join(data_dir, f'{datafile_valid}_label.pt')).view(-1, 1)
+
+drug1_data_valid[:, 0:200] = F.normalize(drug1_data_valid[:, 0:200], dim=0)
+drug2_data_valid[:, 0:200] = F.normalize(drug2_data_valid[:, 0:200], dim=0)
+
+feats_valid = torch.cat([drug1_data_valid, drug2_data_valid, cell_data_valid, drug_label_valid], dim=1)
+drug_data_valid = feats_valid
+
+
 drug_loader_train = DataLoader(drug_data_train, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
 drug_loader_test = DataLoader(drug_data_test, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
+drug_loader_valid = DataLoader(drug_data_valid, batch_size=TRAIN_BATCH_SIZE, shuffle=None, num_workers=4)
 
 
 model = modeling().to(device)
@@ -145,6 +161,7 @@ model_file_name = os.path.join(savedir, 'DeepSynergy(DrugA_DrugB)' + str(i) + '-
 result_file_name = os.path.join(savedir, 'DeepSynergy(DrugA_DrugB)' + str(i) + '--result_' + datafile_train +  '.csv')
 file_AUCs = os.path.join(savedir, 'DeepSynergy(DrugA_DrugB)' + str(i) + '--AUCs--' + datafile_train + '.txt')
 file_AUCs_best = os.path.join(savedir, 'DeepSynergy(DrugA_DrugB)' + str(i) + '--AUCs_best--' + datafile_train + '.txt')
+file_AUCs_test = os.path.join(savedir, 'DeepSynergy(DrugA_DrugB)' + str(i) + '--AUCs_test--' + datafile_train + '.txt')
 
 AUCs = ('Epoch\tACC\tBACC\tAUC_dev\tPR_AUC\tPREC\tRECALL\tF1\tTPR\tKAPPA')
 with open(file_AUCs, 'w') as f:
@@ -153,10 +170,13 @@ with open(file_AUCs, 'w') as f:
 with open(file_AUCs_best, 'w') as f:
     f.write(AUCs + '\n')
 
-best_auc = 0
+with open(file_AUCs_test, 'w') as f:
+    f.write(AUCs + '\n')
+
+best_bacc = 0
 for epoch in range(NUM_EPOCHS):
     train(model, device, drug_loader_train, optimizer, epoch + 1)
-    T, S, Y = predicting(model, device, drug_loader_test)
+    T, S, Y = predicting(model, device, drug_loader_valid)
     # T is correct label
     # S is predict score
     # Y is predict label
@@ -180,15 +200,33 @@ for epoch in range(NUM_EPOCHS):
     print(f'AUC: {AUC}, PR_AUC: {PR_AUC}, ACC: {ACC}, BACC: {BACC}, \
             PREC: {PREC}, TPR: {TPR}, KAPPA: {KAPPA}, F1: {F1}, RECALL: {recall}.')
     # ret = [rmse(T, S), mse(T, S), pearson(T, S), spearman(T, S), ci(T, S)]
-    if best_auc < AUC:
-        best_auc = AUC
-        print(best_auc)
+    
+    if best_bacc < BACC:
+        best_bacc = BACC
+        print(best_bacc)
         save_AUCs(AUCs, file_AUCs_best)
-        # torch.save(model.state_dict(), model_file_name)
-        # independent_num = []
-        # independent_num.append(test_num)
-        # independent_num.append(T)
-        # independent_num.append(Y)
-        # independent_num.append(S)
-        # txtDF = pd.DataFrame(data=independent_num)
-        # txtDF.to_csv(result_file_name, index=False, header=False)
+        torch.save(model.state_dict(), model_file_name)
+
+model = modeling().to(device)
+checkpoint = torch.load(model_file_name)
+model.load_state_dict(checkpoint)
+
+T, S, Y = predicting(model, device, drug_loader_test)
+AUC = roc_auc_score(T, S)
+precision, recall, threshold = metrics.precision_recall_curve(T, S)
+PR_AUC = metrics.auc(recall, precision)
+BACC = balanced_accuracy_score(T, Y)
+tn, fp, fn, tp = confusion_matrix(T, Y).ravel()
+TPR = tp / (tp + fn)
+PREC = precision_score(T, Y)
+ACC = accuracy_score(T, Y)
+KAPPA = cohen_kappa_score(T, Y)
+recall = recall_score(T, Y)
+F1 = f1_score(T, Y)
+
+AUCs = [epoch, ACC, BACC, AUC, PR_AUC, PREC, recall, F1, TPR, KAPPA]
+
+print(f'AUC: {AUC}, PR_AUC: {PR_AUC}, ACC: {ACC}, BACC: {BACC}, \
+        PREC: {PREC}, TPR: {TPR}, KAPPA: {KAPPA}, RECALL: {recall}.')
+
+save_AUCs(AUCs, file_AUCs_test)

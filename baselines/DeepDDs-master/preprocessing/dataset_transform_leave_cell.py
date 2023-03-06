@@ -6,16 +6,17 @@ import pdb
 
 
 if __name__ == '__main__':
-    fold_num = 3
+    fold_num = 5
 
     savedir = 'baselines/DeepDDs-master/data_ours_leave_cell'
     os.makedirs(savedir, exist_ok=True)
 
-    RAW_DATA_DIR = '/data/linjc/dds/data/leave_cells/'
+    RAW_DATA_DIR = '/home/linjc/pisces/Pisces/leave_cell/'
     for i in range(fold_num):
         DATA_DIR_FOLD = os.path.join(RAW_DATA_DIR, f'fold{i}')
         df_train_data = pd.read_csv(os.path.join(DATA_DIR_FOLD, 'train.csv'))
-        df_test_data = pd.read_csv(os.path.join(DATA_DIR_FOLD, 'valid.csv'))
+        df_valid_data = pd.read_csv(os.path.join(DATA_DIR_FOLD, 'valid.csv'))
+        df_test_data = pd.read_csv(os.path.join(DATA_DIR_FOLD, 'test.csv'))
 
         df_drug_smiles = pd.read_csv('data/drug_smiles.csv', index_col=0)
 
@@ -37,5 +38,6 @@ if __name__ == '__main__':
             new_data_df.to_csv(os.path.join(savedir, f'{type}_fold{fold}.csv'), index=False)
 
         convert(df_train_data, 'train', i)
+        convert(df_valid_data, 'valid', i)
         convert(df_test_data, 'test', i)
 
