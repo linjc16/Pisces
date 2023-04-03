@@ -1,5 +1,5 @@
-# Pisces: A combo-wise contrastive learning approach to synergistic drug combination prediction
-This repository is the official implementation of [Pisces: A combo-wise contrastive learning approach to synergistic drug combination prediction](https://www.biorxiv.org/content/10.1101/2022.11.21.517439v1). Our work has been accepted by RECOMB 2023. The code is originally forked from [Fairseq](https://github.com/pytorch/fairseq) and [DVMP](https://github.com/microsoft/DVMP).
+# Pisces: A cross-modal contrastive learning approach to synergistic drug combination prediction
+This repository is the official implementation of [Pisces: A cross-modal contrastive learning approach to synergistic drug combination prediction](https://www.biorxiv.org/content/10.1101/2022.11.21.517439v1). Our work has been accepted by RECOMB 2023. The code is originally forked from [Fairseq](https://github.com/pytorch/fairseq) and [DVMP](https://github.com/microsoft/DVMP).
 
 ## Requirements and Installation
 * PyTorch version == 1.8.0
