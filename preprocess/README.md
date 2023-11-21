@@ -19,7 +19,6 @@ We calculate the cell line features based on gene expression features.
 ### Gene Expression
 Gene expression data can be downloaded [here](https://cellmodelpassports.sanger.ac.uk/downloads). We use the RNA-Seq file `all RNA-Seq processed data`. TheN generate cell line features by running
 ```
-python preprocess/cell_read_count.py
 python preprocess/cell_tpm.py
 ```
 
