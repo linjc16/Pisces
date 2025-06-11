@@ -8,8 +8,8 @@ LR=$2
 DROP=0.1
 MEMORY=32
 
-DATADIR=/data/linjc/dds/data_new/transductive/$DATAFOLD/data-bin
-SAVEDIR=/data/linjc/dds/ckpt_new/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_ljc_lr$LR-norm-drop$DROP-memory$MEMORY
+DATADIR=./data/transductive/$DATAFOLD/data-bin
+SAVEDIR=./outputs/$TASK/$ARCH/$CRITERION/$DATAFOLD/$CLSHEAD/baseline_lr$LR-drop$DROP-memory$MEMORY
 
 # rm -rf $SAVEDIR
 mkdir -p $SAVEDIR

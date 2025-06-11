@@ -1,0 +1,3462 @@
+# English translations for ASE package
+# Copyright (C) 2011-2022 ASE developers
+# This file is distributed under the same license as the ASE package.
+#
+# Ask Hjorth Larsen <asklarsen@gmail.com>, 2011-2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ase-3.5.2\n"
+"Report-Msgid-Bugs-To: ase-users@listserv.fysik.dtu.dk\n"
+"POT-Creation-Date: 2024-10-23 20:47-0400\n"
+"PO-Revision-Date: 2024-10-23 20:51-0400\n"
+"Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
+"Language-Team: English (British) <ase-users@listserv.fysik.dtu.dk>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../add.py:10
+msgid "(selection)"
+msgstr "(selection)"
+
+#: ../add.py:16
+msgid "Add atoms"
+msgstr "Add atoms"
+
+#: ../add.py:17
+msgid "Specify chemical symbol, formula, or filename."
+msgstr "Specify chemical symbol, formula, or filename."
+
+#: ../add.py:44
+msgid "Add:"
+msgstr "Add:"
+
+#: ../add.py:45
+msgid "File ..."
+msgstr "File ..."
+
+#: ../add.py:54
+msgid "Coordinates:"
+msgstr "Coordinates:"
+
+#: ../add.py:56
+msgid ""
+"Coordinates are relative to the center of the selection, if any, else "
+"absolute."
+msgstr ""
+"Coordinates are relative to the center of the selection, if any, else "
+"absolute."
+
+#: ../add.py:58
+msgid "Check positions"
+msgstr "Check positions"
+
+#: ../add.py:59 ../nanoparticle.py:264
+msgid "Add"
+msgstr "Add"
+
+#. May show UI error
+#: ../add.py:104
+msgid "Cannot add atoms"
+msgstr "Cannot add atoms"
+
+#: ../add.py:105
+msgid "{} is neither atom, molecule, nor file"
+msgstr "{} is neither atom, molecule, nor file"
+
+#: ../add.py:143
+msgid "Bad positions"
+msgstr "Bad positions"
+
+#: ../add.py:144
+msgid ""
+"Atom would be less than 0.5 Å from an existing atom.  To override, uncheck "
+"the check positions option."
+msgstr ""
+"Atom would be less than 0.5 Å from an existing atom.  To override, uncheck "
+"the check positions option."
+
+#. TRANSLATORS: This is a title of a window.
+#: ../celleditor.py:49
+msgid "Cell Editor"
+msgstr "Cell Editor"
+
+#: ../celleditor.py:53
+msgid "A:"
+msgstr "A:"
+
+#: ../celleditor.py:53
+msgid "||A||:"
+msgstr "||A||:"
+
+#: ../celleditor.py:54 ../celleditor.py:56 ../celleditor.py:58
+msgid "periodic:"
+msgstr "periodic:"
+
+#: ../celleditor.py:55
+msgid "B:"
+msgstr "B:"
+
+#: ../celleditor.py:55
+msgid "||B||:"
+msgstr "||B||:"
+
+#: ../celleditor.py:57
+msgid "C:"
+msgstr "C:"
+
+#: ../celleditor.py:57
+msgid "||C||:"
+msgstr "||C||:"
+
+#: ../celleditor.py:59
+msgid "∠BC:"
+msgstr "∠BC:"
+
+#: ../celleditor.py:59
+msgid "∠AC:"
+msgstr "∠AC:"
+
+#: ../celleditor.py:60
+msgid "∠AB:"
+msgstr "∠AB:"
+
+#: ../celleditor.py:61
+msgid "Scale atoms with cell:"
+msgstr "Scale atoms with cell:"
+
+#: ../celleditor.py:62
+msgid "Apply Vectors"
+msgstr "Apply Vectors"
+
+#: ../celleditor.py:63
+msgid "Apply Magnitudes"
+msgstr "Apply Magnitudes"
+
+#: ../celleditor.py:64
+msgid "Apply Angles"
+msgstr "Apply Angles"
+
+#: ../celleditor.py:65
+msgid ""
+"Pressing 〈Enter〉 as you enter values will automatically apply correctly"
+msgstr ""
+"Pressing 〈Enter〉 as you enter values will automatically apply correctly"
+
+#. TRANSLATORS: verb
+#: ../celleditor.py:68
+msgid "Center"
+msgstr "Center"
+
+#: ../celleditor.py:69
+msgid "Wrap"
+msgstr "Wrap"
+
+#: ../celleditor.py:70
+msgid "Vacuum:"
+msgstr "Vacuum:"
+
+#: ../celleditor.py:71
+msgid "Apply Vacuum"
+msgstr "Apply Vacuum"
+
+#: ../colors.py:17
+msgid "Colors"
+msgstr "Colours"
+
+#: ../colors.py:19
+msgid "Choose how the atoms are colored:"
+msgstr "Choose how the atoms are coloured:"
+
+#: ../colors.py:22
+msgid "By atomic number, default \"jmol\" colors"
+msgstr "By atomic number, default \"jmol\" colours"
+
+#: ../colors.py:23
+msgid "By tag"
+msgstr "By tag"
+
+#: ../colors.py:24
+msgid "By force"
+msgstr "By force"
+
+#: ../colors.py:25
+msgid "By velocity"
+msgstr "By velocity"
+
+#: ../colors.py:26
+msgid "By initial charge"
+msgstr "By initial charge"
+
+#: ../colors.py:27
+msgid "By magnetic moment"
+msgstr "By magnetic moment"
+
+#: ../colors.py:28
+msgid "By number of neighbors"
+msgstr "By number of neighbors"
+
+#: ../colors.py:98
+msgid "cmap:"
+msgstr "cmap:"
+
+#: ../colors.py:100
+msgid "N:"
+msgstr "N:"
+
+#. XXX what are optimal allowed range and steps ?
+#: ../colors.py:116
+msgid "min:"
+msgstr "min:"
+
+#: ../colors.py:119
+msgid "max:"
+msgstr "max:"
+
+#: ../constraints.py:7
+msgid "Constraints"
+msgstr "Constraints"
+
+#: ../constraints.py:8 ../settings.py:12
+msgid "Fix"
+msgstr "Fix"
+
+#: ../constraints.py:9 ../constraints.py:11
+msgid "selected atoms"
+msgstr "selected atoms"
+
+#: ../constraints.py:10
+msgid "Release"
+msgstr "Release"
+
+#: ../constraints.py:12 ../settings.py:16
+msgid "Clear all constraints"
+msgstr "Clear all constraints"
+
+#: ../graphs.py:9
+msgid ""
+"Symbols:\n"
+"<c>e</c>: total energy\n"
+"<c>epot</c>: potential energy\n"
+"<c>ekin</c>: kinetic energy\n"
+"<c>fmax</c>: maximum force\n"
+"<c>fave</c>: average force\n"
+"<c>R[n,0-2]</c>: position of atom number <c>n</c>\n"
+"<c>d(n<sub>1</sub>,n<sub>2</sub>)</c>: distance between two atoms "
+"<c>n<sub>1</sub></c> and <c>n<sub>2</sub></c>\n"
+"<c>i</c>: current image number\n"
+"<c>E[i]</c>: energy of image number <c>i</c>\n"
+"<c>F[n,0-2]</c>: force on atom number <c>n</c>\n"
+"<c>V[n,0-2]</c>: velocity of atom number <c>n</c>\n"
+"<c>M[n]</c>: magnetic moment of atom number <c>n</c>\n"
+"<c>A[0-2,0-2]</c>: unit-cell basis vectors\n"
+"<c>s</c>: path length\n"
+"<c>a(n1,n2,n3)</c>: angle between atoms <c>n<sub>1</sub></c>, <c>n<sub>2</"
+"sub></c> and <c>n<sub>3</sub></c>, centered on <c>n<sub>2</sub></c>\n"
+"<c>dih(n1,n2,n3,n4)</c>: dihedral angle between <c>n<sub>1</sub></c>, "
+"<c>n<sub>2</sub></c>, <c>n<sub>3</sub></c> and <c>n<sub>4</sub></c>\n"
+"<c>T</c>: temperature (K)"
+msgstr ""
+"Symbols:\n"
+"<c>e</c>: total energy\n"
+"<c>epot</c>: potential energy\n"
+"<c>ekin</c>: kinetic energy\n"
+"<c>fmax</c>: maximum force\n"
+"<c>fave</c>: average force\n"
+"<c>R[n,0-2]</c>: position of atom number <c>n</c>\n"
+"<c>d(n<sub>1</sub>,n<sub>2</sub>)</c>: distance between two atoms "
+"<c>n<sub>1</sub></c> and <c>n<sub>2</sub></c>\n"
+"<c>i</c>: current image number\n"
+"<c>E[i]</c>: energy of image number <c>i</c>\n"
+"<c>F[n,0-2]</c>: force on atom number <c>n</c>\n"
+"<c>V[n,0-2]</c>: velocity of atom number <c>n</c>\n"
+"<c>M[n]</c>: magnetic moment of atom number <c>n</c>\n"
+"<c>A[0-2,0-2]</c>: unit-cell basis vectors\n"
+"<c>s</c>: path length\n"
+"<c>a(n1,n2,n3)</c>: angle between atoms <c>n<sub>1</sub></c>, <c>n<sub>2</"
+"sub></c> and <c>n<sub>3</sub></c>, centered on <c>n<sub>2</sub></c>\n"
+"<c>dih(n1,n2,n3,n4)</c>: dihedral angle between <c>n<sub>1</sub></c>, "
+"<c>n<sub>2</sub></c>, <c>n<sub>3</sub></c> and <c>n<sub>4</sub></c>\n"
+"<c>T</c>: temperature (K)"
+
+#: ../graphs.py:40 ../graphs.py:42
+msgid "Plot"
+msgstr "Plot"
+
+#: ../graphs.py:44
+msgid "Save"
+msgstr "Save"
+
+#: ../graphs.py:67
+msgid "Save data to file ... "
+msgstr "Save data to file ... "
+
+#: ../gui.py:208
+msgid "Delete atoms"
+msgstr "Delete atoms"
+
+#: ../gui.py:209
+msgid "Delete selected atoms?"
+msgstr "Delete selected atoms?"
+
+#. Subprocess probably crashed
+#: ../gui.py:266
+msgid "Failure in subprocess"
+msgstr "Failure in subprocess"
+
+#: ../gui.py:273
+msgid "Plotting failed"
+msgstr "Plotting failed"
+
+#: ../gui.py:280
+msgid "Images must have energies and forces, and atoms must not be stationary."
+msgstr ""
+"Images must have energies and forces, and atoms must not be stationary."
+
+#: ../gui.py:293
+msgid "Images must have energies and varying cell."
+msgstr "Images must have energies and varying cell."
+
+#: ../gui.py:300
+msgid "Requires 3D cell."
+msgstr "Requires 3D cell."
+
+#: ../gui.py:334
+msgid "Quick Info"
+msgstr "Quick Info"
+
+#: ../gui.py:471
+msgid "_File"
+msgstr "_File"
+
+#: ../gui.py:472
+msgid "_Open"
+msgstr "_Open"
+
+#: ../gui.py:473
+msgid "_New"
+msgstr "_New"
+
+#: ../gui.py:474
+msgid "_Save"
+msgstr "_Save"
+
+#: ../gui.py:476
+msgid "_Quit"
+msgstr "_Quit"
+
+#: ../gui.py:478
+msgid "_Edit"
+msgstr "_Edit"
+
+#: ../gui.py:479
+msgid "Select _all"
+msgstr "Select _all"
+
+#: ../gui.py:480
+msgid "_Invert selection"
+msgstr "_Invert selection"
+
+#: ../gui.py:481
+msgid "Select _constrained atoms"
+msgstr "Select _constrained atoms"
+
+#: ../gui.py:482
+msgid "Select _immobile atoms"
+msgstr "Select _immobile atoms"
+
+#. M('---'),
+#: ../gui.py:484
+msgid "_Cut"
+msgstr "_Cut"
+
+#: ../gui.py:485
+msgid "_Copy"
+msgstr "_Copy"
+
+#: ../gui.py:486
+msgid "_Paste"
+msgstr "_Paste"
+
+#: ../gui.py:488
+msgid "Hide selected atoms"
+msgstr "Hide selected atoms"
+
+#: ../gui.py:489
+msgid "Show selected atoms"
+msgstr "Show selected atoms"
+
+#: ../gui.py:491
+msgid "_Modify"
+msgstr "_Modify"
+
+#: ../gui.py:492
+msgid "_Add atoms"
+msgstr "_Add atoms"
+
+#: ../gui.py:493
+msgid "_Delete selected atoms"
+msgstr "_Delete selected atoms"
+
+#: ../gui.py:495
+msgid "Edit _cell"
+msgstr "Edit _cell"
+
+#: ../gui.py:497
+msgid "_First image"
+msgstr "_First image"
+
+#: ../gui.py:498
+msgid "_Previous image"
+msgstr "_Previous image"
+
+#: ../gui.py:499
+msgid "_Next image"
+msgstr "_Next image"
+
+#: ../gui.py:500
+msgid "_Last image"
+msgstr "_Last image"
+
+#: ../gui.py:501
+msgid "Append image copy"
+msgstr "Append image copy"
+
+#: ../gui.py:503
+msgid "_View"
+msgstr "_View"
+
+#: ../gui.py:504
+msgid "Show _unit cell"
+msgstr "Show _unit cell"
+
+#: ../gui.py:506
+msgid "Show _axes"
+msgstr "Show _axes"
+
+#: ../gui.py:508
+msgid "Show _bonds"
+msgstr "Show _bonds"
+
+#: ../gui.py:510
+msgid "Show _velocities"
+msgstr "Show _velocities"
+
+#: ../gui.py:512
+msgid "Show _forces"
+msgstr "Show _forces"
+
+#: ../gui.py:514
+msgid "Show _Labels"
+msgstr "Show _Labels"
+
+#: ../gui.py:515
+msgid "_None"
+msgstr "_None"
+
+#: ../gui.py:516
+msgid "Atom _Index"
+msgstr "Atom _Index"
+
+#: ../gui.py:517
+msgid "_Magnetic Moments"
+msgstr "_Magnetic Moments"
+
+#. XXX check if exist
+#: ../gui.py:518
+msgid "_Element Symbol"
+msgstr "_Element Symbol"
+
+#: ../gui.py:519
+msgid "_Initial Charges"
+msgstr "_Initial Charges"
+
+#: ../gui.py:522
+msgid "Quick Info ..."
+msgstr "Quick Info ..."
+
+#: ../gui.py:523
+msgid "Repeat ..."
+msgstr "Repeat ..."
+
+#: ../gui.py:524
+msgid "Rotate ..."
+msgstr "Rotate ..."
+
+#: ../gui.py:525
+msgid "Colors ..."
+msgstr "Colours ..."
+
+#. TRANSLATORS: verb
+#: ../gui.py:527
+msgid "Focus"
+msgstr "Focus"
+
+#: ../gui.py:528
+msgid "Zoom in"
+msgstr "Zoom in"
+
+#: ../gui.py:529
+msgid "Zoom out"
+msgstr "Zoom out"
+
+#: ../gui.py:530
+msgid "Change View"
+msgstr "Change View"
+
+#: ../gui.py:532
+msgid "Reset View"
+msgstr "Reset View"
+
+#: ../gui.py:533
+msgid "xy-plane"
+msgstr "xy-plane"
+
+#: ../gui.py:534
+msgid "yz-plane"
+msgstr "yz-plane"
+
+#: ../gui.py:535
+msgid "zx-plane"
+msgstr "zx-plane"
+
+#: ../gui.py:536
+msgid "yx-plane"
+msgstr "yx-plane"
+
+#: ../gui.py:537
+msgid "zy-plane"
+msgstr "zy-plane"
+
+#: ../gui.py:538
+msgid "xz-plane"
+msgstr "xz-plane"
+
+#: ../gui.py:539
+msgid "a2,a3-plane"
+msgstr "a2,a3-plane"
+
+#: ../gui.py:540
+msgid "a3,a1-plane"
+msgstr "a3,a1-plane"
+
+#: ../gui.py:541
+msgid "a1,a2-plane"
+msgstr "a1,a2-plane"
+
+#: ../gui.py:542
+msgid "a3,a2-plane"
+msgstr "a3,a2-plane"
+
+#: ../gui.py:543
+msgid "a1,a3-plane"
+msgstr "a1,a3-plane"
+
+#: ../gui.py:544
+msgid "a2,a1-plane"
+msgstr "a2,a1-plane"
+
+#: ../gui.py:545
+msgid "Settings ..."
+msgstr "Settings ..."
+
+#: ../gui.py:547
+msgid "VMD"
+msgstr "VMD"
+
+#: ../gui.py:548
+msgid "RasMol"
+msgstr "RasMol"
+
+#: ../gui.py:549
+msgid "xmakemol"
+msgstr "xmakemol"
+
+#: ../gui.py:550
+msgid "avogadro"
+msgstr "avogadro"
+
+#: ../gui.py:552
+msgid "_Tools"
+msgstr "_Tools"
+
+#: ../gui.py:553
+msgid "Graphs ..."
+msgstr "Graphs ..."
+
+#: ../gui.py:554
+msgid "Movie ..."
+msgstr "Film ..."
+
+#: ../gui.py:555
+msgid "Constraints ..."
+msgstr "Constraints ..."
+
+#: ../gui.py:556
+msgid "Render scene ..."
+msgstr "Render scene ..."
+
+#: ../gui.py:557
+msgid "_Move selected atoms"
+msgstr "_Move selected atoms"
+
+#: ../gui.py:558
+msgid "_Rotate selected atoms"
+msgstr "_Rotate selected atoms"
+
+#: ../gui.py:560
+msgid "NE_B plot"
+msgstr "NE_B plot"
+
+#: ../gui.py:561
+msgid "B_ulk Modulus"
+msgstr "B_ulk Modulus"
+
+#: ../gui.py:562
+msgid "Reciprocal space ..."
+msgstr "Reciprocal space ..."
+
+#. TRANSLATORS: Set up (i.e. build) surfaces, nanoparticles, ...
+#: ../gui.py:565
+msgid "_Setup"
+msgstr "_Setup"
+
+#: ../gui.py:566
+msgid "_Surface slab"
+msgstr "_Surface slab"
+
+#: ../gui.py:567
+msgid "_Nanoparticle"
+msgstr "_Nanoparticle"
+
+#: ../gui.py:569
+msgid "Nano_tube"
+msgstr "Nano_tube"
+
+#. (_('_Calculate'),
+#. [M(_('Set _Calculator'), self.calculator_window, disabled=True),
+#. M(_('_Energy and Forces'), self.energy_window, disabled=True),
+#. M(_('Energy Minimization'), self.energy_minimize_window,
+#. disabled=True)]),
+#: ../gui.py:577
+msgid "_Help"
+msgstr "_Help"
+
+#: ../gui.py:578
+msgid "_About"
+msgstr "_About"
+
+#: ../gui.py:582
+msgid "Webpage ..."
+msgstr "Webpage ..."
+
+#. Host window will never be shown
+#: ../images.py:259
+msgid "Constraints discarded"
+msgstr "Constraints discarded"
+
+#: ../images.py:260
+msgid "Constraints other than FixAtoms have been discarded."
+msgstr "Constraints other than FixAtoms have been discarded."
+
+#: ../modify.py:20
+msgid "No atoms selected!"
+msgstr "No atoms selected!"
+
+#: ../modify.py:23
+msgid "Modify"
+msgstr "Modify"
+
+#: ../modify.py:26
+msgid "Change element"
+msgstr "Change element"
+
+#: ../modify.py:29
+msgid "Tag"
+msgstr "Tag"
+
+#: ../modify.py:31
+msgid "Moment"
+msgstr "Moment"
+
+#: ../movie.py:10
+msgid "Movie"
+msgstr "Film"
+
+#: ../movie.py:11
+msgid "Image number:"
+msgstr "Image number:"
+
+#: ../movie.py:17
+msgid "First"
+msgstr "First"
+
+#: ../movie.py:18
+msgid "Back"
+msgstr "Back"
+
+#: ../movie.py:19
+msgid "Forward"
+msgstr "Forward"
+
+#: ../movie.py:20
+msgid "Last"
+msgstr "Last"
+
+#: ../movie.py:22
+msgid "Play"
+msgstr "Play"
+
+#: ../movie.py:23
+msgid "Stop"
+msgstr "Stop"
+
+#. TRANSLATORS: This function plays an animation forwards and backwards
+#. alternatingly, e.g. for displaying vibrational movement
+#: ../movie.py:27
+msgid "Rock"
+msgstr "Rock"
+
+#: ../movie.py:40
+msgid " Frame rate: "
+msgstr " Frame rate: "
+
+#: ../movie.py:40
+msgid " Skip frames: "
+msgstr " Skip frames: "
+
+#. Delayed imports:
+#. ase.cluster.data
+#: ../nanoparticle.py:20
+msgid ""
+"Create a nanoparticle either by specifying the number of layers, or using "
+"the\n"
+"Wulff construction.  Please press the [Help] button for instructions on how "
+"to\n"
+"specify the directions.\n"
+"WARNING: The Wulff construction currently only works with cubic crystals!\n"
+msgstr ""
+"Create a nanoparticle either by specifying the number of layers, or using "
+"the\n"
+"Wulff construction.  Please press the [Help] button for instructions on how "
+"to\n"
+"specify the directions.\n"
+"WARNING: The Wulff construction currently only works with cubic crystals!\n"
+
+#: ../nanoparticle.py:27
+#, python-brace-format
+msgid ""
+"\n"
+"The nanoparticle module sets up a nano-particle or a cluster with a given\n"
+"crystal structure.\n"
+"\n"
+"1) Select the element, the crystal structure and the lattice constant(s).\n"
+"   The [Get structure] button will find the data for a given element.\n"
+"\n"
+"2) Choose if you want to specify the number of layers in each direction, or "
+"if\n"
+"   you want to use the Wulff construction.  In the latter case, you must\n"
+"   specify surface energies in each direction, and the size of the cluster.\n"
+"\n"
+"How to specify the directions:\n"
+"------------------------------\n"
+"\n"
+"First time a direction appears, it is interpreted as the entire family of\n"
+"directions, i.e. (0,0,1) also covers (1,0,0), (-1,0,0) etc.  If one of "
+"these\n"
+"directions is specified again, the second specification overrules that "
+"specific\n"
+"direction.  For this reason, the order matters and you can rearrange the\n"
+"directions with the [Up] and [Down] keys.  You can also add a new "
+"direction,\n"
+"remember to press [Add] or it will not be included.\n"
+"\n"
+"Example: (1,0,0) (1,1,1), (0,0,1) would specify the {100} family of "
+"directions,\n"
+"the {111} family and then the (001) direction, overruling the value given "
+"for\n"
+"the whole family of directions.\n"
+msgstr ""
+"\n"
+"The nanoparticle module sets up a nano-particle or a cluster with a given\n"
+"crystal structure.\n"
+"\n"
+"1) Select the element, the crystal structure and the lattice constant(s).\n"
+"   The [Get structure] button will find the data for a given element.\n"
+"\n"
+"2) Choose if you want to specify the number of layers in each direction, or "
+"if\n"
+"   you want to use the Wulff construction.  In the latter case, you must\n"
+"   specify surface energies in each direction, and the size of the cluster.\n"
+"\n"
+"How to specify the directions:\n"
+"------------------------------\n"
+"\n"
+"First time a direction appears, it is interpreted as the entire family of\n"
+"directions, i.e. (0,0,1) also covers (1,0,0), (-1,0,0) etc.  If one of "
+"these\n"
+"directions is specified again, the second specification overrules that "
+"specific\n"
+"direction.  For this reason, the order matters and you can rearrange the\n"
+"directions with the [Up] and [Down] keys.  You can also add a new "
+"direction,\n"
+"remember to press [Add] or it will not be included.\n"
+"\n"
+"Example: (1,0,0) (1,1,1), (0,0,1) would specify the {100} family of "
+"directions,\n"
+"the {111} family and then the (001) direction, overruling the value given "
+"for\n"
+"the whole family of directions.\n"
+
+#: ../nanoparticle.py:87
+msgid "Face centered cubic (fcc)"
+msgstr "Face centered cubic (fcc)"
+
+#: ../nanoparticle.py:88
+msgid "Body centered cubic (bcc)"
+msgstr "Body centered cubic (bcc)"
+
+#: ../nanoparticle.py:89
+msgid "Simple cubic (sc)"
+msgstr "Simple cubic (sc)"
+
+#: ../nanoparticle.py:90
+msgid "Hexagonal closed-packed (hcp)"
+msgstr "Hexagonal closed-packed (hcp)"
+
+#: ../nanoparticle.py:91
+msgid "Graphite"
+msgstr "Graphite"
+
+#: ../nanoparticle.py:136
+msgid "Nanoparticle"
+msgstr "Nanoparticle"
+
+#: ../nanoparticle.py:140
+msgid "Get structure"
+msgstr "Get structure"
+
+#: ../nanoparticle.py:155 ../surfaceslab.py:68
+msgid "Structure:"
+msgstr "Structure:"
+
+#: ../nanoparticle.py:159
+msgid "Lattice constant:  a ="
+msgstr "Lattice constant:  a ="
+
+#: ../nanoparticle.py:163
+msgid "Layer specification"
+msgstr "Layer specification"
+
+#: ../nanoparticle.py:163
+msgid "Wulff construction"
+msgstr "Wulff construction"
+
+#: ../nanoparticle.py:166
+msgid "Method: "
+msgstr "Method: "
+
+#: ../nanoparticle.py:174
+msgid "Add new direction:"
+msgstr "Add new direction:"
+
+#. Information
+#: ../nanoparticle.py:180
+msgid "Information about the created cluster:"
+msgstr "Information about the created cluster:"
+
+#: ../nanoparticle.py:181
+msgid "Number of atoms: "
+msgstr "Number of atoms: "
+
+#: ../nanoparticle.py:183
+msgid "   Approx. diameter: "
+msgstr "   Approx. diameter: "
+
+#: ../nanoparticle.py:192
+msgid "Automatic Apply"
+msgstr "Automatic Apply"
+
+#: ../nanoparticle.py:195 ../nanotube.py:49
+msgid "Creating a nanoparticle."
+msgstr "Creating a nanoparticle."
+
+#: ../nanoparticle.py:197 ../nanotube.py:50 ../surfaceslab.py:81
+msgid "Apply"
+msgstr "Apply"
+
+#: ../nanoparticle.py:198 ../nanotube.py:51 ../surfaceslab.py:82
+msgid "OK"
+msgstr "OK"
+
+#: ../nanoparticle.py:227
+msgid "Up"
+msgstr "Up"
+
+#: ../nanoparticle.py:228
+msgid "Down"
+msgstr "Down"
+
+#: ../nanoparticle.py:229
+msgid "Delete"
+msgstr "Delete"
+
+#: ../nanoparticle.py:271
+msgid "Number of atoms"
+msgstr "Number of atoms"
+
+#: ../nanoparticle.py:271
+msgid "Diameter"
+msgstr "Diameter"
+
+#: ../nanoparticle.py:279
+msgid "above  "
+msgstr "above  "
+
+#: ../nanoparticle.py:279
+msgid "below  "
+msgstr "below  "
+
+#: ../nanoparticle.py:279
+msgid "closest  "
+msgstr "closest  "
+
+#: ../nanoparticle.py:282
+msgid "Smaller"
+msgstr "Smaller"
+
+#: ../nanoparticle.py:283
+msgid "Larger"
+msgstr "Larger"
+
+#: ../nanoparticle.py:284
+msgid "Choose size using:"
+msgstr "Choose size using:"
+
+#: ../nanoparticle.py:286
+msgid "atoms"
+msgstr "atoms"
+
+#: ../nanoparticle.py:287
+msgid "Å³"
+msgstr "Å³"
+
+#: ../nanoparticle.py:289
+msgid "Rounding: If exact size is not possible, choose the size:"
+msgstr "Rounding: If exact size is not possible, choose the size:"
+
+#: ../nanoparticle.py:317
+msgid "Surface energies (as energy/area, NOT per atom):"
+msgstr "Surface energies (as energy/area, NOT per atom):"
+
+#: ../nanoparticle.py:319
+msgid "Number of layers:"
+msgstr "Number of layers:"
+
+#: ../nanoparticle.py:347
+msgid "At least one index must be non-zero"
+msgstr "At least one index must be non-zero"
+
+#: ../nanoparticle.py:350
+msgid "Invalid hexagonal indices"
+msgstr "Invalid hexagonal indices"
+
+#: ../nanoparticle.py:415
+msgid "Unsupported or unknown structure"
+msgstr "Unsupported or unknown structure"
+
+#: ../nanoparticle.py:416
+#, python-brace-format
+msgid "Element = {0}, structure = {1}"
+msgstr "Element = {0}, structure = {1}"
+
+#: ../nanoparticle.py:530 ../nanotube.py:82 ../surfaceslab.py:221
+msgid "No valid atoms."
+msgstr "No valid atoms."
+
+#: ../nanoparticle.py:531 ../nanotube.py:83 ../surfaceslab.py:222
+#: ../widgets.py:93
+msgid "You have not (yet) specified a consistent set of parameters."
+msgstr "You have not (yet) specified a consistent set of parameters."
+
+#: ../nanotube.py:10
+msgid ""
+"Set up a Carbon nanotube by specifying the (n,m) roll-up vector.\n"
+"Please note that m <= n.\n"
+"\n"
+"Nanotubes of other elements can be made by specifying the element\n"
+"and bond length."
+msgstr ""
+"Set up a Carbon nanotube by specifying the (n,m) roll-up vector.\n"
+"Please note that m <= n.\n"
+"\n"
+"Nanotubes of other elements can be made by specifying the element\n"
+"and bond length."
+
+#: ../nanotube.py:23
+#, python-brace-format
+msgid ""
+"{natoms} atoms, diameter: {diameter:.3f} Å, total length: {total_length:.3f} "
+"Å"
+msgstr ""
+"{natoms} atoms, diameter: {diameter:.3f} Å, total length: {total_length:.3f} "
+"Å"
+
+#: ../nanotube.py:38
+msgid "Nanotube"
+msgstr "Nanotube"
+
+#: ../nanotube.py:41
+msgid "Bond length: "
+msgstr "Bond length: "
+
+#: ../nanotube.py:43
+msgid "Å"
+msgstr "Å"
+
+#: ../nanotube.py:44
+msgid "Select roll-up vector (n,m) and tube length:"
+msgstr "Select roll-up vector (n,m) and tube length:"
+
+#: ../nanotube.py:47
+msgid "Length:"
+msgstr "Length:"
+
+#: ../quickinfo.py:28
+msgid "This frame has no atoms."
+msgstr "This frame has no atoms."
+
+#: ../quickinfo.py:33
+msgid "Single image loaded."
+msgstr "Single image loaded."
+
+#: ../quickinfo.py:35
+msgid "Image {} loaded (0–{})."
+msgstr "Image {} loaded (0–{})."
+
+#: ../quickinfo.py:37
+msgid "Number of atoms: {}"
+msgstr "Number of atoms: {}"
+
+#: ../quickinfo.py:47
+msgid "Unit cell [Å]:"
+msgstr "Unit cell [Å]:"
+
+#: ../quickinfo.py:49
+msgid "no"
+msgstr "no"
+
+#: ../quickinfo.py:49
+msgid "yes"
+msgstr "yes"
+
+#. TRANSLATORS: This has the form Periodic: no, no, yes
+#: ../quickinfo.py:52
+msgid "Periodic: {}, {}, {}"
+msgstr "Periodic: {}, {}, {}"
+
+#: ../quickinfo.py:57
+msgid "Lengths [Å]: {:.3f}, {:.3f}, {:.3f}"
+msgstr "Lengths [Å]: {:.3f}, {:.3f}, {:.3f}"
+
+#: ../quickinfo.py:58
+msgid "Angles: {:.1f}°, {:.1f}°, {:.1f}°"
+msgstr "Angles: {:.1f}°, {:.1f}°, {:.1f}°"
+
+#: ../quickinfo.py:61
+msgid "Volume: {:.3f} Å³"
+msgstr "Volume: {:.3f} Å³"
+
+#: ../quickinfo.py:67
+msgid "Unit cell is fixed."
+msgstr "Unit cell is fixed."
+
+#: ../quickinfo.py:69
+msgid "Unit cell varies."
+msgstr "Unit cell varies."
+
+#: ../quickinfo.py:75
+msgid "Could not recognize the lattice type"
+msgstr "Could not recognize the lattice type"
+
+#: ../quickinfo.py:77
+msgid "Unexpected error determining lattice type"
+msgstr "Unexpected error determining lattice type"
+
+#: ../quickinfo.py:79
+msgid ""
+"Reduced Bravais lattice:\n"
+"{}"
+msgstr ""
+"Reduced Bravais lattice:\n"
+"{}"
+
+#: ../quickinfo.py:107
+msgid "Calculator: {} (cached)"
+msgstr "Calculator: {} (cached)"
+
+#: ../quickinfo.py:109
+msgid "Calculator: {} (attached)"
+msgstr "Calculator: {} (attached)"
+
+#: ../quickinfo.py:116
+msgid "Energy: {:.3f} eV"
+msgstr "Energy: {:.3f} eV"
+
+#: ../quickinfo.py:121
+msgid "Max force: {:.3f} eV/Å"
+msgstr "Max force: {:.3f} eV/Å"
+
+#: ../quickinfo.py:125
+msgid "Magmom: {:.3f} µ"
+msgstr "Magmom: {:.3f} µ"
+
+#: ../render.py:20
+msgid "Render current view in povray ... "
+msgstr "Render current view in povray ... "
+
+#: ../render.py:21
+#, python-format
+msgid "Rendering %d atoms."
+msgstr "Rendering %d atoms."
+
+#: ../render.py:26
+msgid "Size"
+msgstr "Size"
+
+#: ../render.py:31
+msgid "Line width"
+msgstr "Line width"
+
+#: ../render.py:32
+msgid "Ångström"
+msgstr "Ångström"
+
+#: ../render.py:34
+msgid "Render constraints"
+msgstr "Render constraints"
+
+#: ../render.py:35
+msgid "Render unit cell"
+msgstr "Render unit cell"
+
+#: ../render.py:41
+msgid "Output basename: "
+msgstr "Output basename: "
+
+#: ../render.py:43
+msgid "POVRAY executable"
+msgstr "POVRAY executable"
+
+#: ../render.py:45
+msgid "Output filename: "
+msgstr "Output filename: "
+
+#: ../render.py:50
+msgid "Atomic texture set:"
+msgstr "Atomic texture set:"
+
+#: ../render.py:57
+msgid "Camera type: "
+msgstr "Camera type: "
+
+#: ../render.py:58
+msgid "Camera distance"
+msgstr "Camera distance"
+
+#. render current frame/all frames
+#: ../render.py:61
+msgid "Render current frame"
+msgstr "Render current frame"
+
+#: ../render.py:62
+msgid "Render all frames"
+msgstr "Render all frames"
+
+#: ../render.py:67
+msgid "Run povray"
+msgstr "Run povray"
+
+#: ../render.py:68
+msgid "Keep povray files"
+msgstr "Keep povray files"
+
+#: ../render.py:69
+msgid "Show output window"
+msgstr "Show output window"
+
+#: ../render.py:70
+msgid "Transparent background"
+msgstr "Transparent background"
+
+#: ../render.py:74
+msgid "Render"
+msgstr "Render"
+
+#: ../repeat.py:7
+msgid "Repeat"
+msgstr "Repeat"
+
+#: ../repeat.py:8
+msgid "Repeat atoms:"
+msgstr "Repeat atoms:"
+
+#: ../repeat.py:12
+msgid "Set unit cell"
+msgstr "Set unit cell"
+
+#: ../rotate.py:11
+msgid "Rotate"
+msgstr "Rotate"
+
+#: ../rotate.py:12
+msgid "Rotation angles:"
+msgstr "Rotation angles:"
+
+#: ../rotate.py:16
+msgid "Update"
+msgstr "Update"
+
+#: ../rotate.py:17
+msgid ""
+"Note:\n"
+"You can rotate freely\n"
+"with the mouse, by holding\n"
+"down mouse button 2."
+msgstr ""
+"Note:\n"
+"You can rotate freely\n"
+"with the mouse, by holding\n"
+"down mouse button 2."
+
+#: ../save.py:15
+msgid ""
+"Append name with \"@n\" in order to write image\n"
+"number \"n\" instead of the current image. Append\n"
+"\"@start:stop\" or \"@start:stop:step\" if you want\n"
+"to write a range of images. You can leave out\n"
+"\"start\" and \"stop\" so that \"name@:\" will give\n"
+"you all images. Negative numbers count from the\n"
+"last image. Examples: \"name@-1\": last image,\n"
+"\"name@-2:\": last two."
+msgstr ""
+"Append name with \"@n\" in order to write image\n"
+"number \"n\" instead of the current image. Append\n"
+"\"@start:stop\" or \"@start:stop:step\" if you want\n"
+"to write a range of images. You can leave out\n"
+"\"start\" and \"stop\" so that \"name@:\" will give\n"
+"you all images. Negative numbers count from the\n"
+"last image. Examples: \"name@-1\": last image,\n"
+"\"name@-2:\": last two."
+
+#: ../save.py:27
+msgid "Save ..."
+msgstr "Save ..."
+
+#: ../save.py:85 ../ui.py:32
+msgid "Error"
+msgstr "Error"
+
+#: ../settings.py:8
+msgid "Settings"
+msgstr "Settings"
+
+#. Constraints
+#: ../settings.py:11
+msgid "Constraints:"
+msgstr "Constraints:"
+
+#: ../settings.py:14
+msgid "release"
+msgstr "release"
+
+#: ../settings.py:15 ../settings.py:23
+msgid " selected atoms"
+msgstr " selected atoms"
+
+#. Visibility
+#: ../settings.py:19
+msgid "Visibility:"
+msgstr "Visibility:"
+
+#: ../settings.py:20
+msgid "Hide"
+msgstr "Hide"
+
+#: ../settings.py:22
+msgid "show"
+msgstr "show"
+
+#: ../settings.py:24
+msgid "View all atoms"
+msgstr "View all atoms"
+
+#. Miscellaneous
+#: ../settings.py:27
+msgid "Miscellaneous:"
+msgstr "Miscellaneous:"
+
+#: ../settings.py:30
+msgid "Scale atomic radii:"
+msgstr "Scale atomic radii:"
+
+#: ../settings.py:37
+msgid "Scale force vectors:"
+msgstr "Scale force vectors:"
+
+#: ../settings.py:44
+msgid "Scale velocity vectors:"
+msgstr "Scale velocity vectors:"
+
+#: ../status.py:80
+#, python-format
+msgid " tag=%(tag)s"
+msgstr " tag=%(tag)s"
+
+#. TRANSLATORS: mom refers to magnetic moment
+#: ../status.py:84
+msgid " mom={:1.2f}"
+msgstr " mom={:1.2f}"
+
+#: ../status.py:88
+msgid " q={:1.2f}"
+msgstr " q={:1.2f}"
+
+#: ../status.py:126
+msgid "dihedral"
+msgstr "dihedral"
+
+#: ../surfaceslab.py:9
+msgid ""
+"  Use this dialog to create surface slabs.  Select the element by\n"
+"writing the chemical symbol or the atomic number in the box.  Then\n"
+"select the desired surface structure.  Note that some structures can\n"
+"be created with an othogonal or a non-orthogonal unit cell, in these\n"
+"cases the non-orthogonal unit cell will contain fewer atoms.\n"
+"\n"
+"  If the structure matches the experimental crystal structure, you can\n"
+"look up the lattice constant, otherwise you have to specify it\n"
+"yourself."
+msgstr ""
+"  Use this dialog to create surface slabs.  Select the element by\n"
+"writing the chemical symbol or the atomic number in the box.  Then\n"
+"select the desired surface structure.  Note that some structures can\n"
+"be created with an othogonal or a non-orthogonal unit cell, in these\n"
+"cases the non-orthogonal unit cell will contain fewer atoms.\n"
+"\n"
+"  If the structure matches the experimental crystal structure, you can\n"
+"look up the lattice constant, otherwise you have to specify it\n"
+"yourself."
+
+#. Name, structure, orthogonal, function
+#: ../surfaceslab.py:21
+msgid "FCC(100)"
+msgstr "FCC(100)"
+
+#: ../surfaceslab.py:21 ../surfaceslab.py:22 ../surfaceslab.py:23
+#: ../surfaceslab.py:24
+msgid "fcc"
+msgstr "fcc"
+
+#: ../surfaceslab.py:22
+msgid "FCC(110)"
+msgstr "FCC(110)"
+
+#: ../surfaceslab.py:23 ../surfaceslab.py:171
+msgid "FCC(111)"
+msgstr "FCC(111)"
+
+#: ../surfaceslab.py:24 ../surfaceslab.py:174
+msgid "FCC(211)"
+msgstr "FCC(211)"
+
+#: ../surfaceslab.py:25
+msgid "BCC(100)"
+msgstr "BCC(100)"
+
+#: ../surfaceslab.py:25 ../surfaceslab.py:26 ../surfaceslab.py:27
+msgid "bcc"
+msgstr "bcc"
+
+#: ../surfaceslab.py:26 ../surfaceslab.py:168
+msgid "BCC(110)"
+msgstr "BCC(110)"
+
+#: ../surfaceslab.py:27 ../surfaceslab.py:165
+msgid "BCC(111)"
+msgstr "BCC(111)"
+
+#: ../surfaceslab.py:28 ../surfaceslab.py:178
+msgid "HCP(0001)"
+msgstr "HCP(0001)"
+
+#: ../surfaceslab.py:28 ../surfaceslab.py:29 ../surfaceslab.py:132
+#: ../surfaceslab.py:188
+msgid "hcp"
+msgstr "hcp"
+
+#: ../surfaceslab.py:29 ../surfaceslab.py:181
+msgid "HCP(10-10)"
+msgstr "HCP(10-10)"
+
+#: ../surfaceslab.py:30
+msgid "DIAMOND(100)"
+msgstr "DIAMOND(100)"
+
+#: ../surfaceslab.py:30 ../surfaceslab.py:31
+msgid "diamond"
+msgstr "diamond"
+
+#: ../surfaceslab.py:31
+msgid "DIAMOND(111)"
+msgstr "DIAMOND(111)"
+
+#: ../surfaceslab.py:53
+msgid "Get from database"
+msgstr "Get from database"
+
+#: ../surfaceslab.py:65
+msgid "Surface"
+msgstr "Surface"
+
+#: ../surfaceslab.py:69
+msgid "Orthogonal cell:"
+msgstr "Orthogonal cell:"
+
+#: ../surfaceslab.py:70
+msgid "Lattice constant:"
+msgstr "Lattice constant:"
+
+#: ../surfaceslab.py:71
+msgid "\ta"
+msgstr "\ta"
+
+#: ../surfaceslab.py:72
+msgid "\tc"
+msgstr "\tc"
+
+#: ../surfaceslab.py:73
+msgid "Size:"
+msgstr "Size:"
+
+#: ../surfaceslab.py:74
+msgid "\tx: "
+msgstr "\tx: "
+
+#: ../surfaceslab.py:74 ../surfaceslab.py:75 ../surfaceslab.py:76
+msgid " unit cells"
+msgstr " unit cells"
+
+#: ../surfaceslab.py:75
+msgid "\ty: "
+msgstr "\ty: "
+
+#: ../surfaceslab.py:76
+msgid "\tz: "
+msgstr "\tz: "
+
+#: ../surfaceslab.py:77
+msgid "Vacuum: "
+msgstr "Vacuum: "
+
+#. TRANSLATORS: This is a title of a window.
+#: ../surfaceslab.py:80
+msgid "Creating a surface."
+msgstr "Creating a surface."
+
+#. TRANSLATORS: E.g. "... assume fcc crystal structure for Au"
+#: ../surfaceslab.py:108
+msgid "Error: Reference values assume {} crystal structure for {}!"
+msgstr "Error: Reference values assume {} crystal structure for {}!"
+
+#: ../surfaceslab.py:162
+msgid "Please enter an even value for orthogonal cell"
+msgstr "Please enter an even value for orthogonal cell"
+
+#: ../surfaceslab.py:175
+msgid "Please enter a value divisible by 3 for orthogonal cell"
+msgstr "Please enter a value divisible by 3 for orthogonal cell"
+
+#: ../surfaceslab.py:195
+msgid " Vacuum: {} Å."
+msgstr " Vacuum: {} Å."
+
+#. TRANSLATORS: e.g. "Au fcc100 surface with 2 atoms."
+#. or "Au fcc100 surface with 2 atoms. Vacuum: 5 Å."
+#: ../surfaceslab.py:203
+#, python-brace-format
+msgid "{symbol} {surf} surface with one atom.{vacuum}"
+msgid_plural "{symbol} {surf} surface with {natoms} atoms.{vacuum}"
+msgstr[0] "{symbol} {surf} surface with {natoms} atom.{vacuum}"
+msgstr[1] "{symbol} {surf} surface with {natoms} atoms.{vacuum}"
+
+#: ../ui.py:39
+msgid "Version"
+msgstr "Version"
+
+#: ../ui.py:40
+msgid "Web-page"
+msgstr "Web-page"
+
+#: ../ui.py:41
+msgid "About"
+msgstr "About"
+
+#: ../ui.py:47 ../ui.py:51 ../widgets.py:12
+msgid "Help"
+msgstr "Help"
+
+#: ../ui.py:560
+msgid "Open ..."
+msgstr "Open ..."
+
+#: ../ui.py:567
+msgid "Automatic"
+msgstr "Automatic"
+
+#: ../ui.py:585
+msgid "Choose parser:"
+msgstr "Choose parser:"
+
+#: ../ui.py:591
+msgid "Read error"
+msgstr "Read error"
+
+#: ../ui.py:592
+#, python-brace-format
+msgid "Could not read {filename}: {err}"
+msgstr "Could not read {filename}: {err}"
+
+#: ../view.py:130
+msgid "one image loaded"
+msgid_plural "{} images loaded"
+msgstr[0] "{} image loaded"
+msgstr[1] "{} images loaded"
+
+#: ../widgets.py:10
+msgid "Element:"
+msgstr "Element:"
+
+#: ../widgets.py:24
+msgid "Enter a chemical symbol or the atomic number."
+msgstr "Enter a chemical symbol or the atomic number."
+
+#. Title of a popup window
+#: ../widgets.py:26
+msgid "Info"
+msgstr "Info"
+
+#: ../widgets.py:56
+msgid "No element specified!"
+msgstr "No element specified!"
+
+#: ../widgets.py:75
+msgid "ERROR: Invalid element!"
+msgstr "ERROR: Invalid element!"
+
+#: ../widgets.py:92
+msgid "No Python code"
+msgstr "No Python code"
+
+#~ msgid "Get molecule:"
+#~ msgstr "Get molecule:"
+
+#~ msgid "Constrain"
+#~ msgstr "Constrain"
+
+#~ msgid "immobile atoms"
+#~ msgstr "immobile atoms"
+
+#~ msgid "Unconstrain"
+#~ msgstr "Unconstrain"
+
+#~ msgid "Clear constraints"
+#~ msgstr "Clear constraints"
+
+#~ msgid ""
+#~ "Set up a graphene sheet or a graphene nanoribbon.  A nanoribbon may\n"
+#~ "optionally be saturated with hydrogen (or another element)."
+#~ msgstr ""
+#~ "Set up a graphene sheet or a graphene nanoribbon.  A nanoribbon may\n"
+#~ "optionally be saturated with hydrogen (or another element)."
+
+#~ msgid " %(natoms)i atoms: %(symbols)s, Volume: %(volume).3f A<sup>3</sup>"
+#~ msgstr " %(natoms)i atoms: %(symbols)s, Volume: %(volume).3f A<sup>3</sup>"
+
+#~ msgid "Graphene"
+#~ msgstr "Graphene"
+
+#~ msgid "Structure: "
+#~ msgstr "Structure: "
+
+#~ msgid "Infinite sheet"
+#~ msgstr "Infinite sheet"
+
+#~ msgid "Unsaturated ribbon"
+#~ msgstr "Unsaturated ribbon"
+
+#~ msgid "Saturated ribbon"
+#~ msgstr "Saturated ribbon"
+
+#~ msgid "Orientation: "
+#~ msgstr "Orientation: "
+
+#~ msgid "zigzag"
+#~ msgstr "zigzag"
+
+#~ msgid "armchair"
+#~ msgstr "armchair"
+
+#~ msgid "  Bond length: "
+#~ msgstr "  Bond length: "
+
+#~ msgid "Saturation: "
+#~ msgstr "Saturation: "
+
+#~ msgid "H"
+#~ msgstr "H"
+
+#~ msgid "Width: "
+#~ msgstr "Width: "
+
+#~ msgid "  Length: "
+#~ msgstr "  Length: "
+
+#~ msgid "  No element specified!"
+#~ msgstr "  No element specified!"
+
+#~ msgid "Please specify a consistent set of atoms. "
+#~ msgstr "Please specify a consistent set of atoms. "
+
+#~ msgid "Expert mode ..."
+#~ msgstr "Expert mode ..."
+
+#~ msgid "_Bulk Crystal"
+#~ msgstr "_Bulk Crystal"
+
+#~ msgid "Constrain immobile atoms"
+#~ msgstr "Constrain immobile atoms"
+
+#~ msgid "Green"
+#~ msgstr "Green"
+
+#~ msgid "Yellow"
+#~ msgstr "Yellow"
+
+#~ msgid "_Move atoms"
+#~ msgstr "_Move atoms"
+
+#~ msgid "_Rotate atoms"
+#~ msgstr "_Rotate atoms"
+
+#~ msgid ""
+#~ "    Textures can be used to highlight different parts of\n"
+#~ "    an atomic structure. This window applies the default\n"
+#~ "    texture to the entire structure and optionally\n"
+#~ "    applies a different texture to subsets of atoms that\n"
+#~ "    can be selected using the mouse.\n"
+#~ "    An alternative selection method is based on a boolean\n"
+#~ "    expression in the entry box provided, using the\n"
+#~ "    variables x, y, z, or Z. For example, the expression\n"
+#~ "    Z == 11 and x > 10 and y > 10\n"
+#~ "    will mark all sodium atoms with x or coordinates\n"
+#~ "    larger than 10. In either case, the button labeled\n"
+#~ "    `Create new texture from selection` will enable\n"
+#~ "    to change the attributes of the current selection.\n"
+#~ "    "
+#~ msgstr ""
+#~ "    Textures can be used to highlight different parts of\n"
+#~ "    an atomic structure. This window applies the default\n"
+#~ "    texture to the entire structure and optionally\n"
+#~ "    applies a different texture to subsets of atoms that\n"
+#~ "    can be selected using the mouse.\n"
+#~ "    An alternative selection method is based on a boolean\n"
+#~ "    expression in the entry box provided, using the\n"
+#~ "    variables x, y, z, or Z. For example, the expression\n"
+#~ "    Z == 11 and x > 10 and y > 10\n"
+#~ "    will mark all sodium atoms with x or coordinates\n"
+#~ "    larger than 10. In either case, the button labeled\n"
+#~ "    `Create new texture from selection` will enable\n"
+#~ "    to change the attributes of the current selection.\n"
+#~ "    "
+
+#~ msgid "Width"
+#~ msgstr "Width"
+
+#~ msgid "     Height"
+#~ msgstr "     Height"
+
+#~ msgid "Angstrom           "
+#~ msgstr "Angstrom           "
+
+#~ msgid "Set"
+#~ msgstr "Set"
+
+#~ msgid "               Filename: "
+#~ msgstr "               Filename: "
+
+#~ msgid " Default texture for atoms: "
+#~ msgstr " Default texture for atoms: "
+
+#~ msgid "    transparency: "
+#~ msgstr "    transparency: "
+
+#~ msgid "Define atom selection for new texture:"
+#~ msgstr "Define atom selection for new texture:"
+
+#~ msgid "Select"
+#~ msgstr "Select"
+
+#~ msgid "Create new texture from selection"
+#~ msgstr "Create new texture from selection"
+
+#~ msgid "Help on textures"
+#~ msgstr "Help on textures"
+
+#~ msgid "     Camera distance"
+#~ msgstr "     Camera distance"
+
+#~ msgid "Render all %d frames"
+#~ msgstr "Render all %d frames"
+
+#~ msgid "Run povray       "
+#~ msgstr "Run povray       "
+
+#~ msgid "Keep povray files       "
+#~ msgstr "Keep povray files       "
+
+#~ msgid "  transparency: "
+#~ msgstr "  transparency: "
+
+#~ msgid ""
+#~ "Can not create new texture! Must have some atoms selected to create a new "
+#~ "material!"
+#~ msgstr ""
+#~ "Can not create new texture! Must have some atoms selected to create a new "
+#~ "material!"
+
+#~ msgid "Output:"
+#~ msgstr "Output:"
+
+#~ msgid "Save output"
+#~ msgstr "Save output"
+
+#~ msgid "Potential energy and forces"
+#~ msgstr "Potential energy and forces"
+
+#~ msgid "Calculate potential energy and the force on all atoms"
+#~ msgstr "Calculate potential energy and the force on all atoms"
+
+#~ msgid "Write forces on the atoms"
+#~ msgstr "Write forces on the atoms"
+
+#~ msgid "Potential Energy:\n"
+#~ msgstr "Potential Energy:\n"
+
+#~ msgid "  %8.2f eV\n"
+#~ msgstr "  %8.2f eV\n"
+
+#~ msgid ""
+#~ "  %8.4f eV/atom\n"
+#~ "\n"
+#~ msgstr ""
+#~ "  %8.4f eV/atom\n"
+#~ "\n"
+
+#~ msgid "Forces:\n"
+#~ msgstr "Forces:\n"
+
+#~ msgid "Clear"
+#~ msgstr "Clear"
+
+#~ msgid "_Calculate"
+#~ msgstr "_Calculate"
+
+#~ msgid "Set _Calculator"
+#~ msgstr "Set _Calculator"
+
+#~ msgid "_Energy and Forces"
+#~ msgstr "_Energy and Forces"
+
+#~ msgid "Energy Minimization"
+#~ msgstr "Energy Minimization"
+
+#~ msgid " (rerun simulation)"
+#~ msgstr " (rerun simulation)"
+
+#~ msgid " (continue simulation)"
+#~ msgstr " (continue simulation)"
+
+#~ msgid "Select starting configuration:"
+#~ msgstr "Select starting configuration:"
+
+#~ msgid "There are currently %i configurations loaded."
+#~ msgstr "There are currently %i configurations loaded."
+
+#~ msgid "Choose which one to use as the initial configuration"
+#~ msgstr "Choose which one to use as the initial configuration"
+
+#~ msgid "The first configuration %s."
+#~ msgstr "The first configuration %s."
+
+#~ msgid "Configuration number "
+#~ msgstr "Configuration number "
+
+#~ msgid "The last configuration %s."
+#~ msgstr "The last configuration %s."
+
+#~ msgid "Run"
+#~ msgstr "Run"
+
+#~ msgid "No calculator: Use Calculate/Set Calculator on the menu."
+#~ msgstr "No calculator: Use Calculate/Set Calculator on the menu."
+
+#~ msgid "No atoms present"
+#~ msgstr "No atoms present"
+
+#~ msgid ""
+#~ "  Use this dialog to create crystal lattices. First select the "
+#~ "structure,\n"
+#~ "  either from a set of common crystal structures, or by space group "
+#~ "description.\n"
+#~ "  Then add all other lattice parameters.\n"
+#~ "\n"
+#~ "  If an experimental crystal structure is available for an atom, you can\n"
+#~ "  look up the crystal type and lattice constant, otherwise you have to "
+#~ "specify it\n"
+#~ "  yourself.  "
+#~ msgstr ""
+#~ "  Use this dialog to create crystal lattices. First select the "
+#~ "structure,\n"
+#~ "  either from a set of common crystal structures, or by space group "
+#~ "description.\n"
+#~ "  Then add all other lattice parameters.\n"
+#~ "\n"
+#~ "  If an experimental crystal structure is available for an atom, you can\n"
+#~ "  look up the crystal type and lattice constant, otherwise you have to "
+#~ "specify it\n"
+#~ "  yourself.  "
+
+#~ msgid "Create Bulk Crystal by Spacegroup"
+#~ msgstr "Create Bulk Crystal by Spacegroup"
+
+#~ msgid "Number: 1"
+#~ msgstr "Number: 1"
+
+#~ msgid "Lattice: "
+#~ msgstr "Lattice: "
+
+#~ msgid "\tSpace group: "
+#~ msgstr "\tSpace group: "
+
+#~ msgid "Size: x: "
+#~ msgstr "Size: x: "
+
+#~ msgid "  y: "
+#~ msgstr "  y: "
+
+#~ msgid "  z: "
+#~ msgstr "  z: "
+
+#~ msgid "free"
+#~ msgstr "free"
+
+#~ msgid "equals b"
+#~ msgstr "equals b"
+
+#~ msgid "equals c"
+#~ msgstr "equals c"
+
+#~ msgid "fixed"
+#~ msgstr "fixed"
+
+#~ msgid "equals a"
+#~ msgstr "equals a"
+
+#~ msgid "equals beta"
+#~ msgstr "equals beta"
+
+#~ msgid "equals gamma"
+#~ msgstr "equals gamma"
+
+#~ msgid "equals alpha"
+#~ msgstr "equals alpha"
+
+#~ msgid "Lattice parameters"
+#~ msgstr "Lattice parameters"
+
+#~ msgid "\t\ta:\t"
+#~ msgstr "\t\ta:\t"
+
+#~ msgid "\talpha:\t"
+#~ msgstr "\talpha:\t"
+
+#~ msgid "\t\tb:\t"
+#~ msgstr "\t\tb:\t"
+
+#~ msgid "\tbeta:\t"
+#~ msgstr "\tbeta:\t"
+
+#~ msgid "\t\tc:\t"
+#~ msgstr "\t\tc:\t"
+
+#~ msgid "\tgamma:\t"
+#~ msgstr "\tgamma:\t"
+
+#~ msgid "Basis: "
+#~ msgstr "Basis: "
+
+#~ msgid "  Element:\t"
+#~ msgstr "  Element:\t"
+
+#~ msgid "Creating a crystal."
+#~ msgstr "Creating a crystal."
+
+#~ msgid "Symbol: %s"
+#~ msgstr "Symbol: %s"
+
+#~ msgid "Number: %s"
+#~ msgstr "Number: %s"
+
+#~ msgid "Invalid Spacegroup!"
+#~ msgstr "Invalid Spacegroup!"
+
+#~ msgid "Please specify a consistent set of atoms."
+#~ msgstr "Please specify a consistent set of atoms."
+
+#~ msgid "Can't find lattice definition!"
+#~ msgstr "Can't find lattice definition!"
+
+#~ msgid "Absolute position:"
+#~ msgstr "Absolute position:"
+
+#~ msgid "Relative to average position (of selection):"
+#~ msgstr "Relative to average position (of selection):"
+
+#~ msgid ""
+#~ "%s\n"
+#~ "\n"
+#~ "Number of atoms: %d.\n"
+#~ "\n"
+#~ "Unit cell:\n"
+#~ "  %8.3f  %8.3f  %8.3f\n"
+#~ "  %8.3f  %8.3f  %8.3f\n"
+#~ "  %8.3f  %8.3f  %8.3f\n"
+#~ "\n"
+#~ "%s\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "%s\n"
+#~ "\n"
+#~ "Number of atoms: %d.\n"
+#~ "\n"
+#~ "Unit cell:\n"
+#~ "  %8.3f  %8.3f  %8.3f\n"
+#~ "  %8.3f  %8.3f  %8.3f\n"
+#~ "  %8.3f  %8.3f  %8.3f\n"
+#~ "\n"
+#~ "%s\n"
+#~ "%s\n"
+
+#~ msgid "Volume: "
+#~ msgstr "Volume: "
+
+#~ msgid "Size: \tx: "
+#~ msgstr "Size: \tx: "
+
+#~ msgid ""
+#~ "To make most calculations on the atoms, a Calculator object must first\n"
+#~ "be associated with it.  ASE supports a number of calculators, supporting\n"
+#~ "different elements, and implementing different physical models for the\n"
+#~ "interatomic interactions."
+#~ msgstr ""
+#~ "To make most calculations on the atoms, a Calculator object must first\n"
+#~ "be associated with it.  ASE supports a number of calculators, supporting\n"
+#~ "different elements, and implementing different physical models for the\n"
+#~ "interatomic interactions."
+
+#~ msgid ""
+#~ "The Lennard-Jones pair potential is one of the simplest\n"
+#~ "possible models for interatomic interactions, mostly\n"
+#~ "suitable for noble gasses and model systems.\n"
+#~ "\n"
+#~ "Interactions are described by an interaction length and an\n"
+#~ "interaction strength."
+#~ msgstr ""
+#~ "The Lennard-Jones pair potential is one of the simplest\n"
+#~ "possible models for interatomic interactions, mostly\n"
+#~ "suitable for noble gasses and model systems.\n"
+#~ "\n"
+#~ "Interactions are described by an interaction length and an\n"
+#~ "interaction strength."
+
+#~ msgid ""
+#~ "The EMT potential is a many-body potential, giving a\n"
+#~ "good description of the late transition metals crystalling\n"
+#~ "in the FCC crystal structure.  The elements described by the\n"
+#~ "main set of EMT parameters are Al, Ni, Cu, Pd, Ag, Pt, and\n"
+#~ "Au, the Al potential is however not suitable for materials\n"
+#~ "science application, as the stacking fault energy is wrong.\n"
+#~ "\n"
+#~ "A number of parameter sets are provided.\n"
+#~ "\n"
+#~ "<b>Default parameters:</b>\n"
+#~ "\n"
+#~ "The default EMT parameters, as published in K. W. Jacobsen,\n"
+#~ "P. Stoltze and J. K. Nørskov, <i>Surf. Sci.</i> <b>366</b>, 394 (1996).\n"
+#~ "\n"
+#~ "<b>Alternative Cu, Ag and Au:</b>\n"
+#~ "\n"
+#~ "An alternative set of parameters for Cu, Ag and Au,\n"
+#~ "reoptimized to experimental data including the stacking\n"
+#~ "fault energies by Torben Rasmussen (partly unpublished).\n"
+#~ "\n"
+#~ "<b>Ruthenium:</b>\n"
+#~ "\n"
+#~ "Parameters for Ruthenium, as published in J. Gavnholt and\n"
+#~ "J. Schiøtz, <i>Phys. Rev. B</i> <b>77</b>, 035404 (2008).\n"
+#~ "\n"
+#~ "<b>Metallic glasses:</b>\n"
+#~ "\n"
+#~ "Parameters for MgCu and CuZr metallic glasses. MgCu\n"
+#~ "parameters are in N. P. Bailey, J. Schiøtz and\n"
+#~ "K. W. Jacobsen, <i>Phys. Rev. B</i> <b>69</b>, 144205 (2004).\n"
+#~ "CuZr in A. Paduraru, A. Kenoufi, N. P. Bailey and\n"
+#~ "J. Schiøtz, <i>Adv. Eng. Mater.</i> <b>9</b>, 505 (2007).\n"
+#~ msgstr ""
+#~ "The EMT potential is a many-body potential, giving a\n"
+#~ "good description of the late transition metals crystalling\n"
+#~ "in the FCC crystal structure.  The elements described by the\n"
+#~ "main set of EMT parameters are Al, Ni, Cu, Pd, Ag, Pt, and\n"
+#~ "Au, the Al potential is however not suitable for materials\n"
+#~ "science application, as the stacking fault energy is wrong.\n"
+#~ "\n"
+#~ "A number of parameter sets are provided.\n"
+#~ "\n"
+#~ "<b>Default parameters:</b>\n"
+#~ "\n"
+#~ "The default EMT parameters, as published in K. W. Jacobsen,\n"
+#~ "P. Stoltze and J. K. Nørskov, <i>Surf. Sci.</i> <b>366</b>, 394 (1996).\n"
+#~ "\n"
+#~ "<b>Alternative Cu, Ag and Au:</b>\n"
+#~ "\n"
+#~ "An alternative set of parameters for Cu, Ag and Au,\n"
+#~ "reoptimised to experimental data including the stacking\n"
+#~ "fault energies by Torben Rasmussen (partly unpublished).\n"
+#~ "\n"
+#~ "<b>Ruthenium:</b>\n"
+#~ "\n"
+#~ "Parameters for Ruthenium, as published in J. Gavnholt and\n"
+#~ "J. Schiøtz, <i>Phys. Rev. B</i> <b>77</b>, 035404 (2008).\n"
+#~ "\n"
+#~ "<b>Metallic glasses:</b>\n"
+#~ "\n"
+#~ "Parameters for MgCu and CuZr metallic glasses. MgCu\n"
+#~ "parameters are in N. P. Bailey, J. Schiøtz and\n"
+#~ "K. W. Jacobsen, <i>Phys. Rev. B</i> <b>69</b>, 144205 (2004).\n"
+#~ "CuZr in A. Paduraru, A. Kenoufi, N. P. Bailey and\n"
+#~ "J. Schiøtz, <i>Adv. Eng. Mater.</i> <b>9</b>, 505 (2007).\n"
+
+#~ msgid ""
+#~ "The EMT potential is a many-body potential, giving a\n"
+#~ "good description of the late transition metals crystalling\n"
+#~ "in the FCC crystal structure.  The elements described by the\n"
+#~ "main set of EMT parameters are Al, Ni, Cu, Pd, Ag, Pt, and\n"
+#~ "Au.  In addition, this implementation allows for the use of\n"
+#~ "H, N, O and C adatoms, although the description of these is\n"
+#~ "most likely not very good.\n"
+#~ "\n"
+#~ "<b>This is the ASE implementation of EMT.</b> For large\n"
+#~ "simulations the ASAP implementation is more suitable; this\n"
+#~ "implementation is mainly to make EMT available when ASAP is\n"
+#~ "not installed.\n"
+#~ msgstr ""
+#~ "The EMT potential is a many-body potential, giving a\n"
+#~ "good description of the late transition metals crystalling\n"
+#~ "in the FCC crystal structure.  The elements described by the\n"
+#~ "main set of EMT parameters are Al, Ni, Cu, Pd, Ag, Pt, and\n"
+#~ "Au.  In addition, this implementation allows for the use of\n"
+#~ "H, N, O and C adatoms, although the description of these is\n"
+#~ "most likely not very good.\n"
+#~ "\n"
+#~ "<b>This is the ASE implementation of EMT.</b> For large\n"
+#~ "simulations the ASAP implementation is more suitable; this\n"
+#~ "implementation is mainly to make EMT available when ASAP is\n"
+#~ "not installed.\n"
+
+#~ msgid ""
+#~ "The EAM/ADP potential is a many-body potential\n"
+#~ "implementation of the Embedded Atom Method and\n"
+#~ "equipotential plus the Angular Dependent Potential,\n"
+#~ "which is an extension of the EAM to include\n"
+#~ "directional bonds. EAM is suited for FCC metallic\n"
+#~ "bonding while the ADP is suited for metallic bonds\n"
+#~ "with some degree of directionality.\n"
+#~ "\n"
+#~ "For EAM see M.S. Daw and M.I. Baskes,\n"
+#~ "Phys. Rev. Letters 50 (1983) 1285.\n"
+#~ "\n"
+#~ "For ADP see Y. Mishin, M.J. Mehl, and\n"
+#~ "D.A. Papaconstantopoulos, Acta Materialia 53 2005\n"
+#~ "4029--4041.\n"
+#~ "\n"
+#~ "Data for the potential is contained in a file in either LAMMPS Alloy\n"
+#~ "or ADP format which need to be loaded before use. The Interatomic\n"
+#~ "Potentials Repository Project at http://www.ctcms.nist.gov/potentials/\n"
+#~ "contains many suitable potential files.\n"
+#~ "\n"
+#~ "For large simulations the LAMMPS calculator is more\n"
+#~ "suitable; this implementation is mainly to make EAM\n"
+#~ "available when LAMMPS is not installed or to develop\n"
+#~ "new EAM/ADP poentials by matching results using ab\n"
+#~ "initio.\n"
+#~ msgstr ""
+#~ "The EAM/ADP potential is a many-body potential\n"
+#~ "implementation of the Embedded Atom Method and\n"
+#~ "equipotential plus the Angular Dependent Potential,\n"
+#~ "which is an extension of the EAM to include\n"
+#~ "directional bonds. EAM is suited for FCC metallic\n"
+#~ "bonding while the ADP is suited for metallic bonds\n"
+#~ "with some degree of directionality.\n"
+#~ "\n"
+#~ "For EAM see M.S. Daw and M.I. Baskes,\n"
+#~ "Phys. Rev. Letters 50 (1983) 1285.\n"
+#~ "\n"
+#~ "For ADP see Y. Mishin, M.J. Mehl, and\n"
+#~ "D.A. Papaconstantopoulos, Acta Materialia 53 2005\n"
+#~ "4029--4041.\n"
+#~ "\n"
+#~ "Data for the potential is contained in a file in either LAMMPS Alloy\n"
+#~ "or ADP format which need to be loaded before use. The Interatomic\n"
+#~ "Potentials Repository Project at http://www.ctcms.nist.gov/potentials/\n"
+#~ "contains many suitable potential files.\n"
+#~ "\n"
+#~ "For large simulations the LAMMPS calculator is more\n"
+#~ "suitable; this implementation is mainly to make EAM\n"
+#~ "available when LAMMPS is not installed or to develop\n"
+#~ "new EAM/ADP poentials by matching results using ab\n"
+#~ "initio.\n"
+
+#~ msgid ""
+#~ "The Brenner potential is a reactive bond-order potential for\n"
+#~ "carbon and hydrocarbons.  As a bond-order potential, it takes\n"
+#~ "into account that carbon orbitals can hybridize in different\n"
+#~ "ways, and that carbon can form single, double and triple\n"
+#~ "bonds.  That the potential is reactive means that it can\n"
+#~ "handle gradual changes in the bond order as chemical bonds\n"
+#~ "are formed or broken.\n"
+#~ "\n"
+#~ "The Brenner potential is implemented in Asap, based on a\n"
+#~ "C implentation published at http://www.rahul.net/pcm/brenner/ .\n"
+#~ "\n"
+#~ "The potential is documented here:\n"
+#~ "  Donald W Brenner, Olga A Shenderova, Judith A Harrison,\n"
+#~ "  Steven J Stuart, Boris Ni and Susan B Sinnott:\n"
+#~ "  \"A second-generation reactive empirical bond order (REBO)\n"
+#~ "  potential energy expression for hydrocarbons\",\n"
+#~ "  J. Phys.: Condens. Matter 14 (2002) 783-802.\n"
+#~ "  doi: 10.1088/0953-8984/14/4/312\n"
+#~ msgstr ""
+#~ "The Brenner potential is a reactive bond-order potential for\n"
+#~ "carbon and hydrocarbons.  As a bond-order potential, it takes\n"
+#~ "into account that carbon orbitals can hybridise in different\n"
+#~ "ways, and that carbon can form single, double and triple\n"
+#~ "bonds.  That the potential is reactive means that it can\n"
+#~ "handle gradual changes in the bond order as chemical bonds\n"
+#~ "are formed or broken.\n"
+#~ "\n"
+#~ "The Brenner potential is implemented in Asap, based on a\n"
+#~ "C implentation published at http://www.rahul.net/pcm/brenner/ .\n"
+#~ "\n"
+#~ "The potential is documented here:\n"
+#~ "  Donald W Brenner, Olga A Shenderova, Judith A Harrison,\n"
+#~ "  Steven J Stuart, Boris Ni and Susan B Sinnott:\n"
+#~ "  \"A second-generation reactive empirical bond order (REBO)\n"
+#~ "  potential energy expression for hydrocarbons\",\n"
+#~ "  J. Phys.: Condens. Matter 14 (2002) 783-802.\n"
+#~ "  doi: 10.1088/0953-8984/14/4/312\n"
+
+#~ msgid ""
+#~ "GPAW implements Density Functional Theory using a\n"
+#~ "<b>G</b>rid-based real-space representation of the wave\n"
+#~ "functions, and the <b>P</b>rojector <b>A</b>ugmented <b>W</b>ave\n"
+#~ "method for handling the core regions.\n"
+#~ msgstr ""
+#~ "GPAW implements Density Functional Theory using a\n"
+#~ "<b>G</b>rid-based real-space representation of the wave\n"
+#~ "functions, and the <b>P</b>rojector <b>A</b>ugmented <b>W</b>ave\n"
+#~ "method for handling the core regions.\n"
+
+#~ msgid ""
+#~ "FHI-aims is an external package implementing density\n"
+#~ "functional theory and quantum chemical methods using\n"
+#~ "all-electron methods and a numeric local orbital basis set.\n"
+#~ "For full details, see http://www.fhi-berlin.mpg.de/aims/\n"
+#~ "or Comp. Phys. Comm. v180 2175 (2009). The ASE\n"
+#~ "documentation contains information on the keywords and\n"
+#~ "functionalities available within this interface.\n"
+#~ msgstr ""
+#~ "FHI-aims is an external package implementing density\n"
+#~ "functional theory and quantum chemical methods using\n"
+#~ "all-electron methods and a numeric local orbital basis set.\n"
+#~ "For full details, see http://www.fhi-berlin.mpg.de/aims/\n"
+#~ "or Comp. Phys. Comm. v180 2175 (2009). The ASE\n"
+#~ "documentation contains information on the keywords and\n"
+#~ "functionalities available within this interface.\n"
+
+#~ msgid ""
+#~ "WARNING:\n"
+#~ "Your system seems to have more than zero but less than\n"
+#~ "three periodic dimensions. Please check that this is\n"
+#~ "really what you want to compute. Assuming full\n"
+#~ "3D periodicity for this calculator."
+#~ msgstr ""
+#~ "WARNING:\n"
+#~ "Your system seems to have more than zero but less than\n"
+#~ "three periodic dimensions. Please check that this is\n"
+#~ "really what you want to compute. Assuming full\n"
+#~ "3D periodicity for this calculator."
+
+#~ msgid ""
+#~ "VASP is an external package implementing density\n"
+#~ "functional functional theory using pseudopotentials\n"
+#~ "or the projector-augmented wave method together\n"
+#~ "with a plane wave basis set. For full details, see\n"
+#~ "http://cms.mpi.univie.ac.at/vasp/vasp/\n"
+#~ msgstr ""
+#~ "VASP is an external package implementing density\n"
+#~ "functional functional theory using pseudopotentials\n"
+#~ "or the projector-augmented wave method together\n"
+#~ "with a plane wave basis set. For full details, see\n"
+#~ "http://cms.mpi.univie.ac.at/vasp/vasp/\n"
+
+#~ msgid "Default (Al, Ni, Cu, Pd, Ag, Pt, Au)"
+#~ msgstr "Default (Al, Ni, Cu, Pd, Ag, Pt, Au)"
+
+#~ msgid "Alternative Cu, Ag and Au"
+#~ msgstr "Alternative Cu, Ag and Au"
+
+#~ msgid "Ruthenium"
+#~ msgstr "Ruthenium"
+
+#~ msgid "CuMg and CuZr metallic glass"
+#~ msgstr "CuMg and CuZr metallic glass"
+
+#~ msgid "Select calculator"
+#~ msgstr "Select calculator"
+
+#~ msgid "None"
+#~ msgstr "None"
+
+#~ msgid "Lennard-Jones (ASAP)"
+#~ msgstr "Lennard-Jones (ASAP)"
+
+#~ msgid "Setup"
+#~ msgstr "Setup"
+
+#~ msgid "EMT - Effective Medium Theory (ASAP)"
+#~ msgstr "EMT - Effective Medium Theory (ASAP)"
+
+#~ msgid "EMT - Effective Medium Theory (ASE)"
+#~ msgstr "EMT - Effective Medium Theory (ASE)"
+
+#~ msgid "EAM - Embedded Atom Method/Angular Dependent Potential (ASE)"
+#~ msgstr "EAM - Embedded Atom Method/Angular Dependent Potential (ASE)"
+
+#~ msgid "Brenner Potential (ASAP)"
+#~ msgstr "Brenner Potential (ASAP)"
+
+#~ msgid "Density Functional Theory (GPAW)"
+#~ msgstr "Density Functional Theory (GPAW)"
+
+#~ msgid "Density Functional Theory (FHI-aims)"
+#~ msgstr "Density Functional Theory (FHI-aims)"
+
+#~ msgid "Density Functional Theory (VASP)"
+#~ msgstr "Density Functional Theory (VASP)"
+
+#~ msgid "Check that the calculator is reasonable."
+#~ msgstr "Check that the calculator is reasonable."
+
+#~ msgid "ASAP is not installed. (Failed to import asap3)"
+#~ msgstr "ASAP is not installed. (Failed to import asap3)"
+
+#~ msgid "You must set up the Lennard-Jones parameters"
+#~ msgstr "You must set up the Lennard-Jones parameters"
+
+#~ msgid "Could not create useful Lennard-Jones calculator."
+#~ msgstr "Could not create useful Lennard-Jones calculator."
+
+#~ msgid "Could not attach EMT calculator to the atoms."
+#~ msgstr "Could not attach EMT calculator to the atoms."
+
+#~ msgid "You must set up the EAM parameters"
+#~ msgstr "You must set up the EAM parameters"
+
+#~ msgid "GPAW is not installed. (Failed to import gpaw)"
+#~ msgstr "GPAW is not installed. (Failed to import gpaw)"
+
+#~ msgid "You must set up the GPAW parameters"
+#~ msgstr "You must set up the GPAW parameters"
+
+#~ msgid "You must set up the FHI-aims parameters"
+#~ msgstr "You must set up the FHI-aims parameters"
+
+#~ msgid "You must set up the VASP parameters"
+#~ msgstr "You must set up the VASP parameters"
+
+#~ msgid "Element %(sym)s not allowed by the '%(name)s' calculator"
+#~ msgstr "Element %(sym)s not allowed by the '%(name)s' calculator"
+
+#~ msgid "Lennard-Jones parameters"
+#~ msgstr "Lennard-Jones parameters"
+
+#~ msgid "Specify the Lennard-Jones parameters here"
+#~ msgstr "Specify the Lennard-Jones parameters here"
+
+#~ msgid "Epsilon (eV):"
+#~ msgstr "Epsilon (eV):"
+
+#~ msgid "Sigma (Å):"
+#~ msgstr "Sigma (Å):"
+
+#~ msgid "Shift to make smooth at cutoff"
+#~ msgstr "Shift to make smooth at cutoff"
+
+#~ msgid "EAM parameters"
+#~ msgstr "EAM parameters"
+
+#~ msgid "Import Potential"
+#~ msgstr "Import Potential"
+
+#~ msgid "You need to import the potential file"
+#~ msgstr "You need to import the potential file"
+
+#~ msgid "Import .alloy or .adp potential file ... "
+#~ msgstr "Import .alloy or .adp potential file ... "
+
+#~ msgid "GPAW parameters"
+#~ msgstr "GPAW parameters"
+
+#~ msgid "%i atoms.\n"
+#~ msgstr "%i atoms.\n"
+
+#~ msgid "Orthogonal unit cell: %.2f x %.2f x %.2f Å."
+#~ msgstr "Orthogonal unit cell: %.2f x %.2f x %.2f Å."
+
+#~ msgid "Non-orthogonal unit cell:\n"
+#~ msgstr "Non-orthogonal unit cell:\n"
+
+#~ msgid "Exchange-correlation functional: "
+#~ msgstr "Exchange-correlation functional: "
+
+#~ msgid "Grid spacing"
+#~ msgstr "Grid spacing"
+
+#~ msgid "Grid points"
+#~ msgstr "Grid points"
+
+#~ msgid "h<sub>eff</sub> = (%.3f, %.3f, %.3f) Å"
+#~ msgstr "h<sub>eff</sub> = (%.3f, %.3f, %.3f) Å"
+
+#~ msgid "k-points  k = ("
+#~ msgstr "k-points  k = ("
+
+#~ msgid "k-points x size:  (%.1f, %.1f, %.1f) Å"
+#~ msgstr "k-points x size:  (%.1f, %.1f, %.1f) Å"
+
+#~ msgid "Spin polarized"
+#~ msgstr "Spin polarised"
+
+#~ msgid "FD - Finite Difference (grid) mode"
+#~ msgstr "FD - Finite Difference (grid) mode"
+
+#~ msgid "LCAO - Linear Combination of Atomic Orbitals"
+#~ msgstr "LCAO - Linear Combination of Atomic Orbitals"
+
+#~ msgid "Mode: "
+#~ msgstr "Mode: "
+
+#~ msgid "sz - Single Zeta"
+#~ msgstr "sz - Single Zeta"
+
+#~ msgid "szp - Single Zeta polarized"
+#~ msgstr "szp - Single Zeta polarised"
+
+#~ msgid "dzp - Double Zeta polarized"
+#~ msgstr "dzp - Double Zeta polarised"
+
+#~ msgid "Basis functions: "
+#~ msgstr "Basis functions: "
+
+#~ msgid "Non-standard mixer parameters"
+#~ msgstr "Non-standard mixer parameters"
+
+#~ msgid "FHI-aims parameters"
+#~ msgstr "FHI-aims parameters"
+
+#~ msgid "Periodic geometry, unit cell is:\n"
+#~ msgstr "Periodic geometry, unit cell is:\n"
+
+#~ msgid "Non-periodic geometry.\n"
+#~ msgstr "Non-periodic geometry.\n"
+
+#~ msgid "Hirshfeld-based dispersion correction"
+#~ msgstr "Hirshfeld-based dispersion correction"
+
+#~ msgid "Spin / initial moment "
+#~ msgstr "Spin / initial moment "
+
+#~ msgid "   Charge"
+#~ msgstr "   Charge"
+
+#~ msgid "   Relativity"
+#~ msgstr "   Relativity"
+
+#~ msgid " Threshold"
+#~ msgstr " Threshold"
+
+#~ msgid "Self-consistency convergence:"
+#~ msgstr "Self-consistency convergence:"
+
+#~ msgid "Compute forces"
+#~ msgstr "Compute forces"
+
+#~ msgid "Energy:                 "
+#~ msgstr "Energy:                 "
+
+#~ msgid " eV   Sum of eigenvalues:  "
+#~ msgstr " eV   Sum of eigenvalues:  "
+
+#~ msgid " eV"
+#~ msgstr " eV"
+
+#~ msgid "Electron density: "
+#~ msgstr "Electron density: "
+
+#~ msgid "        Force convergence:  "
+#~ msgstr "        Force convergence:  "
+
+#~ msgid " eV/Ang  "
+#~ msgstr " eV/Ang  "
+
+#~ msgid "Additional keywords: "
+#~ msgstr "Additional keywords: "
+
+#~ msgid "FHI-aims execution command: "
+#~ msgstr "FHI-aims execution command: "
+
+#~ msgid "Directory for species defaults: "
+#~ msgstr "Directory for species defaults: "
+
+#~ msgid "Set Defaults"
+#~ msgstr "Set Defaults"
+
+#~ msgid "Import control.in"
+#~ msgstr "Import control.in"
+
+#~ msgid "Export control.in"
+#~ msgstr "Export control.in"
+
+#~ msgid "Export parameters ... "
+#~ msgstr "Export parameters ... "
+
+#~ msgid "Import control.in file ... "
+#~ msgstr "Import control.in file ... "
+
+#~ msgid ""
+#~ "Please use the facilities provided in this window to manipulate the "
+#~ "keyword: %s!"
+#~ msgstr ""
+#~ "Please use the facilities provided in this window to manipulate the "
+#~ "keyword: %s!"
+
+#~ msgid ""
+#~ "Don't know this keyword: %s\n"
+#~ "\n"
+#~ "Please check!\n"
+#~ "\n"
+#~ "If you really think it should be available, please add it to the top of "
+#~ "ase/calculators/aims.py."
+#~ msgstr ""
+#~ "Don't know this keyword: %s\n"
+#~ "\n"
+#~ "Please check!\n"
+#~ "\n"
+#~ "If you really think it should be available, please add it to the top of "
+#~ "ase/calculators/aims.py."
+
+#~ msgid "VASP parameters"
+#~ msgstr "VASP parameters"
+
+#~ msgid "Periodic geometry, unit cell is: \n"
+#~ msgstr "Periodic geometry, unit cell is: \n"
+
+#~ msgid ")    Cutoff: "
+#~ msgstr ")    Cutoff: "
+
+#~ msgid "    Precision: "
+#~ msgstr "    Precision: "
+
+#~ msgid "k-points x size:  (%.1f, %.1f, %.1f) Å       "
+#~ msgstr "k-points x size:  (%.1f, %.1f, %.1f) Å       "
+
+#~ msgid "Smearing: "
+#~ msgstr "Smearing: "
+
+#~ msgid " order: "
+#~ msgstr " order: "
+
+#~ msgid " width: "
+#~ msgstr " width: "
+
+#~ msgid "Self-consistency convergence: "
+#~ msgstr "Self-consistency convergence: "
+
+#~ msgid "VASP execution command: "
+#~ msgstr "VASP execution command: "
+
+#~ msgid "Import VASP files"
+#~ msgstr "Import VASP files"
+
+#~ msgid "Export VASP files"
+#~ msgstr "Export VASP files"
+
+#~ msgid "<b>WARNING:</b> cutoff energy is lower than recommended minimum!"
+#~ msgstr "<b>WARNING:</b> cutoff energy is lower than recommended minimum!"
+
+#~ msgid "Import VASP input files: choose directory ... "
+#~ msgstr "Import VASP input files: choose directory ... "
+
+#~ msgid "Export VASP input files: choose directory ... "
+#~ msgstr "Export VASP input files: choose directory ... "
+
+#~ msgid ""
+#~ "Don't know this keyword: %s\n"
+#~ "Please check!\n"
+#~ "\n"
+#~ "If you really think it should be available, please add it to the top of "
+#~ "ase/calculators/vasp.py."
+#~ msgstr ""
+#~ "Don't know this keyword: %s\n"
+#~ "Please check!\n"
+#~ "\n"
+#~ "If you really think it should be available, please add it to the top of "
+#~ "ase/calculators/vasp.py."
+
+#~ msgid ""
+#~ "\n"
+#~ "    Global commands work on all frames or only on the current frame\n"
+#~ "    - Assignment of a global variable may not reference a local one\n"
+#~ "    - use 'Current frame' switch to switch off application to all frames\n"
+#~ "    <c>e</c>:\t\ttotal energy of one frame\n"
+#~ "    <c>fmax</c>:\tmaximal force in one frame\n"
+#~ "    <c>A</c>:\tunit cell\n"
+#~ "    <c>E</c>:\t\ttotal energy array of all frames\n"
+#~ "    <c>F</c>:\t\tall forces in one frame\n"
+#~ "    <c>M</c>:\tall magnetic moments\n"
+#~ "    <c>R</c>:\t\tall atomic positions\n"
+#~ "    <c>S</c>:\tall selected atoms (boolean array)\n"
+#~ "    <c>D</c>:\tall dynamic atoms (boolean array)\n"
+#~ "    examples: <c>frame = 1</c>, <c>A[0][1] += 4</c>, <c>e-E[-1]</c>\n"
+#~ "\n"
+#~ "    Atom commands work on each atom (or a selection) individually\n"
+#~ "    - these can use global commands on the RHS of an equation\n"
+#~ "    - use 'selected atoms only' to restrict application of command\n"
+#~ "    <c>x,y,z</c>:\tatomic coordinates\n"
+#~ "    <c>r,g,b</c>:\tatom display color, range is [0..1]\n"
+#~ "    <c>rad</c>:\tatomic radius for display\n"
+#~ "    <c>s</c>:\t\tatom is selected\n"
+#~ "    <c>d</c>:\t\tatom is movable\n"
+#~ "    <c>f</c>:\t\tforce\n"
+#~ "    <c>Z</c>:\tatomic number\n"
+#~ "    <c>m</c>:\tmagnetic moment\n"
+#~ "    examples: <c>x -= A[0][0], s = z > 5, Z = 6</c>\n"
+#~ "\n"
+#~ "    Special commands and objects:\n"
+#~ "    <c>sa,cf</c>:\t(un)restrict to selected atoms/current frame\n"
+#~ "    <c>frame</c>:\tframe number\n"
+#~ "    <c>center</c>:\tcenters the system in its existing unit cell\n"
+#~ "    <c>del S</c>:\tdelete selection\n"
+#~ "    <c>CM</c>:\tcenter of mass\n"
+#~ "    <c>ans[-i]</c>:\tith last calculated result\n"
+#~ "    <c>exec file</c>: executes commands listed in file\n"
+#~ "    <c>cov[Z]</c>:(read only): covalent radius of atomic number Z\n"
+#~ "    <c>gui</c>:\tadvanced: gui window python object\n"
+#~ "    <c>img</c>:\tadvanced: gui images object\n"
+#~ "    "
+#~ msgstr ""
+#~ "\n"
+#~ "    Global commands work on all frames or only on the current frame\n"
+#~ "    - Assignment of a global variable may not reference a local one\n"
+#~ "    - use 'Current frame' switch to switch off application to all frames\n"
+#~ "    <c>e</c>:\t\ttotal energy of one frame\n"
+#~ "    <c>fmax</c>:\tmaximal force in one frame\n"
+#~ "    <c>A</c>:\tunit cell\n"
+#~ "    <c>E</c>:\t\ttotal energy array of all frames\n"
+#~ "    <c>F</c>:\t\tall forces in one frame\n"
+#~ "    <c>M</c>:\tall magnetic moments\n"
+#~ "    <c>R</c>:\t\tall atomic positions\n"
+#~ "    <c>S</c>:\tall selected atoms (boolean array)\n"
+#~ "    <c>D</c>:\tall dynamic atoms (boolean array)\n"
+#~ "    examples: <c>frame = 1</c>, <c>A[0][1] += 4</c>, <c>e-E[-1]</c>\n"
+#~ "\n"
+#~ "    Atom commands work on each atom (or a selection) individually\n"
+#~ "    - these can use global commands on the RHS of an equation\n"
+#~ "    - use 'selected atoms only' to restrict application of command\n"
+#~ "    <c>x,y,z</c>:\tatomic coordinates\n"
+#~ "    <c>r,g,b</c>:\tatom display colour, range is [0..1]\n"
+#~ "    <c>rad</c>:\tatomic radius for display\n"
+#~ "    <c>s</c>:\t\tatom is selected\n"
+#~ "    <c>d</c>:\t\tatom is movable\n"
+#~ "    <c>f</c>:\t\tforce\n"
+#~ "    <c>Z</c>:\tatomic number\n"
+#~ "    <c>m</c>:\tmagnetic moment\n"
+#~ "    examples: <c>x -= A[0][0], s = z > 5, Z = 6</c>\n"
+#~ "\n"
+#~ "    Special commands and objects:\n"
+#~ "    <c>sa,cf</c>:\t(un)restrict to selected atoms/current frame\n"
+#~ "    <c>frame</c>:\tframe number\n"
+#~ "    <c>center</c>:\tcenters the system in its existing unit cell\n"
+#~ "    <c>del S</c>:\tdelete selection\n"
+#~ "    <c>CM</c>:\tcentre of mass\n"
+#~ "    <c>ans[-i]</c>:\tith last calculated result\n"
+#~ "    <c>exec file</c>: executes commands listed in file\n"
+#~ "    <c>cov[Z]</c>:(read only): covalent radius of atomic number Z\n"
+#~ "    <c>gui</c>:\tadvanced: gui window python object\n"
+#~ "    <c>img</c>:\tadvanced: gui images object\n"
+#~ "    "
+
+#~ msgid "Expert user mode"
+#~ msgstr "Expert user mode"
+
+#~ msgid "Welcome to the ASE Expert user mode"
+#~ msgstr "Welcome to the ASE Expert user mode"
+
+#~ msgid "Only selected atoms (sa)   "
+#~ msgstr "Only selected atoms (sa)   "
+
+#~ msgid "Only current frame (cf)  "
+#~ msgstr "Only current frame (cf)  "
+
+#~ msgid ""
+#~ "Global: Use A, D, E, M, N, R, S, n, frame; Atoms: Use a, f, m, s, x, y, "
+#~ "z, Z     "
+#~ msgstr ""
+#~ "Global: Use A, D, E, M, N, R, S, n, frame; Atoms: Use a, f, m, s, x, y, "
+#~ "z, Z     "
+
+#~ msgid "*** WARNING: file does not exist - %s"
+#~ msgstr "*** WARNING: file does not exist - %s"
+
+#~ msgid "*** WARNING: No atoms selected to work with"
+#~ msgstr "*** WARNING: No atoms selected to work with"
+
+#~ msgid "*** Only working on selected atoms"
+#~ msgstr "*** Only working on selected atoms"
+
+#~ msgid "*** Working on all atoms"
+#~ msgstr "*** Working on all atoms"
+
+#~ msgid "*** Only working on current image"
+#~ msgstr "*** Only working on current image"
+
+#~ msgid "*** Working on all images"
+#~ msgstr "*** Working on all images"
+
+#~ msgid "Save Terminal text ..."
+#~ msgstr "Save Terminal text ..."
+
+#~ msgid "Cancel"
+#~ msgstr "Cancel"
+
+#~ msgid "Algorithm: "
+#~ msgstr "Algorithm: "
+
+#~ msgid "Convergence criterion: F<sub>max</sub> = "
+#~ msgstr "Convergence criterion: F<sub>max</sub> = "
+
+#~ msgid "Max. number of steps: "
+#~ msgstr "Max. number of steps: "
+
+#~ msgid "Pseudo time step: "
+#~ msgstr "Pseudo time step: "
+
+#~ msgid "Energy minimization"
+#~ msgstr "Energy minimisation"
+
+#~ msgid "Minimize the energy with respect to the positions."
+#~ msgstr "Minimise the energy with respect to the positions."
+
+#~ msgid "Running ..."
+#~ msgstr "Running ..."
+
+#~ msgid "Minimization CANCELLED after %i steps."
+#~ msgstr "Minimisation CANCELLED after %i steps."
+
+#~ msgid "Out of memory, consider using LBFGS instead"
+#~ msgstr "Out of memory, consider using LBFGS instead"
+
+#~ msgid "Minimization completed in %i steps."
+#~ msgstr "Minimisation completed in %i steps."
+
+#~ msgid "Progress"
+#~ msgstr "Progress"
+
+#~ msgid "Scaling deformation:"
+#~ msgstr "Scaling deformation:"
+
+#~ msgid "Step number %s of %s."
+#~ msgstr "Step number %s of %s."
+
+#~ msgid "Energy minimization:"
+#~ msgstr "Energy minimisation:"
+
+#~ msgid "Step number: "
+#~ msgstr "Step number: "
+
+#~ msgid "F<sub>max</sub>: "
+#~ msgstr "F<sub>max</sub>: "
+
+#~ msgid "unknown"
+#~ msgstr "unknown"
+
+#~ msgid "Status: "
+#~ msgstr "Status: "
+
+#~ msgid "Iteration: "
+#~ msgstr "Iteration: "
+
+#~ msgid "log<sub>10</sub>(change):"
+#~ msgstr "log<sub>10</sub>(change):"
+
+#~ msgid "Wave functions: "
+#~ msgstr "Wave functions: "
+
+#~ msgid "Density: "
+#~ msgstr "Density: "
+
+#~ msgid "GPAW version: "
+#~ msgstr "GPAW version: "
+
+#~ msgid "N/A"
+#~ msgstr "N/A"
+
+#~ msgid "Memory estimate: "
+#~ msgstr "Memory estimate: "
+
+#~ msgid "No info"
+#~ msgstr "No info"
+
+#~ msgid "Initializing"
+#~ msgstr "Initializing"
+
+#~ msgid "Positions:"
+#~ msgstr "Positions:"
+
+#~ msgid "Starting calculation"
+#~ msgstr "Starting calculation"
+
+#~ msgid "unchanged"
+#~ msgstr "unchanged"
+
+#~ msgid "Self-consistency loop"
+#~ msgstr "Self-consistency loop"
+
+#~ msgid "Calculating forces"
+#~ msgstr "Calculating forces"
+
+#~ msgid " (converged)"
+#~ msgstr " (converged)"
+
+#~ msgid "To get a full traceback, use: ase-gui --verbose"
+#~ msgstr "To get a full traceback, use: ase-gui --verbose"
+
+#~ msgid "No atoms loaded."
+#~ msgstr "No atoms loaded."
+
+#~ msgid "FCC(111) non-orthogonal"
+#~ msgstr "FCC(111) non-orthogonal"
+
+#~ msgid "FCC(111) orthogonal"
+#~ msgstr "FCC(111) orthogonal"
+
+#~ msgid "BCC(110) non-orthogonal"
+#~ msgstr "BCC(110) non-orthogonal"
+
+#~ msgid "BCC(110) orthogonal"
+#~ msgstr "BCC(110) orthogonal"
+
+#~ msgid "BCC(111) non-orthogonal"
+#~ msgstr "BCC(111) non-orthogonal"
+
+#~ msgid "BCC(111) orthogonal"
+#~ msgstr "BCC(111) orthogonal"
+
+#~ msgid "HCP(0001) non-orthogonal"
+#~ msgstr "HCP(0001) non-orthogonal"
+
+#~ msgid "Element: "
+#~ msgstr "Element: "
+
+#~ msgid "a:"
+#~ msgstr "a:"
+
+#~ msgid "(%.1f %% of ideal)"
+#~ msgstr "(%.1f %% of ideal)"
+
+#~ msgid "      \t\tz: "
+#~ msgstr "      \t\tz: "
+
+#~ msgid " layers,  "
+#~ msgstr " layers,  "
+
+#~ msgid " Å vacuum"
+#~ msgstr " Å vacuum"
+
+#~ msgid "\t\tNo size information yet."
+#~ msgstr "\t\tNo size information yet."
+
+#~ msgid "%i atoms."
+#~ msgstr "%i atoms."
+
+#~ msgid "Invalid element."
+#~ msgstr "Invalid element."
+
+#~ msgid "No structure specified!"
+#~ msgstr "No structure specified!"
+
+#~ msgid "%(struct)s lattice constant unknown for %(element)s."
+#~ msgstr "%(struct)s lattice constant unknown for %(element)s."
+
+#~ msgid "By atomic number, user specified"
+#~ msgstr "By atomic number, user specified"
+
+#~ msgid "By coordination"
+#~ msgstr "By coordination"
+
+#~ msgid "Manually specified"
+#~ msgstr "Manually specified"
+
+#~ msgid "All the same color"
+#~ msgstr "All the same colour"
+
+#~ msgid "This should not be displayed in forces!"
+#~ msgstr "This should not be displayed in forces!"
+
+#~ msgid "Min: "
+#~ msgstr "Min: "
+
+#~ msgid "  Max: "
+#~ msgstr "  Max: "
+
+#~ msgid "  Steps: "
+#~ msgstr "  Steps: "
+
+#~ msgid "This should not be displayed!"
+#~ msgstr "This should not be displayed!"
+
+#~ msgid "Create a color scale:"
+#~ msgstr "Create a colour scale:"
+
+#~ msgid "Black - white"
+#~ msgstr "Black - white"
+
+#~ msgid "Black - red - yellow - white"
+#~ msgstr "Black - red - yellow - white"
+
+#~ msgid "Black - green - white"
+#~ msgstr "Black - green - white"
+
+#~ msgid "Black - blue - cyan"
+#~ msgstr "Black - blue - cyan"
+
+#~ msgid "Blue - white - red"
+#~ msgstr "Blue - white - red"
+
+#~ msgid "Hue"
+#~ msgstr "Hue"
+
+#~ msgid "Named colors"
+#~ msgstr "Named colours"
+
+#~ msgid "Create"
+#~ msgstr "Create"
+
+#~ msgid "ERROR"
+#~ msgstr "ERROR"
+
+#~ msgid "ERR"
+#~ msgstr "ERR"
+
+#~ msgid "Incorrect color specification"
+#~ msgstr "Incorrect colour specification"
+
+#~ msgid " selected atoms:"
+#~ msgstr " selected atoms:"
+
+#~ msgid "Close"
+#~ msgstr "Close"
+
+#~ msgid "Debug"
+#~ msgstr "Debug"
+
+#~ msgid "Bug Detected"
+#~ msgstr "Bug Detected"
+
+#~ msgid "A programming error has been detected."
+#~ msgstr "A programming error has been detected."
+
+#~ msgid ""
+#~ "It probably isn't fatal, but the details should be reported to the "
+#~ "developers nonetheless."
+#~ msgstr ""
+#~ "It probably isn't fatal, but the details should be reported to the "
+#~ "developers nonetheless."
+
+#~ msgid "Report..."
+#~ msgstr "Report..."
+
+#~ msgid "Details..."
+#~ msgstr "Details..."
+
+#~ msgid ""
+#~ "From: buggy_application\"\n"
+#~ "To: bad_programmer\n"
+#~ "Subject: Exception feedback\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "From: buggy_application\"\n"
+#~ "To: bad_programmer\n"
+#~ "Subject: Exception feedback\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "Bug Details"
+#~ msgstr "Bug Details"
+
+#~ msgid "Create a new file"
+#~ msgstr "Create a new file"
+
+#~ msgid "New ase.gui window"
+#~ msgstr "New ase.gui window"
+
+#~ msgid "Save current file"
+#~ msgstr "Save current file"
+
+#~ msgid "Quit"
+#~ msgstr "Quit"
+
+#~ msgid "Copy current selection and its orientation to clipboard"
+#~ msgstr "Copy current selection and its orientation to clipboard"
+
+#~ msgid "Insert current clipboard selection"
+#~ msgstr "Insert current clipboard selection"
+
+#~ msgid "Change tags, moments and atom types of the selected atoms"
+#~ msgstr "Change tags, moments and atom types of the selected atoms"
+
+#~ msgid "Insert or import atoms and molecules"
+#~ msgstr "Insert or import atoms and molecules"
+
+#~ msgid "Delete the selected atoms"
+#~ msgstr "Delete the selected atoms"
+
+#~ msgid "'xy' Plane"
+#~ msgstr "'xy' Plane"
+
+#~ msgid "'yz' Plane"
+#~ msgstr "'yz' Plane"
+
+#~ msgid "'zx' Plane"
+#~ msgstr "'zx' Plane"
+
+#~ msgid "'yx' Plane"
+#~ msgstr "'yx' Plane"
+
+#~ msgid "'zy' Plane"
+#~ msgstr "'zy' Plane"
+
+#~ msgid "'xz' Plane"
+#~ msgstr "'xz' Plane"
+
+#~ msgid "Create a bulk crystal with arbitrary orientation"
+#~ msgstr "Create a bulk crystal with arbitrary orientation"
+
+#~ msgid "Create the most common surfaces"
+#~ msgstr "Create the most common surfaces"
+
+#~ msgid "Create a crystalline nanoparticle"
+#~ msgstr "Create a crystalline nanoparticle"
+
+#~ msgid "Create a nanotube"
+#~ msgstr "Create a nanotube"
+
+#~ msgid "Create a graphene sheet or nanoribbon"
+#~ msgstr "Create a graphene sheet or nanoribbon"
+
+#~ msgid "Set a calculator used in all calculation modules"
+#~ msgstr "Set a calculator used in all calculation modules"
+
+#~ msgid "Calculate energy and forces"
+#~ msgstr "Calculate energy and forces"
+
+#~ msgid "Minimize the energy"
+#~ msgstr "Minimise the energy"
+
+#~ msgid "Scale system"
+#~ msgstr "Scale system"
+
+#~ msgid "Deform system by scaling it"
+#~ msgstr "Deform system by scaling it"
+
+#~ msgid "Debug ..."
+#~ msgstr "Debug ..."
+
+#~ msgid "Orien_t atoms"
+#~ msgstr "Orien_t atoms"
+
+#~ msgid "<<filename>>"
+#~ msgstr "<<filename>>"
+
+#~ msgid "Paste"
+#~ msgstr "Paste"
+
+#~ msgid "Insert atom or molecule"
+#~ msgstr "Insert atom or molecule"
+
+#~ msgid "_Cancel"
+#~ msgstr "_Cancel"
+
+#~ msgid "Atom"
+#~ msgstr "Atom"
+
+#~ msgid "Confirmation"
+#~ msgstr "Confirmation"
+
+#~ msgid "File type:"
+#~ msgstr "File type:"
+
+#~ msgid "Not implemented!"
+#~ msgstr "Not implemented!"
+
+#~ msgid "do you really need it?"
+#~ msgstr "do you really need it?"
+
+#~ msgid "Dummy placeholder object"
+#~ msgstr "Dummy placeholder object"
+
+#~ msgid "Set all directions to default values"
+#~ msgstr "Set all directions to default values"
+
+#~ msgid "Particle size: "
+#~ msgstr "Particle size: "
+
+#~ msgid "%.1f Å"
+#~ msgstr "%.1f Å"
+
+#~ msgid "Python"
+#~ msgstr "Python"
+
+#~ msgid ""
+#~ "\n"
+#~ "Title: %(title)s\n"
+#~ "Time: %(time)s\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Title: %(title)s\n"
+#~ "Time: %(time)s\n"
+
+#~ msgid "ag: Python code"
+#~ msgstr "ag: Python code"
+
+#~ msgid "Information:"
+#~ msgstr "Information:"
+
+#~ msgid "Python code:"
+#~ msgstr "Python code:"
+
+#~ msgid "Homogeneous scaling"
+#~ msgstr "Homogeneous scaling"
+
+#~ msgid "3D deformation   "
+#~ msgstr "3D deformation   "
+
+#~ msgid "2D deformation   "
+#~ msgstr "2D deformation   "
+
+#~ msgid "1D deformation   "
+#~ msgstr "1D deformation   "
+
+#~ msgid "Bulk"
+#~ msgstr "Bulk"
+
+#~ msgid "x-axis"
+#~ msgstr "x-axis"
+
+#~ msgid "y-axis"
+#~ msgstr "y-axis"
+
+#~ msgid "z-axis"
+#~ msgstr "z-axis"
+
+#~ msgid "Allow deformation along non-periodic directions."
+#~ msgstr "Allow deformation along non-periodic directions."
+
+#~ msgid "Deformation:"
+#~ msgstr "Deformation:"
+
+#~ msgid "Maximal scale factor: "
+#~ msgstr "Maximal scale factor: "
+
+#~ msgid "Scale offset: "
+#~ msgstr "Scale offset: "
+
+#~ msgid "Number of steps: "
+#~ msgstr "Number of steps: "
+
+#~ msgid "Only positive deformation"
+#~ msgstr "Only positive deformation"
+
+#~ msgid "On   "
+#~ msgstr "On   "
+
+#~ msgid "Off"
+#~ msgstr "Off"
+
+#~ msgid "Results:"
+#~ msgstr "Results:"
+
+#~ msgid "Keep original configuration"
+#~ msgstr "Keep original configuration"
+
+#~ msgid "Load optimal configuration"
+#~ msgstr "Load optimal configuration"
+
+#~ msgid "Load all configurations"
+#~ msgstr "Load all configurations"
+
+#~ msgid "Strain\t\tEnergy [eV]"
+#~ msgstr "Strain\t\tEnergy [eV]"
+
+#~ msgid "Fit:"
+#~ msgstr "Fit:"
+
+#~ msgid "2nd"
+#~ msgstr "2nd"
+
+#~ msgid "3rd"
+#~ msgstr "3rd"
+
+#~ msgid "Order of fit: "
+#~ msgstr "Order of fit: "
+
+#~ msgid "Calculation CANCELLED."
+#~ msgstr "Calculation CANCELLED."
+
+#~ msgid "Calculation completed."
+#~ msgstr "Calculation completed."
+
+#~ msgid "No trustworthy minimum: Old configuration kept."
+#~ msgstr "No trustworthy minimum: Old configuration kept."
+
+#~ msgid ""
+#~ "Insufficent data for a fit\n"
+#~ "(only %i data points)\n"
+#~ msgstr ""
+#~ "Insufficent data for a fit\n"
+#~ "(only %i data points)\n"
+
+#~ msgid ""
+#~ "REVERTING TO 2ND ORDER FIT\n"
+#~ "(only 3 data points)\n"
+#~ "\n"
+#~ msgstr ""
+#~ "REVERTING TO 2ND ORDER FIT\n"
+#~ "(only 3 data points)\n"
+#~ "\n"
+
+#~ msgid "No minimum found!"
+#~ msgstr "No minimum found!"
+
+#~ msgid ""
+#~ "\n"
+#~ "WARNING: Minimum is outside interval\n"
+#~ msgstr ""
+#~ "\n"
+#~ "WARNING: Minimum is outside interval\n"
+
+#~ msgid "It is UNRELIABLE!\n"
+#~ msgstr "It is UNRELIABLE!\n"
+
+#~ msgid "\n"
+#~ msgstr "\n"
+
+#~ msgid "No crystal structure data"
+#~ msgstr "No crystal structure data"
+
+#~ msgid "Tip for status box ..."
+#~ msgstr "Tip for status box ..."
+
+#~ msgid "Clear constraint"
+#~ msgstr "Clear constraint"
+
+#~ msgid "DFT"
+#~ msgstr "DFT"
+
+#~ msgid "XC-functional: "
+#~ msgstr "XC-functional: "
+
+#~ msgid "DFT ..."
+#~ msgstr "DFT ..."
+
+#~ msgid "building menus failed: %s"
+#~ msgstr "building menus failed: %s"
+
+#~ msgid "Dacapo netCDF output file"
+#~ msgstr "Dacapo netCDF output file"
+
+#~ msgid "Virtual Nano Lab file"
+#~ msgstr "Virtual Nano Lab file"
+
+#~ msgid "ASE pickle trajectory"
+#~ msgstr "ASE pickle trajectory"
+
+#~ msgid "ASE bundle trajectory"
+#~ msgstr "ASE bundle trajectory"
+
+#~ msgid "GPAW text output"
+#~ msgstr "GPAW text output"
+
+#~ msgid "CUBE file"
+#~ msgstr "CUBE file"
+
+#~ msgid "XCrySDen Structure File"
+#~ msgstr "XCrySDen Structure File"
+
+#~ msgid "Dacapo text output"
+#~ msgstr "Dacapo text output"
+
+#~ msgid "XYZ-file"
+#~ msgstr "XYZ-file"
+
+#~ msgid "VASP POSCAR/CONTCAR file"
+#~ msgstr "VASP POSCAR/CONTCAR file"
+
+#~ msgid "VASP OUTCAR file"
+#~ msgstr "VASP OUTCAR file"
+
+#~ msgid "Protein Data Bank"
+#~ msgstr "Protein Data Bank"
+
+#~ msgid "CIF-file"
+#~ msgstr "CIF-file"
+
+#~ msgid "FHI-aims geometry file"
+#~ msgstr "FHI-aims geometry file"
+
+#~ msgid "FHI-aims output file"
+#~ msgstr "FHI-aims output file"
+
+#~ msgid "TURBOMOLE coord file"
+#~ msgstr "TURBOMOLE coord file"
+
+#~ msgid "exciting input"
+#~ msgstr "exciting input"
+
+#~ msgid "WIEN2k structure file"
+#~ msgstr "WIEN2k structure file"
+
+#~ msgid "DftbPlus input file"
+#~ msgstr "DftbPlus input file"
+
+#~ msgid "ETSF format"
+#~ msgstr "ETSF format"
+
+#~ msgid "CASTEP geom file"
+#~ msgstr "CASTEP geom file"
+
+#~ msgid "CASTEP output file"
+#~ msgstr "CASTEP output file"
+
+#~ msgid "CASTEP trajectory file"
+#~ msgstr "CASTEP trajectory file"
+
+#~ msgid "DFTBPlus GEN format"
+#~ msgstr "DFTBPlus GEN format"
+
+#~ msgid ""
+#~ "\n"
+#~ "An exception occurred!  Please report the issue to\n"
+#~ "ase-developers@listserv.fysik.dtu.dk - thanks!  Please also report this "
+#~ "if\n"
+#~ "it was a user error, so that a better error message can be provided\n"
+#~ "next time."
+#~ msgstr ""
+#~ "\n"
+#~ "An exception occurred!  Please report the issue to\n"
+#~ "ase-developers@listserv.fysik.dtu.dk - thanks!  Please also report this "
+#~ "if\n"
+#~ "it was a user error, so that a better error message can be provided\n"
+#~ "next time."
+
+#~ msgid "Max force: %.2f (this frame), %.2f (all frames)"
+#~ msgstr "Max force: %.2f (this frame), %.2f (all frames)"
+
+#~ msgid "Max velocity: %.2f (this frame), %.2f (all frames)"
+#~ msgstr "Max velocity: %.2f (this frame), %.2f (all frames)"
+
+#~ msgid "Max velocity: %.2f."
+#~ msgstr "Max velocity: %.2f."
+
+#~ msgid "Min, max charge: %.2f, %.2f (this frame),"
+#~ msgstr "Min, max charge: %.2f, %.2f (this frame),"
+
+#~ msgid "Min, max charge: %.2f, %.2f."
+#~ msgstr "Min, max charge: %.2f, %.2f."
+
+#~ msgid "XYZ file"
+#~ msgstr "XYZ file"
+
+#~ msgid "ASE trajectory"
+#~ msgstr "ASE trajectory"
+
+#~ msgid "PDB file"
+#~ msgstr "PDB file"
+
+#~ msgid "Gaussian cube file"
+#~ msgstr "Gaussian cube file"
+
+#~ msgid "Python script"
+#~ msgstr "Python script"
+
+#~ msgid "VNL file"
+#~ msgstr "VNL file"
+
+#~ msgid "Portable Network Graphics"
+#~ msgstr "Portable Network Graphics"
+
+#~ msgid "Persistence of Vision"
+#~ msgstr "Persistence of Vision"
+
+#~ msgid "Encapsulated PostScript"
+#~ msgstr "Encapsulated PostScript"
+
+#~ msgid "FHI-aims geometry input"
+#~ msgstr "FHI-aims geometry input"
+
+#~ msgid "VASP geometry input"
+#~ msgstr "VASP geometry input"
+
+#~ msgid "cif file"
+#~ msgstr "cif file"
+
+#~ msgid "Save current image only (#%d)"
+#~ msgstr "Save current image only (#%d)"
+
+#~ msgid "Slice: "
+#~ msgstr "Slice: "
+
+#~ msgid "Help for slice ..."
+#~ msgstr "Help for slice ..."
+
+#~ msgid "ase-gui INTERNAL ERROR: strange response in Save,"
+#~ msgstr "ase-gui INTERNAL ERROR: strange response in Save,"
+
+#~ msgid "Unknown output format!"
+#~ msgstr "Unknown output format!"
+
+#~ msgid "Use one of: %s"
+#~ msgstr "Use one of: %s"
+
+#~ msgid "  %8.3f, %8.3f, %8.3f eV/Å\n"
+#~ msgstr "  %8.3f, %8.3f, %8.3f eV/Å\n"
+
+#~ msgid "%s (a=%.3f Å)"
+#~ msgstr "%s (a=%.3f Å)"
+
+#~ msgid "  %s: %s, Z=%i, %s"
+#~ msgstr "  %s: %s, Z=%i, %s"
+
+#~ msgid " #%d %s (%s): %.3f Å, %.3f Å, %.3f Å "
+#~ msgstr " #%d %s (%s): %.3f Å, %.3f Å, %.3f Å "
+
+#~ msgid " %s-%s: %.3f Å"
+#~ msgstr " %s-%s: %.3f Å"
+
+#~ msgid " %s-%s-%s: %.1f°, %.1f°, %.1f°"
+#~ msgstr " %s-%s-%s: %.1f°, %.1f°, %.1f°"
+
+#~ msgid "dihedral %s->%s->%s->%s: %.1f°"
+#~ msgstr "dihedral %s->%s->%s->%s: %.1f°"
+
+#~ msgid "c:"
+#~ msgstr "c:"
+
+#~ msgid "\t\t%.2f Å x %.2f Å x %.2f Å,  %i atoms."
+#~ msgstr "\t\t%.2f Å x %.2f Å x %.2f Å,  %i atoms."
+
+#~ msgid "FILE"
+#~ msgstr "FILE"
+
+#~ msgid "%prog [options] [file[, file2, ...]]"
+#~ msgstr "%prog [options] [file[, file2, ...]]"
+
+#~ msgid "NUMBER"
+#~ msgstr "NUMBER"
+
+#~ msgid ""
+#~ "Pick image(s) from trajectory.  NUMBER can be a single number (use a "
+#~ "negative number to count from the back) or a range: start:stop:step, "
+#~ "where the \":step\" part can be left out - default values are 0:nimages:1."
+#~ msgstr ""
+#~ "Pick image(s) from trajectory.  NUMBER can be a single number (use a "
+#~ "negative number to count from the back) or a range: start:stop:step, "
+#~ "where the \":step\" part can be left out - default values are 0:nimages:1."
+
+#~ msgid "I"
+#~ msgstr "I"
+
+#~ msgid ""
+#~ "0: Don't show unit cell.  1: Show unit cell.  2: Show all of unit cell."
+#~ msgstr ""
+#~ "0: Don't show unit cell.  1: Show unit cell.  2: Show all of unit cell."
+
+#~ msgid "Repeat unit cell.  Use \"-r 2\" or \"-r 2,3,1\"."
+#~ msgstr "Repeat unit cell.  Use \"-r 2\" or \"-r 2,3,1\"."
+
+#~ msgid "Examples: \"-R -90x\", \"-R 90z,-30x\"."
+#~ msgstr "Examples: \"-R -90x\", \"-R 90z,-30x\"."
+
+#~ msgid "Write configurations to FILE."
+#~ msgstr "Write configurations to FILE."
+
+#~ msgid "EXPR"
+#~ msgstr "EXPR"
+
+#~ msgid ""
+#~ "Plot x,y1,y2,... graph from configurations or write data to sdtout in "
+#~ "terminal mode.  Use the symbols: i, s, d, fmax, e, ekin, A, R, E and F.  "
+#~ "See https://wiki.fysik.dtu.dk/ase/ase/gui.html#plotting-data for more "
+#~ "details."
+#~ msgstr ""
+#~ "Plot x,y1,y2,... graph from configurations or write data to sdtout in "
+#~ "terminal mode.  Use the symbols: i, s, d, fmax, e, ekin, A, R, E and F.  "
+#~ "See https://wiki.fysik.dtu.dk/ase/ase/gui.html#plotting-data for more "
+#~ "details."
+
+#~ msgid "Run in terminal window - no GUI."
+#~ msgstr "Run in terminal window - no GUI."
+
+#~ msgid "Read ANEB data."
+#~ msgstr "Read ANEB data."
+
+#~ msgid "Interpolate N images between 2 given images."
+#~ msgstr "Interpolate N images between 2 given images."
+
+#~ msgid "Draw bonds between atoms."
+#~ msgstr "Draw bonds between atoms."

@@ -1,0 +1,1521 @@
+# Finnish translations for ASE package.
+# Copyright (C) 2019-2021 ASE developers
+# This file is distributed under the same license as the ASE package.
+#
+# Tuomas Rossi <tuomas.rossi@alumni.aalto.fi>, 2019-2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ase\n"
+"Report-Msgid-Bugs-To: ase-users@listserv.fysik.dtu.dk\n"
+"POT-Creation-Date: 2021-02-19 09:17+0200\n"
+"PO-Revision-Date: 2021-02-19 09:18+0200\n"
+"Last-Translator: Tuomas Rossi <tuomas.rossi@alumni.aalto.fi>\n"
+"Language-Team: Finnish\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../add.py:10
+msgid "(selection)"
+msgstr "(valinta)"
+
+#: ../add.py:16
+msgid "Add atoms"
+msgstr "Lisää atomeja"
+
+#: ../add.py:17
+msgid "Specify chemical symbol, formula, or filename."
+msgstr "Anna kemiallinen merkki, kaava tai tiedostonimi."
+
+#: ../add.py:44
+msgid "Add:"
+msgstr "Lisää:"
+
+#: ../add.py:45
+msgid "File ..."
+msgstr "Tiedosto ..."
+
+#: ../add.py:54
+msgid "Coordinates:"
+msgstr "Koordinaatit:"
+
+#: ../add.py:56
+msgid ""
+"Coordinates are relative to the center of the selection, if any, else "
+"absolute."
+msgstr ""
+"Jos atomeja on valittu, koordinaatit ovat suhteessa\n"
+"valinnan keskipisteeseen, muuten ne ovat suhteessa origoon."
+
+#: ../add.py:58
+msgid "Check positions"
+msgstr "Estä päällekkäiset atomit"
+
+#: ../add.py:59 ../nanoparticle.py:262
+msgid "Add"
+msgstr "Lisää"
+
+#. May show UI error
+#: ../add.py:104
+msgid "Cannot add atoms"
+msgstr "Atomeja ei voi lisätä"
+
+#: ../add.py:105
+msgid "{} is neither atom, molecule, nor file"
+msgstr "{} ei ole atomi, molekyyli tai tiedosto"
+
+#: ../add.py:143
+msgid "Bad positions"
+msgstr "Koordinaatit eivät kelpaa"
+
+#: ../add.py:144
+msgid ""
+"Atom would be less than 0.5 Å from an existing atom.  To override, uncheck "
+"the check positions option."
+msgstr ""
+"Lisättävä atomi olisi alle 0.5 Å etäisyydellä toisesta atomista. Poista "
+"valinta \"Estä päällekkäiset atomit\" pakottaaksesi lisäyksen."
+
+#. TRANSLATORS: This is a title of a window.
+#: ../celleditor.py:48
+msgid "Cell Editor"
+msgstr "Yksikkökoppimuokkain"
+
+#: ../celleditor.py:52
+msgid "A:"
+msgstr "A:"
+
+#: ../celleditor.py:52
+msgid "||A||:"
+msgstr "||A||:"
+
+#: ../celleditor.py:53 ../celleditor.py:55 ../celleditor.py:57
+msgid "periodic:"
+msgstr "toistuva:"
+
+#: ../celleditor.py:54
+msgid "B:"
+msgstr "B:"
+
+#: ../celleditor.py:54
+msgid "||B||:"
+msgstr "||B||:"
+
+#: ../celleditor.py:56
+msgid "C:"
+msgstr "C:"
+
+#: ../celleditor.py:56
+msgid "||C||:"
+msgstr "||C||:"
+
+#: ../celleditor.py:58
+msgid "∠BC:"
+msgstr "∠BC:"
+
+#: ../celleditor.py:58
+msgid "∠AC:"
+msgstr "∠AC:"
+
+#: ../celleditor.py:59
+msgid "∠AB:"
+msgstr "∠AB:"
+
+#: ../celleditor.py:60
+msgid "Scale atoms with cell:"
+msgstr "Siirrä atomeja yksikkökopin mukana:"
+
+#: ../celleditor.py:61
+msgid "Apply Vectors"
+msgstr "Aseta vektorit"
+
+#: ../celleditor.py:62
+msgid "Apply Magnitudes"
+msgstr "Aseta pituudet"
+
+#: ../celleditor.py:63
+msgid "Apply Angles"
+msgstr "Aseta kulmat"
+
+#: ../celleditor.py:64
+msgid ""
+"Pressing 〈Enter〉 as you enter values will automatically apply correctly"
+msgstr "Annetut arvot voi asettaa myös painamalla〈Enter〉"
+
+#. TRANSLATORS: verb
+#: ../celleditor.py:67
+msgid "Center"
+msgstr "Keskitä atomit"
+
+#: ../celleditor.py:68
+msgid "Wrap"
+msgstr "Laskosta atomit yksikkökoppiin"
+
+#: ../celleditor.py:69
+msgid "Vacuum:"
+msgstr "Ympäröivän tyhjiön suuruus:"
+
+#: ../celleditor.py:70
+msgid "Apply Vacuum"
+msgstr "Aseta tyhjiö"
+
+#: ../colors.py:17
+msgid "Colors"
+msgstr "Värit"
+
+#: ../colors.py:19
+msgid "Choose how the atoms are colored:"
+msgstr "Valitse suure, jonka mukaan atomit värjätään:"
+
+#: ../colors.py:22
+msgid "By atomic number, default \"jmol\" colors"
+msgstr "Järjestysluku (\"jmol\"-oletusvärit)"
+
+#: ../colors.py:23
+msgid "By tag"
+msgstr "Tunniste"
+
+#: ../colors.py:24
+msgid "By force"
+msgstr "Voima"
+
+#: ../colors.py:25
+msgid "By velocity"
+msgstr "Nopeus"
+
+#: ../colors.py:26
+msgid "By initial charge"
+msgstr "Alkuvaraus"
+
+#: ../colors.py:27
+msgid "By magnetic moment"
+msgstr "Magneetinen momentti"
+
+#: ../colors.py:28
+msgid "By number of neighbors"
+msgstr "Naapurien lukumäärä"
+
+#: ../colors.py:98
+msgid "cmap:"
+msgstr "värikartta:"
+
+#: ../colors.py:100
+msgid "N:"
+msgstr "N:"
+
+#. XXX what are optimal allowed range and steps ?
+#: ../colors.py:116
+msgid "min:"
+msgstr "min:"
+
+#: ../colors.py:119
+msgid "max:"
+msgstr "max:"
+
+#: ../constraints.py:7
+msgid "Constraints"
+msgstr "Rajoitukset"
+
+#: ../constraints.py:8 ../settings.py:13
+msgid "Fix"
+msgstr "Kiinnitä"
+
+#: ../constraints.py:9 ../constraints.py:11
+msgid "selected atoms"
+msgstr "valitut atomit"
+
+#: ../constraints.py:10
+msgid "Release"
+msgstr "Vapauta"
+
+#: ../constraints.py:12 ../settings.py:17
+msgid "Clear all constraints"
+msgstr "Poista kaikki rajoitukset"
+
+#: ../graphs.py:9
+msgid ""
+"Symbols:\n"
+"<c>e</c>: total energy\n"
+"<c>epot</c>: potential energy\n"
+"<c>ekin</c>: kinetic energy\n"
+"<c>fmax</c>: maximum force\n"
+"<c>fave</c>: average force\n"
+"<c>R[n,0-2]</c>: position of atom number <c>n</c>\n"
+"<c>d(n<sub>1</sub>,n<sub>2</sub>)</c>: distance between two atoms "
+"<c>n<sub>1</sub></c> and <c>n<sub>2</sub></c>\n"
+"<c>i</c>: current image number\n"
+"<c>E[i]</c>: energy of image number <c>i</c>\n"
+"<c>F[n,0-2]</c>: force on atom number <c>n</c>\n"
+"<c>V[n,0-2]</c>: velocity of atom number <c>n</c>\n"
+"<c>M[n]</c>: magnetic moment of atom number <c>n</c>\n"
+"<c>A[0-2,0-2]</c>: unit-cell basis vectors\n"
+"<c>s</c>: path length\n"
+"<c>a(n1,n2,n3)</c>: angle between atoms <c>n<sub>1</sub></c>, <c>n<sub>2</"
+"sub></c> and <c>n<sub>3</sub></c>, centered on <c>n<sub>2</sub></c>\n"
+"<c>dih(n1,n2,n3,n4)</c>: dihedral angle between <c>n<sub>1</sub></c>, "
+"<c>n<sub>2</sub></c>, <c>n<sub>3</sub></c> and <c>n<sub>4</sub></c>\n"
+"<c>T</c>: temperature (K)"
+msgstr ""
+"Merkit:\n"
+"<c>e</c>: kokonaisenergia\n"
+"<c>epot</c>: asemaenergia\n"
+"<c>ekin</c>: liike-energia\n"
+"<c>fmax</c>: suurin voima\n"
+"<c>fave</c>: keskimääräinen voima\n"
+"<c>R[n,0-2]</c>: atomin <c>n</c> sijainti\n"
+"<c>d(n<sub>1</sub>,n<sub>2</sub>)</c>: atomien <c>n<sub>1</sub></c> ja "
+"<c>n<sub>2</sub></c> etäisyys\n"
+"<c>i</c>: tämänhetkisen kuvan numero\n"
+"<c>E[i]</c>: kuvan <c>i</c> energia\n"
+"<c>F[n,0-2]</c>: atomiin <c>n</c> kohdistuva voima\n"
+"<c>V[n,0-2]</c>: atomin <c>n</c> nopeus\n"
+"<c>M[n]</c>: atomin <c>n</c> magneettinen momentti\n"
+"<c>A[0-2,0-2]</c>: yksikkökopin kantavektorit\n"
+"<c>s</c>: polun pituus\n"
+"<c>a(n1,n2,n3)</c>: atomien <c>n<sub>1</sub></c>, <c>n<sub>2</sub></c> ja "
+"<c>n<sub>3</sub></c> välinen kulma, keskipisteenä <c>n<sub>2</sub></c>\n"
+"<c>dih(n1,n2,n3,n4)</c>: atomien <c>n<sub>1</sub></c>, <c>n<sub>2</sub></c>, "
+"<c>n<sub>3</sub></c> ja <c>n<sub>4</sub></c> välinen kiertokulma\n"
+"<c>T</c>: lämpötila (K)"
+
+#: ../graphs.py:40 ../graphs.py:42
+msgid "Plot"
+msgstr "Piirrä"
+
+#: ../graphs.py:44
+msgid "Save"
+msgstr "Tallenna tiedot"
+
+#: ../graphs.py:67
+msgid "Save data to file ... "
+msgstr "Tallenna tiedot tiedostoon ... "
+
+#: ../gui.py:208
+msgid "Delete atoms"
+msgstr "Poista atomit"
+
+#: ../gui.py:209
+msgid "Delete selected atoms?"
+msgstr "Poistetaanko valitut atomit?"
+
+#. Subprocess probably crashed
+#: ../gui.py:266
+msgid "Failure in subprocess"
+msgstr "Aliprosessi epäonnistui"
+
+#: ../gui.py:273
+msgid "Plotting failed"
+msgstr "Piirto epäonnistui"
+
+#: ../gui.py:280
+msgid "Images must have energies and forces, and atoms must not be stationary."
+msgstr "Energioiden ja voimien täytyy olla kuvissa ja atomien täytyy liikkua."
+
+#: ../gui.py:293
+msgid "Images must have energies and varying cell."
+msgstr "Energioiden täytyy olla kuvissa ja yksikkökopin täytyy muuttua."
+
+#: ../gui.py:300
+msgid "Requires 3D cell."
+msgstr "Yksikkökopin täytyy olla kolmiulotteinen."
+
+#: ../gui.py:334
+msgid "Quick Info"
+msgstr "Pikatietoja"
+
+#: ../gui.py:471
+msgid "_File"
+msgstr "_Tiedosto"
+
+#: ../gui.py:472
+msgid "_Open"
+msgstr "_Avaa"
+
+#: ../gui.py:473
+msgid "_New"
+msgstr "_Uusi"
+
+#: ../gui.py:474
+msgid "_Save"
+msgstr "_Tallenna"
+
+#: ../gui.py:476
+msgid "_Quit"
+msgstr "_Lopeta"
+
+#: ../gui.py:478
+msgid "_Edit"
+msgstr "_Muokkaa"
+
+#: ../gui.py:479
+msgid "Select _all"
+msgstr "Valitse _kaikki"
+
+#: ../gui.py:480
+msgid "_Invert selection"
+msgstr "Käännä valinta _päinvastoin"
+
+#: ../gui.py:481
+msgid "Select _constrained atoms"
+msgstr "Valitse _rajoitetut atomit"
+
+#: ../gui.py:482
+msgid "Select _immobile atoms"
+msgstr "Valitse _liikkumattomat atomit"
+
+#. M('---'),
+#: ../gui.py:484
+msgid "_Cut"
+msgstr "Leikkaa"
+
+#: ../gui.py:485
+msgid "_Copy"
+msgstr "Kopioi"
+
+#: ../gui.py:486
+msgid "_Paste"
+msgstr "Liitä"
+
+#: ../gui.py:488
+msgid "Hide selected atoms"
+msgstr "Piilota valitut atomit"
+
+#: ../gui.py:489
+msgid "Show selected atoms"
+msgstr "Näytä valitut atomit"
+
+#: ../gui.py:491
+msgid "_Modify"
+msgstr "Muokkaa atomeja"
+
+#: ../gui.py:492
+msgid "_Add atoms"
+msgstr "Lisää atomeja"
+
+#: ../gui.py:493
+msgid "_Delete selected atoms"
+msgstr "Poista valitut atomit"
+
+#: ../gui.py:495
+msgid "Edit _cell"
+msgstr "Muokkaa yksikkökoppia"
+
+#: ../gui.py:497
+msgid "_First image"
+msgstr "Ensimmäinen kuva"
+
+#: ../gui.py:498
+msgid "_Previous image"
+msgstr "Edellinen kuva"
+
+#: ../gui.py:499
+msgid "_Next image"
+msgstr "Seuraava kuva"
+
+#: ../gui.py:500
+msgid "_Last image"
+msgstr "Viimeinen kuva"
+
+#: ../gui.py:501
+msgid "Append image copy"
+msgstr "Lisää nykyisen kuvan kopio"
+
+#: ../gui.py:503
+msgid "_View"
+msgstr "_Näkymä"
+
+#: ../gui.py:504
+msgid "Show _unit cell"
+msgstr "Näytä _yksikkökoppi"
+
+#: ../gui.py:506
+msgid "Show _axes"
+msgstr "Näytä _akselit"
+
+#: ../gui.py:508
+msgid "Show _bonds"
+msgstr "Näytä _sidokset"
+
+#: ../gui.py:510
+msgid "Show _velocities"
+msgstr "Näytä _nopeudet"
+
+#: ../gui.py:512
+msgid "Show _forces"
+msgstr "Näytä _voimat"
+
+#: ../gui.py:514
+msgid "Show _Labels"
+msgstr "Näytä _merkintä atomeissa"
+
+#: ../gui.py:515
+msgid "_None"
+msgstr "_Ei mitään"
+
+#: ../gui.py:516
+msgid "Atom _Index"
+msgstr "Atomin _indeksi"
+
+#: ../gui.py:517
+msgid "_Magnetic Moments"
+msgstr "_Magneettinen momentti"
+
+#. XXX check if exist
+#: ../gui.py:518
+msgid "_Element Symbol"
+msgstr "_Kemiallinen merkki"
+
+#: ../gui.py:519
+msgid "_Initial Charges"
+msgstr "_Alkuvaraus"
+
+#: ../gui.py:522
+msgid "Quick Info ..."
+msgstr "Perustietoja ..."
+
+#: ../gui.py:523
+msgid "Repeat ..."
+msgstr "Toista yksikkökoppia ..."
+
+#: ../gui.py:524
+msgid "Rotate ..."
+msgstr "Kierrä yksikkökoppia ..."
+
+#: ../gui.py:525
+msgid "Colors ..."
+msgstr "Värit ..."
+
+#. TRANSLATORS: verb
+#: ../gui.py:527
+msgid "Focus"
+msgstr "Tarkenna"
+
+#: ../gui.py:528
+msgid "Zoom in"
+msgstr "Lähennä"
+
+#: ../gui.py:529
+msgid "Zoom out"
+msgstr "Loitonna"
+
+#: ../gui.py:530
+msgid "Change View"
+msgstr "Vaihda näkymää"
+
+#: ../gui.py:532
+msgid "Reset View"
+msgstr "Palauta näkymä"
+
+#: ../gui.py:533
+msgid "xy-plane"
+msgstr "xy-taso"
+
+#: ../gui.py:534
+msgid "yz-plane"
+msgstr "yz-taso"
+
+#: ../gui.py:535
+msgid "zx-plane"
+msgstr "zx-taso"
+
+#: ../gui.py:536
+msgid "yx-plane"
+msgstr "yx-taso"
+
+#: ../gui.py:537
+msgid "zy-plane"
+msgstr "zy-taso"
+
+#: ../gui.py:538
+msgid "xz-plane"
+msgstr "xz-taso"
+
+#: ../gui.py:539
+msgid "a2,a3-plane"
+msgstr "a2,a3-taso"
+
+#: ../gui.py:540
+msgid "a3,a1-plane"
+msgstr "a3,a1-taso"
+
+#: ../gui.py:541
+msgid "a1,a2-plane"
+msgstr "a1,a2-taso"
+
+#: ../gui.py:542
+msgid "a3,a2-plane"
+msgstr "a3,a2-taso"
+
+#: ../gui.py:543
+msgid "a1,a3-plane"
+msgstr "a1,a3-taso"
+
+#: ../gui.py:544
+msgid "a2,a1-plane"
+msgstr "a2,a2-taso"
+
+#: ../gui.py:545
+msgid "Settings ..."
+msgstr "Asetukset ..."
+
+#: ../gui.py:547
+msgid "VMD"
+msgstr "VMD"
+
+#: ../gui.py:548
+msgid "RasMol"
+msgstr "RasMol"
+
+#: ../gui.py:549
+msgid "xmakemol"
+msgstr "xmakemol"
+
+#: ../gui.py:550
+msgid "avogadro"
+msgstr "avogadro"
+
+#: ../gui.py:552
+msgid "_Tools"
+msgstr "_Työkalut"
+
+#: ../gui.py:553
+msgid "Graphs ..."
+msgstr "Piirrokset ..."
+
+#: ../gui.py:554
+msgid "Movie ..."
+msgstr "Elokuva ..."
+
+#: ../gui.py:555
+msgid "Constraints ..."
+msgstr "Rajoitukset ..."
+
+#: ../gui.py:556
+msgid "Render scene ..."
+msgstr "Hahmonna näkymä ..."
+
+#: ../gui.py:557
+msgid "_Move selected atoms"
+msgstr "_Siirrä valittuja atomeja"
+
+#: ../gui.py:558
+msgid "_Rotate selected atoms"
+msgstr "_Kierrä valittuja atomeja"
+
+#: ../gui.py:560
+msgid "NE_B plot"
+msgstr "NE_B piirros"
+
+#: ../gui.py:561
+msgid "B_ulk Modulus"
+msgstr "P_uristuskerroin"
+
+#: ../gui.py:562
+msgid "Reciprocal space ..."
+msgstr "Käänteisavaruus ..."
+
+#. TRANSLATORS: Set up (i.e. build) surfaces, nanoparticles, ...
+#: ../gui.py:565
+msgid "_Setup"
+msgstr "_Rakenna"
+
+#: ../gui.py:566
+msgid "_Surface slab"
+msgstr "_Pintalevy"
+
+#: ../gui.py:567
+msgid "_Nanoparticle"
+msgstr "_Nanohiukkanen"
+
+#: ../gui.py:569
+msgid "Nano_tube"
+msgstr "Nanop_utki"
+
+#. (_('_Calculate'),
+#. [M(_('Set _Calculator'), self.calculator_window, disabled=True),
+#. M(_('_Energy and Forces'), self.energy_window, disabled=True),
+#. M(_('Energy Minimization'), self.energy_minimize_window,
+#. disabled=True)]),
+#: ../gui.py:577
+msgid "_Help"
+msgstr "_Ohje"
+
+#: ../gui.py:578
+msgid "_About"
+msgstr "_Tietoja"
+
+#: ../gui.py:582
+msgid "Webpage ..."
+msgstr "Verkkosivu ..."
+
+#. Host window will never be shown
+#: ../images.py:285
+msgid "Constraints discarded"
+msgstr "Rajoitukset poistettu"
+
+#: ../images.py:286
+msgid "Constraints other than FixAtoms have been discarded."
+msgstr "Muut rajoitukset paitsi \"FixAtoms\" poistettu."
+
+#: ../modify.py:18
+msgid "No atoms selected!"
+msgstr "Atomeja ei ole valittu!"
+
+#: ../modify.py:21
+msgid "Modify"
+msgstr "Muokkaa atomeja"
+
+#: ../modify.py:24
+msgid "Change element"
+msgstr "Vaihda alkuaine"
+
+#: ../modify.py:27
+msgid "Tag"
+msgstr "Tunniste"
+
+#: ../modify.py:29
+msgid "Moment"
+msgstr "Momentti"
+
+#: ../movie.py:9
+msgid "Movie"
+msgstr "Elokuva"
+
+#: ../movie.py:10
+msgid "Image number:"
+msgstr "Kuvan numero:"
+
+#: ../movie.py:16
+msgid "First"
+msgstr "Ensimmäinen"
+
+#: ../movie.py:17
+msgid "Back"
+msgstr "Edellinen"
+
+#: ../movie.py:18
+msgid "Forward"
+msgstr "Seuraava"
+
+#: ../movie.py:19
+msgid "Last"
+msgstr "Viimeinen"
+
+#: ../movie.py:21
+msgid "Play"
+msgstr "Toista"
+
+#: ../movie.py:22
+msgid "Stop"
+msgstr "Pysäytä"
+
+#. TRANSLATORS: This function plays an animation forwards and backwards
+#. alternatingly, e.g. for displaying vibrational movement
+#: ../movie.py:26
+msgid "Rock"
+msgstr "Sukkuloi"
+
+#: ../movie.py:39
+msgid " Frame rate: "
+msgstr " Kuvataajuus: "
+
+#: ../movie.py:39
+msgid " Skip frames: "
+msgstr " Ohita kuvia: "
+
+#: ../nanoparticle.py:21
+msgid ""
+"Create a nanoparticle either by specifying the number of layers, or using "
+"the\n"
+"Wulff construction.  Please press the [Help] button for instructions on how "
+"to\n"
+"specify the directions.\n"
+"WARNING: The Wulff construction currently only works with cubic crystals!\n"
+msgstr ""
+"Nanohiukkasen rakennus. Valitse atomikerrosten lukumäärä tai\n"
+"käytä Wulff-rakennetta. [Ohje]-nappi antaa ohjeet suuntien määrittämiseen.\n"
+"VAROITUS: Wulff-rakenne toimii toistaiseksi vain kuutiollisille hiloille!\n"
+
+#: ../nanoparticle.py:28
+#, python-brace-format
+msgid ""
+"\n"
+"The nanoparticle module sets up a nano-particle or a cluster with a given\n"
+"crystal structure.\n"
+"\n"
+"1) Select the element, the crystal structure and the lattice constant(s).\n"
+"   The [Get structure] button will find the data for a given element.\n"
+"\n"
+"2) Choose if you want to specify the number of layers in each direction, or "
+"if\n"
+"   you want to use the Wulff construction.  In the latter case, you must\n"
+"   specify surface energies in each direction, and the size of the cluster.\n"
+"\n"
+"How to specify the directions:\n"
+"------------------------------\n"
+"\n"
+"First time a direction appears, it is interpreted as the entire family of\n"
+"directions, i.e. (0,0,1) also covers (1,0,0), (-1,0,0) etc.  If one of "
+"these\n"
+"directions is specified again, the second specification overrules that "
+"specific\n"
+"direction.  For this reason, the order matters and you can rearrange the\n"
+"directions with the [Up] and [Down] keys.  You can also add a new "
+"direction,\n"
+"remember to press [Add] or it will not be included.\n"
+"\n"
+"Example: (1,0,0) (1,1,1), (0,0,1) would specify the {100} family of "
+"directions,\n"
+"the {111} family and then the (001) direction, overruling the value given "
+"for\n"
+"the whole family of directions.\n"
+msgstr ""
+
+#. Structures:  Abbreviation, name,
+#. 4-index (boolean), two lattice const (bool), factory
+#: ../nanoparticle.py:88
+msgid "Face centered cubic (fcc)"
+msgstr "Pintakeskinen kuutiollinen (fcc)"
+
+#: ../nanoparticle.py:90
+msgid "Body centered cubic (bcc)"
+msgstr "Tilakeskinen kuutiollinen (bcc)"
+
+#: ../nanoparticle.py:92
+msgid "Simple cubic (sc)"
+msgstr "Yksinkertainen kuutiollinen (sc)"
+
+#: ../nanoparticle.py:94
+msgid "Hexagonal closed-packed (hcp)"
+msgstr "Heksagoninen tiivispakkaus (hcp)"
+
+#: ../nanoparticle.py:96
+msgid "Graphite"
+msgstr "Grafiitti"
+
+#: ../nanoparticle.py:128
+msgid "Nanoparticle"
+msgstr "Nanohiukkanen"
+
+#: ../nanoparticle.py:132
+msgid "Get structure"
+msgstr "Hae rakenne"
+
+#: ../nanoparticle.py:152 ../surfaceslab.py:68
+msgid "Structure:"
+msgstr "Rakenne:"
+
+#: ../nanoparticle.py:157
+msgid "Lattice constant:  a ="
+msgstr "Hilavakio: a ="
+
+#: ../nanoparticle.py:161
+msgid "Layer specification"
+msgstr "Atomikerrokset"
+
+#: ../nanoparticle.py:161
+msgid "Wulff construction"
+msgstr "Wulff-rakenne"
+
+#: ../nanoparticle.py:164
+msgid "Method: "
+msgstr "Menetelmä: "
+
+#: ../nanoparticle.py:172
+msgid "Add new direction:"
+msgstr "Lisää uusi suunta:"
+
+#. Information
+#: ../nanoparticle.py:178
+msgid "Information about the created cluster:"
+msgstr "Tietoja tehdystä hiukkasesta:"
+
+#: ../nanoparticle.py:179
+msgid "Number of atoms: "
+msgstr "Atomien lukumäärä: "
+
+#: ../nanoparticle.py:181
+msgid "   Approx. diameter: "
+msgstr " Likimääräinen halkaisija: "
+
+#: ../nanoparticle.py:190
+msgid "Automatic Apply"
+msgstr "Toteuta automaattisesti"
+
+#: ../nanoparticle.py:193 ../nanotube.py:49
+msgid "Creating a nanoparticle."
+msgstr "Rakennetaan nanohiukkasta."
+
+#: ../nanoparticle.py:195 ../nanotube.py:50 ../surfaceslab.py:81
+msgid "Apply"
+msgstr "Toteuta"
+
+#: ../nanoparticle.py:196 ../nanotube.py:51 ../surfaceslab.py:82
+msgid "OK"
+msgstr "OK"
+
+#: ../nanoparticle.py:225
+msgid "Up"
+msgstr "Ylös"
+
+#: ../nanoparticle.py:226
+msgid "Down"
+msgstr "Alas"
+
+#: ../nanoparticle.py:227
+msgid "Delete"
+msgstr "Poista"
+
+#: ../nanoparticle.py:269
+msgid "Number of atoms"
+msgstr "Atomien lukumäärä"
+
+#: ../nanoparticle.py:269
+msgid "Diameter"
+msgstr "Halkaisija"
+
+#: ../nanoparticle.py:277
+msgid "above  "
+msgstr "suurempi "
+
+#: ../nanoparticle.py:277
+msgid "below  "
+msgstr "pienempi "
+
+#: ../nanoparticle.py:277
+msgid "closest  "
+msgstr "lähin "
+
+#: ../nanoparticle.py:280
+msgid "Smaller"
+msgstr "Pienennä hiukkasta"
+
+#: ../nanoparticle.py:281
+msgid "Larger"
+msgstr "Kasvata hiukkasta"
+
+#: ../nanoparticle.py:282
+msgid "Choose size using:"
+msgstr "Koon valintaperuste:"
+
+#: ../nanoparticle.py:284
+msgid "atoms"
+msgstr "atomit"
+
+#: ../nanoparticle.py:285
+msgid "Å³"
+msgstr "Å³"
+
+#: ../nanoparticle.py:287
+msgid "Rounding: If exact size is not possible, choose the size:"
+msgstr "Pyöristys: jos tarkka koko ei ole mahdollinen, valitse koko, joka on: "
+
+#: ../nanoparticle.py:315
+msgid "Surface energies (as energy/area, NOT per atom):"
+msgstr "Pintaenergiat (yksikkö: energia/pinta-ala, EI: energia/atomi):"
+
+#: ../nanoparticle.py:317
+msgid "Number of layers:"
+msgstr "Atomikerrosten lukumäärä:"
+
+#: ../nanoparticle.py:345
+msgid "At least one index must be non-zero"
+msgstr "Vähintään yhden indeksin täytyy poiketa nollasta"
+
+#: ../nanoparticle.py:348
+msgid "Invalid hexagonal indices"
+msgstr "Epäkelvot heksagoniset indeksit"
+
+#: ../nanoparticle.py:414
+msgid "Unsupported or unknown structure"
+msgstr "Tuntematon rakenne"
+
+#: ../nanoparticle.py:415
+#, python-brace-format
+msgid "Element = {0}, structure = {1}"
+msgstr "Alkuaine = {0}, rakenne = {1}"
+
+#: ../nanoparticle.py:529 ../nanotube.py:82 ../surfaceslab.py:221
+msgid "No valid atoms."
+msgstr "Sopivia atomeja ei ole."
+
+#: ../nanoparticle.py:530 ../nanotube.py:83 ../surfaceslab.py:222
+#: ../widgets.py:95
+msgid "You have not (yet) specified a consistent set of parameters."
+msgstr "Kaikki asetukset eivät ole johdonmukaisia."
+
+#: ../nanotube.py:11
+msgid ""
+"Set up a Carbon nanotube by specifying the (n,m) roll-up vector.\n"
+"Please note that m <= n.\n"
+"\n"
+"Nanotubes of other elements can be made by specifying the element\n"
+"and bond length."
+msgstr ""
+"Rakenna hiilinanoputki antamalla (n,m)-rullausvektori, jossa m <= n.\n"
+"\n"
+"Nanoputkia voidaan rakentaa muista alkuaineista antamalla alkuaine\n"
+"ja sidospituus."
+
+#: ../nanotube.py:24
+#, python-brace-format
+msgid ""
+"{natoms} atoms, diameter: {diameter:.3f} Å, total length: {total_length:.3f} "
+"Å"
+msgstr ""
+"{natoms} atomia, halkaisija: {diameter:.3f} Å, kokonaispituus: "
+"{total_length:.3f} Å"
+
+#: ../nanotube.py:38
+msgid "Nanotube"
+msgstr "Nanoputki"
+
+#: ../nanotube.py:41
+msgid "Bond length: "
+msgstr "Sidospituus: "
+
+#: ../nanotube.py:43
+msgid "Å"
+msgstr "Å"
+
+#: ../nanotube.py:44
+msgid "Select roll-up vector (n,m) and tube length:"
+msgstr "Valitse rullausvektori (n,m) ja putken pituus:"
+
+#: ../nanotube.py:47
+msgid "Length:"
+msgstr "Pituus:"
+
+#: ../quickinfo.py:27
+msgid "This frame has no atoms."
+msgstr "Tässä kuvassa ei ole atomeja."
+
+#: ../quickinfo.py:32
+msgid "Single image loaded."
+msgstr "Yksittäinen kuva ladattu."
+
+#: ../quickinfo.py:34
+msgid "Image {} loaded (0–{})."
+msgstr "Kuva {} ladattu (0–{})."
+
+#: ../quickinfo.py:36
+msgid "Number of atoms: {}"
+msgstr "Atomien lukumäärä: {}"
+
+#: ../quickinfo.py:46
+msgid "Unit cell [Å]:"
+msgstr "Yksikkökoppi [Å]:"
+
+#: ../quickinfo.py:48
+msgid "no"
+msgstr "ei"
+
+#: ../quickinfo.py:48
+msgid "yes"
+msgstr "kyllä"
+
+#. TRANSLATORS: This has the form Periodic: no, no, yes
+#: ../quickinfo.py:51
+msgid "Periodic: {}, {}, {}"
+msgstr "Toistuva: {}, {}, {}"
+
+#: ../quickinfo.py:56
+msgid "Lengths [Å]: {:.3f}, {:.3f}, {:.3f}"
+msgstr "Pituudet [Å]: {:.3f}, {:.3f}, {:.3f}"
+
+#: ../quickinfo.py:57
+msgid "Angles: {:.1f}°, {:.1f}°, {:.1f}°"
+msgstr "Kulmat: {:.1f}°, {:.1f}°, {:.1f}°"
+
+#: ../quickinfo.py:60
+msgid "Volume: {:.3f} Å³"
+msgstr "Tilavuus: {:.3f} Å³"
+
+#: ../quickinfo.py:66
+msgid "Unit cell is fixed."
+msgstr "Yksikkökoppi ei muutu."
+
+#: ../quickinfo.py:68
+msgid "Unit cell varies."
+msgstr "Yksikkökoppi muuttuu."
+
+#: ../quickinfo.py:74
+msgid "Could not recognize the lattice type"
+msgstr "Hilan tyyppiä ei tunnistettu"
+
+#: ../quickinfo.py:76
+msgid "Unexpected error determining lattice type"
+msgstr "Odottamaton virhe tunnistaessa hilan tyyppiä"
+
+#: ../quickinfo.py:78
+msgid ""
+"Reduced Bravais lattice:\n"
+"{}"
+msgstr ""
+"Pelkistetty Bravais'n hila:\n"
+"{}"
+
+#: ../quickinfo.py:107
+msgid "Calculator: {} (cached)"
+msgstr "Laskin: {} (välimuistissa)"
+
+#: ../quickinfo.py:109
+msgid "Calculator: {} (attached)"
+msgstr "Lskin: {} (liitetty)"
+
+#: ../quickinfo.py:116
+msgid "Energy: {:.3f} eV"
+msgstr "Energia: {:.3f} eV"
+
+#: ../quickinfo.py:121
+msgid "Max force: {:.3f} eV/Å"
+msgstr "Suurin voima: {:.3f} eV/Å"
+
+#: ../quickinfo.py:125
+msgid "Magmom: {:.3f} µ"
+msgstr "Magneetinen momentti: {:.3f} µ"
+
+#: ../render.py:16
+msgid "Render current view in povray ... "
+msgstr "Hahmonna näkymä povray-ohjelmalla ... "
+
+#: ../render.py:17
+#, python-format
+msgid "Rendering %d atoms."
+msgstr "Hahmonnetaan %d atomia."
+
+#: ../render.py:22
+msgid "Size"
+msgstr "Koko"
+
+#: ../render.py:27
+msgid "Line width"
+msgstr "Viivan pituus"
+
+#: ../render.py:28
+msgid "Ångström"
+msgstr "Ångström"
+
+#: ../render.py:30
+msgid "Render constraints"
+msgstr "Hahmonna rajoitukset"
+
+#: ../render.py:31
+msgid "Render unit cell"
+msgstr "Hahmonna yksikkökoppi"
+
+#: ../render.py:37
+msgid "Output basename: "
+msgstr "Tiedostonimipohja: "
+
+#: ../render.py:39
+msgid "POVRAY executable"
+msgstr "POVRAY ohjelmatiedosto"
+
+#: ../render.py:41
+msgid "Output filename: "
+msgstr "Tiedostonimi: "
+
+#: ../render.py:46
+msgid "Atomic texture set:"
+msgstr "Atomien pintakuviointi:"
+
+#: ../render.py:53
+msgid "Camera type: "
+msgstr "Kameramalli: "
+
+#: ../render.py:54
+msgid "Camera distance"
+msgstr "Kameran etäisyys"
+
+#. render current frame/all frames
+#: ../render.py:57
+msgid "Render current frame"
+msgstr "Hahmonna tämänhetkinen kuva"
+
+#: ../render.py:58
+msgid "Render all frames"
+msgstr "Hahmonna kaikki kuvat"
+
+#: ../render.py:63
+msgid "Run povray"
+msgstr "Suorita povray"
+
+#: ../render.py:64
+msgid "Keep povray files"
+msgstr "Tallenna povray-tiedostot"
+
+#: ../render.py:65
+msgid "Show output window"
+msgstr "Näytä kuvaikkuna"
+
+#: ../render.py:66
+msgid "Transparent background"
+msgstr "Läpinäkyvä taustakuva"
+
+#: ../render.py:70
+msgid "Render"
+msgstr "Hahmonna"
+
+#: ../repeat.py:7
+msgid "Repeat"
+msgstr "Toista"
+
+#: ../repeat.py:8
+msgid "Repeat atoms:"
+msgstr "Toista atomit:"
+
+#: ../repeat.py:12
+msgid "Set unit cell"
+msgstr "Aseta yksikkökoppi"
+
+#: ../rotate.py:12
+msgid "Rotate"
+msgstr "Kierrä"
+
+#: ../rotate.py:13
+msgid "Rotation angles:"
+msgstr "Kiertokulmat:"
+
+#: ../rotate.py:17
+msgid "Update"
+msgstr "Päivitä"
+
+#: ../rotate.py:18
+msgid ""
+"Note:\n"
+"You can rotate freely\n"
+"with the mouse, by holding\n"
+"down mouse button 2."
+msgstr ""
+"Vinkki:\n"
+"Voit vapaasti kääntää\n"
+"katselukulmaa pitämällä\n"
+"hiiren kakkospainiketta pohjassa."
+
+#: ../save.py:12
+msgid ""
+"Append name with \"@n\" in order to write image\n"
+"number \"n\" instead of the current image. Append\n"
+"\"@start:stop\" or \"@start:stop:step\" if you want\n"
+"to write a range of images. You can leave out\n"
+"\"start\" and \"stop\" so that \"name@:\" will give\n"
+"you all images. Negative numbers count from the\n"
+"last image. Examples: \"name@-1\": last image,\n"
+"\"name@-2:\": last two."
+msgstr ""
+"Lisää nimeen \"@n\" jos haluat tallentaa kuvan\n"
+"numero \"n\" nykyisen kuvan sijaan.\n"
+"Lisää \"@alku:loppu\" tai \"@alku:loppu:askel\" jos\n"
+"haluat tallentaa sarjan kuvia. Voit myös jättää\n"
+"alku- ja loppunumerot pois, jolloin esimerkiksi\n"
+"\"nimi@:\" tallentaa kaikki kuvat.\n"
+"Negatiiviset numerot lasketaan viimeisestä kuvasta.\n"
+"Esimerkkejä: \"nimi@-1\": viimeinen kuva,\n"
+"\"nimi@-2:\": kaksi viimeistä kuvaa."
+
+#: ../save.py:24
+msgid "Save ..."
+msgstr "Tallenna ..."
+
+#: ../save.py:76 ../ui.py:33
+msgid "Error"
+msgstr "Virhe"
+
+#: ../settings.py:9
+msgid "Settings"
+msgstr "Asetukset"
+
+#. Constraints
+#: ../settings.py:12
+msgid "Constraints:"
+msgstr "Rajoitukset:"
+
+#: ../settings.py:15
+msgid "release"
+msgstr "vapauta"
+
+#: ../settings.py:16 ../settings.py:24
+msgid " selected atoms"
+msgstr " valitut atomit"
+
+#. Visibility
+#: ../settings.py:20
+msgid "Visibility:"
+msgstr "Näkyvyys"
+
+#: ../settings.py:21
+msgid "Hide"
+msgstr "Piilota"
+
+#: ../settings.py:23
+msgid "show"
+msgstr "näytä"
+
+#: ../settings.py:25
+msgid "View all atoms"
+msgstr "Näytä kaikki atomit"
+
+#. Miscellaneous
+#: ../settings.py:28
+msgid "Miscellaneous:"
+msgstr "Sekalaista:"
+
+#: ../settings.py:31
+msgid "Scale atomic radii:"
+msgstr "Atomisäteiden skaalaus:"
+
+#: ../settings.py:38
+msgid "Scale force vectors:"
+msgstr "Voimavektorien skaalaus:"
+
+#: ../settings.py:45
+msgid "Scale velocity vectors:"
+msgstr "Nopeusvektorien skaalaus:"
+
+#: ../status.py:50
+#, python-format
+msgid " tag=%(tag)s"
+msgstr " tunniste=%(tag)s"
+
+#. TRANSLATORS: mom refers to magnetic moment
+#: ../status.py:54
+#, python-brace-format
+msgid " mom={0:1.2f}"
+msgstr " mom={0:1.2f}"
+
+#: ../status.py:58
+#, python-brace-format
+msgid " q={0:1.2f}"
+msgstr " q={0:1.2f}"
+
+#: ../status.py:93
+msgid "dihedral"
+msgstr "kiertokulma"
+
+#: ../surfaceslab.py:10
+msgid ""
+"  Use this dialog to create surface slabs.  Select the element by\n"
+"writing the chemical symbol or the atomic number in the box.  Then\n"
+"select the desired surface structure.  Note that some structures can\n"
+"be created with an othogonal or a non-orthogonal unit cell, in these\n"
+"cases the non-orthogonal unit cell will contain fewer atoms.\n"
+"\n"
+"  If the structure matches the experimental crystal structure, you can\n"
+"look up the lattice constant, otherwise you have to specify it\n"
+"yourself."
+msgstr ""
+"Pintalevyn rakennus. Valitse ensin alkuaine kirjoittamalla\n"
+"kemiallinen merkki tai järjestysluku. Valitse sen jälkeen\n"
+"pinnan rakenne. Huomaa, että rakenteet voidaan esittää\n"
+"joko yleisessä tai kohtisuorassa yksikkökopissa.\n"
+"Kohtisuorassa yksikkökopissa on enemmän atomeja.\n"
+"\n"
+"Jos rakenne vastaa kokeellista hilarakennetta, voit hakea hilavakion\n"
+"tietokannasta. Muussa tapauksessa se pitää määrittää itse."
+
+#. Name, structure, orthogonal, function
+#: ../surfaceslab.py:22
+msgid "FCC(100)"
+msgstr "FCC(100)"
+
+#: ../surfaceslab.py:22 ../surfaceslab.py:23 ../surfaceslab.py:24
+#: ../surfaceslab.py:25
+msgid "fcc"
+msgstr "fcc"
+
+#: ../surfaceslab.py:23
+msgid "FCC(110)"
+msgstr "FCC(110)"
+
+#: ../surfaceslab.py:24 ../surfaceslab.py:171
+msgid "FCC(111)"
+msgstr "FCC(111)"
+
+#: ../surfaceslab.py:25 ../surfaceslab.py:174
+msgid "FCC(211)"
+msgstr "FCC(211)"
+
+#: ../surfaceslab.py:26
+msgid "BCC(100)"
+msgstr "BCC(100)"
+
+#: ../surfaceslab.py:26 ../surfaceslab.py:27 ../surfaceslab.py:28
+msgid "bcc"
+msgstr "bcc"
+
+#: ../surfaceslab.py:27 ../surfaceslab.py:168
+msgid "BCC(110)"
+msgstr "BCC(110)"
+
+#: ../surfaceslab.py:28 ../surfaceslab.py:165
+msgid "BCC(111)"
+msgstr "BCC(111)"
+
+#: ../surfaceslab.py:29 ../surfaceslab.py:178
+msgid "HCP(0001)"
+msgstr "HCP(0001)"
+
+#: ../surfaceslab.py:29 ../surfaceslab.py:30 ../surfaceslab.py:132
+#: ../surfaceslab.py:188
+msgid "hcp"
+msgstr "hcp"
+
+#: ../surfaceslab.py:30 ../surfaceslab.py:181
+msgid "HCP(10-10)"
+msgstr "HCP(10-10)"
+
+#: ../surfaceslab.py:31
+msgid "DIAMOND(100)"
+msgstr "TIMANTTI(100)"
+
+#: ../surfaceslab.py:31 ../surfaceslab.py:32
+msgid "diamond"
+msgstr "timantti"
+
+#: ../surfaceslab.py:32
+msgid "DIAMOND(111)"
+msgstr "TIMANTTI(111)"
+
+#: ../surfaceslab.py:53
+msgid "Get from database"
+msgstr "Hae tietokannasta"
+
+#: ../surfaceslab.py:65
+msgid "Surface"
+msgstr "Pinta"
+
+#: ../surfaceslab.py:69
+msgid "Orthogonal cell:"
+msgstr "Kohtisuora yksikkökoppi:"
+
+#: ../surfaceslab.py:70
+msgid "Lattice constant:"
+msgstr "Hilavakio:"
+
+#: ../surfaceslab.py:71
+msgid "\ta"
+msgstr "\ta"
+
+#: ../surfaceslab.py:72
+msgid "\tc"
+msgstr "\tc"
+
+#: ../surfaceslab.py:73
+msgid "Size:"
+msgstr "Koko:"
+
+#: ../surfaceslab.py:74
+msgid "\tx: "
+msgstr "\tx: "
+
+#: ../surfaceslab.py:74 ../surfaceslab.py:75 ../surfaceslab.py:76
+msgid " unit cells"
+msgstr " yksikkökoppia"
+
+#: ../surfaceslab.py:75
+msgid "\ty: "
+msgstr "\ty: "
+
+#: ../surfaceslab.py:76
+msgid "\tz: "
+msgstr "\tz: "
+
+#: ../surfaceslab.py:77
+msgid "Vacuum: "
+msgstr "Ympäröivän tyhjiön suuruus:"
+
+#. TRANSLATORS: This is a title of a window.
+#: ../surfaceslab.py:80
+msgid "Creating a surface."
+msgstr "Pinnan luominen"
+
+#. TRANSLATORS: E.g. "... assume fcc crystal structure for Au"
+#: ../surfaceslab.py:108
+msgid "Error: Reference values assume {} crystal structure for {}!"
+msgstr "Virhe: Viitearvoissa on {}-hilarakenne alkuaineelle {}!"
+
+#: ../surfaceslab.py:162
+msgid "Please enter an even value for orthogonal cell"
+msgstr "Anna parillinen arvo kohtisuoralle yksikkökopille"
+
+#: ../surfaceslab.py:175
+msgid "Please enter a value divisible by 3 for orthogonal cell"
+msgstr "Anna kolmella jaollinen arvo kohtisuoralle yksikkökopille"
+
+#: ../surfaceslab.py:195
+msgid " Vacuum: {} Å."
+msgstr " Tyhjiön määrä: {} Å"
+
+#. TRANSLATORS: e.g. "Au fcc100 surface with 2 atoms."
+#. or "Au fcc100 surface with 2 atoms. Vacuum: 5 Å."
+#: ../surfaceslab.py:203
+#, python-brace-format
+msgid "{symbol} {surf} surface with one atom.{vacuum}"
+msgid_plural "{symbol} {surf} surface with {natoms} atoms.{vacuum}"
+msgstr[0] "{symbol} {surf}-pinta, jossa yksi atomi.{vacuum}"
+msgstr[1] "{symbol} {surf}-pinta, jossa {natoms} atomia.{vacuum}"
+
+#: ../ui.py:40
+msgid "Version"
+msgstr "Versio"
+
+#: ../ui.py:41
+msgid "Web-page"
+msgstr "Verkkosivu"
+
+#: ../ui.py:42
+msgid "About"
+msgstr "Tietoja"
+
+#: ../ui.py:47 ../ui.py:51 ../widgets.py:14
+msgid "Help"
+msgstr "Ohje"
+
+#: ../ui.py:547
+msgid "Open ..."
+msgstr "Avaa ..."
+
+#: ../ui.py:548
+msgid "Automatic"
+msgstr "Automaattinen"
+
+#: ../ui.py:566
+msgid "Choose parser:"
+msgstr "Valitse tiedostomuoto:"
+
+#: ../ui.py:572
+msgid "Read error"
+msgstr "Lukuvirhe"
+
+#: ../ui.py:573
+msgid "Could not read {}: {}"
+msgstr "Ei pysty lukemaan {}: {}"
+
+#: ../widgets.py:12
+msgid "Element:"
+msgstr "Alkuaine:"
+
+#: ../widgets.py:26
+msgid "Enter a chemical symbol or the atomic number."
+msgstr "Anna kemiallinen merkki tai järjestysluku."
+
+#. Title of a popup window
+#: ../widgets.py:28
+msgid "Info"
+msgstr "Ohje"
+
+#: ../widgets.py:58
+msgid "No element specified!"
+msgstr "Alkuainetta ei ole määritetty!"
+
+#: ../widgets.py:77
+msgid "ERROR: Invalid element!"
+msgstr "VIRHE: Epäkelpo alkuaine!"
+
+#: ../widgets.py:94
+msgid "No Python code"
+msgstr "Ei Python-koodia"

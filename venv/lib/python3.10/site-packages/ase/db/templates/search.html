@@ -1,0 +1,80 @@
+{% extends 'ase/db/templates/layout.html' %}
+
+{% block title %}
+Browse ASE Database
+{% endblock %}
+
+{% block head %}
+<script src="{{ url_for('static', filename='search.js') }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded',
+                          function() {
+                              update_table({{ session_id }}, 'query', '0');
+                              },
+                          false);
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  {% block contenttitle %}
+  <div class="row">
+    <h1>{{project.title}}</h1>
+  </div>
+  {% endblock %}
+
+  <div class="well mt-2">
+    <form id="mainFormID" class="navbar-form navbar-default mt-2"
+          role="search"
+          action="javascript:update_table({{ session_id }}, 'query', '0')">
+      <div class="form-group" style="margin-top:5px;">
+        <input type="text" name="query" id="formula-result"
+               class="form-control mt-2 ase-input"
+               value="{{ q }}"
+               placeholder="Search formula e.g. MoS2" size="60">
+        <button type="submit" class="btn btn-default">
+          <i class="fa fa-search fa-1x" aria-hidden="true"></i>
+        </button>
+      </div><br/>
+      {% block search %}
+      {% endblock search %}
+      <div class="form-group" style="margin-bottom:0px;">
+        <small class="form-text text-muted">
+          <a href="https://wiki.fysik.dtu.dk/ase/ase/db/db.html#querying"
+             target="_blank">
+            Help with constructing advanced search queries ...
+          </a>
+        </small>
+      </div><br/>
+
+      {# Flash query messages #}
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="list-group">
+          {% for message in messages %}
+            <li class="list-group-item list-group-item-warning">{{ message }}
+            </li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      <small lcass="form-text text-muted">
+      <a data-toggle="collapse" href="#collapse1">Toggle list of keys ...</a>
+      </small><br/>
+      <div id="collapse1" class="collapse">
+        <table class="table table-striped">
+        {% for key, keydesc in project.key_descriptions|dictsort %}
+          <tr><td>{{ key }}</td><td>{{ keydesc.longdesc }}</td><td>{{ keydesc.unit|safe }}</td></tr>
+        {% endfor %}
+        </table>
+      </div>
+    </form>
+  </div>
+
+  <div id="database1"></div>
+
+</div> <!-- class="container" -->
+
+{% endblock content %}

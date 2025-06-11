@@ -1,0 +1,6 @@
+# ninja log v5
+1	357	1746667964945500541	/Users/yanovich/Pisces/build/temp.macosx-10.9-universal2-cpython-310/fairseq/clib/libbleu/module.o	671337b8d7caba6d
+0	1077	1746667965666552969	/Users/yanovich/Pisces/build/temp.macosx-10.9-universal2-cpython-310/fairseq/clib/libbleu/libbleu.o	f50dde6387aba76a
+1	4714	1746668003922802629	/Users/yanovich/Pisces/build/temp.macosx-10.9-universal2-cpython-310/fairseq/data/data_utils_fast.o	8a141857d181b5b0
+0	4866	1746668009879866951	/Users/yanovich/Pisces/build/temp.macosx-10.9-universal2-cpython-310/fairseq/data/token_block_utils_fast.o	1ca95582d01de83a
+0	16981	1746668026977431379	/Users/yanovich/Pisces/build/temp.macosx-10.9-universal2-cpython-310/fairseq/clib/libbase/balanced_assignment.o	1566ce0bbdd9aac4

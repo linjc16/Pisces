@@ -1,0 +1,85 @@
+
+******************************** Grid ********************************
+Simulation Box:
+  Type = minimum
+  Radius  [b] =   7.559
+Main mesh:
+  Spacing [b] = ( 0.650, 0.650, 0.650)    volume/point [b^3] =      0.27463
+  # inner mesh =       8807
+  # total mesh =      17863
+  Grid Cutoff [H] =    11.680005    Grid Cutoff [Ry] =    23.360010
+**********************************************************************
+
+
+***************************** Symmetries *****************************
+Symmetry elements : (C2) 2*(sigma)
+Symmetry group    : C2v
+**********************************************************************
+
+
+**************************** Theory Level ****************************
+Input: [TheoryLevel = kohn_sham]
+
+Exchange-correlation:
+  Exchange
+    Slater exchange (LDA)
+    [1] P. A. M. Dirac.,  Math. Proc. Cambridge Philos. Soc. 26, 376 (1930)
+    [2] F. Bloch.,  Z. Phys. 57, 545 (1929)
+  Correlation
+    Perdew & Zunger (Modified) (LDA)
+    [1] J. P. Perdew and A. Zunger.,  Phys. Rev. B 23, 5048 (1981)
+
+**********************************************************************
+
+SCF converged in   18 iterations
+
+Eigenvalues [H]
+ #st  Spin   Eigenvalue      Occupation
+   1   --    -1.167471       2.000000
+   2   --    -0.453075       2.000000
+   3   --    -0.444696       2.000000
+   4   --    -0.200360       2.000000
+
+Energy [H]:
+      Total       =       -16.06669135
+      Free        =       -16.06669135
+      -----------
+      Ion-ion     =         6.98512326
+      Eigenvalues =        -4.53120519
+      Hartree     =        19.70599283
+      Int[n*v_xc] =        -5.01651358
+      Exchange    =        -3.38419827
+      Correlation =        -0.44693189
+      vanderWaals =         0.00000000
+      Delta XC    =         0.00000000
+      Entropy     =         0.00000000
+      -TS         =        -0.00000000
+      Photon ex.  =         0.00000000
+      Kinetic     =         9.76911360
+      External    =       -48.69579085
+      Non-local   =        -1.93722680
+      Int[n*v_E]  =         0.00000000
+
+Dipole:                 [b]          [Debye]
+      <x> =    2.93165E-16      7.45151E-16
+      <y> =    3.66124E-01      9.30594E-01
+      <z> =    1.27716E-15      3.24621E-15
+
+Convergence:
+      abs_energy =  2.48689958E-14 ( 0.00000000E+00) [H]
+      rel_energy =  1.54786044E-15 ( 0.00000000E+00)
+      abs_dens =  3.25504028E-07 ( 0.00000000E+00)
+      rel_dens =  4.06880036E-08 ( 8.00000000E-08)
+      abs_evsum =  2.59547375E-07 ( 0.00000000E+00) [H]
+      rel_evsum =  5.72799870E-08 ( 0.00000000E+00)
+
+Forces on the ions [H/b]
+ Ion                        x              y              z
+   1         O  -5.29412822E-17  -4.36640978E-01   1.06852083E-14
+   2         H   1.26174198E-01   1.63394325E-01   6.98642109E-16
+   3         H  -1.26174198E-01   1.63394325E-01  -9.41131712E-17
+ ----------------------------------------------------------
+ Max abs force   1.26174198E-01   4.36640978E-01   1.06852083E-14
+   Total force  -1.16573418E-15  -1.09852328E-01   1.12897372E-14
+  Total torque  -5.58052295E-15  -1.13359011E-15   5.82867088E-16
+

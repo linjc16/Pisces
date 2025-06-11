@@ -1,0 +1,9 @@
+   EDIFF = 1e-4
+   EDIFF  = 0.1E-03   stopping-criterion for ELM
+   EDIFFG = 0.1E-02   stopping-criterion for IOM
+ total energy-change (2. order) : 0.6967792E+01  (-0.3525916E+02)
+ total energy-change (2. order) :-0.5941728E+01  (-0.5902027E+01)
+ total energy-change (2. order) :-0.6978499E+00  (-0.6375941E+00)
+ total energy-change (2. order) :-0.6025550E-02  (-0.6005618E-02)
+ total energy-change (2. order) :-0.7106017E-04  (-0.7105631E-04)
+------------------------ aborting loop EDIFF was not reached (unconverged)  ----------------------------

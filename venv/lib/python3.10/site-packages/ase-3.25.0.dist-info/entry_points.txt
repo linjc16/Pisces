@@ -1,0 +1,2 @@
+[console_scripts]
+ase = ase.cli.main:main

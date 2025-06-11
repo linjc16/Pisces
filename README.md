@@ -24,6 +24,7 @@ python setup.py build_ext --inplace
 Refer to [this file](preprocess/README.md).
 
 ## Data Preprocessing
+
 We evaluate our models on the dataset above. `dds/scripts/train_trans/data_process`, `dds/scripts/train_leave_comb/data_process` and `dds/scripts/train_leave_cell/data_process` are folders for preprocessing of `5-fold CV`, `Stratified CV for drug combinations`, and `Stratified CV for cell lines` settings respectively. To generate the binary data for `fairseq`, take the `5-fold CV` setting (fold 0) as an example, run
 ```
 python dds/scripts/train_trans/data_process/split_trans.py

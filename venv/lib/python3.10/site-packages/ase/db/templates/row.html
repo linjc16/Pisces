@@ -1,0 +1,163 @@
+{% extends 'ase/db/templates/layout.html' %}
+
+{% macro atoms() %}
+<div class="row">
+  <center>
+    <div id="appdiv"></div>
+  </center>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <a class="btn" href="/gui/{{ row.id }}">Open ASE's GUI</a>
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-link dropdown-toggle btn-sm"
+                data-toggle="dropdown">
+          Unit cell <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a onclick="repeatCell(1, 1, 1);">1x1x1</a></li>
+          <li><a onclick="repeatCell({{ n1 }}, {{ n2 }}, {{ n3 }});">
+              {{ n1 }}x{{ n2 }}x{{ n3 }}</a></li>
+        </ul>
+      </div>
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-link dropdown-toggle btn-sm"
+                data-toggle="dropdown">
+          Download <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="/atoms/{{ project.name }}/{{ row.id }}/xyz">xyz</a></li>
+          <li><a href="/atoms/{{ project.name }}/{{ row.id }}/json">json</a></li>
+        </ul>
+      </div>
+    </div>
+  <div class="col-md-1"></div>
+  </div>
+</div>
+{% endmacro %}
+
+{% macro cell() %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Axis</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>Periodic</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for axis in dct.cell %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      {% for a in axis %} <td>{{ a }}</td>{% endfor %}
+      <td>{{ row.pbc[loop.index0] }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <td>Lengths:</td>
+      {% for L in dct.lengths %}<td>{{ L }}</td>{% endfor %}
+    </tr>
+    <tr>
+      <td>Angles:</td>
+      {% for a in dct.angles %}<td>{{ a }}</td>{% endfor %}
+    </tr>
+  </tbody>
+</table>
+{% endmacro %}
+
+
+{% block title %}
+Summary
+{% endblock %}
+
+{% set n1, n2, n3 = dct.size %}
+
+{% block head %}
+<script src="{{ url_for('static', filename='jsmol/JSmol.min.js') }}"></script>
+
+<script>
+jmol_isReady = function(applet)
+{
+    Jmol._getElement(applet, "appletdiv").style.border="1px solid lightgray";
+    Jmol.script(jmolApplet0, "set displaycellparameters false;")
+    Jmol.script(jmolApplet0,
+    "load /atoms/{{ project.name }}/{{ row.id }}/cif { {{ n1 }} {{ n2 }} {{ n3 }} };");
+    }
+</script>
+
+<script src="{{ url_for('static', filename='row.js') }}"></script>
+{% endblock %}
+
+{% block navbar %}
+<li>
+  <a href="/{{ project.name }}/">Back to search page</a>
+</li>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <h1>{{ dct.formula|safe }}</h1>
+
+  <div class="panel-group">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a class="btn-block" data-toggle="collapse" href="#collapse0">
+          Structure </a>
+        </h4>
+      </div>
+
+      <div id="collapse0" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <div class="col-md-6">
+            <div class="row">
+              {{ atoms() }}
+            </div> <!--END ROW-->
+            <div class="row">
+              {{ cell() }}
+            </div> <!--END ROW-->
+          </div> <!--END col-md-6-->
+        </div> <!--END PANEL BODY-->
+      </div> <!--END COLLAPSE-->
+
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a class="btn-block" data-toggle="collapse" href="#collapse1">
+          Keys and values</a>
+        </h4>
+      </div>
+
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Description</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for key, desc, val in dct.table %}
+              <tr>
+                <td> {{ key }} </td>
+                <td> {{ desc }} </td>
+                <td> {{ val|safe }} </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div> <!--END PANEL BODY-->
+      </div> <!--END COLLAPSE-->
+    </div> <!--END PANEL-->
+  </div> <!--END PANEL GROUP-->
+</div>
+{% endblock content %}

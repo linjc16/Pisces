@@ -1,0 +1,1557 @@
+# Swedish translations for ase package.
+# Copyright (C) 2022 ASE developers
+# This file is distributed under the same license as the ase package.
+# Ask Hjorth Larsen <askhl@noether.fysik.dtu.dk>, 2022.
+# Jakub Fojt <jakub.fojt96@gmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ase\n"
+"Report-Msgid-Bugs-To: ase-users@listserv.fysik.dtu.dk\n"
+"POT-Creation-Date: 2024-10-23 20:47-0400\n"
+"PO-Revision-Date: 2024-10-23 20:59-0400\n"
+"Last-Translator: Jakub Fojt <jakub.fojt96@gmail.com>\n"
+"Language-Team: Swedish < >\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 40.0\n"
+
+#: ../add.py:10
+msgid "(selection)"
+msgstr "(markering)"
+
+#: ../add.py:16
+msgid "Add atoms"
+msgstr "Lägg till atomer"
+
+#: ../add.py:17
+msgid "Specify chemical symbol, formula, or filename."
+msgstr "Ange kemisk symbol, formel eller filnamn."
+
+#: ../add.py:44
+msgid "Add:"
+msgstr "Lägg till:"
+
+#: ../add.py:45
+msgid "File ..."
+msgstr "Fil …"
+
+#: ../add.py:54
+msgid "Coordinates:"
+msgstr "Koordinater:"
+
+#: ../add.py:56
+msgid ""
+"Coordinates are relative to the center of the selection, if any, else "
+"absolute."
+msgstr ""
+"Koordinaterna är relativa till markeringens mittpunkt, om det finns en "
+"markering, annars absoluta."
+
+#: ../add.py:58
+msgid "Check positions"
+msgstr "Kontrollera positionerna"
+
+#: ../add.py:59 ../nanoparticle.py:264
+msgid "Add"
+msgstr "Lägg till"
+
+#. May show UI error
+#: ../add.py:104
+msgid "Cannot add atoms"
+msgstr "Kan inte lägga till atomer"
+
+#: ../add.py:105
+msgid "{} is neither atom, molecule, nor file"
+msgstr "{} är varken en atom, en molekyl eller en fil"
+
+#: ../add.py:143
+msgid "Bad positions"
+msgstr "Ogiltiga positioner"
+
+#: ../add.py:144
+msgid ""
+"Atom would be less than 0.5 Å from an existing atom.  To override, uncheck "
+"the check positions option."
+msgstr ""
+"Atomen skulle hamna närmare än 0.5 Å från en annan atom. För att avaktivera "
+"denna kontroll, avmarkera kontrollera positioner-inställningen."
+
+#. TRANSLATORS: This is a title of a window.
+#: ../celleditor.py:49
+msgid "Cell Editor"
+msgstr "Cellredigering"
+
+#: ../celleditor.py:53
+msgid "A:"
+msgstr "A:"
+
+#: ../celleditor.py:53
+msgid "||A||:"
+msgstr "||A||:"
+
+#: ../celleditor.py:54 ../celleditor.py:56 ../celleditor.py:58
+msgid "periodic:"
+msgstr "periodisk:"
+
+#: ../celleditor.py:55
+msgid "B:"
+msgstr "B:"
+
+#: ../celleditor.py:55
+msgid "||B||:"
+msgstr "||B||:"
+
+#: ../celleditor.py:57
+msgid "C:"
+msgstr "C:"
+
+#: ../celleditor.py:57
+msgid "||C||:"
+msgstr "||C||:"
+
+#: ../celleditor.py:59
+msgid "∠BC:"
+msgstr "∠BC:"
+
+#: ../celleditor.py:59
+msgid "∠AC:"
+msgstr "∠AC:"
+
+#: ../celleditor.py:60
+msgid "∠AB:"
+msgstr "∠AB:"
+
+#: ../celleditor.py:61
+msgid "Scale atoms with cell:"
+msgstr "Skala atomerna med cellen:"
+
+#: ../celleditor.py:62
+msgid "Apply Vectors"
+msgstr "Använd vektorer"
+
+#: ../celleditor.py:63
+msgid "Apply Magnitudes"
+msgstr "Använd längder"
+
+#: ../celleditor.py:64
+msgid "Apply Angles"
+msgstr "Använd vinklar"
+
+#: ../celleditor.py:65
+msgid ""
+"Pressing 〈Enter〉 as you enter values will automatically apply correctly"
+msgstr ""
+"Tryck 〈Enter〉 när du skriver in värden för att använda dessa automatiskt"
+
+#. TRANSLATORS: verb
+#: ../celleditor.py:68
+msgid "Center"
+msgstr "Centrera"
+
+#: ../celleditor.py:69
+msgid "Wrap"
+msgstr "Slå runt"
+
+#: ../celleditor.py:70
+msgid "Vacuum:"
+msgstr "Vakuum:"
+
+#: ../celleditor.py:71
+msgid "Apply Vacuum"
+msgstr "Använd vakuum"
+
+#: ../colors.py:17
+msgid "Colors"
+msgstr "Färger"
+
+#: ../colors.py:19
+msgid "Choose how the atoms are colored:"
+msgstr "Välj hur atomerna färgas:"
+
+#: ../colors.py:22
+msgid "By atomic number, default \"jmol\" colors"
+msgstr "Efter atomnummer, \"jmol\"-färger som standard"
+
+#: ../colors.py:23
+msgid "By tag"
+msgstr "Efter etikett"
+
+#: ../colors.py:24
+msgid "By force"
+msgstr "Efter kraft"
+
+#: ../colors.py:25
+msgid "By velocity"
+msgstr "Efter hastighet"
+
+#: ../colors.py:26
+msgid "By initial charge"
+msgstr "Efter begynnelseladdning"
+
+#: ../colors.py:27
+msgid "By magnetic moment"
+msgstr "Efter magnetiskt moment"
+
+#: ../colors.py:28
+msgid "By number of neighbors"
+msgstr "Efter antal grannar"
+
+#: ../colors.py:98
+msgid "cmap:"
+msgstr "färgkarta:"
+
+#: ../colors.py:100
+msgid "N:"
+msgstr "N:"
+
+#. XXX what are optimal allowed range and steps ?
+#: ../colors.py:116
+msgid "min:"
+msgstr "min:"
+
+#: ../colors.py:119
+msgid "max:"
+msgstr "max:"
+
+#: ../constraints.py:7
+msgid "Constraints"
+msgstr "Begränsningar"
+
+#: ../constraints.py:8 ../settings.py:12
+msgid "Fix"
+msgstr "Begränsa"
+
+#: ../constraints.py:9 ../constraints.py:11
+msgid "selected atoms"
+msgstr "markerade atomer"
+
+#: ../constraints.py:10
+msgid "Release"
+msgstr "Släpp begränsningar"
+
+#: ../constraints.py:12 ../settings.py:16
+msgid "Clear all constraints"
+msgstr "Rensa begränsningar"
+
+#: ../graphs.py:9
+msgid ""
+"Symbols:\n"
+"<c>e</c>: total energy\n"
+"<c>epot</c>: potential energy\n"
+"<c>ekin</c>: kinetic energy\n"
+"<c>fmax</c>: maximum force\n"
+"<c>fave</c>: average force\n"
+"<c>R[n,0-2]</c>: position of atom number <c>n</c>\n"
+"<c>d(n<sub>1</sub>,n<sub>2</sub>)</c>: distance between two atoms "
+"<c>n<sub>1</sub></c> and <c>n<sub>2</sub></c>\n"
+"<c>i</c>: current image number\n"
+"<c>E[i]</c>: energy of image number <c>i</c>\n"
+"<c>F[n,0-2]</c>: force on atom number <c>n</c>\n"
+"<c>V[n,0-2]</c>: velocity of atom number <c>n</c>\n"
+"<c>M[n]</c>: magnetic moment of atom number <c>n</c>\n"
+"<c>A[0-2,0-2]</c>: unit-cell basis vectors\n"
+"<c>s</c>: path length\n"
+"<c>a(n1,n2,n3)</c>: angle between atoms <c>n<sub>1</sub></c>, <c>n<sub>2</"
+"sub></c> and <c>n<sub>3</sub></c>, centered on <c>n<sub>2</sub></c>\n"
+"<c>dih(n1,n2,n3,n4)</c>: dihedral angle between <c>n<sub>1</sub></c>, "
+"<c>n<sub>2</sub></c>, <c>n<sub>3</sub></c> and <c>n<sub>4</sub></c>\n"
+"<c>T</c>: temperature (K)"
+msgstr ""
+"Symbols:\n"
+"<c>e</c>: total energi\n"
+"<c>epot</c>: potentiell energi\n"
+"<c>ekin</c>: kinetisk energi\n"
+"<c>fmax</c>: största kraft\n"
+"<c>fave</c>: genomsnittlig kraft\n"
+"<c>R[n,0-2]</c>: position av atom <c>n</c>\n"
+"<c>d(n<sub>1</sub>,n<sub>2</sub>)</c>: avstånd mellan två atomer <c>n<sub>1</"
+"sub></c> and <c>n<sub>2</sub></c>\n"
+"<c>i</c>: nuvarande bild\n"
+"<c>E[i]</c>: energin av bild <c>i</c>\n"
+"<c>F[n,0-2]</c>: kraft på atom <c>n</c>\n"
+"<c>V[n,0-2]</c>: hastigheten av atom <c>n</c>\n"
+"<c>M[n]</c>: magnetiskt moment av atom <c>n</c>\n"
+"<c>A[0-2,0-2]</c>: enhetscellens basvektorer\n"
+"<c>s</c>: väglängd\n"
+"<c>a(n1,n2,n3)</c>: vinkel mellan atomer <c>n<sub>1</sub></c>, <c>n<sub>2</"
+"sub></c> och <c>n<sub>3</sub></c>, centrerad på <c>n<sub>2</sub></c>\n"
+"<c>dih(n1,n2,n3,n4)</c>: vridningsvinkel mellan <c>n<sub>1</sub></c>, "
+"<c>n<sub>2</sub></c>, <c>n<sub>3</sub></c> och <c>n<sub>4</sub></c>\n"
+"<c>T</c>: temperatur (K)"
+
+#: ../graphs.py:40 ../graphs.py:42
+msgid "Plot"
+msgstr "Graf"
+
+#: ../graphs.py:44
+msgid "Save"
+msgstr "Spara"
+
+#: ../graphs.py:67
+msgid "Save data to file ... "
+msgstr "Spara data till fil …"
+
+#: ../gui.py:208
+msgid "Delete atoms"
+msgstr "Radera atomer"
+
+#: ../gui.py:209
+msgid "Delete selected atoms?"
+msgstr "Radera markerade atomer?"
+
+#. Subprocess probably crashed
+#: ../gui.py:266
+msgid "Failure in subprocess"
+msgstr "Fel i underprocess"
+
+#: ../gui.py:273
+msgid "Plotting failed"
+msgstr "Fel vid ritande av graf"
+
+#: ../gui.py:280
+msgid "Images must have energies and forces, and atoms must not be stationary."
+msgstr ""
+"Bilder måste ha energier och krafter, och atomerna kan inte vara stationära."
+
+#: ../gui.py:293
+msgid "Images must have energies and varying cell."
+msgstr "Bilder måste ha energier och varierande cell."
+
+#: ../gui.py:300
+msgid "Requires 3D cell."
+msgstr "Kräver 3D cell."
+
+#: ../gui.py:334
+msgid "Quick Info"
+msgstr "Kort info"
+
+#: ../gui.py:471
+msgid "_File"
+msgstr "_Fil"
+
+#: ../gui.py:472
+msgid "_Open"
+msgstr "_Öppna"
+
+#: ../gui.py:473
+msgid "_New"
+msgstr "_Ny"
+
+#: ../gui.py:474
+msgid "_Save"
+msgstr "_Spara"
+
+#: ../gui.py:476
+msgid "_Quit"
+msgstr "_Avsluta"
+
+#: ../gui.py:478
+msgid "_Edit"
+msgstr "_Redigera"
+
+#: ../gui.py:479
+msgid "Select _all"
+msgstr "Markera _alla"
+
+#: ../gui.py:480
+msgid "_Invert selection"
+msgstr "_Invertera markering"
+
+#: ../gui.py:481
+msgid "Select _constrained atoms"
+msgstr "Markera _begränsade atomer"
+
+#: ../gui.py:482
+msgid "Select _immobile atoms"
+msgstr "Markera _orörliga atomer"
+
+#. M('---'),
+#: ../gui.py:484
+msgid "_Cut"
+msgstr "_Klipp ut"
+
+#: ../gui.py:485
+msgid "_Copy"
+msgstr "_Kopiera"
+
+#: ../gui.py:486
+msgid "_Paste"
+msgstr "_Klistra in"
+
+#: ../gui.py:488
+msgid "Hide selected atoms"
+msgstr "Dölj markerade atomer"
+
+#: ../gui.py:489
+msgid "Show selected atoms"
+msgstr "Visa markerade atomer"
+
+#: ../gui.py:491
+msgid "_Modify"
+msgstr "_Ändra"
+
+#: ../gui.py:492
+msgid "_Add atoms"
+msgstr "_Lägg till atomer"
+
+#: ../gui.py:493
+msgid "_Delete selected atoms"
+msgstr "_Radera markerade atomer"
+
+#: ../gui.py:495
+msgid "Edit _cell"
+msgstr "Redigera _cell"
+
+#: ../gui.py:497
+msgid "_First image"
+msgstr "_Första bild"
+
+#: ../gui.py:498
+msgid "_Previous image"
+msgstr "F_örgående bild"
+
+#: ../gui.py:499
+msgid "_Next image"
+msgstr "_Nästa bild"
+
+#: ../gui.py:500
+msgid "_Last image"
+msgstr "_Sista bild"
+
+#: ../gui.py:501
+msgid "Append image copy"
+msgstr "Lägg till kopia av bild"
+
+#: ../gui.py:503
+msgid "_View"
+msgstr "_Visa"
+
+#: ../gui.py:504
+msgid "Show _unit cell"
+msgstr "Visa _enhetscell"
+
+#: ../gui.py:506
+msgid "Show _axes"
+msgstr "Visa _axlar"
+
+#: ../gui.py:508
+msgid "Show _bonds"
+msgstr "Visa _bindningar"
+
+#: ../gui.py:510
+msgid "Show _velocities"
+msgstr "Visa _hastigheter"
+
+#: ../gui.py:512
+msgid "Show _forces"
+msgstr "Visa _krafter"
+
+#: ../gui.py:514
+msgid "Show _Labels"
+msgstr "Visa _etiketter"
+
+#: ../gui.py:515
+msgid "_None"
+msgstr "_Inga"
+
+#: ../gui.py:516
+msgid "Atom _Index"
+msgstr "_Atomindex"
+
+#: ../gui.py:517
+msgid "_Magnetic Moments"
+msgstr "_Magnetiska moment"
+
+#. XXX check if exist
+#: ../gui.py:518
+msgid "_Element Symbol"
+msgstr "_Ämnessymbol"
+
+#: ../gui.py:519
+msgid "_Initial Charges"
+msgstr "_Begynnelseladdning"
+
+#: ../gui.py:522
+msgid "Quick Info ..."
+msgstr "Kort info …"
+
+#: ../gui.py:523
+msgid "Repeat ..."
+msgstr "Upprepa …"
+
+#: ../gui.py:524
+msgid "Rotate ..."
+msgstr "Rotera …"
+
+#: ../gui.py:525
+msgid "Colors ..."
+msgstr "Färger …"
+
+#. TRANSLATORS: verb
+#: ../gui.py:527
+msgid "Focus"
+msgstr "Fokusera"
+
+#: ../gui.py:528
+msgid "Zoom in"
+msgstr "Zooma in"
+
+#: ../gui.py:529
+msgid "Zoom out"
+msgstr "Zooma ut"
+
+#: ../gui.py:530
+msgid "Change View"
+msgstr "Byt perspektiv"
+
+#: ../gui.py:532
+msgid "Reset View"
+msgstr "Återställ perspektiv"
+
+#: ../gui.py:533
+msgid "xy-plane"
+msgstr "xy-plan"
+
+#: ../gui.py:534
+msgid "yz-plane"
+msgstr "yz-plan"
+
+#: ../gui.py:535
+msgid "zx-plane"
+msgstr "zx-plan"
+
+#: ../gui.py:536
+msgid "yx-plane"
+msgstr "yz-plan"
+
+#: ../gui.py:537
+msgid "zy-plane"
+msgstr "zy-plan"
+
+#: ../gui.py:538
+msgid "xz-plane"
+msgstr "xz-plan"
+
+#: ../gui.py:539
+msgid "a2,a3-plane"
+msgstr "a2,a3-plan"
+
+#: ../gui.py:540
+msgid "a3,a1-plane"
+msgstr "a3,a1-plan"
+
+#: ../gui.py:541
+msgid "a1,a2-plane"
+msgstr "a1,a2-plan"
+
+#: ../gui.py:542
+msgid "a3,a2-plane"
+msgstr "a3,a2-plan"
+
+#: ../gui.py:543
+msgid "a1,a3-plane"
+msgstr "a1,a3-plan"
+
+#: ../gui.py:544
+msgid "a2,a1-plane"
+msgstr "a2,a1-plan"
+
+#: ../gui.py:545
+msgid "Settings ..."
+msgstr "Inställningar …"
+
+#: ../gui.py:547
+msgid "VMD"
+msgstr "VMD"
+
+#: ../gui.py:548
+msgid "RasMol"
+msgstr "RasMol"
+
+#: ../gui.py:549
+msgid "xmakemol"
+msgstr "xmakemol"
+
+#: ../gui.py:550
+msgid "avogadro"
+msgstr "avogadro"
+
+#: ../gui.py:552
+msgid "_Tools"
+msgstr "_Verktyg"
+
+#: ../gui.py:553
+msgid "Graphs ..."
+msgstr "Grafer …"
+
+#: ../gui.py:554
+msgid "Movie ..."
+msgstr "Film …"
+
+#: ../gui.py:555
+msgid "Constraints ..."
+msgstr "Begränsningar …"
+
+#: ../gui.py:556
+msgid "Render scene ..."
+msgstr "Framställ bild …"
+
+#: ../gui.py:557
+msgid "_Move selected atoms"
+msgstr "_Flytta markerade atomer"
+
+#: ../gui.py:558
+msgid "_Rotate selected atoms"
+msgstr "_Rotera markerade atomer"
+
+#: ../gui.py:560
+msgid "NE_B plot"
+msgstr "_NEB-graf"
+
+#: ../gui.py:561
+msgid "B_ulk Modulus"
+msgstr "_Tryckmodul"
+
+#: ../gui.py:562
+msgid "Reciprocal space ..."
+msgstr "Reciprokt rum …"
+
+#. TRANSLATORS: Set up (i.e. build) surfaces, nanoparticles, ...
+#: ../gui.py:565
+msgid "_Setup"
+msgstr "_Skapa"
+
+#: ../gui.py:566
+msgid "_Surface slab"
+msgstr "_Ytskiva"
+
+#: ../gui.py:567
+msgid "_Nanoparticle"
+msgstr "_Nanopartikel"
+
+#: ../gui.py:569
+msgid "Nano_tube"
+msgstr "Nano_rör"
+
+#. (_('_Calculate'),
+#. [M(_('Set _Calculator'), self.calculator_window, disabled=True),
+#. M(_('_Energy and Forces'), self.energy_window, disabled=True),
+#. M(_('Energy Minimization'), self.energy_minimize_window,
+#. disabled=True)]),
+#: ../gui.py:577
+msgid "_Help"
+msgstr "_Hjälp"
+
+#: ../gui.py:578
+msgid "_About"
+msgstr "_Om"
+
+#: ../gui.py:582
+msgid "Webpage ..."
+msgstr "Websida …"
+
+#. Host window will never be shown
+#: ../images.py:259
+msgid "Constraints discarded"
+msgstr "Begränsningar ignorerade"
+
+#: ../images.py:260
+msgid "Constraints other than FixAtoms have been discarded."
+msgstr "Andra begränsningar än FixAtoms har ignorerats."
+
+#: ../modify.py:20
+msgid "No atoms selected!"
+msgstr "Inga atomer markerade!"
+
+#: ../modify.py:23
+msgid "Modify"
+msgstr "Ändra"
+
+#: ../modify.py:26
+msgid "Change element"
+msgstr "Ändra grundämne"
+
+#: ../modify.py:29
+msgid "Tag"
+msgstr "Etikett"
+
+#: ../modify.py:31
+msgid "Moment"
+msgstr "Moment"
+
+#: ../movie.py:10
+msgid "Movie"
+msgstr "Film"
+
+#: ../movie.py:11
+msgid "Image number:"
+msgstr "Bildnummer:"
+
+#: ../movie.py:17
+msgid "First"
+msgstr "Första"
+
+#: ../movie.py:18
+msgid "Back"
+msgstr "Tillbaka"
+
+#: ../movie.py:19
+msgid "Forward"
+msgstr "Fram"
+
+#: ../movie.py:20
+msgid "Last"
+msgstr "Sista"
+
+#: ../movie.py:22
+msgid "Play"
+msgstr "Spela"
+
+#: ../movie.py:23
+msgid "Stop"
+msgstr "Stoppa"
+
+#. TRANSLATORS: This function plays an animation forwards and backwards
+#. alternatingly, e.g. for displaying vibrational movement
+#: ../movie.py:27
+msgid "Rock"
+msgstr "Gunga"
+
+#: ../movie.py:40
+msgid " Frame rate: "
+msgstr "Bildfrekvens: "
+
+#: ../movie.py:40
+msgid " Skip frames: "
+msgstr "Hoppa över bilder: "
+
+#. Delayed imports:
+#. ase.cluster.data
+#: ../nanoparticle.py:20
+msgid ""
+"Create a nanoparticle either by specifying the number of layers, or using "
+"the\n"
+"Wulff construction.  Please press the [Help] button for instructions on how "
+"to\n"
+"specify the directions.\n"
+"WARNING: The Wulff construction currently only works with cubic crystals!\n"
+msgstr ""
+"Skapa en nanopartikel antingen genom att ange antal lager, eller genom\n"
+"att använda Wullfkonstruktionen. Tryck på [Hjälp]knappen för instruktioner "
+"för\n"
+"att ange riktningar.\n"
+"OBS: Wullfkonstruktionen fungerar för tillfället endast med kubiska "
+"kristaller!\n"
+
+#: ../nanoparticle.py:27
+#, python-brace-format
+msgid ""
+"\n"
+"The nanoparticle module sets up a nano-particle or a cluster with a given\n"
+"crystal structure.\n"
+"\n"
+"1) Select the element, the crystal structure and the lattice constant(s).\n"
+"   The [Get structure] button will find the data for a given element.\n"
+"\n"
+"2) Choose if you want to specify the number of layers in each direction, or "
+"if\n"
+"   you want to use the Wulff construction.  In the latter case, you must\n"
+"   specify surface energies in each direction, and the size of the cluster.\n"
+"\n"
+"How to specify the directions:\n"
+"------------------------------\n"
+"\n"
+"First time a direction appears, it is interpreted as the entire family of\n"
+"directions, i.e. (0,0,1) also covers (1,0,0), (-1,0,0) etc.  If one of "
+"these\n"
+"directions is specified again, the second specification overrules that "
+"specific\n"
+"direction.  For this reason, the order matters and you can rearrange the\n"
+"directions with the [Up] and [Down] keys.  You can also add a new "
+"direction,\n"
+"remember to press [Add] or it will not be included.\n"
+"\n"
+"Example: (1,0,0) (1,1,1), (0,0,1) would specify the {100} family of "
+"directions,\n"
+"the {111} family and then the (001) direction, overruling the value given "
+"for\n"
+"the whole family of directions.\n"
+msgstr ""
+"\n"
+"Nanopartikelmodulen skapar en nanopartikel eller ett kluster med\n"
+"den angivna kristallstrukturen.\n"
+"\n"
+"1= Välj grundämne, kristallstruktur och gitterkonstant(er).\n"
+"   Knappen [Hämta struktur] hämtar datan för det angivna grundämnet.\n"
+"\n"
+"2) Välj om du vill ange antalet lager i varje riktning, eller\n"
+"   om du vill använda Wullfkonstruktionen.  I det senare fallet,\n"
+"   behöver du ange ytenergierna i varje riktning, samt klustrets storlek.\n"
+"\n"
+"Hur man anger riktningarna:\n"
+"---------------------------\n"
+"\n"
+"Första gången en riktning påträffas tolkas den som hela familjen av\n"
+"riktningar, dvs. (0,0,1) genererar även (1,0,0), (-1,0,0) osv. Ifall en av "
+"dessa\n"
+"riktningar anges igen så överskrids det som tidigare gällde för den "
+"specifika\n"
+"riktningen.  Därmed spelar ordningen roll, och du kan ändra ordningen med "
+"[Upp] och [Ner]-tangenterna.  Du kan även lägga till en ny riktning,\n"
+"kom ihåg att trycka [Lägg till], annars läggs den inte till.\n"
+"\n"
+"Exempel: (1,0,0) (1,1,1), (0,0,1) skulle ge {100} och {111}-familjerna av "
+"riktningar, samt den specifika riktningen (0,0,1) där den senare gäller över "
+"{100} familjen av riktningar.\n"
+
+#: ../nanoparticle.py:87
+msgid "Face centered cubic (fcc)"
+msgstr "Face centered cubic (fcc)"
+
+#: ../nanoparticle.py:88
+msgid "Body centered cubic (bcc)"
+msgstr "Body centered cubic (bcc)"
+
+#: ../nanoparticle.py:89
+msgid "Simple cubic (sc)"
+msgstr "Simpel kubisk (sc)"
+
+#: ../nanoparticle.py:90
+msgid "Hexagonal closed-packed (hcp)"
+msgstr "Hexagonal tätpackad (hcp)"
+
+#: ../nanoparticle.py:91
+msgid "Graphite"
+msgstr "Grafit"
+
+#: ../nanoparticle.py:136
+msgid "Nanoparticle"
+msgstr "Nanopartikel"
+
+#: ../nanoparticle.py:140
+msgid "Get structure"
+msgstr "Hämta struktur"
+
+#: ../nanoparticle.py:155 ../surfaceslab.py:68
+msgid "Structure:"
+msgstr "Struktur:"
+
+#: ../nanoparticle.py:159
+msgid "Lattice constant:  a ="
+msgstr "Gitterkonstant: a ="
+
+#: ../nanoparticle.py:163
+msgid "Layer specification"
+msgstr "Lagerspecifikation"
+
+#: ../nanoparticle.py:163
+msgid "Wulff construction"
+msgstr "Wullfkonstruktion"
+
+#: ../nanoparticle.py:166
+msgid "Method: "
+msgstr "Metod: "
+
+#: ../nanoparticle.py:174
+msgid "Add new direction:"
+msgstr "Lägg till ny riktning:"
+
+#. Information
+#: ../nanoparticle.py:180
+msgid "Information about the created cluster:"
+msgstr "Information om det skapade klustret:"
+
+#: ../nanoparticle.py:181
+msgid "Number of atoms: "
+msgstr "Antal atomer: "
+
+#: ../nanoparticle.py:183
+msgid "   Approx. diameter: "
+msgstr "   Ungefärlig diameter: "
+
+#: ../nanoparticle.py:192
+msgid "Automatic Apply"
+msgstr "Tillämpa automatiskt"
+
+#: ../nanoparticle.py:195 ../nanotube.py:49
+msgid "Creating a nanoparticle."
+msgstr "Skapar nanopartikel."
+
+#: ../nanoparticle.py:197 ../nanotube.py:50 ../surfaceslab.py:81
+msgid "Apply"
+msgstr "Tillämpa"
+
+#: ../nanoparticle.py:198 ../nanotube.py:51 ../surfaceslab.py:82
+msgid "OK"
+msgstr "OK"
+
+#: ../nanoparticle.py:227
+msgid "Up"
+msgstr "Upp"
+
+#: ../nanoparticle.py:228
+msgid "Down"
+msgstr "Ner"
+
+#: ../nanoparticle.py:229
+msgid "Delete"
+msgstr "Radera"
+
+#: ../nanoparticle.py:271
+msgid "Number of atoms"
+msgstr "Antal atomer"
+
+#: ../nanoparticle.py:271
+msgid "Diameter"
+msgstr "Diameter"
+
+#: ../nanoparticle.py:279
+msgid "above  "
+msgstr "över"
+
+#: ../nanoparticle.py:279
+msgid "below  "
+msgstr "under"
+
+#: ../nanoparticle.py:279
+msgid "closest  "
+msgstr "närmaste"
+
+#: ../nanoparticle.py:282
+msgid "Smaller"
+msgstr "Mindre"
+
+#: ../nanoparticle.py:283
+msgid "Larger"
+msgstr "Större"
+
+#: ../nanoparticle.py:284
+msgid "Choose size using:"
+msgstr "Välj storlek uttryckt i:"
+
+#: ../nanoparticle.py:286
+msgid "atoms"
+msgstr "atomer"
+
+#: ../nanoparticle.py:287
+msgid "Å³"
+msgstr "Å³"
+
+#: ../nanoparticle.py:289
+msgid "Rounding: If exact size is not possible, choose the size:"
+msgstr "Avrundning: Om den exakta storleken inte är möjlig, välj storlek:"
+
+#: ../nanoparticle.py:317
+msgid "Surface energies (as energy/area, NOT per atom):"
+msgstr "Ytenergier (som energi/area, EJ per atom)"
+
+#: ../nanoparticle.py:319
+msgid "Number of layers:"
+msgstr "Antal lager:"
+
+#: ../nanoparticle.py:347
+msgid "At least one index must be non-zero"
+msgstr "Minst ett index måste vara nollskilt"
+
+#: ../nanoparticle.py:350
+msgid "Invalid hexagonal indices"
+msgstr "Ogiltiga hexagonala index"
+
+#: ../nanoparticle.py:415
+msgid "Unsupported or unknown structure"
+msgstr "Ej stödd eller okänd struktur"
+
+#: ../nanoparticle.py:416
+#, python-brace-format
+msgid "Element = {0}, structure = {1}"
+msgstr "Grundämne = {0}, struktur = {1}"
+
+#: ../nanoparticle.py:530 ../nanotube.py:82 ../surfaceslab.py:221
+msgid "No valid atoms."
+msgstr "Inga giltga atomer."
+
+#: ../nanoparticle.py:531 ../nanotube.py:83 ../surfaceslab.py:222
+#: ../widgets.py:93
+msgid "You have not (yet) specified a consistent set of parameters."
+msgstr "Du har (än) inte angett en konsistent uppsättning parametrar."
+
+#: ../nanotube.py:10
+msgid ""
+"Set up a Carbon nanotube by specifying the (n,m) roll-up vector.\n"
+"Please note that m <= n.\n"
+"\n"
+"Nanotubes of other elements can be made by specifying the element\n"
+"and bond length."
+msgstr ""
+"Skapa ett kolnanorör genom att ange (n,m) upprullningsvektorn.\n"
+"Notera att m <= n.\n"
+"\n"
+"Nanorör av andra grundämnen kan skapas genom att ange grundämne och "
+"bindningslängd."
+
+#: ../nanotube.py:23
+#, python-brace-format
+msgid ""
+"{natoms} atoms, diameter: {diameter:.3f} Å, total length: {total_length:.3f} "
+"Å"
+msgstr ""
+"{natoms} atomer, diameter: {diameter:.3f} Å, total längd: {total_length:.3f} "
+"Å"
+
+#: ../nanotube.py:38
+msgid "Nanotube"
+msgstr "Nanorör"
+
+#: ../nanotube.py:41
+msgid "Bond length: "
+msgstr "Bindningslängd: "
+
+#: ../nanotube.py:43
+msgid "Å"
+msgstr "Å"
+
+#: ../nanotube.py:44
+msgid "Select roll-up vector (n,m) and tube length:"
+msgstr "Välj upprullningsvektor (n,m) och rörlängd:"
+
+#: ../nanotube.py:47
+msgid "Length:"
+msgstr "Längd:"
+
+#: ../quickinfo.py:28
+msgid "This frame has no atoms."
+msgstr "Denna bild saknar atomer."
+
+#: ../quickinfo.py:33
+msgid "Single image loaded."
+msgstr "Enstaka bild läst."
+
+#: ../quickinfo.py:35
+msgid "Image {} loaded (0–{})."
+msgstr "Bild {} läst (0-{})."
+
+#: ../quickinfo.py:37
+msgid "Number of atoms: {}"
+msgstr "Antal atomer: {}"
+
+#: ../quickinfo.py:47
+msgid "Unit cell [Å]:"
+msgstr "Enhetscell [Å]:"
+
+#: ../quickinfo.py:49
+msgid "no"
+msgstr "nej"
+
+#: ../quickinfo.py:49
+msgid "yes"
+msgstr "ja"
+
+#. TRANSLATORS: This has the form Periodic: no, no, yes
+#: ../quickinfo.py:52
+msgid "Periodic: {}, {}, {}"
+msgstr "Periodisk: {}, {}, {}"
+
+#: ../quickinfo.py:57
+msgid "Lengths [Å]: {:.3f}, {:.3f}, {:.3f}"
+msgstr "Längder [Å]: {:.3f}, {:.3f}, {:.3f}"
+
+#: ../quickinfo.py:58
+msgid "Angles: {:.1f}°, {:.1f}°, {:.1f}°"
+msgstr "Vinklar: {:.1f}°, {:.1f}°, {:.1f}°"
+
+#: ../quickinfo.py:61
+msgid "Volume: {:.3f} Å³"
+msgstr "Volym: {:.3f} Å³"
+
+#: ../quickinfo.py:67
+msgid "Unit cell is fixed."
+msgstr "Enhetscellen fixerad."
+
+#: ../quickinfo.py:69
+msgid "Unit cell varies."
+msgstr "Enhetscellen varierande."
+
+#: ../quickinfo.py:75
+msgid "Could not recognize the lattice type"
+msgstr "Kunde inte känna igen typen av gitter"
+
+#: ../quickinfo.py:77
+msgid "Unexpected error determining lattice type"
+msgstr "Oväntat fel vid bestämmande av gittertyp"
+
+#: ../quickinfo.py:79
+msgid ""
+"Reduced Bravais lattice:\n"
+"{}"
+msgstr ""
+"Reducerat Bravaisgitter:\n"
+"{}"
+
+#: ../quickinfo.py:107
+msgid "Calculator: {} (cached)"
+msgstr "Beräknare: {} (sparad)"
+
+#: ../quickinfo.py:109
+msgid "Calculator: {} (attached)"
+msgstr "Beräknare: {} (ansluten)"
+
+#: ../quickinfo.py:116
+msgid "Energy: {:.3f} eV"
+msgstr "Energi: {:.3f} eV"
+
+#: ../quickinfo.py:121
+msgid "Max force: {:.3f} eV/Å"
+msgstr "Största kraft: {:.3f} eV/Å"
+
+#: ../quickinfo.py:125
+msgid "Magmom: {:.3f} µ"
+msgstr "Magmom: {:.3f} µ"
+
+#: ../render.py:20
+msgid "Render current view in povray ... "
+msgstr "Framställ nuvarande bild i povray …"
+
+#: ../render.py:21
+#, python-format
+msgid "Rendering %d atoms."
+msgstr "Framställer %d atomer."
+
+#: ../render.py:26
+msgid "Size"
+msgstr "Storlek"
+
+#: ../render.py:31
+msgid "Line width"
+msgstr "Linjestorlek"
+
+#: ../render.py:32
+msgid "Ångström"
+msgstr "Ångström"
+
+#: ../render.py:34
+msgid "Render constraints"
+msgstr "Framställningsbegränsningar"
+
+#: ../render.py:35
+msgid "Render unit cell"
+msgstr "Framställ enhetscell"
+
+#: ../render.py:41
+msgid "Output basename: "
+msgstr "Grundnamn för skapade filer: "
+
+#: ../render.py:43
+msgid "POVRAY executable"
+msgstr "POVRAY körbar fil"
+
+#: ../render.py:45
+msgid "Output filename: "
+msgstr "Skapad fil filnamn: "
+
+#: ../render.py:50
+msgid "Atomic texture set:"
+msgstr "Atomtexturuppstättning:"
+
+#: ../render.py:57
+msgid "Camera type: "
+msgstr "Kameratyp: "
+
+#: ../render.py:58
+msgid "Camera distance"
+msgstr "Kameraavstånd"
+
+#. render current frame/all frames
+#: ../render.py:61
+msgid "Render current frame"
+msgstr "Framställ nuvarande bild"
+
+#: ../render.py:62
+msgid "Render all frames"
+msgstr "Framställ alla bilder"
+
+#: ../render.py:67
+msgid "Run povray"
+msgstr "Kör povray"
+
+#: ../render.py:68
+msgid "Keep povray files"
+msgstr "Spara povray-filer"
+
+#: ../render.py:69
+msgid "Show output window"
+msgstr "Visa utfönster"
+
+#: ../render.py:70
+msgid "Transparent background"
+msgstr "Genomskinlig bakgrund"
+
+#: ../render.py:74
+msgid "Render"
+msgstr "Framställ"
+
+#: ../repeat.py:7
+msgid "Repeat"
+msgstr "Upprepa"
+
+#: ../repeat.py:8
+msgid "Repeat atoms:"
+msgstr "Upprepa atomer:"
+
+#: ../repeat.py:12
+msgid "Set unit cell"
+msgstr "Ställ in enhetscell"
+
+#: ../rotate.py:11
+msgid "Rotate"
+msgstr "Rotera"
+
+#: ../rotate.py:12
+msgid "Rotation angles:"
+msgstr "Rotationsvinklar"
+
+#: ../rotate.py:16
+msgid "Update"
+msgstr "Uppdatera"
+
+#: ../rotate.py:17
+msgid ""
+"Note:\n"
+"You can rotate freely\n"
+"with the mouse, by holding\n"
+"down mouse button 2."
+msgstr ""
+"Notera:\n"
+"Du kan rotera strukturen\n"
+"fritt med musen genom\n"
+"att hålla nere musknapp 2."
+
+#: ../save.py:15
+msgid ""
+"Append name with \"@n\" in order to write image\n"
+"number \"n\" instead of the current image. Append\n"
+"\"@start:stop\" or \"@start:stop:step\" if you want\n"
+"to write a range of images. You can leave out\n"
+"\"start\" and \"stop\" so that \"name@:\" will give\n"
+"you all images. Negative numbers count from the\n"
+"last image. Examples: \"name@-1\": last image,\n"
+"\"name@-2:\": last two."
+msgstr ""
+"Ange @n i slutet av namnet för att skriva bild\n"
+"\"n\" istället för nuvarande bild. Ange \"@start:stopp\"\n"
+"eller \"@start:stopp:steg\" i slutet för att skriva\n"
+"ett spann av bilder. Utelämna \"start\" och \"stop\", \n"
+"dvs \"@:\", för att skriva alla bilder. Negativa tal\n"
+"räknas bakåt från sista bilden. Exempel: \"namn@-1\" för\n"
+"sista bilden, \"namn@-2:\" för de två sista bilderna."
+
+#: ../save.py:27
+msgid "Save ..."
+msgstr "Spara …"
+
+#: ../save.py:85 ../ui.py:32
+msgid "Error"
+msgstr "Fel"
+
+#: ../settings.py:8
+msgid "Settings"
+msgstr "Inställningar"
+
+#. Constraints
+#: ../settings.py:11
+msgid "Constraints:"
+msgstr "Begränsningar:"
+
+#: ../settings.py:14
+msgid "release"
+msgstr "släpp"
+
+#: ../settings.py:15 ../settings.py:23
+msgid " selected atoms"
+msgstr " markerade atomer"
+
+#. Visibility
+#: ../settings.py:19
+msgid "Visibility:"
+msgstr "Synlighet:"
+
+#: ../settings.py:20
+msgid "Hide"
+msgstr "Dölj"
+
+#: ../settings.py:22
+msgid "show"
+msgstr "visa"
+
+#: ../settings.py:24
+msgid "View all atoms"
+msgstr "Visa alla atomer"
+
+#. Miscellaneous
+#: ../settings.py:27
+msgid "Miscellaneous:"
+msgstr "Övrigt:"
+
+#: ../settings.py:30
+msgid "Scale atomic radii:"
+msgstr "Skala atomradier:"
+
+#: ../settings.py:37
+msgid "Scale force vectors:"
+msgstr "Skala kraftvektorer:"
+
+#: ../settings.py:44
+msgid "Scale velocity vectors:"
+msgstr "Skala hastighetsvektorer:"
+
+#: ../status.py:80
+#, python-format
+msgid " tag=%(tag)s"
+msgstr " etikett=%(tag)s"
+
+#. TRANSLATORS: mom refers to magnetic moment
+#: ../status.py:84
+msgid " mom={:1.2f}"
+msgstr " mom={:1.2f}"
+
+#: ../status.py:88
+msgid " q={:1.2f}"
+msgstr " q={:1.2f}"
+
+#: ../status.py:126
+msgid "dihedral"
+msgstr "vridningsvinkel"
+
+#: ../surfaceslab.py:9
+msgid ""
+"  Use this dialog to create surface slabs.  Select the element by\n"
+"writing the chemical symbol or the atomic number in the box.  Then\n"
+"select the desired surface structure.  Note that some structures can\n"
+"be created with an othogonal or a non-orthogonal unit cell, in these\n"
+"cases the non-orthogonal unit cell will contain fewer atoms.\n"
+"\n"
+"  If the structure matches the experimental crystal structure, you can\n"
+"look up the lattice constant, otherwise you have to specify it\n"
+"yourself."
+msgstr ""
+"  Använd denna dialog för att skapa ytskivor.  Välj grundämne genom\n"
+"att ange dess kemiska symbol eller atomnummer i rutan.  Välj därefter\n"
+"önskad ytstruktur.  Lägg märke till att vissa strukturer kan skapas \n"
+"med en ortogonal eller icke-ortogonal enhetscell, i dessa fall kommer\n"
+"den icke-ortogonala enhetscellen innehålla färre atomer.\n"
+"\n"
+"  Om strukturen matchar den experimentella strukturen kan du slå\n"
+"upp gitterkonstanten, annars behöver du ange den själv."
+
+#. Name, structure, orthogonal, function
+#: ../surfaceslab.py:21
+msgid "FCC(100)"
+msgstr "FCC(100)"
+
+#: ../surfaceslab.py:21 ../surfaceslab.py:22 ../surfaceslab.py:23
+#: ../surfaceslab.py:24
+msgid "fcc"
+msgstr "fcc"
+
+#: ../surfaceslab.py:22
+msgid "FCC(110)"
+msgstr "FCC(110)"
+
+#: ../surfaceslab.py:23 ../surfaceslab.py:171
+msgid "FCC(111)"
+msgstr "FCC(111)"
+
+#: ../surfaceslab.py:24 ../surfaceslab.py:174
+msgid "FCC(211)"
+msgstr "FCC(211)"
+
+#: ../surfaceslab.py:25
+msgid "BCC(100)"
+msgstr "BCC(100)"
+
+#: ../surfaceslab.py:25 ../surfaceslab.py:26 ../surfaceslab.py:27
+msgid "bcc"
+msgstr "bcc"
+
+#: ../surfaceslab.py:26 ../surfaceslab.py:168
+msgid "BCC(110)"
+msgstr "BCC(110)"
+
+#: ../surfaceslab.py:27 ../surfaceslab.py:165
+msgid "BCC(111)"
+msgstr "BCC(111)"
+
+#: ../surfaceslab.py:28 ../surfaceslab.py:178
+msgid "HCP(0001)"
+msgstr "HCP(0001)"
+
+#: ../surfaceslab.py:28 ../surfaceslab.py:29 ../surfaceslab.py:132
+#: ../surfaceslab.py:188
+msgid "hcp"
+msgstr "hcp"
+
+#: ../surfaceslab.py:29 ../surfaceslab.py:181
+msgid "HCP(10-10)"
+msgstr "HCP(10-10)"
+
+#: ../surfaceslab.py:30
+msgid "DIAMOND(100)"
+msgstr "DIAMANT(111)"
+
+#: ../surfaceslab.py:30 ../surfaceslab.py:31
+msgid "diamond"
+msgstr "diamant"
+
+#: ../surfaceslab.py:31
+msgid "DIAMOND(111)"
+msgstr "DIAMANT(111)"
+
+#: ../surfaceslab.py:53
+msgid "Get from database"
+msgstr "Hämta från databas"
+
+#: ../surfaceslab.py:65
+msgid "Surface"
+msgstr "Yta"
+
+#: ../surfaceslab.py:69
+msgid "Orthogonal cell:"
+msgstr "Ortogonal cell:"
+
+#: ../surfaceslab.py:70
+msgid "Lattice constant:"
+msgstr "Gitterkonstant:"
+
+#: ../surfaceslab.py:71
+msgid "\ta"
+msgstr "a"
+
+#: ../surfaceslab.py:72
+msgid "\tc"
+msgstr "c"
+
+#: ../surfaceslab.py:73
+msgid "Size:"
+msgstr "Storlek:"
+
+#: ../surfaceslab.py:74
+msgid "\tx: "
+msgstr "\tx: "
+
+#: ../surfaceslab.py:74 ../surfaceslab.py:75 ../surfaceslab.py:76
+msgid " unit cells"
+msgstr "enhetsceller"
+
+#: ../surfaceslab.py:75
+msgid "\ty: "
+msgstr "\ty: "
+
+#: ../surfaceslab.py:76
+msgid "\tz: "
+msgstr "\tz: "
+
+#: ../surfaceslab.py:77
+msgid "Vacuum: "
+msgstr "Vakuum: "
+
+#. TRANSLATORS: This is a title of a window.
+#: ../surfaceslab.py:80
+msgid "Creating a surface."
+msgstr "Skapar en yta."
+
+#. TRANSLATORS: E.g. "... assume fcc crystal structure for Au"
+#: ../surfaceslab.py:108
+msgid "Error: Reference values assume {} crystal structure for {}!"
+msgstr "Fel: Referensvärdena antar kristallstrukturen {} för {}!"
+
+#: ../surfaceslab.py:162
+msgid "Please enter an even value for orthogonal cell"
+msgstr "Ange ett jämnt värde för en ortogonal cell"
+
+#: ../surfaceslab.py:175
+msgid "Please enter a value divisible by 3 for orthogonal cell"
+msgstr "Ange ett värde delbart med 3 för en ortogonal cell"
+
+#: ../surfaceslab.py:195
+msgid " Vacuum: {} Å."
+msgstr "Vakuum: {} Å."
+
+#. TRANSLATORS: e.g. "Au fcc100 surface with 2 atoms."
+#. or "Au fcc100 surface with 2 atoms. Vacuum: 5 Å."
+#: ../surfaceslab.py:203
+#, python-brace-format
+msgid "{symbol} {surf} surface with one atom.{vacuum}"
+msgid_plural "{symbol} {surf} surface with {natoms} atoms.{vacuum}"
+msgstr[0] "{symbol} {surf}-yta med en atom.{vacuum}"
+msgstr[1] "{symbol} {surf}-yta med {natoms} atomer.{vacuum}"
+
+#: ../ui.py:39
+msgid "Version"
+msgstr "Version"
+
+#: ../ui.py:40
+msgid "Web-page"
+msgstr "Websida"
+
+#: ../ui.py:41
+msgid "About"
+msgstr "Om"
+
+#: ../ui.py:47 ../ui.py:51 ../widgets.py:12
+msgid "Help"
+msgstr "Hjälp"
+
+#: ../ui.py:560
+msgid "Open ..."
+msgstr "Öppna …"
+
+#: ../ui.py:567
+msgid "Automatic"
+msgstr "Automatisk"
+
+#: ../ui.py:585
+msgid "Choose parser:"
+msgstr "Välj läsare:"
+
+#: ../ui.py:591
+msgid "Read error"
+msgstr "Fel vid läsning"
+
+#: ../ui.py:592
+#, python-brace-format
+msgid "Could not read {filename}: {err}"
+msgstr "Kunde inte läsa {filename}: {err}"
+
+#: ../view.py:130
+msgid "one image loaded"
+msgid_plural "{} images loaded"
+msgstr[0] "enstaka bild läst"
+msgstr[1] "{} bilder läst"
+
+#: ../widgets.py:10
+msgid "Element:"
+msgstr "Grundämne:"
+
+#: ../widgets.py:24
+msgid "Enter a chemical symbol or the atomic number."
+msgstr "Ange kemisk symbol eller atomnummer."
+
+#. Title of a popup window
+#: ../widgets.py:26
+msgid "Info"
+msgstr "Info"
+
+#: ../widgets.py:56
+msgid "No element specified!"
+msgstr "Inget grundämne angivet!"
+
+#: ../widgets.py:75
+msgid "ERROR: Invalid element!"
+msgstr "FEL: Felaktigt grundämne!"
+
+#: ../widgets.py:92
+msgid "No Python code"
+msgstr "Ingen Pythonkod"

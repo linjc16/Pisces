@@ -1,0 +1,1639 @@
+# Russian translations for ase package.
+# Copyright (C) 2020 ASE developers
+# This file is distributed under the same license as the ase package.
+# Peter Koval <p.koval@simuneatomistics.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ase\n"
+"Report-Msgid-Bugs-To: ase-users@listserv.fysik.dtu.dk\n"
+"POT-Creation-Date: 2020-01-26 22:28+0100\n"
+"PO-Revision-Date: 2020-01-26 22:31+0100\n"
+"Last-Translator: Peter Koval <p.koval@simuneatomistics.com>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../add.py:10
+msgid "(selection)"
+msgstr "(выбор)"
+
+#: ../add.py:15
+msgid "Add atoms"
+msgstr "Добавить атомы"
+
+#: ../add.py:16
+msgid "Specify chemical symbol, formula, or filename."
+msgstr "Определить химические символы, формулы или имя файла."
+
+#: ../add.py:38
+msgid "Add:"
+msgstr "Добавить:"
+
+#: ../add.py:39
+msgid "File ..."
+msgstr "Файл ..."
+
+#: ../add.py:49
+msgid "Get molecule:"
+msgstr "Получить молекулу:"
+
+#: ../add.py:55
+msgid "Coordinates:"
+msgstr "Координаты:"
+
+#: ../add.py:57
+msgid ""
+"Coordinates are relative to the center of the selection, if any, else "
+"absolute."
+msgstr ""
+"Координаты определяются относительно центра выбранных атомовесли таковой "
+"имеется, иначе считаются абсолютными."
+
+#: ../add.py:59
+msgid "Check positions"
+msgstr "Проверить координаты"
+
+#: ../add.py:60 ../nanoparticle.py:262
+msgid "Add"
+msgstr "Добавить"
+
+#. May show UI error
+#: ../add.py:104
+msgid "Cannot add atoms"
+msgstr "Невозможно добавить атомы"
+
+#: ../add.py:105
+msgid "{} is neither atom, molecule, nor file"
+msgstr "{} это не атом, не молекула и не файл"
+
+#: ../add.py:144
+msgid "Bad positions"
+msgstr "Плохие координаты"
+
+#: ../add.py:145
+msgid ""
+"Atom would be less than 0.5 Å from an existing atom.  To override, uncheck "
+"the check positions option."
+msgstr "Атом должен быть удален менее чем на 0.5 Å от существующего атома.Чтобы переопределить, снимите галочку Проверить координаты"
+
+#. TRANSLATORS: This is a title of a window.
+#: ../celleditor.py:46
+msgid "Cell Editor"
+msgstr "Редактор ячейки"
+
+#: ../celleditor.py:50
+msgid "A:"
+msgstr "A:"
+
+#: ../celleditor.py:50
+msgid "||A||:"
+msgstr "||A||:"
+
+#: ../celleditor.py:51 ../celleditor.py:53 ../celleditor.py:55
+msgid "periodic:"
+msgstr "периодичный:"
+
+#: ../celleditor.py:52
+msgid "B:"
+msgstr "B:"
+
+#: ../celleditor.py:52
+msgid "||B||:"
+msgstr "||B||:"
+
+#: ../celleditor.py:54
+msgid "C:"
+msgstr "C:"
+
+#: ../celleditor.py:54
+msgid "||C||:"
+msgstr "||C||:"
+
+#: ../celleditor.py:56
+msgid "∠BC:"
+msgstr "∠BC:"
+
+#: ../celleditor.py:56
+msgid "∠AC:"
+msgstr "∠AC:"
+
+#: ../celleditor.py:57
+msgid "∠AB:"
+msgstr "∠AB:"
+
+#: ../celleditor.py:58
+msgid "Scale atoms with cell:"
+msgstr "Масштабировать координаты атомов с ячейкой"
+
+#: ../celleditor.py:59
+msgid "Apply Vectors"
+msgstr "Задать Векторы"
+
+#: ../celleditor.py:60
+msgid "Apply Magnitudes"
+msgstr "Задать Амплитуды"
+
+#: ../celleditor.py:61
+msgid "Apply Angles"
+msgstr "Задать Углы"
+
+#: ../celleditor.py:62
+msgid ""
+"Pressing 〈Enter〉 as you enter values will automatically apply correctly"
+msgstr "Нажимая 〈Ввод〉 по мере ввода будет правильно присваивать значения"
+
+#. TRANSLATORS: verb
+#: ../celleditor.py:65
+msgid "Center"
+msgstr "Центр"
+
+#: ../celleditor.py:66
+msgid "Wrap"
+msgstr "Периодически продолжить"
+
+#: ../celleditor.py:67
+msgid "Vacuum:"
+msgstr "Вакуум:"
+
+#: ../celleditor.py:68
+msgid "Apply Vacuum"
+msgstr "Задать Вакуум"
+
+#: ../colors.py:17
+msgid "Colors"
+msgstr "Цвета"
+
+#: ../colors.py:19
+msgid "Choose how the atoms are colored:"
+msgstr "Выбрать раскраску атомов:"
+
+#: ../colors.py:22
+msgid "By atomic number, default \"jmol\" colors"
+msgstr "Согласно атомному номеру, \"jmol\" цвета по умолчанию"
+
+#: ../colors.py:23
+msgid "By tag"
+msgstr "По тегу"
+
+#: ../colors.py:24
+msgid "By force"
+msgstr "По силе"
+
+#: ../colors.py:25
+msgid "By velocity"
+msgstr "По скорости"
+
+#: ../colors.py:26
+msgid "By initial charge"
+msgstr "По начальному заряду"
+
+#: ../colors.py:27
+msgid "By magnetic moment"
+msgstr "По магнитному моменту"
+
+#: ../colors.py:28
+msgid "By number of neighbors"
+msgstr "По числу соседей"
+
+#: ../colors.py:98
+msgid "cmap:"
+msgstr "cmap:"
+
+#: ../colors.py:100
+msgid "N:"
+msgstr "N:"
+
+#. XXX what are optimal allowed range and steps ?
+#: ../colors.py:116
+msgid "min:"
+msgstr "мин."
+
+#: ../colors.py:119
+msgid "max:"
+msgstr "макс."
+
+#: ../constraints.py:7
+msgid "Constraints"
+msgstr "Ограничения"
+
+#: ../constraints.py:8 ../constraints.py:10 ../settings.py:13
+msgid "Constrain"
+msgstr "Ограничение"
+
+#: ../constraints.py:9 ../constraints.py:13
+msgid "selected atoms"
+msgstr "выбранные атомы"
+
+#: ../constraints.py:11
+msgid "immobile atoms"
+msgstr "неподвижные атомы"
+
+#: ../constraints.py:12
+msgid "Unconstrain"
+msgstr "Освободить"
+
+#: ../constraints.py:14
+msgid "Clear constraints"
+msgstr "Убрать ограничения"
+
+#: ../graphene.py:14
+msgid ""
+"Set up a graphene sheet or a graphene nanoribbon.  A nanoribbon may\n"
+"optionally be saturated with hydrogen (or another element)."
+msgstr ""
+"Задать лист графена или наноленту. Нанолента может быть\n"
+"насыщена водородом или другим химическим элементом."
+
+#: ../graphene.py:27
+#, python-format
+msgid " %(natoms)i atoms: %(symbols)s, Volume: %(volume).3f A<sup>3</sup>"
+msgstr " %(natoms)i атомы: %(symbols)s, Объем: %(volume).3f A<sup>3</sup>"
+
+#: ../graphene.py:35 ../gui.py:524
+msgid "Graphene"
+msgstr "Графен"
+
+#. Choose structure
+#: ../graphene.py:42
+msgid "Structure: "
+msgstr "Структура: "
+
+#: ../graphene.py:44
+msgid "Infinite sheet"
+msgstr "Бесконечный лист"
+
+#: ../graphene.py:44
+msgid "Unsaturated ribbon"
+msgstr "Ненасыщенная лента"
+
+#: ../graphene.py:45
+msgid "Saturated ribbon"
+msgstr "Насыщенная лента"
+
+#. Orientation
+#: ../graphene.py:52
+msgid "Orientation: "
+msgstr "Ориентация: "
+
+#: ../graphene.py:55
+msgid "zigzag"
+msgstr "зигзаг"
+
+#: ../graphene.py:55
+msgid "armchair"
+msgstr "кресло"
+
+#: ../graphene.py:68 ../graphene.py:79
+msgid "  Bond length: "
+msgstr "  Длина хим. связи: "
+
+#: ../graphene.py:69 ../graphene.py:80 ../graphene.py:104 ../nanotube.py:43
+msgid "Å"
+msgstr "Å"
+
+#. Choose the saturation element and bond length
+#: ../graphene.py:74
+msgid "Saturation: "
+msgstr "Насытить: "
+
+#: ../graphene.py:77
+msgid "H"
+msgstr "H"
+
+#. Size
+#: ../graphene.py:93
+msgid "Width: "
+msgstr "Ширина: "
+
+#: ../graphene.py:94
+msgid "  Length: "
+msgstr "  Длина: "
+
+#. Vacuum
+#: ../graphene.py:102 ../surfaceslab.py:77
+msgid "Vacuum: "
+msgstr "Вакуум: "
+
+#: ../graphene.py:150
+msgid "  No element specified!"
+msgstr "  Не выбран никакой элемент!"
+
+#: ../graphene.py:197
+msgid "Please specify a consistent set of atoms. "
+msgstr "Пожалуйста выберите подходящий набор атомов. "
+
+#: ../graphene.py:261 ../nanoparticle.py:529 ../nanotube.py:82
+#: ../surfaceslab.py:221
+msgid "No valid atoms."
+msgstr "Нет подходящих атомов."
+
+#: ../graphene.py:262 ../nanoparticle.py:530 ../nanotube.py:83
+#: ../surfaceslab.py:222 ../widgets.py:107
+msgid "You have not (yet) specified a consistent set of parameters."
+msgstr "Вы еще не выбрали подходящий набор параметров."
+
+#: ../graphs.py:9
+msgid ""
+"Symbols:\n"
+"<c>e</c>: total energy\n"
+"<c>epot</c>: potential energy\n"
+"<c>ekin</c>: kinetic energy\n"
+"<c>fmax</c>: maximum force\n"
+"<c>fave</c>: average force\n"
+"<c>R[n,0-2]</c>: position of atom number <c>n</c>\n"
+"<c>d(n<sub>1</sub>,n<sub>2</sub>)</c>: distance between two atoms "
+"<c>n<sub>1</sub></c> and <c>n<sub>2</sub></c>\n"
+"<c>i</c>: current image number\n"
+"<c>E[i]</c>: energy of image number <c>i</c>\n"
+"<c>F[n,0-2]</c>: force on atom number <c>n</c>\n"
+"<c>V[n,0-2]</c>: velocity of atom number <c>n</c>\n"
+"<c>M[n]</c>: magnetic moment of atom number <c>n</c>\n"
+"<c>A[0-2,0-2]</c>: unit-cell basis vectors\n"
+"<c>s</c>: path length\n"
+"<c>a(n1,n2,n3)</c>: angle between atoms <c>n<sub>1</sub></c>, <c>n<sub>2</"
+"sub></c> and <c>n<sub>3</sub></c>, centered on <c>n<sub>2</sub></c>\n"
+"<c>dih(n1,n2,n3,n4)</c>: dihedral angle between <c>n<sub>1</sub></c>, "
+"<c>n<sub>2</sub></c>, <c>n<sub>3</sub></c> and <c>n<sub>4</sub></c>\n"
+"<c>T</c>: temperature (K)"
+msgstr ""
+"Символы:\n"
+"<c>e</c>: полная энергия\n"
+"<c>epot</c>: потенциальная энергия\n"
+"<c>ekin</c>: кинетическая энергия\n"
+"<c>fmax</c>: максимальная сила\n"
+"<c>fave</c>: усредненная сила\n"
+"<c>R[n,0-2]</c>: координаты атома номер <c>n</c>\n"
+"<c>d(n<sub>1</sub>,n<sub>2</sub>)</c>: растояние между двумя атомами "
+"<c>n<sub>1</sub></c> и <c>n<sub>2</sub></c>\n"
+"<c>i</c>: номер активного образа\n"
+"<c>E[i]</c>: энергия образа номер <c>i</c>\n"
+"<c>F[n,0-2]</c>: сила на атоме номер <c>n</c>\n"
+"<c>V[n,0-2]</c>: скорость атома номер <c>n</c>\n"
+"<c>M[n]</c>: магнитный момент атома номер <c>n</c>\n"
+"<c>A[0-2,0-2]</c>: базисные векторы единичной ячейки\n"
+"<c>s</c>: длина пути\n"
+"<c>a(n1,n2,n3)</c>: угол между атомами <c>n<sub>1</sub></c>, <c>n<sub>2</"
+"sub></c> и <c>n<sub>3</sub></c>, центрированный на <c>n<sub>2</sub></c>\n"
+"<c>dih(n1,n2,n3,n4)</c>: двугранный угол между <c>n<sub>1</sub></c>, "
+"<c>n<sub>2</sub></c>, <c>n<sub>3</sub></c> и <c>n<sub>4</sub></c>\n"
+"<c>T</c>: температура (K)"
+
+#: ../graphs.py:40 ../graphs.py:42
+msgid "Plot"
+msgstr "График"
+
+#: ../graphs.py:44
+msgid "Save"
+msgstr "Сохранить"
+
+#: ../graphs.py:67
+msgid "Save data to file ... "
+msgstr "Сохранить данные в файл..."
+
+#. Subprocess probably crashed
+#: ../gui.py:274
+msgid "Failure in subprocess"
+msgstr "Ошибка подпроцесса"
+
+#: ../gui.py:280
+msgid "Plotting failed"
+msgstr "Построение не удалось"
+
+#: ../gui.py:287
+msgid "Images must have energies and forces, and atoms must not be stationary."
+msgstr "Образы должны иметь энергии и силы, и атомы не должны быть закреплены."
+
+#: ../gui.py:300
+msgid "Images must have energies and varying cell."
+msgstr "Образы должны иметь энергии и незакрепленные единичные ячейки."
+
+#: ../gui.py:307
+msgid "Requires 3D cell."
+msgstr "Необходима 3D ячейка."
+
+#: ../gui.py:341
+msgid "Quick Info"
+msgstr "Краткая Информация"
+
+#: ../gui.py:424
+msgid "_File"
+msgstr "_Файл"
+
+#: ../gui.py:425
+msgid "_Open"
+msgstr "_Открыть"
+
+#: ../gui.py:426
+msgid "_New"
+msgstr "Со_здать"
+
+#: ../gui.py:427
+msgid "_Save"
+msgstr "_Сохранить"
+
+#: ../gui.py:429
+msgid "_Quit"
+msgstr "Вы_ход"
+
+#: ../gui.py:431
+msgid "_Edit"
+msgstr "_Править"
+
+#: ../gui.py:432
+msgid "Select _all"
+msgstr "_Выбрать все"
+
+#: ../gui.py:433
+msgid "_Invert selection"
+msgstr "_Обратить выбор"
+
+#: ../gui.py:434
+msgid "Select _constrained atoms"
+msgstr "Выбрать _ограниченные атомы"
+
+#: ../gui.py:435
+msgid "Select _immobile atoms"
+msgstr "Выбрать _неподвижные атомы"
+
+#: ../gui.py:440
+msgid "Hide selected atoms"
+msgstr "Скрыть выбранные атомы"
+
+#: ../gui.py:441
+msgid "Show selected atoms"
+msgstr "Показать выбранные атомы"
+
+#: ../gui.py:443
+msgid "_Modify"
+msgstr "_Изменить"
+
+#: ../gui.py:444
+msgid "_Add atoms"
+msgstr "_Добавить атомы"
+
+#: ../gui.py:445
+msgid "_Delete selected atoms"
+msgstr "_Удалить выбранные атомы"
+
+#: ../gui.py:447
+msgid "Edit _cell"
+msgstr "Редактировать _ячейку"
+
+#: ../gui.py:449
+msgid "_First image"
+msgstr "_Первый образ"
+
+#: ../gui.py:450
+msgid "_Previous image"
+msgstr "Пре_дыдущий образ"
+
+#: ../gui.py:451
+msgid "_Next image"
+msgstr "_Следующий образ"
+
+#: ../gui.py:452
+msgid "_Last image"
+msgstr "Пос_ледний образ"
+
+#: ../gui.py:453
+msgid "Append image copy"
+msgstr "Добавить копию образа"
+
+#: ../gui.py:455
+msgid "_View"
+msgstr "_Просмотр"
+
+#: ../gui.py:456
+msgid "Show _unit cell"
+msgstr "Показать единичную _ячейку"
+
+#: ../gui.py:458
+msgid "Show _axes"
+msgstr "Показать _оси"
+
+#: ../gui.py:460
+msgid "Show _bonds"
+msgstr "Показать _связи"
+
+#: ../gui.py:462
+msgid "Show _velocities"
+msgstr "Показать ск_орости"
+
+#: ../gui.py:464
+msgid "Show _forces"
+msgstr "Показать с_илы"
+
+#: ../gui.py:466
+msgid "Show _Labels"
+msgstr "Показать _Метки"
+
+#: ../gui.py:467
+msgid "_None"
+msgstr "_Ничего"
+
+#: ../gui.py:468
+msgid "Atom _Index"
+msgstr "Атом Н_омер"
+
+#: ../gui.py:469
+msgid "_Magnetic Moments"
+msgstr "_Магнитные Моменты"
+
+#. XXX check if exist
+#: ../gui.py:470
+msgid "_Element Symbol"
+msgstr "Символ _Элемента"
+
+#: ../gui.py:471
+msgid "_Initial Charges"
+msgstr "_Начальные Заряды"
+
+#: ../gui.py:474
+msgid "Quick Info ..."
+msgstr "Краткая Информация ..."
+
+#: ../gui.py:475
+msgid "Repeat ..."
+msgstr "Повторение ..."
+
+#: ../gui.py:476
+msgid "Rotate ..."
+msgstr "Вращение ..."
+
+#: ../gui.py:477
+msgid "Colors ..."
+msgstr "Цвета ..."
+
+#. TRANSLATORS: verb
+#: ../gui.py:479
+msgid "Focus"
+msgstr "Фокус"
+
+#: ../gui.py:480
+msgid "Zoom in"
+msgstr "Приблизить"
+
+#: ../gui.py:481
+msgid "Zoom out"
+msgstr "Отдалить"
+
+#: ../gui.py:482
+msgid "Change View"
+msgstr "Изменить Просмотр"
+
+#: ../gui.py:484
+msgid "Reset View"
+msgstr "Сбросить Просмотр"
+
+#: ../gui.py:485
+msgid "xy-plane"
+msgstr "Плоскость xy"
+
+#: ../gui.py:486
+msgid "yz-plane"
+msgstr "Плоскость yz"
+
+#: ../gui.py:487
+msgid "zx-plane"
+msgstr "Плоскость zx"
+
+#: ../gui.py:488
+msgid "yx-plane"
+msgstr "Плоскость yx"
+
+#: ../gui.py:489
+msgid "zy-plane"
+msgstr "Плоскость zy"
+
+#: ../gui.py:490
+msgid "xz-plane"
+msgstr "Плоскость xz"
+
+#: ../gui.py:491
+msgid "a2,a3-plane"
+msgstr "Плоскость a2,a3"
+
+#: ../gui.py:492
+msgid "a3,a1-plane"
+msgstr "Плоскость a3,a1"
+
+#: ../gui.py:493
+msgid "a1,a2-plane"
+msgstr "Плоскость a1,a2"
+
+#: ../gui.py:494
+msgid "a3,a2-plane"
+msgstr "Плоскость a3,a2"
+
+#: ../gui.py:495
+msgid "a1,a3-plane"
+msgstr "Плоскость a1,a3"
+
+#: ../gui.py:496
+msgid "a2,a1-plane"
+msgstr "Плоскость a2,a1"
+
+#: ../gui.py:497
+msgid "Settings ..."
+msgstr "Настройки ..."
+
+#: ../gui.py:499
+msgid "VMD"
+msgstr "VMD"
+
+#: ../gui.py:500
+msgid "RasMol"
+msgstr "RasMol"
+
+#: ../gui.py:501
+msgid "xmakemol"
+msgstr "xmakemol"
+
+#: ../gui.py:502
+msgid "avogadro"
+msgstr "avogadro"
+
+#: ../gui.py:504
+msgid "_Tools"
+msgstr "_Инструменты"
+
+#: ../gui.py:505
+msgid "Graphs ..."
+msgstr "Графики ..."
+
+#: ../gui.py:506
+msgid "Movie ..."
+msgstr "Анимация ..."
+
+#: ../gui.py:507
+msgid "Expert mode ..."
+msgstr "Режим эксперта ..."
+
+#: ../gui.py:508
+msgid "Constraints ..."
+msgstr "Ограничения ..."
+
+#: ../gui.py:509
+msgid "Render scene ..."
+msgstr "Отрисовать сцену ..."
+
+#: ../gui.py:510
+msgid "_Move selected atoms"
+msgstr "_Двигать выбранные атомы"
+
+#: ../gui.py:511
+msgid "_Rotate selected atoms"
+msgstr "_Повернуть выбранные атомы"
+
+#: ../gui.py:513
+msgid "NE_B plot"
+msgstr "График NE_B"
+
+#: ../gui.py:514
+msgid "B_ulk Modulus"
+msgstr "Объемный Модуль упругости"
+
+#: ../gui.py:515
+msgid "Reciprocal space ..."
+msgstr "Обратное пространство ..."
+
+#. TRANSLATORS: Set up (i.e. build) surfaces, nanoparticles, ...
+#: ../gui.py:518
+msgid "_Setup"
+msgstr "_Создание"
+
+#: ../gui.py:519
+msgid "_Bulk Crystal"
+msgstr "_Объемный кристалл"
+
+#: ../gui.py:520
+msgid "_Surface slab"
+msgstr "_Поверхность"
+
+#: ../gui.py:521
+msgid "_Nanoparticle"
+msgstr "_Наночастица"
+
+#: ../gui.py:523
+msgid "Nano_tube"
+msgstr "Нано_трубка"
+
+#. (_('_Calculate'),
+#. [M(_('Set _Calculator'), self.calculator_window, disabled=True),
+#. M(_('_Energy and Forces'), self.energy_window, disabled=True),
+#. M(_('Energy Minimization'), self.energy_minimize_window,
+#. disabled=True)]),
+#: ../gui.py:532
+msgid "_Help"
+msgstr "_Помощь"
+
+#: ../gui.py:533
+msgid "_About"
+msgstr "_О программе"
+
+#: ../gui.py:537
+msgid "Webpage ..."
+msgstr "Вебстраница ..."
+
+#. Host window will never be shown
+#: ../images.py:286
+msgid "Constraints discarded"
+msgstr "Ограничение убрано"
+
+#: ../images.py:287
+msgid "Constraints other than FixAtoms have been discarded."
+msgstr "Ограничения отличные от закрепленных атомов (FixAtoms) были убраны."
+
+#: ../modify.py:18
+msgid "No atoms selected!"
+msgstr "Никакие атомы не выбраны!"
+
+#: ../modify.py:21
+msgid "Modify"
+msgstr "Изменить"
+
+#: ../modify.py:24
+msgid "Change element"
+msgstr "Изменить элемент"
+
+#: ../modify.py:27
+msgid "Tag"
+msgstr "Тег"
+
+#: ../modify.py:29
+msgid "Moment"
+msgstr "Момент"
+
+#: ../movie.py:9
+msgid "Movie"
+msgstr "Анимация"
+
+#: ../movie.py:10
+msgid "Image number:"
+msgstr "Номер образа:"
+
+#: ../movie.py:16
+msgid "First"
+msgstr "Первый"
+
+#: ../movie.py:17
+msgid "Back"
+msgstr "Назад"
+
+#: ../movie.py:18
+msgid "Forward"
+msgstr "Вперед"
+
+#: ../movie.py:19
+msgid "Last"
+msgstr "Последний"
+
+#: ../movie.py:21
+msgid "Play"
+msgstr "Воспроизвести"
+
+#: ../movie.py:22
+msgid "Stop"
+msgstr "Остановить"
+
+#. TRANSLATORS: This function plays an animation forwards and backwards
+#. alternatingly, e.g. for displaying vibrational movement
+#: ../movie.py:26
+msgid "Rock"
+msgstr "Шатать"
+
+#: ../movie.py:39
+msgid " Frame rate: "
+msgstr " Частота кадров: "
+
+#: ../movie.py:39
+msgid " Skip frames: "
+msgstr " Пропустить кадры: "
+
+#: ../nanoparticle.py:21
+msgid ""
+"Create a nanoparticle either by specifying the number of layers, or using "
+"the\n"
+"Wulff construction.  Please press the [Help] button for instructions on how "
+"to\n"
+"specify the directions.\n"
+"WARNING: The Wulff construction currently only works with cubic crystals!\n"
+msgstr ""
+"Создать наночастицу указав число слоев или используя метод Вульфа.\n"
+"Пожалуйста нажмите кнопку [Помощь] (внизу) для дальнейших инструкций.\n"
+"ВНИМАНИЕ: метод Вульфа реализован пока только для кубических кристаллов!\n"
+
+#: ../nanoparticle.py:28
+#, python-brace-format
+msgid ""
+"\n"
+"The nanoparticle module sets up a nano-particle or a cluster with a given\n"
+"crystal structure.\n"
+"\n"
+"1) Select the element, the crystal structure and the lattice constant(s).\n"
+"   The [Get structure] button will find the data for a given element.\n"
+"\n"
+"2) Choose if you want to specify the number of layers in each direction, or "
+"if\n"
+"   you want to use the Wulff construction.  In the latter case, you must\n"
+"   specify surface energies in each direction, and the size of the cluster.\n"
+"\n"
+"How to specify the directions:\n"
+"------------------------------\n"
+"\n"
+"First time a direction appears, it is interpreted as the entire family of\n"
+"directions, i.e. (0,0,1) also covers (1,0,0), (-1,0,0) etc.  If one of "
+"these\n"
+"directions is specified again, the second specification overrules that "
+"specific\n"
+"direction.  For this reason, the order matters and you can rearrange the\n"
+"directions with the [Up] and [Down] keys.  You can also add a new "
+"direction,\n"
+"remember to press [Add] or it will not be included.\n"
+"\n"
+"Example: (1,0,0) (1,1,1), (0,0,1) would specify the {100} family of "
+"directions,\n"
+"the {111} family and then the (001) direction, overruling the value given "
+"for\n"
+"the whole family of directions.\n"
+msgstr ""
+"\n"
+"Модуль наночастиц создает наночастицы или кластеры с заданной\n"
+"кристаллической структурой.\n"
+"\n"
+"1) Выберите химический элемент, тип кристаллической структуры и \n"
+"постоянную(ые) решетки.\n"
+"   Кнопка [Получить структуру] найдет данные по выбранному элементу.\n"
+"\n"
+"2) Определитесь желаете ли вы задать число слоев в каждом \n"
+"направлении, или желаете использовать метод Вульфа.\n"
+"В последнем случае вы должны задать поверхностные энергии в каждом \n"
+"из направлений, и размер кластера.\n"
+"\n"
+"Как задать направления:\n"
+"------------------------------\n"
+"\n"
+"Если направление встречается первый раз, то оно интерпретируется какцелое "
+"семейство направлений,\n"
+"т.е. (0,0,1) означает (1,0,0), (-1,0,0) и т.д.Если одно из этих направлений "
+"задано еще раз, то второе значениепереопределяет это определенное "
+"направление.\n"
+"Поэтому, порядок играет роль и Вы можете переставлять направления клавишами\n"
+"[Вверх] и [Вниз]. Кроме того, вы можете добавить новое направление.\n"
+"Не забудьте нажать кнопку [Добавить новое направление] \n"
+"или оно не будет добавлено.\n"
+"\n"
+"Пример: (1,0,0) (1,1,1), (0,0,1) задает семейство направлений {100},\n"
+"семейство {111} и еще направление (001), переопределяя значение данное\n"
+"всему семейству направлений.\n"
+
+#. Structures:  Abbreviation, name,
+#. 4-index (boolean), two lattice const (bool), factory
+#: ../nanoparticle.py:88
+msgid "Face centered cubic (fcc)"
+msgstr "Кубическая гране-центрированная (ГЦК)"
+
+#: ../nanoparticle.py:90
+msgid "Body centered cubic (bcc)"
+msgstr "Кубическая объемно-центрированная (ОЦК)"
+
+#: ../nanoparticle.py:92
+msgid "Simple cubic (sc)"
+msgstr "Кубическая простая (sc)"
+
+#: ../nanoparticle.py:94
+msgid "Hexagonal closed-packed (hcp)"
+msgstr "Гексагональная плотная упаковка (ГПУ)"
+
+#: ../nanoparticle.py:96
+msgid "Graphite"
+msgstr "Графит"
+
+#: ../nanoparticle.py:128
+msgid "Nanoparticle"
+msgstr "Наночастица"
+
+#: ../nanoparticle.py:132
+msgid "Get structure"
+msgstr "Получить структуру"
+
+#: ../nanoparticle.py:152 ../surfaceslab.py:68
+msgid "Structure:"
+msgstr "Структура:"
+
+#: ../nanoparticle.py:157
+msgid "Lattice constant:  a ="
+msgstr "Постоянная решетки: a ="
+
+#: ../nanoparticle.py:161
+msgid "Layer specification"
+msgstr "Выбор слоев"
+
+#: ../nanoparticle.py:161
+msgid "Wulff construction"
+msgstr "Метод Вульфа"
+
+#: ../nanoparticle.py:164
+msgid "Method: "
+msgstr "Метод: "
+
+#: ../nanoparticle.py:172
+msgid "Add new direction:"
+msgstr "Добавить новое направление:"
+
+#. Information
+#: ../nanoparticle.py:178
+msgid "Information about the created cluster:"
+msgstr "Информация о созданном кластере:"
+
+#: ../nanoparticle.py:179
+msgid "Number of atoms: "
+msgstr "Число атомов: "
+
+#: ../nanoparticle.py:181
+msgid "   Approx. diameter: "
+msgstr "   Приблизит. диаметр: "
+
+#: ../nanoparticle.py:190
+msgid "Automatic Apply"
+msgstr "Автоматическое Применение"
+
+#: ../nanoparticle.py:193 ../nanotube.py:49
+msgid "Creating a nanoparticle."
+msgstr "Создание наночастицы."
+
+#: ../nanoparticle.py:195 ../nanotube.py:50 ../surfaceslab.py:81
+msgid "Apply"
+msgstr "Применить"
+
+#: ../nanoparticle.py:196 ../nanotube.py:51 ../surfaceslab.py:82
+msgid "OK"
+msgstr "Да"
+
+#: ../nanoparticle.py:225
+msgid "Up"
+msgstr "Вверх"
+
+#: ../nanoparticle.py:226
+msgid "Down"
+msgstr "Вниз"
+
+#: ../nanoparticle.py:227
+msgid "Delete"
+msgstr "Удалить"
+
+#: ../nanoparticle.py:269
+msgid "Number of atoms"
+msgstr "Число атомов"
+
+#: ../nanoparticle.py:269
+msgid "Diameter"
+msgstr "Диаметр"
+
+#: ../nanoparticle.py:277
+msgid "above  "
+msgstr "выше  "
+
+#: ../nanoparticle.py:277
+msgid "below  "
+msgstr "ниже  "
+
+#: ../nanoparticle.py:277
+msgid "closest  "
+msgstr "ближайший  "
+
+#: ../nanoparticle.py:280
+msgid "Smaller"
+msgstr "Меньше"
+
+#: ../nanoparticle.py:281
+msgid "Larger"
+msgstr "Больше"
+
+#: ../nanoparticle.py:282
+msgid "Choose size using:"
+msgstr "Выбрать размер используя:"
+
+#: ../nanoparticle.py:284
+msgid "atoms"
+msgstr "атомы"
+
+#: ../nanoparticle.py:285
+msgid "Å³"
+msgstr "Å³"
+
+#: ../nanoparticle.py:287
+msgid "Rounding: If exact size is not possible, choose the size:"
+msgstr "Округление: если точный размер невозможен, то использовать:"
+
+#: ../nanoparticle.py:315
+msgid "Surface energies (as energy/area, NOT per atom):"
+msgstr "Поверхностные энергии (энергия/площадь, НЕ на атом):"
+
+#: ../nanoparticle.py:317
+msgid "Number of layers:"
+msgstr "Число слоев:"
+
+#: ../nanoparticle.py:345
+msgid "At least one index must be non-zero"
+msgstr "По крайней мере один индекс должен быть ненулевым"
+
+#: ../nanoparticle.py:348
+msgid "Invalid hexagonal indices"
+msgstr "Неправильные гексагональные индексы"
+
+#: ../nanoparticle.py:414
+msgid "Unsupported or unknown structure"
+msgstr "Неподдерживаемая или неизвестная структура"
+
+#: ../nanoparticle.py:415
+#, python-brace-format
+msgid "Element = {0}, structure = {1}"
+msgstr "Элемент = {0}, структура = {1}"
+
+#: ../nanotube.py:11
+msgid ""
+"Set up a Carbon nanotube by specifying the (n,m) roll-up vector.\n"
+"Please note that m <= n.\n"
+"\n"
+"Nanotubes of other elements can be made by specifying the element\n"
+"and bond length."
+msgstr ""
+"Определить углеродную нанотрубку задав вектор скатывания (n,m).\n"
+"Пожалуйста учтите, что m <= n.\n"
+"\n"
+"Нанотрубки из других химических элементов могут быть определены задавая\n"
+"элемент и межатомное расстояние."
+
+#: ../nanotube.py:24
+#, python-brace-format
+msgid ""
+"{natoms} atoms, diameter: {diameter:.3f} Å, total length: {total_length:.3f} "
+"Å"
+msgstr "{natoms} атомов, диаметр: {diameter:.3f} Å…, полная длина: {total_length:.3f} Å…"
+
+#: ../nanotube.py:38
+msgid "Nanotube"
+msgstr "Нанотрубка"
+
+#: ../nanotube.py:41
+msgid "Bond length: "
+msgstr "Межатомное расстояние: "
+
+#: ../nanotube.py:44
+msgid "Select roll-up vector (n,m) and tube length:"
+msgstr "Выберите вектор скатывания (n,m) и длину трубки:"
+
+#: ../nanotube.py:47
+msgid "Length:"
+msgstr "Длина:"
+
+#: ../quickinfo.py:27
+msgid "This frame has no atoms."
+msgstr "В этом кадре нет атомов."
+
+#: ../quickinfo.py:32
+msgid "Single image loaded."
+msgstr "Загружен один образ."
+
+#: ../quickinfo.py:34
+msgid "Image {} loaded (0–{})."
+msgstr "Образ {} загружен (0–{})."
+
+#: ../quickinfo.py:36
+msgid "Number of atoms: {}"
+msgstr "Число атомов: {}"
+
+#: ../quickinfo.py:46
+msgid "Unit cell [Å]:"
+msgstr "Элементарная ячейка [Å]:"
+
+#: ../quickinfo.py:48
+msgid "no"
+msgstr "нет"
+
+#: ../quickinfo.py:48
+msgid "yes"
+msgstr "да"
+
+#. TRANSLATORS: This has the form Periodic: no, no, yes
+#: ../quickinfo.py:50
+msgid "Periodic: {}, {}, {}"
+msgstr "Периодичность: {}, {}, {}"
+
+#: ../quickinfo.py:55
+msgid "Lengths [Å]: {:.3f}, {:.3f}, {:.3f}"
+msgstr "Длины [Å]: {:.3f}, {:.3f}, {:.3f}"
+
+#: ../quickinfo.py:56
+msgid "Angles: {:.1f}°, {:.1f}°, {:.1f}°"
+msgstr "Углы: {:.1f}°, {:.1f}°, {:.1f}°"
+
+#: ../quickinfo.py:59
+msgid "Volume: {:.3f} Å³"
+msgstr "Объем: {:.3f} Å³"
+
+#: ../quickinfo.py:65
+msgid "Unit cell is fixed."
+msgstr "Фиксированная элементарная ячейка."
+
+#: ../quickinfo.py:67
+msgid "Unit cell varies."
+msgstr "Изменяемая элементарная ячейка."
+
+#: ../quickinfo.py:73
+msgid "Could not recognize the lattice type"
+msgstr "Невозможно распознать тип решетки"
+
+#: ../quickinfo.py:75
+msgid ""
+"Reduced Bravais lattice:\n"
+"{}"
+msgstr ""
+"Тип решетки Браве:\n"
+"{}"
+
+#: ../quickinfo.py:104
+msgid "Calculator: {} (cached)"
+msgstr "Калькулятор: {} (кеширован)"
+
+#: ../quickinfo.py:106
+msgid "Calculator: {} (attached)"
+msgstr "Калькулятор: {} (присоединен)"
+
+#: ../quickinfo.py:113
+msgid "Energy: {:.3f} eV"
+msgstr "Энергия: {:.3f} эВ"
+
+#: ../quickinfo.py:118
+msgid "Max force: {:.3f} eV/Å"
+msgstr "Макс. сила: {:.3f} эВ/Å…"
+
+#: ../quickinfo.py:122
+msgid "Magmom: {:.3f} µ"
+msgstr "Магн. мом.: {:.3f} µ"
+
+#: ../render.py:16
+msgid "Render current view in povray ... "
+msgstr "Отрисовать текущий вид в povray ... "
+
+#: ../render.py:17
+#, python-format
+msgid "Rendering %d atoms."
+msgstr "Отрисовка %d атомов."
+
+#: ../render.py:22
+msgid "Size"
+msgstr "Размер"
+
+#: ../render.py:27
+msgid "Line width"
+msgstr "Ширина линии"
+
+#: ../render.py:28
+msgid "Ångström"
+msgstr "Ангстрем"
+
+#: ../render.py:30
+msgid "Render constraints"
+msgstr "Отрисовать ограничения"
+
+#: ../render.py:31
+msgid "Render unit cell"
+msgstr "Отрисовать элементарную ячейку"
+
+#: ../render.py:37
+msgid "Output basename: "
+msgstr "Базовое имя для вывода: "
+
+#: ../render.py:39
+msgid "Output filename: "
+msgstr "Имя файла для вывода: "
+
+#: ../render.py:44
+msgid "Atomic texture set:"
+msgstr "Текстура для атомов:"
+
+#: ../render.py:51
+msgid "Camera type: "
+msgstr "Тип камеры: "
+
+#: ../render.py:52
+msgid "Camera distance"
+msgstr "Расстояние до камеры"
+
+#. render current frame/all frames
+#: ../render.py:55
+msgid "Render current frame"
+msgstr "Отрисовать текущий кадр"
+
+#: ../render.py:56
+msgid "Render all frames"
+msgstr "Отрисовать все кадры"
+
+#: ../render.py:61
+msgid "Run povray"
+msgstr "Запустить povray"
+
+#: ../render.py:62
+msgid "Keep povray files"
+msgstr "Не удалять файлы от povray"
+
+#: ../render.py:63
+msgid "Show output window"
+msgstr "Показать окно вывода"
+
+#: ../render.py:64
+msgid "Transparent background"
+msgstr "Прозрачный фон"
+
+#: ../render.py:68
+msgid "Render"
+msgstr "Отрисовать"
+
+#: ../repeat.py:9
+msgid "Repeat"
+msgstr "Повторить"
+
+#: ../repeat.py:10
+msgid "Repeat atoms:"
+msgstr "Повторить атомы:"
+
+#: ../repeat.py:14
+msgid "Set unit cell"
+msgstr "Задать элементарную ячейку"
+
+#: ../rotate.py:12
+msgid "Rotate"
+msgstr "Повернуть"
+
+#: ../rotate.py:13
+msgid "Rotation angles:"
+msgstr "Углы поворотов:"
+
+#: ../rotate.py:17
+msgid "Update"
+msgstr "Обновить"
+
+#: ../rotate.py:18
+msgid ""
+"Note:\n"
+"You can rotate freely\n"
+"with the mouse, by holding\n"
+"down mouse button 2."
+msgstr ""
+"Заметьте:\n"
+"Вы можете свободно поворачивать\n"
+"мышью, удерживая\n"
+"вторую клавишу мыши."
+
+#: ../save.py:12
+msgid ""
+"Append name with \"@n\" in order to write image\n"
+"number \"n\" instead of the current image. Append\n"
+"\"@start:stop\" or \"@start:stop:step\" if you want\n"
+"to write a range of images. You can leave out\n"
+"\"start\" and \"stop\" so that \"name@:\" will give\n"
+"you all images. Negative numbers count from the\n"
+"last image. Examples: \"name@-1\": last image,\n"
+"\"name@-2:\": last two."
+msgstr ""
+"Добавьте \"@n\" к имени, чтобы записать образ номер\n"
+"\"n\" вместо текущего образа. Добавьте\n"
+"\"@старт:стоп\" или \"@старт:стоп:шаг\", если хотите\n"
+"записать диапазон образов. Вы можете не указывать\n"
+"\"старт\" and \"стоп\" так что \"name@:\" сохранит\n"
+"все образы. Отрицательные числа означают нумерацию\n"
+"с конца в обратном порядке.\n"
+"Например, \"name@-1\" сохранит последний образ, а\n"
+"\"name@-2:\" сохранит последние два образа."
+
+#: ../save.py:24
+msgid "Save ..."
+msgstr "Сохранить ..."
+
+#: ../save.py:76 ../ui.py:32
+msgid "Error"
+msgstr "Ошибка"
+
+#: ../settings.py:9
+msgid "Settings"
+msgstr "Настройки"
+
+#. Constraints
+#: ../settings.py:12
+msgid "Constraints:"
+msgstr "Ограничения:"
+
+#: ../settings.py:15
+msgid "release"
+msgstr "выпуск"
+
+#: ../settings.py:16 ../settings.py:25
+msgid " selected atoms"
+msgstr " выбранные атомы"
+
+#: ../settings.py:17
+msgid "Constrain immobile atoms"
+msgstr "Закрепить атомы"
+
+#: ../settings.py:18
+msgid "Clear all constraints"
+msgstr "Убрать все ограничения"
+
+#. Visibility
+#: ../settings.py:21
+msgid "Visibility:"
+msgstr "Видимость:"
+
+#: ../settings.py:22
+msgid "Hide"
+msgstr "Скрыть"
+
+#: ../settings.py:24
+msgid "show"
+msgstr "показать"
+
+#: ../settings.py:26
+msgid "View all atoms"
+msgstr "Отображать все атомы"
+
+#. Miscellaneous
+#: ../settings.py:29
+msgid "Miscellaneous:"
+msgstr "Разное:"
+
+#: ../settings.py:32
+msgid "Scale atomic radii:"
+msgstr "Масштаб радиуса атомов:"
+
+#: ../settings.py:39
+msgid "Scale force vectors:"
+msgstr "Масштаб векторов сил"
+
+#: ../settings.py:46
+msgid "Scale velocity vectors:"
+msgstr "Масштаб векторов скоростей:"
+
+#: ../status.py:51
+#, python-format
+msgid " tag=%(tag)s"
+msgstr " тег=%(tag)s"
+
+#. TRANSLATORS: mom refers to magnetic moment
+#: ../status.py:55
+#, python-brace-format
+msgid " mom={0:1.2f}"
+msgstr " мом={0:1.2f}"
+
+#: ../status.py:59
+#, python-brace-format
+msgid " q={0:1.2f}"
+msgstr " q={0:1.2f}"
+
+#: ../status.py:94
+msgid "dihedral"
+msgstr "двугранный"
+
+#: ../surfaceslab.py:10
+msgid ""
+"  Use this dialog to create surface slabs.  Select the element by\n"
+"writing the chemical symbol or the atomic number in the box.  Then\n"
+"select the desired surface structure.  Note that some structures can\n"
+"be created with an othogonal or a non-orthogonal unit cell, in these\n"
+"cases the non-orthogonal unit cell will contain fewer atoms.\n"
+"\n"
+"  If the structure matches the experimental crystal structure, you can\n"
+"look up the lattice constant, otherwise you have to specify it\n"
+"yourself."
+msgstr ""
+"  Используйте этот диалог, чтобы создать поверхность. Выберите элемент\n"
+"написав его химический символ или его атомное число. Затем\n"
+"выберите тип кристаллической структуры. Заметьте, что некоторые поверхности\n"
+"могут быть созданы с ортогональной или неортогональной элементарной "
+"ячейкой.\n"
+"В этих случаях неортогональная ячейка будет содержать меньше атомов.\n"
+"  Если выбранная кристаллическая структура совпадает с экспериментально\n"
+"определенной структурой, то Вы можете использовать известные постоянные\n"
+"решетки, иначе Вы должны будете задать постоянные решетки самостоятельно."
+
+#. Name, structure, orthogonal, function
+#: ../surfaceslab.py:22
+msgid "FCC(100)"
+msgstr "ГЦК(100)"
+
+#: ../surfaceslab.py:22 ../surfaceslab.py:23 ../surfaceslab.py:24
+#: ../surfaceslab.py:25
+msgid "fcc"
+msgstr "fcc"
+
+#: ../surfaceslab.py:23
+msgid "FCC(110)"
+msgstr "ГЦК(110)"
+
+#: ../surfaceslab.py:24 ../surfaceslab.py:171
+msgid "FCC(111)"
+msgstr "ГЦК(111)"
+
+#: ../surfaceslab.py:25 ../surfaceslab.py:174
+msgid "FCC(211)"
+msgstr "ГЦК(211)"
+
+#: ../surfaceslab.py:26
+msgid "BCC(100)"
+msgstr "ОЦК(100)"
+
+#: ../surfaceslab.py:26 ../surfaceslab.py:27 ../surfaceslab.py:28
+msgid "bcc"
+msgstr "bcc"
+
+#: ../surfaceslab.py:27 ../surfaceslab.py:168
+msgid "BCC(110)"
+msgstr "ОЦК(110)"
+
+#: ../surfaceslab.py:28 ../surfaceslab.py:165
+msgid "BCC(111)"
+msgstr "ОЦК(111)"
+
+#: ../surfaceslab.py:29 ../surfaceslab.py:178
+msgid "HCP(0001)"
+msgstr "ГПУ(0001)"
+
+#: ../surfaceslab.py:29 ../surfaceslab.py:30 ../surfaceslab.py:132
+#: ../surfaceslab.py:188
+msgid "hcp"
+msgstr "hcp"
+
+#: ../surfaceslab.py:30 ../surfaceslab.py:181
+msgid "HCP(10-10)"
+msgstr "ГПУ(10-10)"
+
+#: ../surfaceslab.py:31
+msgid "DIAMOND(100)"
+msgstr "АЛМАЗ(100)"
+
+#: ../surfaceslab.py:31 ../surfaceslab.py:32
+msgid "diamond"
+msgstr "diamond"
+
+#: ../surfaceslab.py:32
+msgid "DIAMOND(111)"
+msgstr "АЛМАЗ(111)"
+
+#: ../surfaceslab.py:53
+msgid "Get from database"
+msgstr "Получить из базы данных"
+
+#: ../surfaceslab.py:65
+msgid "Surface"
+msgstr "Поверхность"
+
+#: ../surfaceslab.py:69
+msgid "Orthogonal cell:"
+msgstr "Ортогональная ячейка"
+
+#: ../surfaceslab.py:70
+msgid "Lattice constant:"
+msgstr "Постоянная решетки"
+
+#: ../surfaceslab.py:71
+msgid "\ta"
+msgstr "\ta"
+
+#: ../surfaceslab.py:72
+msgid "\tc"
+msgstr "\tc"
+
+#: ../surfaceslab.py:73
+msgid "Size:"
+msgstr "Размер:"
+
+#: ../surfaceslab.py:74
+msgid "\tx: "
+msgstr "\tx: "
+
+#: ../surfaceslab.py:74 ../surfaceslab.py:75 ../surfaceslab.py:76
+msgid " unit cells"
+msgstr " единичные ячейки"
+
+#: ../surfaceslab.py:75
+msgid "\ty: "
+msgstr "\ty: "
+
+#: ../surfaceslab.py:76
+msgid "\tz: "
+msgstr "\tz: "
+
+#. TRANSLATORS: This is a title of a window.
+#: ../surfaceslab.py:80
+msgid "Creating a surface."
+msgstr "Создание поверхности."
+
+#. TRANSLATORS: E.g. "... assume fcc crystal structure for Au"
+#: ../surfaceslab.py:108
+msgid "Error: Reference values assume {} crystal structure for {}!"
+msgstr "Ошибка: эталонная структура {} для {}!"
+
+#: ../surfaceslab.py:162
+msgid "Please enter an even value for orthogonal cell"
+msgstr "Пожалуйста введите четное число для ортогональной ячейки"
+
+#: ../surfaceslab.py:175
+msgid "Please enter a value divisible by 3 for orthogonal cell"
+msgstr "Пожалуйста введите значение делимое на три для ортогональной ячейки"
+
+#: ../surfaceslab.py:195
+msgid " Vacuum: {} Å."
+msgstr " Вакуум: {} Å."
+
+#. TRANSLATORS: e.g. "Au fcc100 surface with 2 atoms."
+#. or "Au fcc100 surface with 2 atoms. Vacuum: 5 Å."
+#: ../surfaceslab.py:203
+#, python-brace-format
+msgid "{symbol} {surf} surface with one atom.{vacuum}"
+msgid_plural "{symbol} {surf} surface with {natoms} atoms.{vacuum}"
+msgstr[0] "{symbol} {surf} поверхность с {natoms}-им атомом.{vacuum}"
+msgstr[1] "{symbol} {surf} поверхность с {natoms}-я атомами.{vacuum}"
+msgstr[2] "{symbol} {surf} поверхность с {natoms}-й атомов.{vacuum}"
+
+#: ../ui.py:39
+msgid "Version"
+msgstr "Версия"
+
+#: ../ui.py:40
+msgid "Web-page"
+msgstr "Веб-страница"
+
+#: ../ui.py:41
+msgid "About"
+msgstr "О Программе"
+
+#: ../ui.py:46 ../ui.py:50 ../widgets.py:16
+msgid "Help"
+msgstr "Помощь"
+
+#: ../ui.py:550
+msgid "Open ..."
+msgstr "Открыть ..."
+
+#: ../ui.py:551
+msgid "Automatic"
+msgstr "Автоматически"
+
+#: ../ui.py:569
+msgid "Choose parser:"
+msgstr "Выберите анализатор:"
+
+#: ../ui.py:575
+msgid "Read error"
+msgstr "Ошибка чтения"
+
+#: ../ui.py:576
+msgid "Could not read {}: {}"
+msgstr "Невозможно прочесть {}: {}"
+
+#: ../widgets.py:13
+msgid "Element:"
+msgstr "Элемент:"
+
+#. This infobox is indescribably ugly because of the
+#. ridiculously large font size used by Tkinter.  Ouch!
+#: ../widgets.py:33
+msgid ""
+"Enter a chemical symbol or the name of a molecule from the G2 testset:\n"
+"{}"
+msgstr ""
+"Введите химический символ или имя молекулы из тестового набора G2:\n"
+"{}"
+
+#: ../widgets.py:67
+msgid "No element specified!"
+msgstr "Никакой элемент не выбран!"
+
+#: ../widgets.py:89
+msgid "ERROR: Invalid element!"
+msgstr "Ошибка: неправильный элемент!"
+
+#: ../widgets.py:106
+msgid "No Python code"
+msgstr "Это не программа на Питоне"
+
+#~ msgid "âˆ BC:"
+#~ msgstr "âˆ BC:"
+
+#~ msgid "âˆ AC:"
+#~ msgstr "âˆ AC:"
+
+#~ msgid "âˆ AB:"
+#~ msgstr "âˆ AB:"
+
+#~ msgid "Ã…"
+#~ msgstr "Ã…"
+
+#~ msgid "Ã…Â³"
+#~ msgstr "Ã…Â³"

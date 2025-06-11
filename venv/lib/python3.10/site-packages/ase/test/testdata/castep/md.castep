@@ -1,0 +1,688 @@
+ +-------------------------------------------------+
+ |                                                 |
+ |      CCC   AA    SSS  TTTTT  EEEEE  PPPP        |
+ |     C     A  A  S       T    E      P   P       |
+ |     C     AAAA   SS     T    EEE    PPPP        |
+ |     C     A  A     S    T    E      P           |
+ |      CCC  A  A  SSS     T    EEEEE  P           |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ | Welcome to Academic Release CASTEP version 23.1 |
+ | Ab Initio Total Energy Program                  |
+ |                                                 |
+ | Authors:                                        |
+ | M. Segall, M. Probert, C. Pickard, P. Hasnip,   |
+ | S. Clark, K. Refson, J. R. Yates,               |
+ | A. Bartok-Partay, M. Payne                      |
+ |                                                 |
+ | Contributors:                                   |
+ | P. Lindan, P. Haynes, J. White, V. Milman,      |
+ | N. Govind, M. Gibson, P. Tulip, V. Cocula,      |
+ | B. Montanari, D. Quigley, M. Glover,            |
+ | L. Bernasconi, A. Perlov, M. Plummer,           |
+ | E. McNellis, J. Meyer, J. Gale, D. Jochym       |
+ | J. Aarons, B. Walker, R. Gillen, D. Jones       |
+ | T. Green, I. J. Bush, C. J. Armstrong,          |
+ | E. J. Higgins, E. L. Brown, M. S. McFly,        |
+ | J. Wilkins, B-C. Shih, P. J. P. Byrne,          |
+ | R. J. Maurer, J. C. Womack, J. Dziedzic,        |
+ | L. LeBlanc, T. K. Stenczel, J. Kermode,         |
+ | S. Sturniolo, B. Shi, B. Durham, M. Evans,      |
+ | M. J. Smith, A. Tamerus, Z. Hawkhead,           |
+ | V. Ravindran, T. Hollins, S. A. Joyce,          |
+ | R. T. Strong, A. M. Reilly                      |
+ |                                                 |
+ | Copyright (c) 2000 - 2023                       |
+ |                                                 |
+ |     Distributed under license from Cambridge    |
+ |     Enterprise for academic use only.           |
+ |                                                 |
+ | Please cite                                     |
+ |                                                 |
+ |     "First principles methods using CASTEP"     |
+ |                                                 |
+ |         Zeitschrift fuer Kristallographie       |
+ |           220(5-6) pp. 567-570 (2005)           |
+ |                                                 |
+ | S. J. Clark, M. D. Segall, C. J. Pickard,       |
+ | P. J. Hasnip, M. J. Probert, K. Refson,         |
+ | M. C. Payne                                     |
+ |                                                 |
+ |       in all publications arising from          |
+ |              your use of CASTEP                 |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ |              http://www.castep.org              |
+ |                                                 |
+ +-------------------------------------------------+
+ 
+ 
+ 
+ Compiled for linux_x86_64_ifort on Sun, 24 Dec 2023 13:06:13 +0100
+ from code version 65582dd54  Castep231_branch  Wed May 17 11:09:44 2023 +0100
+ Compiler: Intel Fortran 19.1.2.254; Optimisation: fast
+ Comms   : serial
+ MATHLIBS: Intel MKL(2020.0.2) (LAPACK version 3.8.0)
+ FFT Lib : default
+ Fundamental constants values: CODATA 2018
+ 
+ Run started: Fri, 31 May 2024 20:24:54 +0200
+ 
+ Atomic calculation performed for Si: 1s2 2s2 2p6 3s2 3p2
+ 
+ Converged in 55 iterations to an ae energy of -7859.183 eV
+ 
+   ============================================================                
+   | Pseudopotential Report - Date of generation 31-05-2024   |                
+   ------------------------------------------------------------                
+   | Element: Si Ionic charge:  4.00 Level of theory: LDA     |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            3s              2.000           -0.400        |                
+   |            3p              2.000           -0.153        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |          1      0   -0.400   1.797     qc      0         |                
+   |          2      0    0.250   1.797     qc      0         |                
+   |          3      1   -0.153   1.797     qc      0         |                
+   |          4      1    0.250   1.797     qc      0         |                
+   |          5      2    0.000   1.797     qc      0         |                
+   |          6      2    0.250   1.797     qc      0         |                
+   |         loc     3    0.000   1.797     pn      0         |                
+   |                                                          |                
+   | Augmentation charge Rinner = 1.255                       |                
+   | Partial core correction Rc = 1.255                       |                
+   ------------------------------------------------------------                
+   | "3|1.8|5|6|7|30:31:32"                                   |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+ 
+ Pseudo atomic calculation performed for Si 3s2 3p2
+ 
+ Converged in 16 iterations to a total energy of -163.0148 eV
+ Calculation not parallelised.
+
+ ************************************ Title ************************************
+ 
+
+ ***************************** General Parameters ******************************
+  
+ output verbosity                               : normal  (1)
+ write checkpoint data to                       : castep.check
+ type of calculation                            : molecular dynamics
+ stress calculation                             : on
+ density difference calculation                 : off
+ electron localisation func (ELF) calculation   : off
+ Hirshfeld analysis                             : off
+ polarisation (Berry phase) analysis            : off
+ molecular orbital projected DOS                : off
+ deltaSCF calculation                           : off
+ unlimited duration calculation
+ timing information                             : on
+ memory usage estimate                          : on
+ write extra output files                       : on
+ write final potential to formatted file        : off
+ write final density to formatted file          : off
+ write BibTeX reference list                    : on
+ write OTFG pseudopotential files               : on
+ write electrostatic potential file             : on
+ write bands file                               : on
+ checkpoint writing                             : both castep_bin and check files
+ random number generator seed                   :         42
+
+ *********************** Exchange-Correlation Parameters ***********************
+  
+ using functional                               : Local Density Approximation
+ DFT+D: Semi-empirical dispersion correction    : off
+
+ ************************* Pseudopotential Parameters **************************
+  
+ pseudopotential representation                 : reciprocal space
+ <beta|phi> representation                      : reciprocal space
+ spin-orbit coupling                            : off
+
+ **************************** Basis Set Parameters *****************************
+  
+ basis set accuracy                             : FINE
+ finite basis set correction                    : automatic
+
+ **************************** Electronic Parameters ****************************
+  
+ number of  electrons                           :  32.00    
+ net charge of system                           :  0.000    
+ treating system as non-spin-polarized
+ number of bands                                :         20
+
+ ********************* Electronic Minimization Parameters **********************
+  
+ Method: Treating system as metallic with density mixing treatment of electrons,
+         and number of  SD  steps               :          1
+         and number of  CG  steps               :          4
+  
+ total energy / atom convergence tol.           : 0.1000E-04   eV
+ eigen-energy convergence tolerance             : 0.1000E-05   eV
+ max force / atom convergence tol.              : ignored
+ periodic dipole correction                     : NONE
+
+ ************************** Density Mixing Parameters **************************
+  
+ density-mixing scheme                          : Broyden
+ max. length of mixing history                  :         20
+
+ *********************** Population Analysis Parameters ************************
+  
+ Population analysis with cutoff                :  3.000       A
+ Population analysis output                     : summary and pdos components
+
+ ************************ Molecular Dynamics Parameters ************************
+  
+ ensemble                                       : NVE
+ temperature                                    :  300.0       K
+ path integral MD                               : OFF
+ time step                                      : 0.1000E-02   ps
+ number of MD steps                             :          2
+ ab initio properties sampled every             :          0   MD steps
+ enhanced equilibration method                  : NONE
+ using best-fit first order extrapolation for wavefunctions and charge density
+ backup results every                           :          5   steps
+ write MD trajectory file                       : on
+
+ *******************************************************************************
+  
+ 
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)                      Reciprocal Lattice(1/A)
+     5.4300000     0.0000000     0.0000000        1.157124366   0.000000000   0.000000000
+     0.0000000     5.4300000     0.0000000        0.000000000   1.157124366   0.000000000
+     0.0000000     0.0000000     5.4300000        0.000000000   0.000000000   1.157124366
+ 
+                       Lattice parameters(A)       Cell Angles
+                    a =      5.430000          alpha =   90.000000
+                    b =      5.430000          beta  =   90.000000
+                    c =      5.430000          gamma =   90.000000
+ 
+                       Current cell volume =           160.103007       A**3
+                                   density =             1.403372   AMU/A**3
+                                           =             2.330353     g/cm^3
+ 
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+                         Total number of ions in cell =    8
+                      Total number of species in cell =    1
+                        Max number of any one species =    8
+ 
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element    Atom        Fractional coordinates of atoms  x
+            x            Number           u          v          w      x
+            x----------------------------------------------------------x
+            x  Si           1         0.000000   0.000000   0.000000   x 
+            x  Si           2         0.250000   0.250000   0.250000   x 
+            x  Si           3         0.000000   0.500000   0.500000   x 
+            x  Si           4         0.250000   0.750000   0.750000   x 
+            x  Si           5         0.500000   0.000000   0.500000   x 
+            x  Si           6         0.750000   0.250000   0.750000   x 
+            x  Si           7         0.500000   0.500000   0.000000   x 
+            x  Si           8         0.750000   0.750000   0.250000   x 
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ 
+ 
+                         No user defined ionic velocities
+ 
+                           -------------------------------
+                                   Details of Species
+                           -------------------------------
+ 
+                               Mass of species in AMU
+                                    Si   28.0855000
+ 
+                          Electric Quadrupole Moment (Barn)
+                                    Si    1.0000000 No Isotope Defined
+ 
+                          Files used for pseudopotentials:
+                                    Si 3|1.8|5|6|7|30:31:32
+ 
+                           -------------------------------
+                              k-Points For BZ Sampling
+                           -------------------------------
+                       MP grid size for SCF calculation is  2  2  2
+                            with an offset of   0.000  0.000  0.000
+                       Number of kpoints used =             4
+ 
+                           -------------------------------
+                               Symmetry and Constraints
+                           -------------------------------
+ 
+                      Cell is a supercell containing 4 primitive cells
+                      Maximum deviation from symmetry =  0.00000         ANG
+ 
+                      Number of symmetry operations   =           1
+                      Number of ionic constraints     =           3
+                      Point group of crystal =     1: C1, 1, 1
+                      Space group of crystal =   227: Fd-3m, F 4d 2 3 -1d
+ 
+             Set iprint > 1 for details on symmetry rotations/translations
+ 
+                         Centre of mass is constrained
+             Set iprint > 1 for details of linear ionic constraints
+ 
+                         Number of cell constraints= 0
+                         Cell constraints are:  1 2 3 4 5 6
+ 
+                         External pressure/stress (GPa)
+                          0.00000   0.00000   0.00000
+                                    0.00000   0.00000
+                                              0.00000
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Baseline code, static data and system overhead       46.0 MB         0.0 MB |
+| BLAS internal memory storage                          0.0 MB         0.0 MB |
+| Model and support data                              108.5 MB         0.0 MB |
+| Electronic energy minimisation requirements           6.7 MB         0.0 MB |
+| Force calculation requirements                        2.0 MB         0.0 MB |
+| Stress calculation requirements                       2.2 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process          161.1 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+Calculating finite basis set correction with  3 cut-off energies.
+Calculating total energy with cut-off of  180.480 eV.
+Calculating approximate eigenstates for fixed initial Hamiltonian
+Cut-off for approx. calculation is   89.988 eV
+Resetting cut-off to  181.098 eV
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.33481303E+003  0.00000000E+000                         4.11  <-- SCF
+      1  -1.35184450E+003  4.55142564E+000   2.12893327E+000       4.28  <-- SCF
+      2  -1.35200823E+003  4.55452973E+000   2.04667588E-002       4.45  <-- SCF
+      3  -1.35125327E+003  4.67272475E+000  -9.43704913E-002       4.60  <-- SCF
+      4  -1.35120346E+003  4.73609229E+000  -6.22647143E-003       4.79  <-- SCF
+      5  -1.35120474E+003  4.74162722E+000   1.61085970E-004       4.94  <-- SCF
+      6  -1.35120491E+003  4.74543326E+000   2.05934669E-005       5.06  <-- SCF
+      7  -1.35120491E+003  4.74542574E+000   1.48809124E-007       5.17  <-- SCF
+      8  -1.35120491E+003  4.74541855E+000   1.87411278E-008       5.28  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -1351.204909942     eV
+Final free energy (E-TS)    =  -1351.204909942     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -1351.204909942     eV
+ 
+Calculating total energy with cut-off of  185.480 eV.
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.35120491E+003  0.00000000E+000                         5.33  <-- SCF
+      1  -1.35125256E+003  4.74224098E+000   5.95687482E-003       5.50  <-- SCF
+      2  -1.35125263E+003  4.74224029E+000   7.50918446E-006       5.63  <-- SCF
+      3  -1.35125264E+003  4.74277739E+000   1.95302071E-006       5.74  <-- SCF
+      4  -1.35125264E+003  4.74294995E+000   9.27437785E-008       5.85  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -1351.252641380     eV
+Final free energy (E-TS)    =  -1351.252641380     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -1351.252641380     eV
+ 
+Calculating total energy with cut-off of  190.480 eV.
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.35125264E+003  0.00000000E+000                         5.90  <-- SCF
+      1  -1.35130011E+003  4.74112393E+000   5.93376844E-003       6.07  <-- SCF
+      2  -1.35130018E+003  4.74112300E+000   8.13723282E-006       6.21  <-- SCF
+      3  -1.35130020E+003  4.74152039E+000   3.48482669E-006       6.32  <-- SCF
+      4  -1.35130021E+003  4.74167050E+000   1.96178401E-007       6.43  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -1351.300206072     eV
+Final free energy (E-TS)    =  -1351.300206072     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -1351.300206072     eV
+ 
+ For future reference: finite basis dEtot/dlog(Ecut) =      -1.823251eV
+ Total energy corrected for finite basis set =   -1351.297328 eV
+  
+ WARNING - MD ensemble=NVE so fixing cell parameters
+  
+ Starting MD
+ 
+ ************************************** Forces **************************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * Si              1     -0.00000             -0.00000             -0.00000         *
+ * Si              2      0.00000              0.00000              0.00000         *
+ * Si              3     -0.00000             -0.00000             -0.00000         *
+ * Si              4      0.00000              0.00000              0.00000         *
+ * Si              5     -0.00000             -0.00000             -0.00000         *
+ * Si              6      0.00000              0.00000              0.00000         *
+ * Si              7     -0.00000             -0.00000             -0.00000         *
+ * Si              8      0.00000              0.00000              0.00000         *
+ *                                                                                  *
+ ************************************************************************************
+  
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x                                               MD Data:     x
+            x                                                            x
+            x              time :      0.000000                   ps     x
+            x                                                            x
+            x   Potential Energy:  -1351.297328                   eV     x
+            x   Kinetic   Energy:      0.271446                   eV     x
+            x   Total     Energy:  -1351.025882                   eV     x
+            x   Hamilt    Energy:  -1351.025882                   eV     x
+            x                                                            x
+            x        Temperature:    300.000000                    K     x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ 
+
+================================================================================
+ Starting MD iteration          1 ...
+================================================================================
+ 
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Model and support data                              116.9 MB         0.0 MB |
+| Molecular Dynamics requirements                      10.1 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process          126.9 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+ 
+ 
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+ 
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element    Atom        Fractional coordinates of atoms    x
+            x            Number           u          v          w        x
+            x------------------------------------------------------------x
+            x   Si         1          0.000184  -0.000450  -0.000272     x
+            x   Si         2          0.249389   0.249933   0.250105     x
+            x   Si         3          0.000081   0.501038   0.500059     x
+            x   Si         4          0.249740   0.749826   0.750444     x
+            x   Si         5          0.499843  -0.000408   0.500100     x
+            x   Si         6          0.749844   0.250494   0.749404     x
+            x   Si         7          0.501323   0.500111   0.000849     x
+            x   Si         8          0.749597   0.749456   0.249311     x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ 
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.35130178E+003  0.00000000E+000                         6.63  <-- SCF
+      1  -1.35129882E+003  4.74012430E+000  -3.70433304E-004       6.79  <-- SCF
+      2  -1.35129887E+003  4.74012280E+000   5.94927127E-006       6.95  <-- SCF
+      3  -1.35129879E+003  4.74008835E+000  -9.30181040E-006       7.09  <-- SCF
+      4  -1.35129879E+003  4.74007991E+000   1.68913359E-007       7.20  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -1351.298793468     eV
+Final free energy (E-TS)    =  -1351.298793468     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -1351.298793468     eV
+ 
+ 
+ ************************************** Forces **************************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * Si              1     -0.04931              0.05289             -0.00438         *
+ * Si              2      0.04681              0.00681              0.00631         *
+ * Si              3     -0.01446             -0.05835             -0.01755         *
+ * Si              4      0.07449             -0.00738              0.01115         *
+ * Si              5     -0.01854              0.02021             -0.01764         *
+ * Si              6      0.03618             -0.03894              0.02269         *
+ * Si              7     -0.13181             -0.06014             -0.07122         *
+ * Si              8      0.05664              0.08490              0.07065         *
+ *                                                                                  *
+ ************************************************************************************
+  
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x                                               MD Data:     x
+            x                                                            x
+            x              time :      0.001000                   ps     x
+            x                                                            x
+            x   Potential Energy:  -1351.295915                   eV     x
+            x   Kinetic   Energy:      0.269980                   eV     x
+            x   Total     Energy:  -1351.025935                   eV     x
+            x   Hamilt    Energy:  -1351.025935                   eV     x
+            x                                                            x
+            x        Temperature:    298.380172                    K     x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ 
+
+--------------------------------------------------------------------------------
+ ... finished MD iteration          1
+
+================================================================================
+ Starting MD iteration          2 ...
+================================================================================
+ 
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+ 
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element    Atom        Fractional coordinates of atoms    x
+            x            Number           u          v          w        x
+            x------------------------------------------------------------x
+            x   Si         1          0.000365  -0.000896  -0.000545     x
+            x   Si         2          0.248780   0.249866   0.250210     x
+            x   Si         3          0.000160   0.502072   0.500118     x
+            x   Si         4          0.249484   0.749652   0.750889     x
+            x   Si         5          0.499685  -0.000815   0.500200     x
+            x   Si         6          0.749691   0.250986   0.748809     x
+            x   Si         7          0.502638   0.500218   0.001694     x
+            x   Si         8          0.749197   0.748917   0.248626     x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ 
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.35128626E+003  0.00000000E+000                         7.36  <-- SCF
+      1  -1.35129465E+003  4.74075612E+000   1.04908311E-003       7.53  <-- SCF
+      2  -1.35129471E+003  4.74072891E+000   7.43786974E-006       7.69  <-- SCF
+      3  -1.35129472E+003  4.74068460E+000   1.60307126E-007       7.80  <-- SCF
+      4  -1.35129472E+003  4.74069908E+000   3.49741869E-008       7.91  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -1351.294716003     eV
+Final free energy (E-TS)    =  -1351.294716003     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -1351.294716003     eV
+ 
+ 
+ ************************************** Forces **************************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * Si              1     -0.09963              0.10729             -0.00665         *
+ * Si              2      0.09339              0.01482              0.01147         *
+ * Si              3     -0.02828             -0.11817             -0.03557         *
+ * Si              4      0.14991             -0.01604              0.02132         *
+ * Si              5     -0.03495              0.04016             -0.03526         *
+ * Si              6      0.07136             -0.07883              0.04578         *
+ * Si              7     -0.26870             -0.12445             -0.14684         *
+ * Si              8      0.11690              0.17523              0.14574         *
+ *                                                                                  *
+ ************************************************************************************
+  
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x                                               MD Data:     x
+            x                                                            x
+            x              time :      0.002000                   ps     x
+            x                                                            x
+            x   Potential Energy:  -1351.291838                   eV     x
+            x   Kinetic   Energy:      0.265555                   eV     x
+            x   Total     Energy:  -1351.026282                   eV     x
+            x   Hamilt    Energy:  -1351.026282                   eV     x
+            x                                                            x
+            x        Temperature:    293.489693                    K     x
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ 
+
+--------------------------------------------------------------------------------
+ ... finished MD iteration          2
+ Finished MD
+  
+  **********************************************************
+  *** There were at least     1 warnings during this run ***
+  *** => please check the whole of this file carefully!  ***
+  **********************************************************
+
+Writing analysis data to castep.castep_bin
+
+Writing model to castep.check
+ 
+ ************************************** Forces **************************************
+ *                                                                                  *
+ *                           Cartesian components (eV/A)                            *
+ * -------------------------------------------------------------------------------- *
+ *                         x                    y                    z              *
+ *                                                                                  *
+ * Si              1     -0.09963              0.10729             -0.00665         *
+ * Si              2      0.09339              0.01482              0.01147         *
+ * Si              3     -0.02828             -0.11817             -0.03557         *
+ * Si              4      0.14991             -0.01604              0.02132         *
+ * Si              5     -0.03495              0.04016             -0.03526         *
+ * Si              6      0.07136             -0.07883              0.04578         *
+ * Si              7     -0.26870             -0.12445             -0.14684         *
+ * Si              8      0.11690              0.17523              0.14574         *
+ *                                                                                  *
+ ************************************************************************************
+ 
+ ***************** Stress Tensor *****************
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x      0.390672     -0.144025     -0.061901  *
+ *  y     -0.144025      0.388091     -0.276337  *
+ *  z     -0.061901     -0.276337      0.385978  *
+ *                                               *
+ *  Pressure:   -0.3882                          *
+ *                                               *
+ *************************************************
+ 
+ Pseudo atomic calculation performed for Si 3s2 3p2
+ 
+ Converged in 16 iterations to a total energy of -163.0148 eV
+Charge spilling parameter for spin component 1 = 0.83%
+ 
+            Orbital Populations       
+     Ion    Atom   Orbital             Charge
+  -------------------------------------------
+     Si     1      S                    1.351
+     Si     1      Px                   0.883
+     Si     1      Py                   0.884
+     Si     1      Pz                   0.883
+     Si     2      S                    1.353
+     Si     2      Px                   0.882
+     Si     2      Py                   0.883
+     Si     2      Pz                   0.881
+     Si     3      S                    1.350
+     Si     3      Px                   0.883
+     Si     3      Py                   0.883
+     Si     3      Pz                   0.884
+     Si     4      S                    1.350
+     Si     4      Px                   0.884
+     Si     4      Py                   0.882
+     Si     4      Pz                   0.884
+     Si     5      S                    1.352
+     Si     5      Px                   0.882
+     Si     5      Py                   0.883
+     Si     5      Pz                   0.882
+     Si     6      S                    1.352
+     Si     6      Px                   0.882
+     Si     6      Py                   0.884
+     Si     6      Pz                   0.882
+     Si     7      S                    1.350
+     Si     7      Px                   0.884
+     Si     7      Py                   0.883
+     Si     7      Pz                   0.883
+     Si     8      S                    1.349
+     Si     8      Px                   0.884
+     Si     8      Py                   0.883
+     Si     8      Pz                   0.884
+  -------------------------------------------
+                           Total:      32.000
+  -------------------------------------------
+ 
+     Atomic Populations (Mulliken)
+     -----------------------------
+Species          Ion     s       p       d       f      Total   Charge (e)
+==========================================================================
+  Si              1     1.351   2.649   0.000   0.000   4.000    -0.000
+  Si              2     1.353   2.647   0.000   0.000   3.999     0.001
+  Si              3     1.350   2.650   0.000   0.000   4.000    -0.000
+  Si              4     1.350   2.650   0.000   0.000   4.000    -0.000
+  Si              5     1.352   2.647   0.000   0.000   4.000     0.000
+  Si              6     1.352   2.648   0.000   0.000   4.000     0.000
+  Si              7     1.350   2.650   0.000   0.000   4.000    -0.000
+  Si              8     1.349   2.652   0.000   0.000   4.001    -0.001
+==========================================================================
+ 
+                 Bond                   Population      Length (A)
+======================================================================
+              Si 7 -- Si 8                   0.76        2.32679
+              Si 1 -- Si 4                   0.75        2.34229
+              Si 3 -- Si 4                   0.75        2.34400
+              Si 6 -- Si 7                   0.75        2.34877
+              Si 3 -- Si 8                   0.75        2.34915
+              Si 1 -- Si 2                   0.75        2.35107
+              Si 3 -- Si 6                   0.75        2.35205
+              Si 4 -- Si 5                   0.75        2.35259
+              Si 5 -- Si 6                   0.75        2.35260
+              Si 1 -- Si 8                   0.75        2.35292
+              Si 2 -- Si 3                   0.75        2.35360
+              Si 5 -- Si 8                   0.75        2.35552
+              Si 2 -- Si 5                   0.75        2.35620
+              Si 2 -- Si 7                   0.75        2.35990
+              Si 1 -- Si 6                   0.75        2.36130
+              Si 4 -- Si 7                   0.75        2.36194
+======================================================================
+ 
+
+Writing analysis data to castep.castep_bin
+
+Writing model to castep.check
+ 
+ A BibTeX formatted list of references used in this run has been written to 
+ castep.bib
+ 
+Initialisation time =      3.60 s
+Calculation time    =      5.54 s
+Finalisation time   =      0.18 s
+Total time          =      9.33 s
+Peak Memory Use     = 490940 kB

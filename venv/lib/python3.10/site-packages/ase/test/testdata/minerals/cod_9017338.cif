@@ -1,0 +1,83 @@
+#------------------------------------------------------------------------------
+#$Date: 2023-03-27 10:00:38 +0300 (Mon, 27 Mar 2023) $
+#$Revision: 282074 $
+#$URL: file:///home/coder/svn-repositories/cod/cif/9/01/73/9017338.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9017338
+loop_
+_publ_author_name
+'Lee, S.'
+'Xu, H.'
+_publ_section_title
+;
+ Using powder XRD and pair distribution function to determine anisotropic
+ atomic displacement parameters of orthorhombic tridymite and
+ tetragonal cristobalite
+;
+_journal_name_full               'Acta Crystallographica, Section B'
+_journal_paper_doi               10.1107/S2052520619000933
+_journal_volume                  75
+_journal_year                    2019
+_chemical_compound_source        'rhyolitic rock, New Mexico, USA'
+_chemical_formula_sum            'O2 Si'
+_chemical_name_mineral           Cristobalite
+_space_group_IT_number           92
+_space_group_name_Hall           'P 4abw 2nw'
+_space_group_name_H-M_alt        'P 41 21 2'
+_symmetry_space_group_name_H-M   'P 41 21 2'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   4.9727
+_cell_length_b                   4.9727
+_cell_length_c                   6.9257
+_cell_volume                     171.257
+_database_code_amcsd             0020745
+_exptl_crystal_density_diffrn    2.330
+_cod_data_source_file            inputs/fixed/downloads/11/11595.cif
+_cod_data_source_block           11595
+_cod_original_formula_sum        'Si O2'
+_cod_database_code               9017338
+loop_
+_space_group_symop_operation_xyz
+x,y,z
+y,x,-z
+1/2-y,1/2+x,1/4+z
+1/2-x,1/2+y,1/4-z
+-x,-y,1/2+z
+-y,-x,1/2-z
+1/2+y,1/2-x,3/4+z
+1/2+x,1/2-y,3/4-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Si 0.00890 0.00860 0.00880 -0.00100 0.00200 -0.00200
+O 0.02890 0.00940 0.01780 -0.00200 0.00600 0.00100
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+Si 0.30070 0.30070 0.00000 0.03456
+O 0.23900 0.10410 0.17870 0.01869
+loop_
+_cod_related_entry_id
+_cod_related_entry_database
+_cod_related_entry_code
+1 AMCSD 0020745

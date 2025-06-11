@@ -1,0 +1,76 @@
+#------------------------------------------------------------------------------
+#$Date: 2024-04-25 17:59:02 +0300 (Thu, 25 Apr 2024) $
+#$Revision: 291351 $
+#$URL: file:///home/coder/svn-repositories/cod/cif/9/00/42/9004218.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9004218
+loop_
+_publ_author_name
+'Fleet, M. E.'
+'Burns, P. C.'
+_publ_section_title
+;
+ Structure and twinning of cobaltite
+;
+_journal_name_full               'The Canadian Mineralogist'
+_journal_page_first              719
+_journal_page_last               723
+_journal_volume                  28
+_journal_year                    1990
+_chemical_formula_sum            'As Co S'
+_chemical_name_mineral           Cobaltite
+_space_group_IT_number           29
+_symmetry_space_group_name_Hall  'P 2c -2ac'
+_symmetry_space_group_name_H-M   'P c a 21'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                90
+_cell_length_a                   5.5833
+_cell_length_b                   5.5892
+_cell_length_c                   5.5812
+_cell_formula_units_Z            4
+_cell_volume                     174.168
+_database_code_amcsd             0005243
+_exptl_crystal_density_diffrn    6.328
+_cod_original_formula_sum        'Co As S'
+_cod_database_code               9004218
+loop_
+_space_group_symop_operation_xyz
+x,y,z
+1/2+x,-y,z
+1/2-x,y,1/2+z
+-x,-y,1/2+z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Co 0.47062 0.26429 0.39609 -0.00474 0.01263 0.02212
+As 0.67276 0.45579 0.54601 -0.03004 -0.00316 -0.04109
+S 0.56695 0.38299 0.54601 0.04268 -0.06157 0.09482
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Co 0.99504 0.25909 0.00000
+As 0.61885 0.86935 0.61669
+S 0.38266 0.63129 0.37996
+loop_
+_cod_related_entry_id
+_cod_related_entry_database
+_cod_related_entry_code
+1 AMCSD 0005243

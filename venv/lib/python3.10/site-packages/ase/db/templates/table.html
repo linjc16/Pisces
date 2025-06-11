@@ -1,0 +1,138 @@
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+
+    <!-- Database Table -->
+
+      <div class="row">
+        <div class="col-xs-6">
+          <b>
+          Displaying rows {{ session.row1 }}-{{ session.row2 }} out of {{ session.nrows }}
+          (total # or rows: {{ session.nrows_total }})
+          </b>
+          {% if session.query %}
+          <a href="/{{ project.name }}/?query={{ session.query }}"> (direct link) </a>
+          {% endif %}
+        </div>
+
+        <div class="col-xs-6">
+          <div class="btn-group pull-right">
+            <button type="button"
+                    class="btn btn-default dropdown-toggle btn-sm"
+                    data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+            Add Column <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+            {% for key, value in project.key_descriptions|dictsort(false, "value") if key in table.addcolumns %}
+              <li><a href="javascript:update_table({{ session.id }},
+                                                   'toggle',
+                                                   '{{ key }}')">
+              {{ value.longdesc }} ({{key}}) </a></li>
+            {% endfor %}
+            </ul>
+          </div>
+
+          <div class="btn-group pull-right">
+            <button type="button"
+                    class="btn btn-default dropdown-toggle btn-sm"
+                    data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+            Rows: {{ session.limit }} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+            {% for n in [10, 25, 50, 100, 200] %}
+              <li><a href="javascript:update_table({{ session.id }},
+                                                   'limit',
+                                                   {{ n }})">{{ n }}</a></li>
+            {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-body">
+    </div>
+
+    <!-- Table -->
+    <table id="rows" class="table table-striped">
+
+    <tr>
+    {%- for column in table.columns %}
+      <th class="text-center">
+
+      {% set keydesc = project.key_descriptions[column] %}
+      {% set unit = keydesc.unit and ' [' + keydesc.unit + ']' %}
+
+      {% if session.sort == column %}&#x2193;
+      {% elif session.sort == '-' + column %}&#x2191;
+      {% endif -%}
+
+      {% if column == 'formula' %}
+        <span data-toggle="tooltip" title="key: formul">Formula</span>
+      {% else %}
+        <a href="javascript:update_table({{ session.id }}, 'sort', '{{ column }}')"
+           data-toggle="tooltip" title="key: {{column}}{{unit}}">
+          {{ keydesc.shortdesc }}</a>
+      {% endif %}
+      <a href="javascript:update_table({{ session.id }}, 'toggle', '{{ column }}')"
+         data-toggle="tooltip" title="Remove column">&#x2715;</a>
+      </th>
+    {%- endfor %}
+    </tr>
+
+    {% for row in table.rows -%}
+
+      <tr id="rowentry" class="rowentry">
+      {%- autoescape false -%}
+      {%- for s in row.strings -%}
+        <td class="text-center">
+        <a href="/{{ project.name }}/row/{{ row.uid }}">
+        {%- if s != "" -%}{{ s }}{% else %}-{% endif %}
+        </a>
+        </td>
+      {% endfor %}
+      {% endautoescape %}
+      </tr>
+    {% endfor %}
+    </table>
+  </div>
+</div>
+
+
+<div class="text-center">
+  <nav aria-label="Page navigation">
+  <ul class="pagination pagination-sm">
+
+  {% for page, name in session.paginate() %}
+    {% set hrefstr="#" %}
+    {% if page >= 0 %}
+      {% set hrefstr = 'javascript:update_table(' + session.id|string +
+                                                ", 'page', " +
+                                                page|string + ')' %}
+    {% endif %}
+    {% if name=="previous" %}
+      <li>
+      <a href="{{hrefstr}}" aria-label="Previous">
+      <span aria-hidden="true">&laquo;</span>
+      </a>
+      </li>
+    {% elif name=="next" %}
+      <li>
+      <a href="{{hrefstr}}" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+      </a>
+      </li>
+    {% elif name=="..." %}
+      <li class="inactive"><a href="{{hrefstr}}">{{ name }}</a></li>
+    {% elif page < 0 %}
+      <li class="active"><a href="{{hrefstr}}">{{ name }}</a></li>
+    {% else %}
+      <li><a href="{{hrefstr}}">{{ name }}</a></li>
+    {% endif %}
+  {% endfor %}
+
+  </ul>
+  </nav>
+</div>

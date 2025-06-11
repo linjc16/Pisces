@@ -1,0 +1,5 @@
+keywords1 : test
+! We try to include itself
+include_file : onetep_include.dat
+keywords2 = test
+

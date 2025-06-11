@@ -1,0 +1,95 @@
+#------------------------------------------------------------------------------
+#$Date: 2015-01-27 21:58:39 +0200 (Tue, 27 Jan 2015) $
+#$Revision: 130149 $
+#$URL: file:///home/coder/svn-repositories/cod/cif/1/01/09/1010930.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+#
+data_1010930
+loop_
+_publ_author_name
+'Alsen, N'
+_publ_section_title
+;
+Roentgenographische Untersuchungen der Kristallstrukturen von
+Magnetkies, Breithauptit, Pentlandit, Millerit und verwandten
+Verbindungen
+;
+_journal_coden_ASTM              GFSFA4
+_journal_name_full
+;
+Geologiska Foereningens i Stockholm Foerhandlingar
+;
+_journal_page_first              19
+_journal_page_last               73
+_journal_volume                  47
+_journal_year                    1925
+_chemical_compound_source        'from Andreasberg'
+_chemical_formula_structural     'Ni Sb'
+_chemical_formula_sum            'Ni Sb'
+_chemical_name_mineral           Breithauptite
+_chemical_name_systematic        'Nickel antimonide (1/1)'
+_space_group_IT_number           194
+# _symmetry_cell_setting           hexagonal
+_symmetry_Int_Tables_number      194
+_symmetry_space_group_name_Hall  '-P 6c 2c'
+_symmetry_space_group_name_H-M   'P 63/m m c'
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                120
+_cell_formula_units_Z            2
+_cell_length_a                   3.928
+_cell_length_b                   3.928
+_cell_length_c                   5.12
+_cell_volume                     68.4
+_exptl_crystal_density_meas      8.42
+_cod_database_code               1010930
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+-y,x-y,z
+y-x,-x,z
+-y,-x,z
+y-x,y,z
+x,x-y,z
+-x,-y,-z
+y,y-x,-z
+x-y,x,-z
+y,x,-z
+x-y,-y,-z
+-x,y-x,-z
+-x,-y,1/2+z
+y,y-x,1/2+z
+x-y,x,1/2+z
+y,x,1/2+z
+x-y,-y,1/2+z
+-x,y-x,1/2+z
+x,y,1/2-z
+-y,x-y,1/2-z
+y-x,-x,1/2-z
+-y,-x,1/2-z
+y-x,y,1/2-z
+x,x-y,1/2-z
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_Wyckoff_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_attached_hydrogens
+_atom_site_calc_flag
+Ni1 Ni3+ 2 a 0. 0. 0. 1. 0 d
+Sb1 Sb3- 2 c 0.333333333333333 0.666666666666667 0.25 1. 0 d
+loop_
+_atom_type_symbol
+_atom_type_oxidation_number
+Ni3+ 3.000
+Sb3- -3.000

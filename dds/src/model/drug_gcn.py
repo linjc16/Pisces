@@ -8,11 +8,12 @@ from torch import nn
 import torch.nn.functional as F
 from omegaconf import II
 from fairseq.models.gnn import DeeperGCN
-
 from .heads import BinaryClassMLPv2Head
 from .heads_ppi import BinaryClassMLPPPIv2Head
-logger = logging.getLogger(__name__)
+import os
+import pandas as pd
 
+logger = logging.getLogger(__name__)
 
 @dataclass
 class GCNConfig(FairseqDataclass):
@@ -36,6 +37,7 @@ class GCNConfig(FairseqDataclass):
     pooler_dropout: float = field(default=0.0)
 
     n_memory: int = field(default=32)
+    use_gemini: bool = field(default=False)
 
 @register_model("drug_gcn", dataclass=GCNConfig)
 class GCNModel(BaseFairseqModel):
@@ -45,13 +47,33 @@ class GCNModel(BaseFairseqModel):
         self.args = args
         self.encoder = encoder
         self.classification_heads = nn.ModuleDict()
-    
+        self.use_gemini = getattr(args, "use_gemini", False)
+        self.gemini_cache = None
+
+        if self.use_gemini:
+            self.gemini_cache = self.load_gemini_embedding_cache()
+
+    def load_gemini_embedding_cache(self):
+        path = "data/gemini_embeddings.csv"
+        if not os.path.exists(path):
+            raise FileNotFoundError("Gemini embedding CSV not found. Run precompute_gemini_embeddings.py first.")
+        df = pd.read_csv(path)
+        embedding_dict = {}
+        for _, row in df.iterrows():
+            embedding = list(map(float, row["embedding"].split(",")))
+            embedding_dict[row["drug_name"]] = torch.tensor(embedding).unsqueeze(0)
+        return embedding_dict
+
     @classmethod
     def build_model(cls, args, task):
-        
         base_architecture(args)
         encoder = DeeperGCN(args)
         return cls(args, encoder)
+
+    def get_gemini_embedding(self, drug_name: str):
+        if drug_name not in self.gemini_cache:
+            raise ValueError(f"Drug '{drug_name}' not found in Gemini cache.")
+        return self.gemini_cache[drug_name]
 
     def forward(self,
                 drug_a_seq,
@@ -62,42 +84,48 @@ class GCNModel(BaseFairseqModel):
                 features_only=False,
                 classification_head_name=None,
                 **kwargs):
-        
+
         if classification_head_name is not None:
             features_only = True
-        
-        enc_a, _ = self.encoder(**drug_a_graph, features_only=features_only, **kwargs)
-        enc_b, _ = self.encoder(**drug_b_graph, features_only=features_only, **kwargs)
-        
-        enc_a = self.get_cls(enc_a)
-        enc_b = self.get_cls(enc_b)
+
+        if self.use_gemini:
+            enc_a = self.get_gemini_embedding(drug_a_graph['smiles'])
+            enc_b = self.get_gemini_embedding(drug_b_graph['smiles'])
+
+        else:
+            enc_a, _ = self.encoder(**drug_a_graph, features_only=features_only, **kwargs)
+            enc_b, _ = self.encoder(**drug_b_graph, features_only=features_only, **kwargs)
+            enc_a = self.get_cls(enc_a)
+            enc_b = self.get_cls(enc_b)
 
         x = self.classification_heads[classification_head_name](enc_a, enc_b, cell_line)
-
         return x
 
     def forward_embed(self,
-                drug_a_seq,
-                drug_b_seq,
-                drug_a_graph,
-                drug_b_graph,
-                cell_line,
-                features_only=False,
-                classification_head_name=None,
-                **kwargs):
-        
+                      drug_a_seq,
+                      drug_b_seq,
+                      drug_a_graph,
+                      drug_b_graph,
+                      cell_line,
+                      features_only=False,
+                      classification_head_name=None,
+                      **kwargs):
+
         if classification_head_name is not None:
             features_only = True
-        
-        enc_a, _ = self.encoder(**drug_a_graph, features_only=features_only, **kwargs)
-        enc_b, _ = self.encoder(**drug_b_graph, features_only=features_only, **kwargs)
-        
-        enc_a = self.get_cls(enc_a)
-        enc_b = self.get_cls(enc_b)
+
+        if self.use_gemini:
+            enc_a = self.get_gemini_embedding(drug_a_graph['smiles'])
+            enc_b = self.get_gemini_embedding(drug_b_graph['smiles'])
+
+        else:
+            enc_a, _ = self.encoder(**drug_a_graph, features_only=features_only, **kwargs)
+            enc_b, _ = self.encoder(**drug_b_graph, features_only=features_only, **kwargs)
+            enc_a = self.get_cls(enc_a)
+            enc_b = self.get_cls(enc_b)
 
         return enc_a, enc_b
 
-    
     def get_cls(self, x):
         if x is None:
             return 0
@@ -112,7 +140,6 @@ class GCNModel(BaseFairseqModel):
         return target
 
     def register_classification_head(self, name, num_classes=None, inner_dim=None, **kwargs):
-        
         if name in self.classification_heads:
             prev_num_classes = self.classification_heads[name].out_proj.out_features
             prev_inner_dim = self.classification_heads[name].dense.out_features
@@ -141,7 +168,7 @@ class GCNModel(BaseFairseqModel):
             )
         else:
             raise NotImplementedError('No Implemented by DDS')
-    
+
     def max_positions(self):
         return self.args.max_positions
 
@@ -155,7 +182,6 @@ def tiny_architecture(args):
 def base_architecture(args):
     args.gnn_number_layer = getattr(args, "gnn_number_layer", 6)
     args.gnn_embed_dim = getattr(args, "gnn_embed_dim", 384)
-
 
 @register_model_architecture("drug_gcn", "drug_gcn_large")
 def large_architecture(args):

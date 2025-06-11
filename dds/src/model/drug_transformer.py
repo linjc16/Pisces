@@ -11,7 +11,7 @@ from fairseq.models.roberta import RobertaEncoder
 from omegaconf import II
 from .heads import BinaryClassMLPv2Head
 from .heads_ppi import BinaryClassMLPPPIv2Head
-from .trash.heads_prot_seq import BinaryClassProtSeqFrozenMLPHead
+from .heads_prot_seq import BinaryClassProtSeqFrozenMLPHead
 
 import pdb
 
@@ -40,8 +40,6 @@ class DrugTransformerConfig(FairseqDataclass):
     classification_head_name: str = field(default='')
     load_checkpoint_heads: bool = field(default=False)
 
-
-    # config for Training with Quantization Noise for Extreme Model Compression ({Fan*, Stock*} et al., 2020)
     quant_noise_pq: float = field(
         default=0.0,
         metadata={"help": "iterative PQ quantization noise at training time"},
@@ -54,10 +52,8 @@ class DrugTransformerConfig(FairseqDataclass):
         default=0.0,
         metadata={"help": "scalar quantization noise and scalar quantization at training time"},
     )
-    # args for "Better Fine-Tuning by Reducing Representational Collapse" (Aghajanyan et al. 2020)
     spectral_norm_classification_head: bool = field(default=False)
 
-    # config for "Reducing Transformer Depth on Demand with Structured Dropout" (Fan et al., 2019)
     encoder_layerdrop: float = field(default=0.0,
                                      metadata={"help": "LayerDrop probability for decoder"})
     encoder_layers_to_keep: Optional[str] = field(

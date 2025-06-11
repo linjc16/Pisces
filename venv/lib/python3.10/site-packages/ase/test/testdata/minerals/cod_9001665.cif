@@ -1,0 +1,101 @@
+#------------------------------------------------------------------------------
+#$Date: 2023-05-18 10:14:51 +0300 (Thu, 18 May 2023) $
+#$Revision: 283850 $
+#$URL: file:///home/coder/svn-repositories/cod/cif/9/00/16/9001665.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided the American Mineralogist Crystal Structure Database,
+# http://rruff.geo.arizona.edu/AMS/amcsd.php
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_9001665
+loop_
+_publ_author_name
+'Kampf, A. R.'
+'Foord, E. E.'
+_publ_section_title
+;Artroeite, PbAlF3(OH)2, a new mineral from the Grand Reef mine, Graham
+ County, Arizona: Description and crystal structure
+;
+_journal_name_full               'American Mineralogist'
+_journal_page_first              179
+_journal_page_last               183
+_journal_volume                  80
+_journal_year                    1995
+_chemical_formula_sum            'Al F3 H2 O2 Pb'
+_chemical_name_mineral           Artroeite
+_space_group_IT_number           2
+_symmetry_space_group_name_Hall  '-P 1'
+_symmetry_space_group_name_H-M   'P -1'
+_cell_angle_alpha                90.68
+_cell_angle_beta                 107.69
+_cell_angle_gamma                104.46
+_cell_formula_units_Z            2
+_cell_length_a                   6.270
+_cell_length_b                   6.821
+_cell_length_c                   5.057
+_cell_volume                     198.618
+_database_code_amcsd             0001717
+_exptl_crystal_density_diffrn    5.438
+_cod_original_formula_sum        'Pb Al F3 O2 H2'
+_cod_database_code               9001665
+loop_
+_space_group_symop_operation_xyz
+x,y,z
+-x,-y,-z
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+Pb 0.00866 0.00607 0.01400 0.00235 0.00339 0.00156
+Al 0.00850 0.00470 0.01000 0.00160 0.00310 0.00120
+F1 0.01700 0.00690 0.01500 0.00300 0.00900 0.00030
+F2 0.01200 0.00810 0.01100 0.00430 0.00200 0.00280
+F3 0.00900 0.01050 0.02300 0.00010 0.00600 0.00200
+Oh1 0.00800 0.00730 0.01300 0.00270 0.00500 0.00100
+Oh2 0.01000 0.00760 0.00700 0.00300 0.00300 0.00210
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+_atom_site_type_symbol
+_atom_site_attached_hydrogens
+Pb 0.30975 0.19142 0.20352 ? Pb 0
+Al 0.81100 0.32730 0.83640 ? Al 0
+F1 0.79500 0.13780 0.57510 ? F 0
+F2 0.74070 0.48910 0.56270 ? F 0
+F3 0.51370 0.23080 0.81130 ? F 0
+O-h1 0.86290 0.55140 0.09810 ? O 0
+O-h2 0.89810 0.14320 0.09880 ? O 0
+H1 0.80700 0.50900 0.25300 0.02000 H 0
+H2 0.86200 0.12200 0.25500 0.02000 H 0
+loop_
+_cod_changelog_entry_id
+_cod_changelog_entry_author
+_cod_changelog_entry_date
+_cod_changelog_entry_text
+1
+;cod-tools version 3.8.0
+Id: cif_guess_AMCSD_atom_types 9581 2023-05-17 12:35:41Z saulius
+;
+2023-05-18T08:39:51+03:00
+;Derived atom types and hydrogen counts
+from atom names that follow the AMCSD naming convention
+(Wat == water, O-H == hydroxyl).
+;
+loop_
+_cod_related_entry_id
+_cod_related_entry_database
+_cod_related_entry_code
+1 AMCSD 0001717

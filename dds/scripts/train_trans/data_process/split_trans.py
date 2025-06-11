@@ -5,7 +5,7 @@ import numpy as np
 
 fold_num = 5
 RAW_DATA_DIR = 'baselines/DeepDDs-master/data_ours'
-OUTPUT_DIR = '/data/linjc/dds/data_new/transductive'
+OUTPUT_DIR = 'dds/data_new/transductive'
 
 for i in range(fold_num):
 

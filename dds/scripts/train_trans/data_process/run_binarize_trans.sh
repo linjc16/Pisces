@@ -1,31 +1,31 @@
+#!/bin/bash
 
 # binarize dataset
 DATAFOLD=$1
-DATADIR=/data/linjc/dds/data_new/transductive/$DATAFOLD/
-# DATADIR=/data/linjc/dds/data/transductive_3fold/$DATAFOLD/
+DATADIR=./data/processed/$DATAFOLD/
 
-python fairseq_cli/preprocess.py \
+python3 fairseq_cli/preprocess.py \
     -s 'a' -t 'b' \
     --trainpref $DATADIR/train \
     --validpref $DATADIR/valid \
     --testpref $DATADIR/test \
     --destdir  $DATADIR/data-bin/ \
-    --workers 30 --srcdict molecule/dict.txt \
+    --workers 4 --srcdict molecule/dict.txt \
     --joined-dictionary \
-    --molecule \
+    --molecule
 
-python fairseq_cli/preprocess.py \
+python3 fairseq_cli/preprocess.py \
     --only-source \
     --trainpref $DATADIR/train.cell \
     --validpref $DATADIR/valid.cell \
     --testpref $DATADIR/test.cell \
     --destdir $DATADIR/data-bin/cell/ \
-    --workers 30 --srcdict $DATADIR/cell.dict \
+    --workers 4 --srcdict $DATADIR/cell.dict
 
-python fairseq_cli/preprocess.py \
+python3 fairseq_cli/preprocess.py \
     --only-source \
     --trainpref $DATADIR/train.label \
     --validpref $DATADIR/valid.label \
     --testpref $DATADIR/test.label \
     --destdir $DATADIR/data-bin/label/ \
-    --workers 30 --srcdict $DATADIR/label.dict \
+    --workers 4 --srcdict $DATADIR/label.dict
