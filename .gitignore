@@ -1,30 +1,5 @@
-
-raw/
-data_ori/
-data_feat/
-.vscode
-/features.py
-checkpoints/
-mdl_exp*
-saved/
-
-# Generated files
-/fairseq/temporal_convolution_tbc
-/fairseq/modules/*_layer/*_forward.cu
-/fairseq/modules/*_layer/*_backward.cu
-/fairseq/version.py
-dds/scripts/train_leave_drug
-
-# data
-data-bin/
+venv/
+*.pt
 __pycache__/
-temp.py
-trash/
-temp/
-binary_class_inf_temp.py
-output*
-preprocess/extra_dataset
-
-#PRODeepSyn
-baselines/PRODeepSyn-main/cell/data_ours/node_features.npy
-baselines/PRODeepSyn-main/cell/data_ours/ppi.csv
+*.pyc
+.DS_Store

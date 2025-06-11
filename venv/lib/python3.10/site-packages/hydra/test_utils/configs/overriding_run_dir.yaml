@@ -1,3 +1,0 @@
-hydra:
-  run:
-    dir: cde

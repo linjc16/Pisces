@@ -1,0 +1,443 @@
+(1048575, 9223372036854775807)
+2025-05-08 16:49:20 | INFO | fairseq_cli.train | {'_name': None, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 100, 'log_format': 'simple', 'tensorboard_logdir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'wandb_project': None, 'azureml_logging': False, 'seed': 1, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': True, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'user_dir': 'dds/src/', 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma'}, 'common_eval': {'_name': None, 'path': None, 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'legacy_ddp', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': True, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': True, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'distributed_num_procs': 0}, 'dataset': {'_name': None, 'num_workers': 1, 'skip_invalid_size_inputs_valid_test': False, 'max_tokens': None, 'batch_size': 128, 'required_batch_size_multiple': 1, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': None, 'batch_size_valid': 128, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'optimization': {'_name': None, 'max_epoch': 0, 'max_update': 100000, 'stop_time_hours': 0.0, 'clip_norm': 0.0, 'sentence_avg': False, 'update_freq': [1], 'lr': [5e-05], 'stop_min_lr': -1.0, 'use_bmuf': False}, 'checkpoint': {'_name': None, 'save_dir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'restore_file': 'checkpoint_last.pt', 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 0, 'keep_interval_updates': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'auc_prc', 'maximize_best_checkpoint_metric': True, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 1}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': {'_name': 'drug_transfomer_base', 'activation_fn': 'gelu', 'dropout': 0.1, 'attention_dropout': 0.1, 'activation_dropout': 0.0, 'relu_dropout': 0.0, 'encoder_embed_path': None, 'encoder_embed_dim': 512, 'encoder_ffn_embed_dim': 1024, 'encoder_layers': 6, 'cross_encoder_layers': 6, 'encoder_attention_heads': 4, 'encoder_normalize_before': False, 'encoder_learned_pos': True, 'layernorm_embedding': True, 'no_scale_embedding': True, 'max_positions': 512, 'classification_head_name': 'bclsmlpppiv2', 'load_checkpoint_heads': False, 'quant_noise_pq': 0.0, 'quant_noise_pq_block_size': 8, 'quant_noise_scalar': 0.0, 'spectral_norm_classification_head': False, 'encoder_layerdrop': 0.0, 'encoder_layers_to_keep': None, 'max_source_positions': 512, 'no_token_positional_embeddings': False, 'pooler_activation_fn': 'tanh', 'pooler_dropout': 0.1, 'untie_weights_roberta': False, 'adaptive_input': False, 'n_memory': 32, 'skip_update_state_dict': False}, 'task': {'_name': 'binary_class_task', 'data': './data/processed/fold0/data-bin', 'source_lang': 'a', 'target_lang': 'b', 'num_classes': 125, 'scaler_label': False, 'no_shuffle': False, 'shorten_method': 'truncate', 'shorten_data_split_list': '', 'max_positions': 512, 'dataset_impl': None, 'seed': 1, 'order_noise': 5}, 'criterion': {'_name': 'binary_class_loss_bce', 'classification_head_name': 'bclsmlpppiv2', 'consis_alpha': 0.0, 'mt_alpha': 1.0, 'p_consis_alpha': 0.0}, 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9, 0.98)', 'adam_eps': 1e-06, 'weight_decay': 0.01, 'use_old_adam': False, 'tpu': False, 'lr': [5e-05]}, 'lr_scheduler': {'_name': 'polynomial_decay', 'warmup_updates': 4000, 'force_anneal': None, 'end_learning_rate': 0.0, 'power': 1.0, 'total_num_update': 100000.0, 'lr': [5e-05]}, 'scoring': {'_name': 'bleu', 'pad': 1, 'eos': 2, 'unk': 3}, 'bpe': None, 'tokenizer': None}
+2025-05-08 16:49:20 | INFO | src.tasks.binary_class_task | [input] Dictionary ./data/processed/fold0/data-bin: 2352 types.
+2025-05-08 16:49:20 | INFO | src.tasks.binary_class_task | [label] Dictionary ./data/processed/fold0/data-bin/label: 6 types.
+2025-05-08 16:49:20 | INFO | src.tasks.binary_class_task | [cell] Dictionary ./data/processed/fold0/data-bin/label: 129 types.
+(1048575, 9223372036854775807)
+2025-05-08 16:50:16 | INFO | fairseq_cli.train | {'_name': None, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 100, 'log_format': 'simple', 'tensorboard_logdir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'wandb_project': None, 'azureml_logging': False, 'seed': 1, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': True, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'user_dir': 'dds/src/', 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma'}, 'common_eval': {'_name': None, 'path': None, 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'legacy_ddp', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': True, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': True, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'distributed_num_procs': 0}, 'dataset': {'_name': None, 'num_workers': 1, 'skip_invalid_size_inputs_valid_test': False, 'max_tokens': None, 'batch_size': 128, 'required_batch_size_multiple': 1, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': None, 'batch_size_valid': 128, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'optimization': {'_name': None, 'max_epoch': 0, 'max_update': 100000, 'stop_time_hours': 0.0, 'clip_norm': 0.0, 'sentence_avg': False, 'update_freq': [1], 'lr': [5e-05], 'stop_min_lr': -1.0, 'use_bmuf': False}, 'checkpoint': {'_name': None, 'save_dir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'restore_file': 'checkpoint_last.pt', 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 0, 'keep_interval_updates': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'auc_prc', 'maximize_best_checkpoint_metric': True, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 1}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': {'_name': 'drug_transfomer_base', 'activation_fn': 'gelu', 'dropout': 0.1, 'attention_dropout': 0.1, 'activation_dropout': 0.0, 'relu_dropout': 0.0, 'encoder_embed_path': None, 'encoder_embed_dim': 512, 'encoder_ffn_embed_dim': 1024, 'encoder_layers': 6, 'cross_encoder_layers': 6, 'encoder_attention_heads': 4, 'encoder_normalize_before': False, 'encoder_learned_pos': True, 'layernorm_embedding': True, 'no_scale_embedding': True, 'max_positions': 512, 'classification_head_name': 'bclsmlpppiv2', 'load_checkpoint_heads': False, 'quant_noise_pq': 0.0, 'quant_noise_pq_block_size': 8, 'quant_noise_scalar': 0.0, 'spectral_norm_classification_head': False, 'encoder_layerdrop': 0.0, 'encoder_layers_to_keep': None, 'max_source_positions': 512, 'no_token_positional_embeddings': False, 'pooler_activation_fn': 'tanh', 'pooler_dropout': 0.1, 'untie_weights_roberta': False, 'adaptive_input': False, 'n_memory': 32, 'skip_update_state_dict': False}, 'task': {'_name': 'binary_class_task', 'data': './data/processed/fold0/data-bin', 'source_lang': 'a', 'target_lang': 'b', 'num_classes': 125, 'scaler_label': False, 'no_shuffle': False, 'shorten_method': 'truncate', 'shorten_data_split_list': '', 'max_positions': 512, 'dataset_impl': None, 'seed': 1, 'order_noise': 5}, 'criterion': {'_name': 'binary_class_loss_bce', 'classification_head_name': 'bclsmlpppiv2', 'consis_alpha': 0.0, 'mt_alpha': 1.0, 'p_consis_alpha': 0.0}, 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9, 0.98)', 'adam_eps': 1e-06, 'weight_decay': 0.01, 'use_old_adam': False, 'tpu': False, 'lr': [5e-05]}, 'lr_scheduler': {'_name': 'polynomial_decay', 'warmup_updates': 4000, 'force_anneal': None, 'end_learning_rate': 0.0, 'power': 1.0, 'total_num_update': 100000.0, 'lr': [5e-05]}, 'scoring': {'_name': 'bleu', 'pad': 1, 'eos': 2, 'unk': 3}, 'bpe': None, 'tokenizer': None}
+2025-05-08 16:50:16 | INFO | src.tasks.binary_class_task | [input] Dictionary ./data/processed/fold0/data-bin: 2352 types.
+2025-05-08 16:50:16 | INFO | src.tasks.binary_class_task | [label] Dictionary ./data/processed/fold0/data-bin/label: 6 types.
+2025-05-08 16:50:16 | INFO | src.tasks.binary_class_task | [cell] Dictionary ./data/processed/fold0/data-bin/label: 129 types.
+undirected graph
+# proteins: 17161, # cells: 125
+# protein-protein interactions: 839522, # cell-protein associations: 28349
+constructing neighbor set ...
+2025-05-08 16:50:33 | INFO | fairseq_cli.train | DrugTransfomerModel(
+  (encoder): TrEncoder(
+    (sentence_encoder): TransformerEncoder(
+      (dropout_module): FairseqDropout()
+      (embed_tokens): Embedding(2353, 512, padding_idx=1)
+      (embed_positions): LearnedPositionalEmbedding(514, 512, padding_idx=1)
+      (layernorm_embedding): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (layers): ModuleList(
+        (0-5): 6 x TransformerEncoderLayer(
+          (self_attn): MultiheadAttention(
+            (dropout_module): FairseqDropout()
+            (k_proj): Linear(in_features=512, out_features=512, bias=True)
+            (v_proj): Linear(in_features=512, out_features=512, bias=True)
+            (q_proj): Linear(in_features=512, out_features=512, bias=True)
+            (out_proj): Linear(in_features=512, out_features=512, bias=True)
+          )
+          (self_attn_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (dropout_module): FairseqDropout()
+          (activation_dropout_module): FairseqDropout()
+          (fc1): Linear(in_features=512, out_features=1024, bias=True)
+          (fc2): Linear(in_features=1024, out_features=512, bias=True)
+          (final_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (lm_head): RobertaLMHead(
+      (dense): Linear(in_features=512, out_features=512, bias=True)
+      (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (classification_heads): ModuleDict(
+    (bclsmlpppiv2): BinaryClassMLPPPIv2Head(
+      (protein_embedding): Embedding(17161, 512)
+      (aggregation_function): Linear(in_features=2048, out_features=512, bias=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+      (fc1): Linear(in_features=1536, out_features=512, bias=True)
+      (fc2): Linear(in_features=512, out_features=512, bias=True)
+      (out): Linear(in_features=512, out_features=1, bias=True)
+    )
+  )
+)
+2025-05-08 16:50:33 | INFO | fairseq_cli.train | task: BinaryClassTask
+2025-05-08 16:50:33 | INFO | fairseq_cli.train | model: DrugTransfomerModel
+2025-05-08 16:50:33 | INFO | fairseq_cli.train | criterion: BinaryClassBCECriterion
+2025-05-08 16:50:33 | INFO | fairseq_cli.train | num. shared model params: 25,237,298 (num. trained: 25,237,298)
+2025-05-08 16:50:33 | INFO | fairseq_cli.train | num. expert model params: 0 (num. trained: 0)
+2025-05-08 16:50:33 | INFO | src.tasks.binary_class_task | Loaded valid with #samples: 20578.
+2025-05-08 16:50:33 | INFO | fairseq.trainer | detected shared parameter: encoder.sentence_encoder.embed_tokens.weight <- encoder.lm_head.weight
+2025-05-08 16:50:33 | INFO | fairseq_cli.train | training on 1 devices (GPUs/TPUs)
+2025-05-08 16:50:33 | INFO | fairseq_cli.train | max tokens per device = None and max sentences per device = 128
+2025-05-08 16:50:33 | INFO | fairseq.trainer | Preparing to load checkpoint ./checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32/checkpoint_last.pt
+2025-05-08 16:50:33 | INFO | fairseq.trainer | No existing checkpoint found ./checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32/checkpoint_last.pt
+2025-05-08 16:50:33 | INFO | fairseq.trainer | loading train data for epoch 1
+2025-05-08 16:50:34 | INFO | src.tasks.binary_class_task | Loaded train with #samples: 61737.
+(1048575, 9223372036854775807)
+2025-05-08 16:52:41 | INFO | fairseq_cli.train | {'_name': None, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 100, 'log_format': 'simple', 'tensorboard_logdir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'wandb_project': None, 'azureml_logging': False, 'seed': 1, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': True, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'user_dir': 'dds/src/', 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma'}, 'common_eval': {'_name': None, 'path': None, 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'legacy_ddp', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': True, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': True, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'distributed_num_procs': 0}, 'dataset': {'_name': None, 'num_workers': 1, 'skip_invalid_size_inputs_valid_test': False, 'max_tokens': None, 'batch_size': 128, 'required_batch_size_multiple': 1, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': None, 'batch_size_valid': 128, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'optimization': {'_name': None, 'max_epoch': 0, 'max_update': 100000, 'stop_time_hours': 0.0, 'clip_norm': 0.0, 'sentence_avg': False, 'update_freq': [1], 'lr': [5e-05], 'stop_min_lr': -1.0, 'use_bmuf': False}, 'checkpoint': {'_name': None, 'save_dir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'restore_file': 'checkpoint_last.pt', 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 0, 'keep_interval_updates': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'auc_prc', 'maximize_best_checkpoint_metric': True, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 1}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': {'_name': 'drug_transfomer_base', 'activation_fn': 'gelu', 'dropout': 0.1, 'attention_dropout': 0.1, 'activation_dropout': 0.0, 'relu_dropout': 0.0, 'encoder_embed_path': None, 'encoder_embed_dim': 512, 'encoder_ffn_embed_dim': 1024, 'encoder_layers': 6, 'cross_encoder_layers': 6, 'encoder_attention_heads': 4, 'encoder_normalize_before': False, 'encoder_learned_pos': True, 'layernorm_embedding': True, 'no_scale_embedding': True, 'max_positions': 512, 'classification_head_name': 'bclsmlpppiv2', 'load_checkpoint_heads': False, 'quant_noise_pq': 0.0, 'quant_noise_pq_block_size': 8, 'quant_noise_scalar': 0.0, 'spectral_norm_classification_head': False, 'encoder_layerdrop': 0.0, 'encoder_layers_to_keep': None, 'max_source_positions': 512, 'no_token_positional_embeddings': False, 'pooler_activation_fn': 'tanh', 'pooler_dropout': 0.1, 'untie_weights_roberta': False, 'adaptive_input': False, 'n_memory': 32, 'skip_update_state_dict': False}, 'task': {'_name': 'binary_class_task', 'data': './data/processed/fold0/data-bin', 'source_lang': 'a', 'target_lang': 'b', 'num_classes': 125, 'scaler_label': False, 'no_shuffle': False, 'shorten_method': 'truncate', 'shorten_data_split_list': '', 'max_positions': 512, 'dataset_impl': None, 'seed': 1, 'order_noise': 5}, 'criterion': {'_name': 'binary_class_loss_bce', 'classification_head_name': 'bclsmlpppiv2', 'consis_alpha': 0.0, 'mt_alpha': 1.0, 'p_consis_alpha': 0.0}, 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9, 0.98)', 'adam_eps': 1e-06, 'weight_decay': 0.01, 'use_old_adam': False, 'tpu': False, 'lr': [5e-05]}, 'lr_scheduler': {'_name': 'polynomial_decay', 'warmup_updates': 4000, 'force_anneal': None, 'end_learning_rate': 0.0, 'power': 1.0, 'total_num_update': 100000.0, 'lr': [5e-05]}, 'scoring': {'_name': 'bleu', 'pad': 1, 'eos': 2, 'unk': 3}, 'bpe': None, 'tokenizer': None}
+2025-05-08 16:52:41 | INFO | src.tasks.binary_class_task | [input] Dictionary ./data/processed/fold0/data-bin: 2352 types.
+2025-05-08 16:52:41 | INFO | src.tasks.binary_class_task | [label] Dictionary ./data/processed/fold0/data-bin/label: 6 types.
+2025-05-08 16:52:41 | INFO | src.tasks.binary_class_task | [cell] Dictionary ./data/processed/fold0/data-bin/label: 129 types.
+undirected graph
+# proteins: 17161, # cells: 125
+# protein-protein interactions: 839522, # cell-protein associations: 28349
+constructing neighbor set ...
+2025-05-08 16:52:59 | INFO | fairseq_cli.train | DrugTransfomerModel(
+  (encoder): TrEncoder(
+    (sentence_encoder): TransformerEncoder(
+      (dropout_module): FairseqDropout()
+      (embed_tokens): Embedding(2353, 512, padding_idx=1)
+      (embed_positions): LearnedPositionalEmbedding(514, 512, padding_idx=1)
+      (layernorm_embedding): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (layers): ModuleList(
+        (0-5): 6 x TransformerEncoderLayer(
+          (self_attn): MultiheadAttention(
+            (dropout_module): FairseqDropout()
+            (k_proj): Linear(in_features=512, out_features=512, bias=True)
+            (v_proj): Linear(in_features=512, out_features=512, bias=True)
+            (q_proj): Linear(in_features=512, out_features=512, bias=True)
+            (out_proj): Linear(in_features=512, out_features=512, bias=True)
+          )
+          (self_attn_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (dropout_module): FairseqDropout()
+          (activation_dropout_module): FairseqDropout()
+          (fc1): Linear(in_features=512, out_features=1024, bias=True)
+          (fc2): Linear(in_features=1024, out_features=512, bias=True)
+          (final_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (lm_head): RobertaLMHead(
+      (dense): Linear(in_features=512, out_features=512, bias=True)
+      (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (classification_heads): ModuleDict(
+    (bclsmlpppiv2): BinaryClassMLPPPIv2Head(
+      (protein_embedding): Embedding(17161, 512)
+      (aggregation_function): Linear(in_features=2048, out_features=512, bias=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+      (fc1): Linear(in_features=1536, out_features=512, bias=True)
+      (fc2): Linear(in_features=512, out_features=512, bias=True)
+      (out): Linear(in_features=512, out_features=1, bias=True)
+    )
+  )
+)
+2025-05-08 16:52:59 | INFO | fairseq_cli.train | task: BinaryClassTask
+2025-05-08 16:52:59 | INFO | fairseq_cli.train | model: DrugTransfomerModel
+2025-05-08 16:52:59 | INFO | fairseq_cli.train | criterion: BinaryClassBCECriterion
+2025-05-08 16:52:59 | INFO | fairseq_cli.train | num. shared model params: 25,237,298 (num. trained: 25,237,298)
+2025-05-08 16:52:59 | INFO | fairseq_cli.train | num. expert model params: 0 (num. trained: 0)
+2025-05-08 16:52:59 | INFO | src.tasks.binary_class_task | Loaded valid with #samples: 20578.
+2025-05-08 16:52:59 | INFO | fairseq.trainer | detected shared parameter: encoder.sentence_encoder.embed_tokens.weight <- encoder.lm_head.weight
+2025-05-08 16:52:59 | INFO | fairseq_cli.train | training on 1 devices (GPUs/TPUs)
+2025-05-08 16:52:59 | INFO | fairseq_cli.train | max tokens per device = None and max sentences per device = 128
+2025-05-08 16:52:59 | INFO | fairseq.trainer | Preparing to load checkpoint ./checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32/checkpoint_last.pt
+2025-05-08 16:52:59 | INFO | fairseq.trainer | No existing checkpoint found ./checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32/checkpoint_last.pt
+2025-05-08 16:52:59 | INFO | fairseq.trainer | loading train data for epoch 1
+2025-05-08 16:52:59 | INFO | src.tasks.binary_class_task | Loaded train with #samples: 61737.
+(1048575, 9223372036854775807)
+2025-05-08 16:59:50 | INFO | fairseq_cli.train | {'_name': None, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 100, 'log_format': 'simple', 'tensorboard_logdir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'wandb_project': None, 'azureml_logging': False, 'seed': 1, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': True, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'user_dir': 'dds/src/', 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma'}, 'common_eval': {'_name': None, 'path': None, 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'legacy_ddp', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': True, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': True, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'distributed_num_procs': 0}, 'dataset': {'_name': None, 'num_workers': 1, 'skip_invalid_size_inputs_valid_test': False, 'max_tokens': None, 'batch_size': 128, 'required_batch_size_multiple': 1, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': None, 'batch_size_valid': 128, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'optimization': {'_name': None, 'max_epoch': 0, 'max_update': 100000, 'stop_time_hours': 0.0, 'clip_norm': 0.0, 'sentence_avg': False, 'update_freq': [1], 'lr': [5e-05], 'stop_min_lr': -1.0, 'use_bmuf': False}, 'checkpoint': {'_name': None, 'save_dir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'restore_file': 'checkpoint_last.pt', 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 0, 'keep_interval_updates': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'auc_prc', 'maximize_best_checkpoint_metric': True, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 1}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': {'_name': 'drug_transfomer_base', 'activation_fn': 'gelu', 'dropout': 0.1, 'attention_dropout': 0.1, 'activation_dropout': 0.0, 'relu_dropout': 0.0, 'encoder_embed_path': None, 'encoder_embed_dim': 512, 'encoder_ffn_embed_dim': 1024, 'encoder_layers': 6, 'cross_encoder_layers': 6, 'encoder_attention_heads': 4, 'encoder_normalize_before': False, 'encoder_learned_pos': True, 'layernorm_embedding': True, 'no_scale_embedding': True, 'max_positions': 512, 'classification_head_name': 'bclsmlpppiv2', 'load_checkpoint_heads': False, 'quant_noise_pq': 0.0, 'quant_noise_pq_block_size': 8, 'quant_noise_scalar': 0.0, 'spectral_norm_classification_head': False, 'encoder_layerdrop': 0.0, 'encoder_layers_to_keep': None, 'max_source_positions': 512, 'no_token_positional_embeddings': False, 'pooler_activation_fn': 'tanh', 'pooler_dropout': 0.1, 'untie_weights_roberta': False, 'adaptive_input': False, 'n_memory': 32, 'skip_update_state_dict': False}, 'task': {'_name': 'binary_class_task', 'data': './data/processed/fold0/data-bin', 'source_lang': 'a', 'target_lang': 'b', 'num_classes': 125, 'scaler_label': False, 'no_shuffle': False, 'shorten_method': 'truncate', 'shorten_data_split_list': '', 'max_positions': 512, 'dataset_impl': None, 'seed': 1, 'order_noise': 5}, 'criterion': {'_name': 'binary_class_loss_bce', 'classification_head_name': 'bclsmlpppiv2', 'consis_alpha': 0.0, 'mt_alpha': 1.0, 'p_consis_alpha': 0.0}, 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9, 0.98)', 'adam_eps': 1e-06, 'weight_decay': 0.01, 'use_old_adam': False, 'tpu': False, 'lr': [5e-05]}, 'lr_scheduler': {'_name': 'polynomial_decay', 'warmup_updates': 4000, 'force_anneal': None, 'end_learning_rate': 0.0, 'power': 1.0, 'total_num_update': 100000.0, 'lr': [5e-05]}, 'scoring': {'_name': 'bleu', 'pad': 1, 'eos': 2, 'unk': 3}, 'bpe': None, 'tokenizer': None}
+2025-05-08 16:59:50 | INFO | src.tasks.binary_class_task | [input] Dictionary ./data/processed/fold0/data-bin: 2352 types.
+2025-05-08 16:59:50 | INFO | src.tasks.binary_class_task | [label] Dictionary ./data/processed/fold0/data-bin/label: 6 types.
+2025-05-08 16:59:50 | INFO | src.tasks.binary_class_task | [cell] Dictionary ./data/processed/fold0/data-bin/label: 129 types.
+undirected graph
+# proteins: 17161, # cells: 125
+# protein-protein interactions: 839522, # cell-protein associations: 28349
+constructing neighbor set ...
+2025-05-08 17:00:07 | INFO | fairseq_cli.train | DrugTransfomerModel(
+  (encoder): TrEncoder(
+    (sentence_encoder): TransformerEncoder(
+      (dropout_module): FairseqDropout()
+      (embed_tokens): Embedding(2353, 512, padding_idx=1)
+      (embed_positions): LearnedPositionalEmbedding(514, 512, padding_idx=1)
+      (layernorm_embedding): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (layers): ModuleList(
+        (0-5): 6 x TransformerEncoderLayer(
+          (self_attn): MultiheadAttention(
+            (dropout_module): FairseqDropout()
+            (k_proj): Linear(in_features=512, out_features=512, bias=True)
+            (v_proj): Linear(in_features=512, out_features=512, bias=True)
+            (q_proj): Linear(in_features=512, out_features=512, bias=True)
+            (out_proj): Linear(in_features=512, out_features=512, bias=True)
+          )
+          (self_attn_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (dropout_module): FairseqDropout()
+          (activation_dropout_module): FairseqDropout()
+          (fc1): Linear(in_features=512, out_features=1024, bias=True)
+          (fc2): Linear(in_features=1024, out_features=512, bias=True)
+          (final_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (lm_head): RobertaLMHead(
+      (dense): Linear(in_features=512, out_features=512, bias=True)
+      (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (classification_heads): ModuleDict(
+    (bclsmlpppiv2): BinaryClassMLPPPIv2Head(
+      (protein_embedding): Embedding(17161, 512)
+      (aggregation_function): Linear(in_features=2048, out_features=512, bias=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+      (fc1): Linear(in_features=1536, out_features=512, bias=True)
+      (fc2): Linear(in_features=512, out_features=512, bias=True)
+      (out): Linear(in_features=512, out_features=1, bias=True)
+    )
+  )
+)
+2025-05-08 17:00:07 | INFO | fairseq_cli.train | task: BinaryClassTask
+2025-05-08 17:00:07 | INFO | fairseq_cli.train | model: DrugTransfomerModel
+2025-05-08 17:00:07 | INFO | fairseq_cli.train | criterion: BinaryClassBCECriterion
+2025-05-08 17:00:07 | INFO | fairseq_cli.train | num. shared model params: 25,237,298 (num. trained: 25,237,298)
+2025-05-08 17:00:07 | INFO | fairseq_cli.train | num. expert model params: 0 (num. trained: 0)
+2025-05-08 17:00:07 | INFO | src.tasks.binary_class_task | Loaded valid with #samples: 20578.
+2025-05-08 17:00:07 | INFO | fairseq.trainer | detected shared parameter: encoder.sentence_encoder.embed_tokens.weight <- encoder.lm_head.weight
+2025-05-08 17:00:07 | INFO | fairseq_cli.train | training on 1 devices (GPUs/TPUs)
+2025-05-08 17:00:07 | INFO | fairseq_cli.train | max tokens per device = None and max sentences per device = 128
+2025-05-08 17:00:07 | INFO | fairseq.trainer | Preparing to load checkpoint ./checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32/checkpoint_last.pt
+2025-05-08 17:00:07 | INFO | fairseq.trainer | No existing checkpoint found ./checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32/checkpoint_last.pt
+2025-05-08 17:00:07 | INFO | fairseq.trainer | loading train data for epoch 1
+2025-05-08 17:00:07 | INFO | src.tasks.binary_class_task | Loaded train with #samples: 61737.
+(1048575, 9223372036854775807)
+2025-05-08 17:02:58 | INFO | fairseq_cli.train | {'_name': None, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 100, 'log_format': 'simple', 'tensorboard_logdir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'wandb_project': None, 'azureml_logging': False, 'seed': 1, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': False, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'user_dir': 'dds/src/', 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma'}, 'common_eval': {'_name': None, 'path': None, 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'legacy_ddp', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': True, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': False, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'distributed_num_procs': 0}, 'dataset': {'_name': None, 'num_workers': 1, 'skip_invalid_size_inputs_valid_test': False, 'max_tokens': None, 'batch_size': 128, 'required_batch_size_multiple': 1, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': None, 'batch_size_valid': 128, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'optimization': {'_name': None, 'max_epoch': 0, 'max_update': 100000, 'stop_time_hours': 0.0, 'clip_norm': 0.0, 'sentence_avg': False, 'update_freq': [1], 'lr': [5e-05], 'stop_min_lr': -1.0, 'use_bmuf': False}, 'checkpoint': {'_name': None, 'save_dir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'restore_file': 'checkpoint_last.pt', 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 0, 'keep_interval_updates': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'auc_prc', 'maximize_best_checkpoint_metric': True, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 1}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': {'_name': 'drug_transfomer_base', 'activation_fn': 'gelu', 'dropout': 0.1, 'attention_dropout': 0.1, 'activation_dropout': 0.0, 'relu_dropout': 0.0, 'encoder_embed_path': None, 'encoder_embed_dim': 512, 'encoder_ffn_embed_dim': 1024, 'encoder_layers': 6, 'cross_encoder_layers': 6, 'encoder_attention_heads': 4, 'encoder_normalize_before': False, 'encoder_learned_pos': True, 'layernorm_embedding': True, 'no_scale_embedding': True, 'max_positions': 512, 'classification_head_name': 'bclsmlpppiv2', 'load_checkpoint_heads': False, 'quant_noise_pq': 0.0, 'quant_noise_pq_block_size': 8, 'quant_noise_scalar': 0.0, 'spectral_norm_classification_head': False, 'encoder_layerdrop': 0.0, 'encoder_layers_to_keep': None, 'max_source_positions': 512, 'no_token_positional_embeddings': False, 'pooler_activation_fn': 'tanh', 'pooler_dropout': 0.1, 'untie_weights_roberta': False, 'adaptive_input': False, 'n_memory': 32, 'skip_update_state_dict': False}, 'task': {'_name': 'binary_class_task', 'data': './data/processed/fold0/data-bin', 'source_lang': 'a', 'target_lang': 'b', 'num_classes': 125, 'scaler_label': False, 'no_shuffle': False, 'shorten_method': 'truncate', 'shorten_data_split_list': '', 'max_positions': 512, 'dataset_impl': None, 'seed': 1, 'order_noise': 5}, 'criterion': {'_name': 'binary_class_loss_bce', 'classification_head_name': 'bclsmlpppiv2', 'consis_alpha': 0.0, 'mt_alpha': 1.0, 'p_consis_alpha': 0.0}, 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9, 0.98)', 'adam_eps': 1e-06, 'weight_decay': 0.01, 'use_old_adam': False, 'tpu': False, 'lr': [5e-05]}, 'lr_scheduler': {'_name': 'polynomial_decay', 'warmup_updates': 4000, 'force_anneal': None, 'end_learning_rate': 0.0, 'power': 1.0, 'total_num_update': 100000.0, 'lr': [5e-05]}, 'scoring': {'_name': 'bleu', 'pad': 1, 'eos': 2, 'unk': 3}, 'bpe': None, 'tokenizer': None}
+2025-05-08 17:02:58 | INFO | src.tasks.binary_class_task | [input] Dictionary ./data/processed/fold0/data-bin: 2352 types.
+2025-05-08 17:02:58 | INFO | src.tasks.binary_class_task | [label] Dictionary ./data/processed/fold0/data-bin/label: 6 types.
+2025-05-08 17:02:58 | INFO | src.tasks.binary_class_task | [cell] Dictionary ./data/processed/fold0/data-bin/label: 129 types.
+undirected graph
+# proteins: 17161, # cells: 125
+# protein-protein interactions: 839522, # cell-protein associations: 28349
+constructing neighbor set ...
+2025-05-08 17:03:15 | INFO | fairseq_cli.train | DrugTransfomerModel(
+  (encoder): TrEncoder(
+    (sentence_encoder): TransformerEncoder(
+      (dropout_module): FairseqDropout()
+      (embed_tokens): Embedding(2353, 512, padding_idx=1)
+      (embed_positions): LearnedPositionalEmbedding(514, 512, padding_idx=1)
+      (layernorm_embedding): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (layers): ModuleList(
+        (0-5): 6 x TransformerEncoderLayer(
+          (self_attn): MultiheadAttention(
+            (dropout_module): FairseqDropout()
+            (k_proj): Linear(in_features=512, out_features=512, bias=True)
+            (v_proj): Linear(in_features=512, out_features=512, bias=True)
+            (q_proj): Linear(in_features=512, out_features=512, bias=True)
+            (out_proj): Linear(in_features=512, out_features=512, bias=True)
+          )
+          (self_attn_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (dropout_module): FairseqDropout()
+          (activation_dropout_module): FairseqDropout()
+          (fc1): Linear(in_features=512, out_features=1024, bias=True)
+          (fc2): Linear(in_features=1024, out_features=512, bias=True)
+          (final_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (lm_head): RobertaLMHead(
+      (dense): Linear(in_features=512, out_features=512, bias=True)
+      (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (classification_heads): ModuleDict(
+    (bclsmlpppiv2): BinaryClassMLPPPIv2Head(
+      (protein_embedding): Embedding(17161, 512)
+      (aggregation_function): Linear(in_features=2048, out_features=512, bias=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+      (fc1): Linear(in_features=1536, out_features=512, bias=True)
+      (fc2): Linear(in_features=512, out_features=512, bias=True)
+      (out): Linear(in_features=512, out_features=1, bias=True)
+    )
+  )
+)
+2025-05-08 17:03:15 | INFO | fairseq_cli.train | task: BinaryClassTask
+2025-05-08 17:03:15 | INFO | fairseq_cli.train | model: DrugTransfomerModel
+2025-05-08 17:03:15 | INFO | fairseq_cli.train | criterion: BinaryClassBCECriterion
+2025-05-08 17:03:15 | INFO | fairseq_cli.train | num. shared model params: 25,237,298 (num. trained: 25,237,298)
+2025-05-08 17:03:15 | INFO | fairseq_cli.train | num. expert model params: 0 (num. trained: 0)
+2025-05-08 17:03:15 | INFO | src.tasks.binary_class_task | Loaded valid with #samples: 20578.
+2025-05-08 17:03:15 | INFO | fairseq.trainer | detected shared parameter: encoder.sentence_encoder.embed_tokens.weight <- encoder.lm_head.weight
+2025-05-08 17:03:15 | INFO | fairseq_cli.train | training on 1 devices (GPUs/TPUs)
+2025-05-08 17:03:15 | INFO | fairseq_cli.train | max tokens per device = None and max sentences per device = 128
+2025-05-08 17:03:15 | INFO | fairseq.trainer | Preparing to load checkpoint ./checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32/checkpoint_last.pt
+2025-05-08 17:03:15 | INFO | fairseq.trainer | No existing checkpoint found ./checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32/checkpoint_last.pt
+2025-05-08 17:03:15 | INFO | fairseq.trainer | loading train data for epoch 1
+2025-05-08 17:03:16 | INFO | src.tasks.binary_class_task | Loaded train with #samples: 61737.
+2025-05-08 17:03:16 | INFO | fairseq.trainer | begin training epoch 1
+2025-05-08 17:03:16 | INFO | fairseq_cli.train | Start iterating over samples
+(1048575, 9223372036854775807)
+(1048575, 9223372036854775807)
+2025-05-19 01:45:42 | INFO | fairseq_cli.train | {'_name': None, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 100, 'log_format': 'simple', 'tensorboard_logdir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'wandb_project': None, 'azureml_logging': False, 'seed': 1, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': True, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'user_dir': 'dds/src/', 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma'}, 'common_eval': {'_name': None, 'path': None, 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'legacy_ddp', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': True, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': True, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'distributed_num_procs': 0}, 'dataset': {'_name': None, 'num_workers': 1, 'skip_invalid_size_inputs_valid_test': False, 'max_tokens': None, 'batch_size': 128, 'required_batch_size_multiple': 1, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': None, 'batch_size_valid': 128, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'optimization': {'_name': None, 'max_epoch': 0, 'max_update': 100000, 'stop_time_hours': 0.0, 'clip_norm': 0.0, 'sentence_avg': False, 'update_freq': [1], 'lr': [5e-05], 'stop_min_lr': -1.0, 'use_bmuf': False}, 'checkpoint': {'_name': None, 'save_dir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'restore_file': 'checkpoint_last.pt', 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 0, 'keep_interval_updates': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'auc_prc', 'maximize_best_checkpoint_metric': True, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 1}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': {'_name': 'drug_transfomer_base', 'activation_fn': 'gelu', 'dropout': 0.1, 'attention_dropout': 0.1, 'activation_dropout': 0.0, 'relu_dropout': 0.0, 'encoder_embed_path': None, 'encoder_embed_dim': 512, 'encoder_ffn_embed_dim': 1024, 'encoder_layers': 6, 'cross_encoder_layers': 6, 'encoder_attention_heads': 4, 'encoder_normalize_before': False, 'encoder_learned_pos': True, 'layernorm_embedding': True, 'no_scale_embedding': True, 'max_positions': 512, 'classification_head_name': 'bclsmlpppiv2', 'load_checkpoint_heads': False, 'quant_noise_pq': 0.0, 'quant_noise_pq_block_size': 8, 'quant_noise_scalar': 0.0, 'spectral_norm_classification_head': False, 'encoder_layerdrop': 0.0, 'encoder_layers_to_keep': None, 'max_source_positions': 512, 'no_token_positional_embeddings': False, 'pooler_activation_fn': 'tanh', 'pooler_dropout': 0.1, 'untie_weights_roberta': False, 'adaptive_input': False, 'n_memory': 32, 'skip_update_state_dict': False}, 'task': {'_name': 'binary_class_task', 'data': './data/processed/fold0/data-bin', 'source_lang': 'a', 'target_lang': 'b', 'num_classes': 125, 'scaler_label': False, 'no_shuffle': False, 'shorten_method': 'truncate', 'shorten_data_split_list': '', 'max_positions': 512, 'dataset_impl': None, 'seed': 1, 'order_noise': 5}, 'criterion': {'_name': 'binary_class_loss_bce', 'classification_head_name': 'bclsmlpppiv2', 'consis_alpha': 0.0, 'mt_alpha': 1.0, 'p_consis_alpha': 0.0}, 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9, 0.98)', 'adam_eps': 1e-06, 'weight_decay': 0.01, 'use_old_adam': False, 'tpu': False, 'lr': [5e-05]}, 'lr_scheduler': {'_name': 'polynomial_decay', 'warmup_updates': 4000, 'force_anneal': None, 'end_learning_rate': 0.0, 'power': 1.0, 'total_num_update': 100000.0, 'lr': [5e-05]}, 'scoring': None, 'bpe': None, 'tokenizer': None}
+2025-05-19 01:45:42 | INFO | src.tasks.binary_class_task | [input] Dictionary ./data/processed/fold0/data-bin: 2352 types.
+2025-05-19 01:45:42 | INFO | src.tasks.binary_class_task | [label] Dictionary ./data/processed/fold0/data-bin/label: 6 types.
+2025-05-19 01:45:42 | INFO | src.tasks.binary_class_task | [cell] Dictionary ./data/processed/fold0/data-bin/label: 129 types.
+undirected graph
+# proteins: 17161, # cells: 125
+# protein-protein interactions: 839522, # cell-protein associations: 28349
+constructing neighbor set ...
+2025-05-19 01:45:55 | INFO | fairseq_cli.train | DrugTransfomerModel(
+  (encoder): TrEncoder(
+    (sentence_encoder): TransformerEncoder(
+      (dropout_module): FairseqDropout()
+      (embed_tokens): Embedding(2353, 512, padding_idx=1)
+      (embed_positions): LearnedPositionalEmbedding(514, 512, padding_idx=1)
+      (layernorm_embedding): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (layers): ModuleList(
+        (0-5): 6 x TransformerEncoderLayer(
+          (self_attn): MultiheadAttention(
+            (dropout_module): FairseqDropout()
+            (k_proj): Linear(in_features=512, out_features=512, bias=True)
+            (v_proj): Linear(in_features=512, out_features=512, bias=True)
+            (q_proj): Linear(in_features=512, out_features=512, bias=True)
+            (out_proj): Linear(in_features=512, out_features=512, bias=True)
+          )
+          (self_attn_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (dropout_module): FairseqDropout()
+          (activation_dropout_module): FairseqDropout()
+          (fc1): Linear(in_features=512, out_features=1024, bias=True)
+          (fc2): Linear(in_features=1024, out_features=512, bias=True)
+          (final_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (lm_head): RobertaLMHead(
+      (dense): Linear(in_features=512, out_features=512, bias=True)
+      (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (classification_heads): ModuleDict(
+    (bclsmlpppiv2): BinaryClassMLPPPIv2Head(
+      (protein_embedding): Embedding(17161, 512)
+      (aggregation_function): Linear(in_features=2048, out_features=512, bias=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+      (fc1): Linear(in_features=1536, out_features=512, bias=True)
+      (fc2): Linear(in_features=512, out_features=512, bias=True)
+      (out): Linear(in_features=512, out_features=1, bias=True)
+    )
+  )
+)
+2025-05-19 01:45:55 | INFO | fairseq_cli.train | task: BinaryClassTask
+2025-05-19 01:45:55 | INFO | fairseq_cli.train | model: DrugTransfomerModel
+2025-05-19 01:45:55 | INFO | fairseq_cli.train | criterion: BinaryClassBCECriterion
+2025-05-19 01:45:55 | INFO | fairseq_cli.train | num. shared model params: 25,237,298 (num. trained: 25,237,298)
+2025-05-19 01:45:55 | INFO | fairseq_cli.train | num. expert model params: 0 (num. trained: 0)
+2025-05-19 01:45:55 | INFO | src.tasks.binary_class_task | Loaded valid with #samples: 20578.
+2025-05-19 01:45:55 | INFO | fairseq.trainer | detected shared parameter: encoder.sentence_encoder.embed_tokens.weight <- encoder.lm_head.weight
+(1048575, 9223372036854775807)
+2025-05-19 01:49:33 | INFO | fairseq_cli.train | {'_name': None, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 100, 'log_format': 'simple', 'tensorboard_logdir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'wandb_project': None, 'azureml_logging': False, 'seed': 1, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': True, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'user_dir': 'dds/src/', 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma'}, 'common_eval': {'_name': None, 'path': None, 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'legacy_ddp', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': True, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': True, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'distributed_num_procs': 0}, 'dataset': {'_name': None, 'num_workers': 1, 'skip_invalid_size_inputs_valid_test': False, 'max_tokens': None, 'batch_size': 128, 'required_batch_size_multiple': 1, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': None, 'batch_size_valid': 128, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'optimization': {'_name': None, 'max_epoch': 0, 'max_update': 100000, 'stop_time_hours': 0.0, 'clip_norm': 0.0, 'sentence_avg': False, 'update_freq': [1], 'lr': [5e-05], 'stop_min_lr': -1.0, 'use_bmuf': False}, 'checkpoint': {'_name': None, 'save_dir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'restore_file': 'checkpoint_last.pt', 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 0, 'keep_interval_updates': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'auc_prc', 'maximize_best_checkpoint_metric': True, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 1}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': {'_name': 'drug_transfomer_base', 'activation_fn': 'gelu', 'dropout': 0.1, 'attention_dropout': 0.1, 'activation_dropout': 0.0, 'relu_dropout': 0.0, 'encoder_embed_path': None, 'encoder_embed_dim': 512, 'encoder_ffn_embed_dim': 1024, 'encoder_layers': 6, 'cross_encoder_layers': 6, 'encoder_attention_heads': 4, 'encoder_normalize_before': False, 'encoder_learned_pos': True, 'layernorm_embedding': True, 'no_scale_embedding': True, 'max_positions': 512, 'classification_head_name': 'bclsmlpppiv2', 'load_checkpoint_heads': False, 'quant_noise_pq': 0.0, 'quant_noise_pq_block_size': 8, 'quant_noise_scalar': 0.0, 'spectral_norm_classification_head': False, 'encoder_layerdrop': 0.0, 'encoder_layers_to_keep': None, 'max_source_positions': 512, 'no_token_positional_embeddings': False, 'pooler_activation_fn': 'tanh', 'pooler_dropout': 0.1, 'untie_weights_roberta': False, 'adaptive_input': False, 'n_memory': 32, 'skip_update_state_dict': False}, 'task': {'_name': 'binary_class_task', 'data': './data/processed/fold0/data-bin', 'source_lang': 'a', 'target_lang': 'b', 'num_classes': 125, 'scaler_label': False, 'no_shuffle': False, 'shorten_method': 'truncate', 'shorten_data_split_list': '', 'max_positions': 512, 'dataset_impl': None, 'seed': 1, 'order_noise': 5}, 'criterion': {'_name': 'binary_class_loss_bce', 'classification_head_name': 'bclsmlpppiv2', 'consis_alpha': 0.0, 'mt_alpha': 1.0, 'p_consis_alpha': 0.0}, 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9, 0.98)', 'adam_eps': 1e-06, 'weight_decay': 0.01, 'use_old_adam': False, 'tpu': False, 'lr': [5e-05]}, 'lr_scheduler': {'_name': 'polynomial_decay', 'warmup_updates': 4000, 'force_anneal': None, 'end_learning_rate': 0.0, 'power': 1.0, 'total_num_update': 100000.0, 'lr': [5e-05]}, 'scoring': None, 'bpe': None, 'tokenizer': None}
+2025-05-19 01:49:33 | INFO | src.tasks.binary_class_task | [input] Dictionary ./data/processed/fold0/data-bin: 2352 types.
+2025-05-19 01:49:33 | INFO | src.tasks.binary_class_task | [label] Dictionary ./data/processed/fold0/data-bin/label: 6 types.
+2025-05-19 01:49:33 | INFO | src.tasks.binary_class_task | [cell] Dictionary ./data/processed/fold0/data-bin/label: 129 types.
+undirected graph
+# proteins: 17161, # cells: 125
+# protein-protein interactions: 839522, # cell-protein associations: 28349
+constructing neighbor set ...
+2025-05-19 01:49:47 | INFO | fairseq_cli.train | DrugTransfomerModel(
+  (encoder): TrEncoder(
+    (sentence_encoder): TransformerEncoder(
+      (dropout_module): FairseqDropout()
+      (embed_tokens): Embedding(2353, 512, padding_idx=1)
+      (embed_positions): LearnedPositionalEmbedding(514, 512, padding_idx=1)
+      (layernorm_embedding): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (layers): ModuleList(
+        (0-5): 6 x TransformerEncoderLayer(
+          (self_attn): MultiheadAttention(
+            (dropout_module): FairseqDropout()
+            (k_proj): Linear(in_features=512, out_features=512, bias=True)
+            (v_proj): Linear(in_features=512, out_features=512, bias=True)
+            (q_proj): Linear(in_features=512, out_features=512, bias=True)
+            (out_proj): Linear(in_features=512, out_features=512, bias=True)
+          )
+          (self_attn_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (dropout_module): FairseqDropout()
+          (activation_dropout_module): FairseqDropout()
+          (fc1): Linear(in_features=512, out_features=1024, bias=True)
+          (fc2): Linear(in_features=1024, out_features=512, bias=True)
+          (final_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (lm_head): RobertaLMHead(
+      (dense): Linear(in_features=512, out_features=512, bias=True)
+      (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (classification_heads): ModuleDict(
+    (bclsmlpppiv2): BinaryClassMLPPPIv2Head(
+      (protein_embedding): Embedding(17161, 512)
+      (aggregation_function): Linear(in_features=2048, out_features=512, bias=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+      (fc1): Linear(in_features=1536, out_features=512, bias=True)
+      (fc2): Linear(in_features=512, out_features=512, bias=True)
+      (out): Linear(in_features=512, out_features=1, bias=True)
+    )
+  )
+)
+2025-05-19 01:49:47 | INFO | fairseq_cli.train | task: BinaryClassTask
+2025-05-19 01:49:47 | INFO | fairseq_cli.train | model: DrugTransfomerModel
+2025-05-19 01:49:47 | INFO | fairseq_cli.train | criterion: BinaryClassBCECriterion
+2025-05-19 01:49:47 | INFO | fairseq_cli.train | num. shared model params: 25,237,298 (num. trained: 25,237,298)
+2025-05-19 01:49:47 | INFO | fairseq_cli.train | num. expert model params: 0 (num. trained: 0)
+2025-05-19 01:49:47 | INFO | src.tasks.binary_class_task | Loaded valid with #samples: 20578.
+2025-05-19 01:49:47 | INFO | fairseq.trainer | detected shared parameter: encoder.sentence_encoder.embed_tokens.weight <- encoder.lm_head.weight
+2025-05-19 01:49:47 | INFO | fairseq_cli.train | training on 1 devices (GPUs/TPUs)
+2025-05-19 01:49:47 | INFO | fairseq_cli.train | max tokens per device = None and max sentences per device = 128
+2025-05-19 01:49:47 | INFO | fairseq.trainer | Preparing to load checkpoint ./checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32/checkpoint_last.pt
+2025-05-19 01:49:47 | INFO | fairseq.trainer | No existing checkpoint found ./checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32/checkpoint_last.pt
+2025-05-19 01:49:47 | INFO | fairseq.trainer | loading train data for epoch 1
+2025-05-19 01:49:47 | INFO | src.tasks.binary_class_task | Loaded train with #samples: 61737.
+(1048575, 9223372036854775807)
+2025-05-19 01:52:15 | INFO | fairseq_cli.train | {'_name': None, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 100, 'log_format': 'simple', 'tensorboard_logdir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'wandb_project': None, 'azureml_logging': False, 'seed': 1, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': False, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'user_dir': 'dds/src/', 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma'}, 'common_eval': {'_name': None, 'path': None, 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'legacy_ddp', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': True, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': False, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'distributed_num_procs': 0}, 'dataset': {'_name': None, 'num_workers': 1, 'skip_invalid_size_inputs_valid_test': False, 'max_tokens': None, 'batch_size': 128, 'required_batch_size_multiple': 1, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': None, 'batch_size_valid': 128, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'optimization': {'_name': None, 'max_epoch': 0, 'max_update': 100000, 'stop_time_hours': 0.0, 'clip_norm': 0.0, 'sentence_avg': False, 'update_freq': [1], 'lr': [5e-05], 'stop_min_lr': -1.0, 'use_bmuf': False}, 'checkpoint': {'_name': None, 'save_dir': './checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32', 'restore_file': 'checkpoint_last.pt', 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 0, 'keep_interval_updates': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'auc_prc', 'maximize_best_checkpoint_metric': True, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 1}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': {'_name': 'drug_transfomer_base', 'activation_fn': 'gelu', 'dropout': 0.1, 'attention_dropout': 0.1, 'activation_dropout': 0.0, 'relu_dropout': 0.0, 'encoder_embed_path': None, 'encoder_embed_dim': 512, 'encoder_ffn_embed_dim': 1024, 'encoder_layers': 6, 'cross_encoder_layers': 6, 'encoder_attention_heads': 4, 'encoder_normalize_before': False, 'encoder_learned_pos': True, 'layernorm_embedding': True, 'no_scale_embedding': True, 'max_positions': 512, 'classification_head_name': 'bclsmlpppiv2', 'load_checkpoint_heads': False, 'quant_noise_pq': 0.0, 'quant_noise_pq_block_size': 8, 'quant_noise_scalar': 0.0, 'spectral_norm_classification_head': False, 'encoder_layerdrop': 0.0, 'encoder_layers_to_keep': None, 'max_source_positions': 512, 'no_token_positional_embeddings': False, 'pooler_activation_fn': 'tanh', 'pooler_dropout': 0.1, 'untie_weights_roberta': False, 'adaptive_input': False, 'n_memory': 32, 'skip_update_state_dict': False}, 'task': {'_name': 'binary_class_task', 'data': './data/processed/fold0/data-bin', 'source_lang': 'a', 'target_lang': 'b', 'num_classes': 125, 'scaler_label': False, 'no_shuffle': False, 'shorten_method': 'truncate', 'shorten_data_split_list': '', 'max_positions': 512, 'dataset_impl': None, 'seed': 1, 'order_noise': 5}, 'criterion': {'_name': 'binary_class_loss_bce', 'classification_head_name': 'bclsmlpppiv2', 'consis_alpha': 0.0, 'mt_alpha': 1.0, 'p_consis_alpha': 0.0}, 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9, 0.98)', 'adam_eps': 1e-06, 'weight_decay': 0.01, 'use_old_adam': False, 'tpu': False, 'lr': [5e-05]}, 'lr_scheduler': {'_name': 'polynomial_decay', 'warmup_updates': 4000, 'force_anneal': None, 'end_learning_rate': 0.0, 'power': 1.0, 'total_num_update': 100000.0, 'lr': [5e-05]}, 'scoring': None, 'bpe': None, 'tokenizer': None}
+2025-05-19 01:52:15 | INFO | src.tasks.binary_class_task | [input] Dictionary ./data/processed/fold0/data-bin: 2352 types.
+2025-05-19 01:52:15 | INFO | src.tasks.binary_class_task | [label] Dictionary ./data/processed/fold0/data-bin/label: 6 types.
+2025-05-19 01:52:15 | INFO | src.tasks.binary_class_task | [cell] Dictionary ./data/processed/fold0/data-bin/label: 129 types.
+undirected graph
+# proteins: 17161, # cells: 125
+# protein-protein interactions: 839522, # cell-protein associations: 28349
+constructing neighbor set ...
+2025-05-19 01:52:28 | INFO | fairseq_cli.train | DrugTransfomerModel(
+  (encoder): TrEncoder(
+    (sentence_encoder): TransformerEncoder(
+      (dropout_module): FairseqDropout()
+      (embed_tokens): Embedding(2353, 512, padding_idx=1)
+      (embed_positions): LearnedPositionalEmbedding(514, 512, padding_idx=1)
+      (layernorm_embedding): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (layers): ModuleList(
+        (0-5): 6 x TransformerEncoderLayer(
+          (self_attn): MultiheadAttention(
+            (dropout_module): FairseqDropout()
+            (k_proj): Linear(in_features=512, out_features=512, bias=True)
+            (v_proj): Linear(in_features=512, out_features=512, bias=True)
+            (q_proj): Linear(in_features=512, out_features=512, bias=True)
+            (out_proj): Linear(in_features=512, out_features=512, bias=True)
+          )
+          (self_attn_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (dropout_module): FairseqDropout()
+          (activation_dropout_module): FairseqDropout()
+          (fc1): Linear(in_features=512, out_features=1024, bias=True)
+          (fc2): Linear(in_features=1024, out_features=512, bias=True)
+          (final_layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (lm_head): RobertaLMHead(
+      (dense): Linear(in_features=512, out_features=512, bias=True)
+      (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (classification_heads): ModuleDict(
+    (bclsmlpppiv2): BinaryClassMLPPPIv2Head(
+      (protein_embedding): Embedding(17161, 512)
+      (aggregation_function): Linear(in_features=2048, out_features=512, bias=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+      (fc1): Linear(in_features=1536, out_features=512, bias=True)
+      (fc2): Linear(in_features=512, out_features=512, bias=True)
+      (out): Linear(in_features=512, out_features=1, bias=True)
+    )
+  )
+)
+2025-05-19 01:52:28 | INFO | fairseq_cli.train | task: BinaryClassTask
+2025-05-19 01:52:28 | INFO | fairseq_cli.train | model: DrugTransfomerModel
+2025-05-19 01:52:28 | INFO | fairseq_cli.train | criterion: BinaryClassBCECriterion
+2025-05-19 01:52:28 | INFO | fairseq_cli.train | num. shared model params: 25,237,298 (num. trained: 25,237,298)
+2025-05-19 01:52:28 | INFO | fairseq_cli.train | num. expert model params: 0 (num. trained: 0)
+2025-05-19 01:52:28 | INFO | src.tasks.binary_class_task | Loaded valid with #samples: 20578.
+2025-05-19 01:52:28 | INFO | fairseq.trainer | detected shared parameter: encoder.sentence_encoder.embed_tokens.weight <- encoder.lm_head.weight
+2025-05-19 01:52:28 | INFO | fairseq_cli.train | training on 1 devices (GPUs/TPUs)
+2025-05-19 01:52:28 | INFO | fairseq_cli.train | max tokens per device = None and max sentences per device = 128
+2025-05-19 01:52:28 | INFO | fairseq.trainer | Preparing to load checkpoint ./checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32/checkpoint_last.pt
+2025-05-19 01:52:28 | INFO | fairseq.trainer | No existing checkpoint found ./checkpoints/binary_class_task/drug_transfomer_base/binary_class_loss_bce/fold0/bclsmlpppiv2/lr5e-5-drop0.1-memory32/checkpoint_last.pt
+2025-05-19 01:52:28 | INFO | fairseq.trainer | loading train data for epoch 1
+2025-05-19 01:52:29 | INFO | src.tasks.binary_class_task | Loaded train with #samples: 61737.

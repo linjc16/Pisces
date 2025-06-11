@@ -1,3 +1,0 @@
-defaults:
-  all: wrong
-  should_be: list
